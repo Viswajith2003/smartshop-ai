@@ -30,7 +30,7 @@ const ResetPassword = memo(() => {
       await new Promise(resolve => setTimeout(resolve, 1500))
       
       toast.success('Password reset successfully!')
-      navigate('/login')
+      navigate('/')
     } catch (err) {
       console.error('Reset password error:', err)
       toast.error('Failed to reset password. Please try again.')

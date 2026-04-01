@@ -1,39 +1,33 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
-import { AdminProvider } from "./context/AdminContext";
-import { SocketProvider } from "./context/SocketContext";
 import {
   ProtectedRoute,
   PublicRoute,
-  AdminRoute,
-} from "./components/ProtectedRoute";
-import AppLayout from "./components/AppLayout";
+} from "./components/Route";
 import { Loading } from "./components/ui";
+import AppLayout from "./components/AppLayout";
 
 const Login = React.lazy(() => import("./pages/Login"));
 const Register = React.lazy(() => import("./pages/Register"));
 const Home = React.lazy(() => import("./pages/Home"));
-const Profile = React.lazy(() => import("./pages/Profile"));
-const AdminDashboard = React.lazy(() => import("./pages/AdminDashboard"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import "react-toastify/dist/ReactToastify.css";generateUserToken
+const ForgotPassword = React.lazy(() => import("./pages/forgotPswd"));
+const OtpVerify = React.lazy(() => import("./pages/Otp_verify"));
+const ResetPassword = React.lazy(() => import("./pages/ResetPswd"));
+
 
 function App() {
   return (
-    <AuthProvider>
-      <AdminProvider>
-        <SocketProvider>
+    <AuthProvider>  
           <Router>
             <div className="App">
               <Suspense fallback={<Loading />}>
                 <Routes>
                   <Route
-                    path="/login"
+                    path="/"
                     element={
-                      <PublicRoute>
+                      <PublicRoute redirectTo="/dashboard">
                         <Login />
                       </PublicRoute>
                     }
@@ -47,42 +41,46 @@ function App() {
                     }
                   />
                   <Route
-                    path="/"
+                    path="/dashboard"
                     element={
-                      <ProtectedRoute>
+                      <ProtectedRoute redirectTo="/">
                         <AppLayout>
                           <Home />
                         </AppLayout>
                       </ProtectedRoute>
                     }
                   />
+                  
+                  
                   <Route
-                    path="/profile"
+                    path="/forgot-password"
                     element={
-                      <ProtectedRoute>
-                        <AppLayout>
-                          <Profile />
-                        </AppLayout>
-                      </ProtectedRoute>
+                      <PublicRoute>
+                        <ForgotPassword />
+                      </PublicRoute>
                     }
                   />
                   <Route
-                    path="/admin"
+                    path="/otp-verify"
                     element={
-                      <AdminRoute>
-                        <AppLayout>
-                          <AdminDashboard />
-                        </AppLayout>
-                      </AdminRoute>
+                        <OtpVerify />
                     }
                   />
+                  <Route
+                    path="/reset-pswd"
+                    element={
+                      <PublicRoute>
+                        <ResetPassword />
+                      </PublicRoute>
+                    }
+                  />
+                  
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
             </div>
           </Router>
-        </SocketProvider>
-      </AdminProvider>
+       
     </AuthProvider>
   );
 }

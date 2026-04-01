@@ -28,7 +28,7 @@ const ForgotPassword = memo(() => {
       
       // Optionally navigate back to login after a delay
       setTimeout(() => {
-        navigate('/login')
+        navigate('/')
       }, 2000)
     } catch (err) {
       console.error('Forgot password error:', err)
@@ -71,7 +71,7 @@ const ForgotPassword = memo(() => {
 
             <div className="text-center pt-2">
               <Link 
-                to="/login" 
+                to="/" 
                 className="text-gray-600 font-medium hover:text-[#9333ea] inline-block mb-8 transition-colors"
               >
                 Back to sign in

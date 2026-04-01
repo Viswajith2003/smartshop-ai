@@ -51,7 +51,7 @@ const Register = memo(() => {
       toast.success('Registration successful! Welcome to the platform.')
 
       setTimeout(() => {
-        navigate('/', { replace: true })
+        navigate('/dashboard', { replace: true })
       }, 100)
     } catch (err) {
       console.error('Registration error:', err)
@@ -72,7 +72,7 @@ const Register = memo(() => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Get Started</h2>
           <p className="text-purple-100 mb-8 text-lg">Already have an account ?</p>
           <Link 
-            to="/login" 
+            to="/" 
             className="px-12 py-3 border-2 border-white rounded-xl text-lg font-medium hover:bg-white hover:text-[#9333ea] transition-all duration-300"
           >
             Login

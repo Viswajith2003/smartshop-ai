@@ -55,7 +55,7 @@ const Login = memo(() => {
         if (user.role === "admin" || isAdminAttempt) {
           navigate("/admin", { replace: true });
         } else {
-          navigate("/", { replace: true });
+          navigate("/dashboard", { replace: true });
         }
       }, 100);
     } catch (err) {

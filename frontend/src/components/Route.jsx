@@ -32,21 +32,4 @@ export const PublicRoute = React.memo(({ children, redirectTo = "/" }) => {
   return children
 })
 
-export const AdminRoute = React.memo(({ children, redirectTo = "/login" }) => {
-  const { isAuthenticated, user, loading } = useAuth()
-  const location = useLocation()
 
-  if (loading) {
-    return <Loading fullScreen text="Verifying admin access..." />
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to={redirectTo} state={{ from: location }} replace />
-  }
-
-  if (user?.role !== 'admin') {
-    return <Navigate to="/" replace />
-  }
-
-  return children
-})
