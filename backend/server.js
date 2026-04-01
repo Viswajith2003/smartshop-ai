@@ -1,14 +1,41 @@
-const express=require("express")
+require('dotenv').config()
+const express = require("express");
+const http = require("http");
+const config = require("./config/config");
+const dbConnection = require("./config/dbAdv");
+const logger = require("./utils/logger");
 
-const app=express()
+class Server {
+  constructor() {
+    this.app = express();
+    this.server = http.createServer(this.app);
+    this.port = config.PORT;
+  }
 
-const PORT=5002
+  async initialize() {
+    try {
+      await dbConnection.connect();
+      logger.info("Server initialized successfully");
+    } catch (error) {
+      logger.error("server initialization failed:", error);
+      process.exit(1);
+    }
+  }
 
-app.get("/",(req,res)=>{
-    res.send("server of smartshop ai")
-})
+  async start(){
+    await this.initialize();
 
+    this.server.listen(this.port, async () =>{
+        logger.info(`Server running in ${config.NODE_ENV} mode on port ${this.port}`)
 
-app.listen(PORT,()=>{
-    console.log(`server running on ${PORT}`)
-})
+        // setTimeout(async ()=>{
+        //     await runSeeders();
+        // },2000)
+    })
+  }
+}
+
+const appServer = new Server();
+appServer.start();
+
+module.exports = appServer.app;
