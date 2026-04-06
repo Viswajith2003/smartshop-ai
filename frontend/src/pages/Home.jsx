@@ -1,11 +1,11 @@
 import React, { useState, useEffect, memo } from 'react';
 import { Navbar, Footer } from '../components/ui';
 
-// Banner Images (Generated)
+// Professional E-commerce Banner Images (Unsplash)
 const BANNERS = [
-    '/home/tufa15/.gemini/antigravity/brain/7efec2d0-a3fb-4c75-a84f-77ca72d56356/ecommerce_banner_1_1775041929647.png',
-    '/home/tufa15/.gemini/antigravity/brain/7efec2d0-a3fb-4c75-a84f-77ca72d56356/ecommerce_banner_2_1775041946701.png',
-    '/home/tufa15/.gemini/antigravity/brain/7efec2d0-a3fb-4c75-a84f-77ca72d56356/ecommerce_banner_3_1775041964462.png'
+    'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=2000&h=800',
+    'https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&q=80&w=2000&h=800',
+    'https://images.unsplash.com/photo-1549463599-24794828f09d?auto=format&fit=crop&q=80&w=2000&h=800'
 ];
 
 const CATEGORIES = [
@@ -16,9 +16,9 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
-    { id: 1, name: 'Apple Watch Ultra 2 (GPS)', price: '₹74,999', rating: 5, image: 'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?auto=format&fit=crop&q=80&w=300&h=300', tag: '20% OFF' },
-    { id: 2, name: 'Noise Quantum Pro 3', price: '₹14,999', rating: 5, image: 'https://images.unsplash.com/photo-1546435770-a3e426da473b?auto=format&fit=crop&q=80&w=300&h=300', tag: 'HOT' },
-    { id: 3, name: 'Samsung Galaxy S24 Ultra', price: '₹1,24,999', rating: 5, image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&q=80&w=300&h=300', tag: 'NEW' }
+    { id: 1, name: 'Apple Watch Ultra 2 (GPS)', price: '₹74,999', rating: 5, image: 'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?auto=format&fit=crop&q=80&w=600&h=600', tag: '20% OFF' },
+    { id: 2, name: 'Noise Quantum Pro 3', price: '₹14,999', rating: 5, image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=600&h=600', tag: 'HOT' },
+    { id: 3, name: 'Samsung Galaxy S24 Ultra', price: '₹1,24,999', rating: 5, image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&q=80&w=600&h=600', tag: 'NEW' }
 ];
 
 const OFFERS = [
@@ -45,24 +45,48 @@ const BannerCarousel = () => {
     }, []);
 
     return (
-        <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden rounded-3xl mt-6">
+        <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden rounded-3xl mt-6 group">
             {BANNERS.map((img, index) => (
                 <div
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === current ? 'opacity-100' : 'opacity-0'}`}
+                    className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${index === current ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}
                 >
                     <img src={img} alt={`Banner ${index}`} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center px-12 md:px-20">
+                         <div className="max-w-md space-y-4">
+                            <span className="bg-indigo-600 text-white text-[10px] font-black px-4 py-1 rounded-full uppercase tracking-widest">New Season</span>
+                            <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">Modern <br/>Tech Style</h2>
+                            <p className="text-white/70 text-sm font-bold uppercase tracking-widest">Up to 60% Off on Premium Brands</p>
+                            <button className="bg-white text-indigo-900 font-black px-8 py-4 rounded-2xl hover:bg-indigo-50 transition-all shadow-xl active:scale-95 uppercase tracking-widest text-xs mt-4">
+                                Shop Now
+                            </button>
+                         </div>
+                    </div>
                 </div>
             ))}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
                 {BANNERS.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrent(index)}
-                        className={`w-2.5 h-2.5 rounded-full transition-all ${index === current ? 'bg-white w-8' : 'bg-white/50'}`}
+                        className={`h-1.5 rounded-full transition-all duration-500 ${index === current ? 'bg-white w-12' : 'bg-white/30 w-3 hover:bg-white/50'}`}
                     />
                 ))}
             </div>
+            
+            {/* Nav Arrows */}
+            <button 
+                onClick={() => setCurrent((current - 1 + BANNERS.length) % BANNERS.length)}
+                className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-md p-4 rounded-2xl text-white opacity-0 group-hover:opacity-100 transition-all"
+            >
+                <i className="bi bi-chevron-left text-2xl"></i>
+            </button>
+            <button 
+                onClick={() => setCurrent((current + 1) % BANNERS.length)}
+                className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-md p-4 rounded-2xl text-white opacity-0 group-hover:opacity-100 transition-all"
+            >
+                <i className="bi bi-chevron-right text-2xl"></i>
+            </button>
         </div>
     );
 };
@@ -79,7 +103,7 @@ const SectionHeader = ({ title, linkText = 'View All' }) => (
 const Home = memo(() => {
     return (
         <div className="min-h-screen bg-[#020c1b]">
-            <Navbar />
+            
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
                 
@@ -112,7 +136,7 @@ const Home = memo(() => {
                                 <button className="absolute top-4 right-4 text-white/50 hover:text-red-500 transition-colors z-10 bg-black/20 p-2 rounded-full backdrop-blur-sm">
                                     <i className="bi bi-heart text-xl"></i>
                                 </button>
-                                <div className="h-64 bg-white/5 overflow-hidden flex items-center justify-center p-8 group-hover:p-4 transition-all">
+                                <div className="h-64 bg-[#0a1f3d] overflow-hidden flex items-center justify-center p-8 group-hover:p-4 transition-all">
                                     <img src={prod.image} alt={prod.name} className="w-full h-full object-contain mix-blend-lighten transition-transform duration-500 group-hover:scale-110" />
                                 </div>
                                 <div className="p-8 bg-gradient-to-t from-indigo-900/50 to-transparent">
@@ -185,7 +209,7 @@ const Home = memo(() => {
 
             </div>
 
-            <Footer />
+           
         </div>
     );
 });

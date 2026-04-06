@@ -23,7 +23,10 @@ const createApiClient = () => {
 
       if (error.response?.status === 401) {
         clearTokens();
-        window.location.href = '/';
+        const publicPages = ['/login', '/register', '/otp-verify', '/forgot-password', '/reset-pswd'];
+        if (!publicPages.some(p => window.location.pathname.includes(p))) {
+          window.location.href = '/';
+        }
       }
       return Promise.reject(error);
     }

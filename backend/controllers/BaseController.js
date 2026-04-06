@@ -4,6 +4,8 @@ const {
   sendError,
 } = require("../utils/response");
 
+const { ValidationError } = require("../utils/errors");
+
 class BaseController {
   static asyncHandler(fn) {
     return (req, res, next) => {
@@ -12,6 +14,9 @@ class BaseController {
   }
 
   static validateRequest(schema, data) {
+    if (!schema || typeof schema.validate !== 'function') {
+      throw new Error(`Validation schema is missing or invalid. Received: ${typeof schema}`);
+    }
     const { error, value } = schema.validate(data, { abortEarly: false });
 
     if (error) {
@@ -30,8 +35,14 @@ class BaseController {
     return sendSuccess(res, message, data, statusCode);
   }
 
-  static handleSendError(res, message, details = null, statusCode = 500) {
-    return sendError(res, message, details, statusCode);
+  static handleSendError(res, message, statusCode = 500, details = null) {
+    return sendError(res, message, statusCode, details);
+  }
+
+  static logAction(action, user = null) {
+    const logger = require("../utils/logger");
+    const userEmail = user ? user.email : "System";
+    logger.info(`User action - ${action} by user: ${userEmail}`);
   }
 }
 

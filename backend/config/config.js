@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 module.exports = {
-  PORT: process.env.PORT || 5002,
+  PORT: process.env.PORT || 5001,
 
   MONGODB_URI: process.env.MONGO_URI ,
 
@@ -16,5 +16,23 @@ module.exports = {
     REFRESH_EXPIRES_IN: process.env.JWT_REFRESH_EXPIRES_IN || "30d",
   },
 
+  CORS: {
+    // Allowing both variations avoids common browser identification issues
+    ORIGIN: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ["http://localhost:5173", "http://127.0.0.1:5173"],
+    CREDENTIALS: true,
+    METHODS: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    ALLOWED_HEADERS: ["Content-Type", "Authorization", "X-Requested-With"]
+  },
 
+  RATE_LIMIT: {
+    WINDOW_MS: 15 * 60 * 1000,
+    MAX_REQUESTS: 100,
+    AUTH_MAX_REQUESTS: 5
+  },
+  
+  MAIL: {
+    SERVICE: process.env.MAIL_SERVICE || 'gmail',
+    USER: process.env.MAIL_USER,
+    PASS: process.env.MAIL_PASS
+  }
 };

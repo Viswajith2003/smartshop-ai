@@ -1,4 +1,36 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+
+const addressSchema = new mongoose.Schema(
+  {
+    fullName: { type: String, required: true },
+    phone: { type: String, required: true },
+    street: { type: String, required: true },
+    city: { type: String, required: true },
+    district: { type: String, required: true },
+    state: { type: String, required: true },
+    pincode: { type: String, required: true },
+    country: { type: String, default: "India" },
+    isDefault: { type: Boolean, default: false },
+  },
+  { _id: true }
+);
+
+const transationSchema = new mongoose.Schema(
+  {
+    amount: Number,
+    type: {
+      type: String,
+      enum: ["credit", "debit"],
+    },
+    status: {
+      type: String,
+      enum: ["success", "pending", "failed"],
+    },
+    createdAt: { type: Date, default: Date.now },
+  },
+  { _id: false },
+);
 
 const userSchema = new mongoose.Schema(
   {
@@ -34,8 +66,8 @@ const userSchema = new mongoose.Schema(
     avatar: String,
     status: {
       type: String,
-      enum: ["active", "blocked"],
-      default: "user",
+      enum: ["active", "blocked", "banned"],
+      default: "active",
     },
     blockReason: {
       type: String,
@@ -47,7 +79,7 @@ const userSchema = new mongoose.Schema(
     },
     BlockedBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",
       default: null,
     },
 
@@ -69,40 +101,40 @@ const userSchema = new mongoose.Schema(
       },
       transations: [transationSchema],
     },
+    lastLogin: Date
   },
   {
     timestamps: true,
   },
 );
 
-const addressSchema = new mongoose.Schema(
-  {
-    fullName: { type: String, required: true },
-    phone: { type: String, required: true },
-    street: { type: String, required: true },
-    city: { type: String, required: true },
-    state: { type: String, required: true },
-    pincode: { type: String, required: true },
-    country: { type: String, default: "India" },
-    isDefault: { type: Boolean, default: false },
-  },
-  { _id: false },
-);
+// Hash password before saving
+userSchema.pre("save", async function () {
+  if (!this.isModified("password")) return;
+  
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
 
-const transationSchema = new mongoose.Schema(
-  {
-    amount: Number,
-    type: {
-      type: String,
-      enum: ["credit", "debit"],
-    },
-    status: {
-      type: String,
-      enum: ["success", "pending", "failed"],
-    },
-    createdAt: { type: Date, default: Date.now },
-  },
-  { _id: false },
-);
+// Compare password method
+userSchema.methods.comparePassword = async function (candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
+};
+
+// Static method to find by email
+userSchema.statics.findByEmail = function (email) {
+  return this.findOne({ email });
+};
+
+// Get public profile method
+userSchema.methods.getPublicProfile = function () {
+  const userObject = this.toObject();
+  delete userObject.password;
+  delete userObject.otp;
+  delete userObject.otpExpiry;
+  delete userObject.resetPwdToken;
+  delete userObject.resetPwdExpiry;
+  return userObject;
+};
 
 module.exports = mongoose.model("User", userSchema);

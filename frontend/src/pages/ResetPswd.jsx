@@ -1,10 +1,13 @@
 import React, { useState, useCallback, memo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
+import { authAPI } from '../services/AuthService'
 
 const ResetPassword = memo(() => {
   const navigate = useNavigate()
+  const location = useLocation()
+  const email = location.state?.email || ''
   const [loading, setLoading] = useState(false)
 
   const { register, handleSubmit, watch } = useForm({
@@ -14,8 +17,13 @@ const ResetPassword = memo(() => {
     }
   })
 
-  // Watch confirmation field to validate match
-  const password = watch('password')
+  // Redirect if no email is present
+  React.useEffect(() => {
+    if (!email) {
+      toast.error('Please request a password reset first')
+      navigate('/forgot-password')
+    }
+  }, [email, navigate])
 
   const onSubmit = useCallback(async (data) => {
     if (data.password !== data.confirmPassword) {
@@ -25,19 +33,21 @@ const ResetPassword = memo(() => {
 
     setLoading(true)
     try {
-      console.log('Resetting password...')
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1500))
+      const response = await authAPI.resetPassword({
+        email,
+        otp: location.state?.otp,
+        newPassword: data.password
+      })
       
-      toast.success('Password reset successfully!')
-      navigate('/')
+      toast.success(response.message || 'Password reset successfully!')
+      navigate('/login')
     } catch (err) {
       console.error('Reset password error:', err)
-      toast.error('Failed to reset password. Please try again.')
+      toast.error(err.message || 'Failed to reset password. Please try again.')
     } finally {
       setLoading(false)
     }
-  }, [navigate])
+  }, [navigate, email, location.state?.otp])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
@@ -55,6 +65,7 @@ const ResetPassword = memo(() => {
           
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-5">
+
               <div className="relative">
                 <input
                   type="password"

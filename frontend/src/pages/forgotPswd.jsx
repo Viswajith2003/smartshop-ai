@@ -2,6 +2,7 @@ import React, { useState, useCallback, memo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
+import { authAPI } from '../services/AuthService'
 import forgotImg from '../assets/forgotPswd.png'
 
 const ForgotPassword = memo(() => {
@@ -17,22 +18,14 @@ const ForgotPassword = memo(() => {
   const onSubmit = useCallback(async (data) => {
     setLoading(true)
     try {
-      // In a real application, you would call your API here
-      // For now, we'll just simulate a successful request
-      console.log('Sending reset link to:', data.email)
+      const response = await authAPI.forgotPassword(data.email)
+      toast.success(response.message || 'OTP sent successfully!')
       
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
-      toast.success('Password reset link sent to your email!')
-      
-      // Optionally navigate back to login after a delay
-      setTimeout(() => {
-        navigate('/')
-      }, 2000)
+      // Navigate to OTP Verification page and pass email
+      navigate('/otp-verify', { state: { email: data.email, from: 'forgotPassword' } })
     } catch (err) {
       console.error('Forgot password error:', err)
-      toast.error(err.message || 'Error sending password reset link.')
+      toast.error(err.message || 'Error sending OTP.')
     } finally {
       setLoading(false)
     }
@@ -71,7 +64,7 @@ const ForgotPassword = memo(() => {
 
             <div className="text-center pt-2">
               <Link 
-                to="/" 
+                to="/login" 
                 className="text-gray-600 font-medium hover:text-[#9333ea] inline-block mb-8 transition-colors"
               >
                 Back to sign in

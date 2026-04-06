@@ -64,6 +64,30 @@ const passwordChangeValidation = Joi.object({
   })
 });
 
+const forgotPasswordValidation = Joi.object({
+  email: commonPatterns.email.messages(customMessages),
+});
+
+const resetPasswordValidation = Joi.object({
+  email: commonPatterns.email.messages(customMessages),
+  otp: Joi.string().length(6).required().messages({
+    'string.length': 'OTP must be 6 digits long',
+    'any.required': 'OTP is required'
+  }),
+  newPassword: commonPatterns.password.messages({
+    ...customMessages,
+    'string.min': 'New password must be at least 8 characters long'
+  }),
+});
+
+const verifyOtpValidation = Joi.object({
+  email: commonPatterns.email.messages(customMessages),
+  otp: Joi.string().length(6).required().messages({
+    'string.length': 'OTP must be 6 digits long',
+    'any.required': 'OTP is required'
+  }),
+});
+
 const statusUpdateValidation = Joi.object({
   status: commonPatterns.status.required().messages(customMessages)
 });
@@ -121,6 +145,23 @@ const updateTodoValidation = Joi.object({
   completed: Joi.boolean().optional()
 });
 
+const addressValidation = Joi.object({
+  fullName: Joi.string().required().trim().min(2).max(100).messages({
+    'any.required': 'Full name on address is required'
+  }),
+  phone: Joi.string().required().trim().pattern(/^\d{10}$/).messages({
+     'string.pattern.base': 'Please provide a valid 10-digit mobile number'
+  }),
+  street: Joi.string().required().trim().min(5).max(255),
+  city: Joi.string().required().trim().min(2).max(100),
+  district: Joi.string().required().trim().min(2).max(100),
+  state: Joi.string().required().trim().min(2).max(100),
+  pincode: Joi.string().required().trim().pattern(/^\d{6}$/).messages({
+    'string.pattern.base': 'Please provide a valid 6-digit Pincode'
+  }),
+  isDefault: Joi.boolean().default(false)
+});
+
 module.exports = {
   registerValidation,
   loginValidation,
@@ -132,6 +173,10 @@ module.exports = {
   paginationValidation,
   createTodoValidation,
   updateTodoValidation,
+  forgotPasswordValidation,
+  resetPasswordValidation,
+  verifyOtpValidation,
+  addressValidation,
   ValidationHelpers,
   commonPatterns,
   customMessages,

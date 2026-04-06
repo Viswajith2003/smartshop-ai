@@ -1,4 +1,5 @@
 const logger = require("./logger");
+const { ErrorUtils } = require("./errors");
 
 class ResponseFormatter {
   static success(res, message, data = null, statusCode = 200, meta = null) {
@@ -22,7 +23,7 @@ class ResponseFormatter {
 
   static error(res, error, statusCode = null) {
     const formattedError = ErrorUtils.formatError(error);
-    const finalStatusCode = statusCode || formattedError.error.statusCode;
+    const finalStatusCode = statusCode || formattedError.error.statusCode || 500;
 
     const response = {
       ...formattedError,
@@ -34,7 +35,8 @@ class ResponseFormatter {
   }
 
   static validationError(res, validationResult) {
-    const errors = validationResult.error.details.map((detail) => ({
+    const details = validationResult.error?.details || [];
+    const errors = details.map((detail) => ({
       field: detail.path[0],
       message: detail.message,
       value: detail.context?.value,
@@ -57,7 +59,7 @@ class ResponseFormatter {
 }
 
 const sendSuccess = (res, message, data = null, statusCode = 200) => {
-  return ResponseFormatter.success(res, message);
+  return ResponseFormatter.success(res, message, data, statusCode);
 };
 
 const sendError = (res, message, statusCode = 500, details = null) => {

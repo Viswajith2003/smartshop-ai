@@ -1,22 +1,19 @@
-import React, { useState, useCallback, memo } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import { useAuth } from '../context/AuthContext'
-// import { FormInput, Button } from '../components/ui'
+import { authAPI } from '../services/AuthService'
 
-const Register = memo(() => {
+const Register = React.memo(() => {
   const navigate = useNavigate()
-  const { login } = useAuth()
   const [loading, setLoading] = useState(false)
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, formState: { errors }, watch } = useForm({
     defaultValues: {
       fullName: '',
       email: '',
       password: '',
-      confirmPassword: '',
-      agreeToTerms: false
+      confirmPassword: ''
     }
   })
 
@@ -24,43 +21,30 @@ const Register = memo(() => {
     setLoading(true)
 
     try {
-      const { authAPI, setAuthToken } = await import('../utils/api')
-
       if (data.password !== data.confirmPassword) {
         toast.error('Passwords do not match')
         return
       }
 
       const response = await authAPI.register({
-        name: `${data.fullName}`,
+        name: data.fullName,
         email: data.email,
         password: data.password,
       })
 
-      setAuthToken(response.data.token)
+      console.log('Registration success:', response)
+      toast.success(response.message || 'Registration successful! Please verify OTP.')
 
-      const user = {
-        id: response.data.user.id || response.data.user._id,
-        name: response.data.user.name,
-        email: response.data.user.email,
-        role: response.data.user.role || 'user',
-        avatar: response.data.user.avatar || null
-      }
-
-      login(user)
-      toast.success('Registration successful! Welcome to the platform.')
-
-      setTimeout(() => {
-        navigate('/dashboard', { replace: true })
-      }, 100)
+      // Navigate to OTP verify page with email in state
+      navigate('/otp-verify', { replace: true, state: { email: data.email } })
     } catch (err) {
       console.error('Registration error:', err)
-      const message = err.response?.data?.error?.message || err.response?.data?.message || err.message || 'Registration failed. Please try again.'
+      const message = err.message || 'Registration failed. Please try again.'
       toast.error(message)
     } finally {
       setLoading(false)
     }
-  }, [navigate, login])
+  }, [navigate])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
@@ -72,7 +56,7 @@ const Register = memo(() => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Get Started</h2>
           <p className="text-purple-100 mb-8 text-lg">Already have an account ?</p>
           <Link 
-            to="/" 
+            to="/login" 
             className="px-12 py-3 border-2 border-white rounded-xl text-lg font-medium hover:bg-white hover:text-[#9333ea] transition-all duration-300"
           >
             Login
@@ -89,40 +73,56 @@ const Register = memo(() => {
                 <input
                   type="text"
                   placeholder="Full Name"
-                  {...register('fullName')}
-                  required
-                  className="w-full px-6 py-4 bg-[#fdf2ff] border border-purple-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all"
+                  {...register('fullName', { required: 'Full name is required', minLength: { value: 2, message: 'Name must be at least 2 characters' } })}
+                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.fullName ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all`}
                 />
+                {errors.fullName && <p className="text-red-500 text-xs mt-1 ml-2">{errors.fullName.message}</p>}
               </div>
 
               <div className="relative">
                 <input
                   type="email"
                   placeholder="Email"
-                  {...register('email')}
-                  required
-                  className="w-full px-6 py-4 bg-[#fdf2ff] border border-purple-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all"
+                  {...register('email', { 
+                    required: 'Email is required',
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Invalid email address"
+                    }
+                  })}
+                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.email ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all`}
                 />
+                {errors.email && <p className="text-red-500 text-xs mt-1 ml-2">{errors.email.message}</p>}
               </div>
 
               <div className="relative">
                 <input
                   type="password"
-                  placeholder="Password"
-                  {...register('password')}
-                  required
-                  className="w-full px-6 py-4 bg-[#fdf2ff] border border-purple-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all"
+                  placeholder="Password (min 8 characters)"
+                  {...register('password', { 
+                    required: 'Password is required', 
+                    minLength: { value: 8, message: 'Password must be at least 8 characters' } 
+                  })}
+                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.password ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all`}
                 />
+                {errors.password && <p className="text-red-500 text-xs mt-1 ml-2">{errors.password.message}</p>}
               </div>
 
               <div className="relative">
                 <input
                   type="password"
                   placeholder="Confirm Password"
-                  {...register('confirmPassword')}
-                  required
-                  className="w-full px-6 py-4 bg-[#fdf2ff] border border-purple-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all"
+                  {...register('confirmPassword', { 
+                    required: 'Please confirm your password',
+                    validate: (val) => {
+                      if (watch('password') !== val) {
+                        return "Passwords do not match";
+                      }
+                    }
+                  })}
+                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.confirmPassword ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all`}
                 />
+                {errors.confirmPassword && <p className="text-red-500 text-xs mt-1 ml-2">{errors.confirmPassword.message}</p>}
               </div>
             </div>
 

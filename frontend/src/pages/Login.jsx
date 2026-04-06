@@ -1,62 +1,53 @@
-import React, { useState, useCallback, memo } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useCallback, useMemo } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { useAuth } from "../context/AuthContext";
-// import { FormInput, Button } from "../components/ui";
+import { useDispatch } from "react-redux";
+import { 
+  loginStart, 
+  loginSuccess, 
+  loginFailure 
+} from "../store/slices/authSlice";
+import { authAPI, setAuthToken } from "../utils/api";
 
-const Login = memo(() => {
+const Login = React.memo(() => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
 
-  const { register, handleSubmit } = useForm({
-    defaultValues: { email: "", password: "", remember: false },
+  const location = useLocation();
+  const initialEmail = useMemo(() => location.state?.email || "", [location.state]);
+
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: { email: initialEmail, password: "", remember: false },
   });
 
   const onSubmit = useCallback(async (data) => {
     setLoading(true);
+    dispatch(loginStart());
 
     try {
-      const { authAPI, adminAPI, setAuthToken, setAdminToken } = await import(
-        "../utils/api"
-      );
-      const isAdminAttempt =
-        data.email.includes("admin") || data.email === "admin@example.com";
+      const response = await authAPI.login({
+        email: data.email,
+        password: data.password,
+      });
 
-      let response;
-      if (isAdminAttempt) {
-        response = await adminAPI.login({
-          email: data.email,
-          password: data.password,
-        });
-        setAdminToken(response.data.token);
-      } else {
-        response = await authAPI.login({
-          email: data.email,
-          password: data.password,
-        });
-        setAuthToken(response.data.token);
-      }
-      const userData = response.data.user || response.data.admin;
+      setAuthToken(response.data.token);
+      const userData = response.data.user;
 
       const user = {
         id: userData.id || userData._id,
         name: userData.name,
         email: userData.email,
-        role: userData.role || (isAdminAttempt ? "admin" : "user"),
+        role: "user",
         avatar: userData.avatar || null,
       };
 
-      login(user);
+      dispatch(loginSuccess(user));
       toast.success(`Welcome back, ${userData.name || "User"}!`);
 
       setTimeout(() => {
-        if (user.role === "admin" || isAdminAttempt) {
-          navigate("/admin", { replace: true });
-        } else {
-          navigate("/dashboard", { replace: true });
-        }
+        navigate("/", { replace: true });
       }, 100);
     } catch (err) {
       console.error("Login error:", err);
@@ -65,11 +56,12 @@ const Login = memo(() => {
         err.response?.data?.message ||
         err.message ||
         "Login failed. Please try again.";
+      dispatch(loginFailure(message));
       toast.error(message);
     } finally {
       setLoading(false);
     }
-  }, [navigate, login]);
+  }, [navigate, dispatch]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
@@ -97,22 +89,28 @@ const Login = memo(() => {
             <div className="space-y-5">
               <div className="relative">
                 <input
-                  type="email"
-                  placeholder="Phone/Email"
-                  {...register('email')}
-                  required
-                  className="w-full px-6 py-4 bg-[#fdf2ff] border border-purple-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all font-medium"
+                   type="email"
+                   placeholder="Phone/Email"
+                   {...register('email', { 
+                     required: 'Email is required',
+                     pattern: {
+                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                       message: "Invalid email address"
+                     }
+                   })}
+                   className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.email ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all font-medium`}
                 />
+                {errors.email && <p className="text-red-500 text-xs mt-1 ml-2">{errors.email.message}</p>}
               </div>
 
               <div className="relative">
                 <input
                   type="password"
                   placeholder="Password"
-                  {...register('password')}
-                  required
-                  className="w-full px-6 py-4 bg-[#fdf2ff] border border-purple-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all font-medium"
+                  {...register('password', { required: 'Password is required' })}
+                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.password ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all font-medium`}
                 />
+                {errors.password && <p className="text-red-500 text-xs mt-1 ml-2">{errors.password.message}</p>}
               </div>
             </div>
 

@@ -1,9 +1,14 @@
 require('dotenv').config()
 const express = require("express");
 const http = require("http");
+const path = require('path');
 const config = require("./config/config");
 const dbConnection = require("./config/dbAdv");
 const logger = require("./utils/logger");
+
+const { setupMiddleware } = require("./middlewares/setup");
+const routes = require("./routes");
+const BaseController = require("./controllers/BaseController");
 
 class Server {
   constructor() {
@@ -15,6 +20,25 @@ class Server {
   async initialize() {
     try {
       await dbConnection.connect();
+      
+      // Setup Middleware
+      setupMiddleware(this.app);
+
+      // Serve static upload files
+      this.app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+      // Setup Routes
+      this.app.use("/api", routes);
+
+      // Global Error Handler (Simple fallback)
+      this.app.use((err, req, res, next) => {
+        logger.error(`Error: ${err.message}`, { stack: err.stack });
+        res.status(err.statusCode || err.status || 500).json({
+          success: false,
+          message: err.message || "Internal Server Error"
+        });
+      });
+
       logger.info("Server initialized successfully");
     } catch (error) {
       logger.error("server initialization failed:", error);
@@ -27,10 +51,6 @@ class Server {
 
     this.server.listen(this.port, async () =>{
         logger.info(`Server running in ${config.NODE_ENV} mode on port ${this.port}`)
-
-        // setTimeout(async ()=>{
-        //     await runSeeders();
-        // },2000)
     })
   }
 }

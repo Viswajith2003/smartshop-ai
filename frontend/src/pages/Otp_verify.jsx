@@ -1,13 +1,29 @@
 import React, { useState, useCallback, memo, useRef, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { authAPI } from '../services/AuthService'
 import otpImg from '../assets/OTP.png'
 
 const OTPVerify = memo(() => {
   const navigate = useNavigate()
+  const location = useLocation()
+  const email = location.state?.email || ''
   const [loading, setLoading] = useState(false)
   const [otp, setOtp] = useState(['', '', '', '', '', ''])
   const inputRefs = useRef([])
+
+  // Redirect if no email is present
+  useEffect(() => {
+    if (!email) {
+      if (location.state?.from === 'forgotPassword') {
+        toast.error('Session expired. Please enter your email again.')
+        navigate('/forgot-password')
+      } else {
+        toast.error('Please register first')
+        navigate('/register')
+      }
+    }
+  }, [email, navigate, location.state])
 
   // Focus the first input on mount
   useEffect(() => {
@@ -47,26 +63,36 @@ const OTPVerify = memo(() => {
 
     setLoading(true)
     try {
-      console.log('Verifying OTP:', otpValue)
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1500))
+      const response = await authAPI.verifyOtp({ email, otp: otpValue })
       
-      toast.success('OTP Verified successfully!')
-      navigate('/dashboard')
+      toast.success(response.message || 'OTP Verified successfully!')
+      
+      if (location.state?.from === 'forgotPassword') {
+        navigate('/reset-pswd', { state: { email, otp: otpValue } })
+      } else {
+        navigate('/login')
+      }
     } catch (err) {
       console.error('OTP Verification error:', err)
-      toast.error('Invalid OTP. Please try again.')
+      toast.error(err.message || 'Invalid OTP. Please try again.')
     } finally {
       setLoading(false)
     }
-  }, [otp, navigate])
+  }, [otp, navigate, email])
 
-  const handleResend = useCallback(() => {
-    toast.info('OTP Resent to your phone number')
-    // Reset OTP fields
-    setOtp(['', '', '', '', '', ''])
-    inputRefs.current[0].focus()
-  }, [])
+  const handleResend = useCallback(async () => {
+    try {
+      const response = await authAPI.resendOtp(email)
+      toast.info(response.message || 'OTP Resent successfully')
+      setOtp(['', '', '', '', '', ''])
+      if (inputRefs.current[0]) {
+        inputRefs.current[0].focus()
+      }
+    } catch (err) {
+      console.error('Resend OTP error:', err)
+      toast.error(err.message || 'Failed to resend OTP.')
+    }
+  }, [email])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
@@ -87,7 +113,7 @@ const OTPVerify = memo(() => {
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-[#9333ea] mb-6">Verify OTP</h2>
             <p className="text-gray-500 font-medium">
-              Enter 6 digit code sent to <span className="text-gray-700">+91 6666666666</span>
+              Enter 6 digit code sent to <span className="text-gray-700">{email}</span>
             </p>
           </div>
           

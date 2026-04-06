@@ -30,6 +30,38 @@ export const authAPI = {
       method: 'POST',
       url: '/auth/logout'
     });
+  },
+
+  forgotPassword: async (email) => {
+    return makeRequest({
+      method: 'POST',
+      url: '/auth/forgot-password',
+      data: { email }
+    });
+  },
+
+  resetPassword: async (resetData) => {
+    return makeRequest({
+      method: 'POST',
+      url: '/auth/reset-password',
+      data: resetData
+    });
+  },
+
+  verifyOtp: async (otpData) => {
+    return makeRequest({
+      method: 'POST',
+      url: '/auth/verify-otp',
+      data: otpData
+    });
+  },
+
+  resendOtp: async (email) => {
+    return makeRequest({
+      method: 'POST',
+      url: '/auth/resend-otp',
+      data: { email }
+    });
   }
 };
 

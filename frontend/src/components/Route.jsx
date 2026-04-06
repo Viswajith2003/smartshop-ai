@@ -1,35 +1,39 @@
 import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
+import { useSelector } from 'react-redux'
 import { Loading } from './ui'
 
-export const ProtectedRoute = React.memo(({ children, redirectTo = "/login" }) => {
-  const { isAuthenticated, loading } = useAuth()
+export const ProtectedRoute = React.memo(({ children, redirectTo = "/login", role }) => {
+  const { isAuthenticated, isAdminAuthenticated, loading, user } = useSelector((state) => state.auth)
   const location = useLocation()
 
   if (loading) {
     return <Loading fullScreen text="Authenticating..." />
   }
 
-  if (!isAuthenticated) {
+  // Check if either standard user or admin is authenticated
+  if (!isAuthenticated && !isAdminAuthenticated) {
     return <Navigate to={redirectTo} state={{ from: location }} replace />
+  }
+
+  // If a specific role is required (like 'admin'), check the user's role
+  if (role && user?.role !== role) {
+    return <Navigate to="/" replace />
   }
 
   return children
 })
 
 export const PublicRoute = React.memo(({ children, redirectTo = "/" }) => {
-  const { isAuthenticated, loading } = useAuth()
+  const { isAuthenticated, isAdminAuthenticated, loading } = useSelector((state) => state.auth)
 
   if (loading) {
     return <Loading fullScreen text="Loading..." />
   }
 
-  if (isAuthenticated) {
+  if (isAuthenticated || isAdminAuthenticated) {
     return <Navigate to={redirectTo} replace />
   }
 
   return children
 })
-
-
