@@ -12,19 +12,32 @@ class AuthService {
     try {
       const { email } = userData;
       const formattedEmail = email.trim().toLowerCase();
-      
+    
       const existingUser = await User.findByEmail(formattedEmail);
       if (existingUser) {
         throw new ValidationError('Email is already registered');
       }
 
+      const otp = this.generateOTP();
+      const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
+
       const user = new User({
         ...userData,
-        email: formattedEmail
+        email: formattedEmail,
+        otp,
+        otpExpiry
       });
 
       await user.save();
       logger.info(`New user registered: ${formattedEmail}`);
+      
+      try {
+        await MailService.sendOTP(user.email, otp);
+        logger.info(`Registration OTP sent to: ${formattedEmail}`);
+      } catch (mailError) {
+        logger.error(`Failed to send registration OTP to ${formattedEmail}:`, mailError);
+        // Do not crash registration if email fails, user can press resend
+      }
       
       return {
         user: user.getPublicProfile()
@@ -57,8 +70,8 @@ class AuthService {
       user.lastLogin = Date.now();
       await user.save();
 
-      const { signUserToken } = require('../utils/jwt');
-      const token = signUserToken(user._id);
+      const { generateUserToken } = require('../utils/jwt');
+      const token = generateUserToken({ id: user._id });
 
       logger.info(`User login successful: ${formattedEmail}`);
 
@@ -310,10 +323,15 @@ class AuthService {
   static async verifyOtp({ email, otp }) {
     try {
       const formattedEmail = email.trim().toLowerCase();
+      const cleanOtp = otp.trim();
+      
+      const debugUser = await User.findOne({ email: formattedEmail });
+      logger.info(`verifyOtp Check [${formattedEmail}] - Received: ${cleanOtp} | DB OTP: ${debugUser?.otp} | DB Expiry: ${debugUser?.otpExpiry} | Expiry valid: ${debugUser?.otpExpiry > new Date()}`);
+
       const user = await User.findOne({ 
         email: formattedEmail, 
-        otp, 
-        otpExpiry: { $gt: Date.now() } 
+        otp: cleanOtp, 
+        otpExpiry: { $gt: new Date() } 
       });
 
       if (!user) {

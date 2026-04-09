@@ -9,12 +9,13 @@ import {
   loginFailure 
 } from "../store/slices/authSlice";
 import { adminAPI, setAdminToken } from "../utils/api";
-import { ShoppingCart, LogIn } from "lucide-react";
+import { ShoppingCart, LogIn, Eye, EyeOff } from "lucide-react";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: { email: "", password: "" },
@@ -42,10 +43,6 @@ const AdminLogin = () => {
 
       dispatch(adminLoginSuccess(admin));
       toast.success(`Welcome back, Commander ${userData.name}!`);
-
-      setTimeout(() => {
-        navigate("/admin/dashboard", { replace: true });
-      }, 300);
     } catch (err) {
       console.error("Admin login error:", err);
       const message =
@@ -92,14 +89,23 @@ const AdminLogin = () => {
               {errors.email && <p className="text-red-500 text-[10px] font-bold mt-1 ml-1 uppercase">{errors.email.message}</p>}
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-1 relative">
               <label className="text-[10px] uppercase font-black text-gray-500 tracking-widest ml-1">Secure Password</label>
-              <input
-                type="password"
-                placeholder="••••••••"
-                {...register('password', { required: 'Password is required' })}
-                className="w-full px-6 py-4 bg-[#0a052d] border border-[#1a1c3d] rounded-2xl text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition-all placeholder:text-gray-600 font-bold"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="••••••••"
+                  {...register('password', { required: 'Password is required' })}
+                  className="w-full px-6 py-4 bg-[#0a052d] border border-[#1a1c3d] rounded-2xl text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition-all placeholder:text-gray-600 font-bold pr-12"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-[18px] text-gray-500 hover:text-purple-500 transition-colors cursor-pointer"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
               {errors.password && <p className="text-red-500 text-[10px] font-bold mt-1 ml-1 uppercase">{errors.password.message}</p>}
             </div>
           </div>

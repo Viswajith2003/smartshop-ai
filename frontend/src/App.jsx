@@ -87,7 +87,7 @@ function App() {
             <Route 
               path="/admin/login" 
               element={
-                <PublicRoute>
+                <PublicRoute redirectTo="/admin/dashboard">
                   <AdminLogin />
                 </PublicRoute>
               } 

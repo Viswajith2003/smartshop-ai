@@ -1,6 +1,8 @@
 import React, { useState, useCallback, memo, useRef, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 import { authAPI } from '../services/AuthService'
 import otpImg from '../assets/OTP.png'
 
@@ -9,8 +11,41 @@ const OTPVerify = memo(() => {
   const location = useLocation()
   const email = location.state?.email || ''
   const [loading, setLoading] = useState(false)
-  const [otp, setOtp] = useState(['', '', '', '', '', ''])
+  const [timer, setTimer] = useState(60)
   const inputRefs = useRef([])
+
+  const validationSchema = Yup.object().shape({
+    otp: Yup.array()
+      .test('is-filled', 'Please enter the full 6-digit OTP', (val) => {
+        return val && val.join('').length === 6;
+      })
+  });
+
+  const formik = useFormik({
+    initialValues: { otp: ['', '', '', '', '', ''] },
+    validationSchema,
+    onSubmit: async (values, { setFieldError }) => {
+      setLoading(true)
+      try {
+        const otpValue = values.otp.join('')
+        const response = await authAPI.verifyOtp({ email, otp: otpValue })
+        
+        toast.success(response.message || 'OTP Verified successfully!')
+        
+        if (location.state?.from === 'forgotPassword') {
+          navigate('/reset-pswd', { state: { email, otp: otpValue } })
+        } else {
+          navigate('/login')
+        }
+      } catch (err) {
+        console.error('OTP Verification error:', err)
+        const message = err.response?.data?.error?.message || err.response?.data?.message || err.message || 'Invalid OTP. Please try again.';
+        setFieldError('otp', message);
+      } finally {
+        setLoading(false)
+      }
+    }
+  });
 
   // Redirect if no email is present
   useEffect(() => {
@@ -32,59 +67,24 @@ const OTPVerify = memo(() => {
     }
   }, [])
 
-  const handleChange = useCallback((element, index) => {
-    if (isNaN(element.value)) return false
-
-    const newOtp = [...otp]
-    newOtp[index] = element.value
-    setOtp(newOtp)
-
-    // Focus next input
-    if (element.value !== '' && index < 5) {
-      inputRefs.current[index + 1].focus()
+  // Timer countdown
+  useEffect(() => {
+    let interval = null;
+    if (timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
     }
-  }, [otp])
-
-  const handleKeyDown = useCallback((e, index) => {
-    // Focus previous input on backspace
-    if (e.key === 'Backspace' && otp[index] === '' && index > 0) {
-      inputRefs.current[index - 1].focus()
-    }
-  }, [otp])
-
-  const handleSubmit = useCallback(async (e) => {
-    e.preventDefault()
-    const otpValue = otp.join('')
-    
-    if (otpValue.length < 6) {
-      toast.error('Please enter the full 6-digit OTP')
-      return
-    }
-
-    setLoading(true)
-    try {
-      const response = await authAPI.verifyOtp({ email, otp: otpValue })
-      
-      toast.success(response.message || 'OTP Verified successfully!')
-      
-      if (location.state?.from === 'forgotPassword') {
-        navigate('/reset-pswd', { state: { email, otp: otpValue } })
-      } else {
-        navigate('/login')
-      }
-    } catch (err) {
-      console.error('OTP Verification error:', err)
-      toast.error(err.message || 'Invalid OTP. Please try again.')
-    } finally {
-      setLoading(false)
-    }
-  }, [otp, navigate, email])
+    return () => clearInterval(interval);
+  }, [timer]);
 
   const handleResend = useCallback(async () => {
+    if (timer > 0) return;
     try {
       const response = await authAPI.resendOtp(email)
       toast.info(response.message || 'OTP Resent successfully')
-      setOtp(['', '', '', '', '', ''])
+      formik.resetForm()
+      setTimer(60)
       if (inputRefs.current[0]) {
         inputRefs.current[0].focus()
       }
@@ -92,7 +92,7 @@ const OTPVerify = memo(() => {
       console.error('Resend OTP error:', err)
       toast.error(err.message || 'Failed to resend OTP.')
     }
-  }, [email])
+  }, [email, timer])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
@@ -117,31 +117,56 @@ const OTPVerify = memo(() => {
             </p>
           </div>
           
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={formik.handleSubmit} className="space-y-8">
             <div className="flex justify-between gap-2 md:gap-4 max-w-sm mx-auto">
-              {otp.map((data, index) => (
+              {formik.values.otp.map((data, index) => (
                 <input
                   key={index}
+                  name={`otp[${index}]`}
                   type="text"
                   maxLength="1"
                   ref={el => inputRefs.current[index] = el}
                   value={data}
-                  onChange={e => handleChange(e.target, index)}
-                  onKeyDown={e => handleKeyDown(e, index)}
-                  className="w-12 h-12 md:w-14 md:h-14 text-center text-2xl font-bold text-[#9333ea] bg-white border-2 border-[#9333ea] rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-100 transition-all"
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (isNaN(val)) return;
+                    
+                    formik.setFieldValue(`otp[${index}]`, val);
+                    
+                    if (formik.errors.otp) {
+                      formik.setFieldError('otp', undefined);
+                    }
+                    
+                    if (val !== '' && index < 5) {
+                      inputRefs.current[index + 1].focus();
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Backspace' && formik.values.otp[index] === '' && index > 0) {
+                      inputRefs.current[index - 1].focus();
+                    }
+                  }}
+                  className={`w-12 h-12 md:w-14 md:h-14 text-center text-2xl font-bold bg-white border-2 ${formik.errors.otp && typeof formik.errors.otp === 'string' ? 'border-red-500 focus:ring-red-100 text-red-500' : 'text-[#9333ea] border-[#9333ea] focus:ring-purple-100'} rounded-xl focus:outline-none focus:ring-4 transition-all`}
                 />
               ))}
             </div>
 
-            <div className="text-center">
+            {formik.errors.otp && typeof formik.errors.otp === 'string' && (
+              <div className="text-center text-red-500 font-bold -mt-4 text-sm animate-pulse">
+                {formik.errors.otp}
+              </div>
+            )}
+
+            <div className="text-center mt-4">
               <p className="text-gray-600 font-medium mb-8">
                 Don't receive the code ? {' '}
                 <button 
                   type="button"
                   onClick={handleResend}
-                  className="text-[#9333ea] font-bold hover:underline"
+                  disabled={timer > 0}
+                  className={`font-bold transition-all ${timer > 0 ? 'text-gray-400 cursor-not-allowed' : 'text-[#9333ea] hover:underline'}`}
                 >
-                  Resend OTP
+                  {timer > 0 ? `Resend OTP in ${timer}s` : 'Resend OTP'}
                 </button>
               </p>
               

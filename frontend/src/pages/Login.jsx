@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useMemo } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { 
@@ -8,12 +9,14 @@ import {
   loginSuccess, 
   loginFailure 
 } from "../store/slices/authSlice";
-import { authAPI, setAuthToken } from "../utils/api";
+import { setAuthToken } from "../utils/api";
+import { authAPI } from "../services/AuthService";
 
 const Login = React.memo(() => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const location = useLocation();
   const initialEmail = useMemo(() => location.state?.email || "", [location.state]);
@@ -45,10 +48,6 @@ const Login = React.memo(() => {
 
       dispatch(loginSuccess(user));
       toast.success(`Welcome back, ${userData.name || "User"}!`);
-
-      setTimeout(() => {
-        navigate("/", { replace: true });
-      }, 100);
     } catch (err) {
       console.error("Login error:", err);
       const message =
@@ -105,11 +104,18 @@ const Login = React.memo(() => {
 
               <div className="relative">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   {...register('password', { required: 'Password is required' })}
-                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.password ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all font-medium`}
+                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.password ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all font-medium pr-12`}
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-[18px] text-gray-400 hover:text-purple-600 transition-colors"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
                 {errors.password && <p className="text-red-500 text-xs mt-1 ml-2">{errors.password.message}</p>}
               </div>
             </div>

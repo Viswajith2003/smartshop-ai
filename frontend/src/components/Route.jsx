@@ -26,13 +26,15 @@ export const ProtectedRoute = React.memo(({ children, redirectTo = "/login", rol
 
 export const PublicRoute = React.memo(({ children, redirectTo = "/" }) => {
   const { isAuthenticated, isAdminAuthenticated, loading } = useSelector((state) => state.auth)
+  const location = useLocation()
 
   if (loading) {
     return <Loading fullScreen text="Loading..." />
   }
 
   if (isAuthenticated || isAdminAuthenticated) {
-    return <Navigate to={redirectTo} replace />
+    const from = location.state?.from?.pathname || redirectTo;
+    return <Navigate to={from} replace />
   }
 
   return children

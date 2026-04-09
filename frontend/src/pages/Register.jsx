@@ -1,12 +1,15 @@
 import React, { useState, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { Eye, EyeOff } from 'lucide-react'
 import { toast } from 'react-toastify'
 import { authAPI } from '../services/AuthService'
 
 const Register = React.memo(() => {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const { register, handleSubmit, formState: { errors }, watch } = useForm({
     defaultValues: {
@@ -97,20 +100,27 @@ const Register = React.memo(() => {
 
               <div className="relative">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Password (min 8 characters)"
                   {...register('password', { 
                     required: 'Password is required', 
                     minLength: { value: 8, message: 'Password must be at least 8 characters' } 
                   })}
-                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.password ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all`}
+                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.password ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all pr-12`}
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-[18px] text-gray-400 hover:text-purple-600 transition-colors"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
                 {errors.password && <p className="text-red-500 text-xs mt-1 ml-2">{errors.password.message}</p>}
               </div>
 
               <div className="relative">
                 <input
-                  type="password"
+                  type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirm Password"
                   {...register('confirmPassword', { 
                     required: 'Please confirm your password',
@@ -120,8 +130,15 @@ const Register = React.memo(() => {
                       }
                     }
                   })}
-                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.confirmPassword ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all`}
+                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.confirmPassword ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all pr-12`}
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-4 top-[18px] text-gray-400 hover:text-purple-600 transition-colors"
+                >
+                  {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
                 {errors.confirmPassword && <p className="text-red-500 text-xs mt-1 ml-2">{errors.confirmPassword.message}</p>}
               </div>
             </div>

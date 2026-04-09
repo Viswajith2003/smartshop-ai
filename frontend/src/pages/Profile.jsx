@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { authAPI } from '../utils/api';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { authAPI } from '../services/AuthService';
 import { loginSuccess } from '../store/slices/authSlice';
 import { Loading } from '../components/ui';
 import { API_CONFIG } from '../config/app';
@@ -20,8 +22,49 @@ const Profile = () => {
     const [profileForm, setProfileForm] = useState({ name: '', email: '' });
     const [showAddressForm, setShowAddressForm] = useState(false);
     const [editingAddressId, setEditingAddressId] = useState(null);
-    const [addressForm, setAddressForm] = useState({
-        fullName: '', phone: '', street: '', city: '', district: '', state: '', pincode: '', isDefault: false
+
+    const addressValidationSchema = Yup.object({
+        fullName: Yup.string().required('Full name is required'),
+        phone: Yup.string().matches(/^\d{10}$/, 'Phone must be 10 digits').required('Phone is required'),
+        street: Yup.string().required('Street is required'),
+        city: Yup.string().required('City is required'),
+        district: Yup.string().required('District is required'),
+        state: Yup.string().required('State is required'),
+        pincode: Yup.string().matches(/^\d{6}$/, 'Pincode must be 6 digits').required('Pincode is required'),
+        isDefault: Yup.boolean()
+    });
+
+    const formik = useFormik({
+        initialValues: {
+            fullName: user?.name || '',
+            phone: '',
+            street: '',
+            city: '',
+            district: '',
+            state: '',
+            pincode: '',
+            isDefault: false
+        },
+        enableReinitialize: true,
+        validationSchema: addressValidationSchema,
+        onSubmit: async (values, { resetForm }) => {
+            setUpdating(true);
+            try {
+                let response;
+                if (editingAddressId) {
+                    response = await authAPI.updateAddress(editingAddressId, values);
+                } else {
+                    response = await authAPI.addAddress(values);
+                }
+                setAddresses(response.data);
+                resetAddressForm();
+                toast.success(editingAddressId ? 'Address updated!' : 'Address added!');
+            } catch (err) {
+                toast.error(err.response?.data?.message || 'Action failed');
+            } finally {
+                setUpdating(false);
+            }
+        }
     });
 
     const fetchProfile = useCallback(async () => {
@@ -83,35 +126,17 @@ const Profile = () => {
         }
     };
 
-    const handleSaveAddress = async (e) => {
-        e.preventDefault();
-        setUpdating(true);
-        try {
-            let response;
-            if (editingAddressId) {
-                response = await authAPI.updateAddress(editingAddressId, addressForm);
-            } else {
-                response = await authAPI.addAddress(addressForm);
-            }
-            setAddresses(response.data);
-            resetAddressForm();
-            toast.success(editingAddressId ? 'Address updated!' : 'Address added!');
-        } catch (err) {
-            toast.error(err.response?.data?.message || 'Action failed');
-        } finally {
-            setUpdating(false);
-        }
-    };
+
 
     const resetAddressForm = () => {
         setShowAddressForm(false);
         setEditingAddressId(null);
-        setAddressForm({ fullName: user?.name || '', phone: '', street: '', city: '', district: '', state: '', pincode: '', isDefault: false });
+        formik.resetForm();
     };
 
     const toggleAddressForm = () => {
         if (!showAddressForm) {
-            setAddressForm(prev => ({ ...prev, fullName: user?.name || '' }));
+            formik.resetForm();
         } else {
             setEditingAddressId(null);
         }
@@ -119,7 +144,7 @@ const Profile = () => {
     };
 
     const handleEditAddress = (addr) => {
-        setAddressForm({
+        formik.setValues({
             fullName: addr.fullName,
             phone: addr.phone,
             street: addr.street,
@@ -250,79 +275,116 @@ const Profile = () => {
                     </div>
 
                     {showAddressForm && (
-                        <form onSubmit={handleSaveAddress} className="bg-white p-8 rounded-[2rem] shadow-2xl border-2 border-indigo-100 grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in zoom-in duration-300">
+                        <form onSubmit={formik.handleSubmit} className="bg-white p-8 rounded-[2rem] shadow-2xl border-2 border-indigo-100 grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in zoom-in duration-300">
                              <h4 className="md:col-span-2 font-black uppercase tracking-widest text-xs text-indigo-400 mb-2">
                                 {editingAddressId ? 'Update Address' : 'New Delivery Address'}
                              </h4>
                              <div className="md:col-span-1">
                                 <input 
-                                    className="w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-indigo-500" 
+                                    name="fullName"
+                                    className={`w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 ${formik.touched.fullName && formik.errors.fullName ? 'ring-2 ring-red-500 focus:ring-red-500' : 'focus:ring-indigo-500'}`} 
                                     placeholder="Full Name (Recipient)" 
-                                    value={addressForm.fullName}
-                                    onChange={(e) => setAddressForm({...addressForm, fullName: e.target.value})}
-                                    required
+                                    value={formik.values.fullName}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
+                                {formik.touched.fullName && formik.errors.fullName ? (
+                                    <div className="text-red-500 text-xs mt-1 font-bold pl-2">{formik.errors.fullName}</div>
+                                ) : null}
                              </div>
                              <div className="md:col-span-1">
                                 <input 
-                                    className="w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-indigo-500" 
+                                    name="phone"
+                                    className={`w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 ${formik.touched.phone && formik.errors.phone ? 'ring-2 ring-red-500 focus:ring-red-500' : 'focus:ring-indigo-500'}`} 
                                     placeholder="10-digit Phone" 
-                                    value={addressForm.phone}
-                                    onChange={(e) => setAddressForm({...addressForm, phone: e.target.value})}
-                                    required
+                                    value={formik.values.phone}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                     maxLength="10"
                                 />
+                                {formik.touched.phone && formik.errors.phone ? (
+                                    <div className="text-red-500 text-xs mt-1 font-bold pl-2">{formik.errors.phone}</div>
+                                ) : null}
                              </div>
                              <div className="md:col-span-2">
                                 <input 
-                                    className="w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-indigo-500" 
+                                    name="street"
+                                    className={`w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 ${formik.touched.street && formik.errors.street ? 'ring-2 ring-red-500 focus:ring-red-500' : 'focus:ring-indigo-500'}`} 
                                     placeholder="Street Address" 
-                                    value={addressForm.street}
-                                    onChange={(e) => setAddressForm({...addressForm, street: e.target.value})}
-                                    required
+                                    value={formik.values.street}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
+                                {formik.touched.street && formik.errors.street ? (
+                                    <div className="text-red-500 text-xs mt-1 font-bold pl-2">{formik.errors.street}</div>
+                                ) : null}
                              </div>
-                             <input 
-                                className="w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-indigo-500" 
-                                placeholder="City" 
-                                value={addressForm.city}
-                                onChange={(e) => setAddressForm({...addressForm, city: e.target.value})}
-                                required
-                             />
-                             <input 
-                                className="w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-indigo-500" 
-                                placeholder="District" 
-                                value={addressForm.district}
-                                onChange={(e) => setAddressForm({...addressForm, district: e.target.value})}
-                                required
-                             />
-                             <input 
-                                className="w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-indigo-500" 
-                                placeholder="State" 
-                                value={addressForm.state}
-                                onChange={(e) => setAddressForm({...addressForm, state: e.target.value})}
-                                required
-                             />
-                             <input 
-                                className="w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-indigo-500" 
-                                placeholder="6-digit Pincode" 
-                                maxLength="6"
-                                value={addressForm.pincode}
-                                onChange={(e) => setAddressForm({...addressForm, pincode: e.target.value})}
-                                required
-                             />
-                             <div className="flex items-center gap-3 px-2">
+                             <div>
+                                <input 
+                                    name="city"
+                                    className={`w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 ${formik.touched.city && formik.errors.city ? 'ring-2 ring-red-500 focus:ring-red-500' : 'focus:ring-indigo-500'}`} 
+                                    placeholder="City" 
+                                    value={formik.values.city}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                />
+                                {formik.touched.city && formik.errors.city ? (
+                                    <div className="text-red-500 text-xs mt-1 font-bold pl-2">{formik.errors.city}</div>
+                                ) : null}
+                             </div>
+                             <div>
+                                <input 
+                                    name="district"
+                                    className={`w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 ${formik.touched.district && formik.errors.district ? 'ring-2 ring-red-500 focus:ring-red-500' : 'focus:ring-indigo-500'}`} 
+                                    placeholder="District" 
+                                    value={formik.values.district}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                />
+                                {formik.touched.district && formik.errors.district ? (
+                                    <div className="text-red-500 text-xs mt-1 font-bold pl-2">{formik.errors.district}</div>
+                                ) : null}
+                             </div>
+                             <div>
+                                <input 
+                                    name="state"
+                                    className={`w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 ${formik.touched.state && formik.errors.state ? 'ring-2 ring-red-500 focus:ring-red-500' : 'focus:ring-indigo-500'}`} 
+                                    placeholder="State" 
+                                    value={formik.values.state}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                />
+                                {formik.touched.state && formik.errors.state ? (
+                                    <div className="text-red-500 text-xs mt-1 font-bold pl-2">{formik.errors.state}</div>
+                                ) : null}
+                             </div>
+                             <div>
+                                <input 
+                                    name="pincode"
+                                    className={`w-full bg-indigo-50 border-none rounded-xl px-5 py-3 focus:ring-2 ${formik.touched.pincode && formik.errors.pincode ? 'ring-2 ring-red-500 focus:ring-red-500' : 'focus:ring-indigo-500'}`} 
+                                    placeholder="6-digit Pincode" 
+                                    maxLength="6"
+                                    value={formik.values.pincode}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                />
+                                {formik.touched.pincode && formik.errors.pincode ? (
+                                    <div className="text-red-500 text-xs mt-1 font-bold pl-2">{formik.errors.pincode}</div>
+                                ) : null}
+                             </div>
+                             <div className="flex items-center gap-3 px-2 md:col-span-2">
                                 <input 
                                     type="checkbox" 
+                                    name="isDefault"
                                     className="w-5 h-5 text-indigo-600 rounded" 
-                                    checked={addressForm.isDefault}
-                                    onChange={(e) => setAddressForm({...addressForm, isDefault: e.target.checked})}
+                                    checked={formik.values.isDefault}
+                                    onChange={formik.handleChange}
                                 />
                                 <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Default Address</span>
                              </div>
                              <div className="md:col-span-2 pt-4">
-                                <button className="w-full bg-indigo-600 text-white font-black py-4 rounded-2xl hover:bg-indigo-700 shadow-lg active:scale-95 transition-all">
-                                    {editingAddressId ? 'SAVE CHANGES' : 'ADD ADDRESS'}
+                                <button type="submit" disabled={updating || !formik.isValid} className="w-full bg-indigo-600 text-white font-black py-4 rounded-2xl hover:bg-indigo-700 shadow-lg active:scale-95 transition-all disabled:opacity-50">
+                                    {updating ? 'SAVING...' : (editingAddressId ? 'SAVE CHANGES' : 'ADD ADDRESS')}
                                 </button>
                              </div>
                         </form>
