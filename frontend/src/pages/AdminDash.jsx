@@ -2,6 +2,7 @@ import React, { useState, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
+import CategoryManager from '../components/admin/CategoryManager';
 
 const AdminDash = memo(() => {
   const [activeItem, setActiveItem] = useState('Dashboard');
@@ -35,6 +36,14 @@ const AdminDash = memo(() => {
       icon: (props) => (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
           <path d="m7.5 4.27 9 5.15" /><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" />
+        </svg>
+      )
+    },
+    { 
+      name: 'Categories', 
+      icon: (props) => (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
+          <rect width="7" height="7" x="3" y="3" rx="1" /><rect width="7" height="7" x="14" y="3" rx="1" /><rect width="7" height="7" x="14" y="14" rx="1" /><rect width="7" height="7" x="3" y="14" rx="1" />
         </svg>
       )
     },
@@ -189,14 +198,16 @@ const AdminDash = memo(() => {
         {/* Content Scrollable */}
         <div className="p-10 space-y-12 overflow-y-auto max-h-[calc(100vh-80px)] custom-scrollbar">
           
-          <div className="flex justify-between items-end">
-            <h3 className="text-4xl font-black tracking-tighter bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">Overview</h3>
-            <span className="text-gray-500 text-sm font-bold tracking-widest">{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-          </div>
+          {activeItem === 'Dashboard' && (
+            <>
+              <div className="flex justify-between items-end">
+                <h3 className="text-4xl font-black tracking-tighter bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">Overview</h3>
+                <span className="text-gray-500 text-sm font-bold tracking-widest">{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+              </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, idx) => {
+              {/* Stats Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {stats.map((stat, idx) => {
               const Icon = stat.icon;
               return (
                 <div 
@@ -259,6 +270,10 @@ const AdminDash = memo(() => {
                 </div>
             </div>
           </div>
+          </>
+          )}
+
+          {activeItem === 'Categories' && <CategoryManager />}
 
         </div>
       </main>

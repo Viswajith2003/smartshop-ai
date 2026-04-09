@@ -70,3 +70,19 @@
 {"level":"info","message":"User action - USER_LOGIN by user: virtualcode.2003@gmail.com"}
 {"level":"info","message":"POST /api/auth/login 200 - 313ms"}
 {"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/auth/profile 200 - 41ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 79ms"}
+{"level":"info","message":"User login successful: viswajith@yopmail.com"}
+{"level":"info","message":"User action - USER_LOGIN by user: viswajith@yopmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 168ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775631442963-718899801.jpg 304 - 2ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775631442963-718899801.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 12ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 12ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775631442963-718899801.jpg 304 - 2ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775631442963-718899801.jpg 304 - 1ms"}
+{"level":"info","message":"User action - ADMIN_LOGIN by user: admin@smartshop.com"}
+{"level":"info","message":"POST /api/admin/login 200 - 132ms"}
