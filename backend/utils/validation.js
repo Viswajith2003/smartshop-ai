@@ -162,6 +162,18 @@ const addressValidation = Joi.object({
   isDefault: Joi.boolean().default(false)
 });
 
+const categoryValidation =Joi.object({
+  name:Joi.string().required().trim().min(2).max(50).messages({
+    ...customMessages,'string.min': 'Category name must be at least 2 characters long'
+  }),
+  description:Joi.string().optional().trim().min(2).max(200).messages({
+    ...customMessages,'string.min': 'Category description must be at least 2 characters long'
+  }),
+  isActive:Joi.boolean().default(true).messages({
+    ...customMessages,'any.required': 'Status is required'
+  })
+})
+
 module.exports = {
   registerValidation,
   loginValidation,
@@ -180,5 +192,6 @@ module.exports = {
   ValidationHelpers,
   commonPatterns,
   customMessages,
-  strongPasswordValidation
+  strongPasswordValidation,
+  categoryValidation
 };
