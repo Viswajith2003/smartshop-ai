@@ -105,10 +105,10 @@ class ErrorUtils {
       return messages.join(', ');
     }
 
-    if (error.name === 'MongoError' || error.name === 'MongooseError') {
+    if (error.name === 'MongoError' || error.name === 'MongooseError' || error.name === 'MongoServerError') {
       if (error.code === 11000) {
-        const field = Object.keys(error.keyValue)[0];
-        return `${field} already exists`;
+        const field = error.keyValue ? Object.keys(error.keyValue)[0] : 'field';
+        return `${field.charAt(0).toUpperCase() + field.slice(1)} already exists`;
       }
       return 'Database operation failed';
     }
@@ -133,7 +133,7 @@ class ErrorUtils {
       return 400;
     }
 
-    if (error.name === 'MongoError' && error.code === 11000) {
+    if ((error.name === 'MongoError' || error.name === 'MongoServerError') && error.code === 11000) {
       return 409;
     }
 
@@ -141,7 +141,7 @@ class ErrorUtils {
       return 401;
     }
 
-    return 500;
+    return error.statusCode || 500;
   }
 
   static formatError(error) {

@@ -39,8 +39,9 @@ const authenticateAdmin = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return sendError(res, "Admin access token required", 401);
+      return sendError(res, "Admin access token required", 401, "AUTHENTICATION_REQUIRED");
     }
+
     const token = authHeader.substring(7);
     let decoded;
     try {

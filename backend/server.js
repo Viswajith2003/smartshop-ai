@@ -30,14 +30,13 @@ class Server {
       // Setup Routes
       this.app.use("/api", routes);
 
-      // Global Error Handler (Simple fallback)
+      // Global Error Handler
+      const { ResponseFormatter } = require("./utils/response");
       this.app.use((err, req, res, next) => {
         logger.error(`Error: ${err.message}`, { stack: err.stack });
-        res.status(err.statusCode || err.status || 500).json({
-          success: false,
-          message: err.message || "Internal Server Error"
-        });
+        return ResponseFormatter.error(res, err);
       });
+
 
       logger.info("Server initialized successfully");
     } catch (error) {

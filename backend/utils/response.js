@@ -62,12 +62,14 @@ const sendSuccess = (res, message, data = null, statusCode = 200) => {
   return ResponseFormatter.success(res, message, data, statusCode);
 };
 
-const sendError = (res, message, statusCode = 500, details = null) => {
+const sendError = (res, message, statusCode = 500, code = null, details = null) => {
   const error = new Error(message);
   error.statusCode = statusCode;
+  if (code) error.code = code;
   if (details) error.details = details;
   return ResponseFormatter.error(res, error, statusCode);
 };
+
 
 const sendValidationError = (res, validationResult) => {
   return ResponseFormatter.validationError(res, validationResult);

@@ -578,3 +578,59 @@
 {"level":"info","message":"Server running in development mode on port 5001"}
 {"level":"info","message":"User action - CATEGORY_CREATE by user: undefined"}
 {"level":"info","message":"POST /api/category/create 201 - 37ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"POST /api/admin/categories 404 - 2ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"POST /api/admin/categories 401 - 3ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"POST /api/admin/categories 401 - 14ms"}
+{"level":"info","message":"POST /api/admin/categories 401 - 2ms"}
+{"level":"info","message":"User action - ADMIN_LOGIN by user: admin@smartshop.com"}
+{"level":"info","message":"POST /api/admin/login 200 - 115ms"}
+{"level":"error","message":"Error: E11000 duplicate key error collection: smartshop-ai.categories index: name_1 dup key: { name: \"Electronics\" }","stack":"MongoServerError: E11000 duplicate key error collection: smartshop-ai.categories index: name_1 dup key: { name: \"Electronics\" }\n    at InsertOneOperation.handleOk (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/operations/insert.js:51:19)\n    at tryOperation (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/operations/execute_operation.js:217:34)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeOperation (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/operations/execute_operation.js:80:16)\n    at async Collection.insertOne (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/collection.js:154:16)\n    at async model.$__save (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/model.js:425:16)\n    at async model.save (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/model.js:664:5)\n    at async CategoryService.createCategory (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/services/CategoryService.js:9:13)\n    at async /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/categoryController.js:11:22"}
+{"level":"info","message":"POST /api/admin/categories 500 - 21ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"error","message":"Error: E11000 duplicate key error collection: smartshop-ai.categories index: name_1 dup key: { name: \"Electronics\" }","stack":"MongoServerError: E11000 duplicate key error collection: smartshop-ai.categories index: name_1 dup key: { name: \"Electronics\" }\n    at InsertOneOperation.handleOk (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/operations/insert.js:51:19)\n    at tryOperation (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/operations/execute_operation.js:217:34)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeOperation (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/operations/execute_operation.js:80:16)\n    at async Collection.insertOne (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/collection.js:154:16)\n    at async model.$__save (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/model.js:425:16)\n    at async model.save (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/model.js:664:5)\n    at async CategoryService.createCategory (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/services/CategoryService.js:9:13)\n    at async /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/categoryController.js:11:22"}
+{"level":"info","message":"POST /api/admin/categories 409 - 38ms"}
+{"level":"warn","message":"MongoDB disconnected"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"error","message":"Error: E11000 duplicate key error collection: smartshop-ai.categories index: name_1 dup key: { name: \"Electronics\" }","stack":"MongoServerError: E11000 duplicate key error collection: smartshop-ai.categories index: name_1 dup key: { name: \"Electronics\" }\n    at InsertOneOperation.handleOk (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/operations/insert.js:51:19)\n    at tryOperation (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/operations/execute_operation.js:217:34)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeOperation (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/operations/execute_operation.js:80:16)\n    at async Collection.insertOne (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongodb/lib/collection.js:154:16)\n    at async model.$__save (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/model.js:425:16)\n    at async model.save (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/model.js:664:5)\n    at async CategoryService.createCategory (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/services/CategoryService.js:9:13)\n    at async /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/categoryController.js:11:22"}
+{"level":"info","message":"POST /api/admin/categories 409 - 25ms"}
+{"level":"info","message":"User action - CATEGORY_CREATE by user: undefined"}
+{"level":"info","message":"POST /api/admin/categories 201 - 18ms"}
+{"level":"info","message":"MongoDB connected successfully"}

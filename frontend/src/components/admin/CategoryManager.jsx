@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import {categoryAPI} from '../../utils/api';
+import { toast } from 'react-toastify';
 
 const CategoryManager = () => {
-  const [categories, setCategories] = useState([
-    { id: 1, name: 'Electronics', description: 'Smartphones, Laptops, Gadgets', isActive: true },
-    { id: 2, name: 'Fashion & Apparel', description: 'Clothing, Shoes, Accessories', isActive: true },
-    { id: 3, name: 'Home Appliances', description: 'Kitchen tools, Smart home, Furniture', isActive: false },
-  ]);
+  const [categories,setCategories]=useState([])
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState(null);
   const [formData, setFormData] = useState({ name: '', description: '', isActive: true });
 
-  const handleOpenModal = (category = null) => {
+
+  useEffect(()=>{
+    const fetchCategories=async()=>{
+      try {
+        const res=await  categoryAPI.getCategories()
+        if(res.success){
+          setCategories(res.data)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchCategories()
+  },[])
+
+  const handleEditCategory = (category = null) => {
     if (category) {
       setEditingCategory(category);
       setFormData({ name: category.name, description: category.description, isActive: category.isActive });
@@ -24,19 +37,42 @@ const CategoryManager = () => {
 
   const handleCloseModal = () => setIsModalOpen(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (editingCategory) {
-      setCategories(categories.map(c => c.id === editingCategory.id ? { ...c, ...formData } : c));
-    } else {
-      setCategories([...categories, { id: Date.now(), ...formData }]);
+    try {
+      if (editingCategory) {
+        const id = editingCategory._id || editingCategory.id;
+        const res = await categoryAPI.updateCategory(id, formData);
+        if (res.success) {
+          setCategories(categories.map(c => (c._id || c.id) === id ? res.data : c));
+          toast.success('Category updated successfully');
+        }
+      } else {
+        const res = await categoryAPI.addCategory(formData);
+        if (res.success) {
+          setCategories([...categories, res.data]);
+          toast.success('Category added successfully');
+        }
+      }
+      handleCloseModal();
+    } catch (error) {
+      console.error(error);
+      toast.error(error.response?.data?.message || 'Something went wrong');
     }
-    handleCloseModal();
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if(window.confirm('Are you sure you want to delete this category?')) {
-      setCategories(categories.filter(c => c.id !== id));
+      try {
+        const res = await categoryAPI.deleteCategory(id);
+        if (res.success) {
+          setCategories(categories.filter(c => (c._id || c.id) !== id));
+          toast.success('Category deleted successfully');
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error(error.response?.data?.message || 'Something went wrong');
+      }
     }
   };
 
@@ -48,7 +84,7 @@ const CategoryManager = () => {
           <p className="text-gray-500 text-sm font-bold tracking-widest mt-2 uppercase">Manage Product Categories</p>
         </div>
         <button 
-          onClick={() => handleOpenModal()}
+          onClick={() => handleEditCategory()}
           className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-3 rounded-2xl font-black tracking-widest uppercase text-sm shadow-[0_0_20px_rgba(147,51,234,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
@@ -76,7 +112,7 @@ const CategoryManager = () => {
                   <td colSpan="4" className="p-10 text-center text-gray-500 font-bold">No categories found. Create one.</td>
                 </tr>
               ) : categories.map(category => (
-                <tr key={category.id} className="hover:bg-[#1a1c3d]/20 transition-colors group">
+                <tr key={category._id || category.id} className="hover:bg-[#1a1c3d]/20 transition-colors group">
                   <td className="p-6">
                     <span className="font-bold text-white text-lg group-hover:text-purple-400 transition-colors">{category.name}</span>
                   </td>
@@ -88,12 +124,12 @@ const CategoryManager = () => {
                   </td>
                   <td className="p-6 text-right">
                     <div className="flex items-center justify-end gap-3 opacity-50 group-hover:opacity-100 transition-opacity">
-                      <button onClick={() => handleOpenModal(category)} className="p-2 bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-white rounded-xl transition-all hover:scale-110">
+                      <button onClick={() => handleEditCategory(category)} className="p-2 bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-white rounded-xl transition-all hover:scale-110">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
                           <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
                         </svg>
                       </button>
-                      <button onClick={() => handleDelete(category.id)} className="p-2 bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white rounded-xl transition-all hover:scale-110">
+                      <button onClick={() => handleDelete(category._id || category.id)} className="p-2 bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white rounded-xl transition-all hover:scale-110">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
                           <polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
                         </svg>

@@ -118,6 +118,33 @@ export const adminAPI = {
   getDashboard: async () => {
     const response = await apiClient.get('/admin/dashboard');
     return response.data;
+  },
+};
+
+export const categoryAPI = {
+  getCategories: async () => {
+    const response = await apiClient.get('/admin/categories');
+    return response.data;
+  },
+
+  getCategory: async (id) => {
+    const response = await apiClient.get(`/admin/categories/${id}`);
+    return response.data;
+  },
+
+  addCategory: async (categoryData) => {
+    const response = await apiClient.post('/admin/categories', categoryData);
+    return response.data;
+  },
+
+  updateCategory: async (id, categoryData) => {
+    const response = await apiClient.put(`/admin/categories/${id}`, categoryData);
+    return response.data;
+  },
+
+  deleteCategory: async (id) => {
+    const response = await apiClient.delete(`/admin/categories/${id}`);
+    return response.data;
   }
 };
 
