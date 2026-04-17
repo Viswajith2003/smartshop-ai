@@ -172,7 +172,31 @@ const categoryValidation =Joi.object({
   isActive:Joi.boolean().default(true).messages({
     ...customMessages,'any.required': 'Status is required'
   })
-})
+});
+
+const productValidation = Joi.object({
+  name: Joi.string().required().trim().min(2).max(100).messages({
+    ...customMessages,
+    'string.min': 'Product name must be at least 2 characters long'
+  }),
+  price: Joi.number().required().min(0).messages({
+    'any.required': 'Price is required',
+    'number.min': 'Price must be a positive number'
+  }),
+  category: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required().messages({
+    'any.required': 'Category is required',
+    'string.pattern.base': 'Invalid category ID format'
+  }),
+  stock: Joi.number().required().min(0).messages({
+    'any.required': 'Stock is required',
+    'number.min': 'Stock cannot be negative'
+  }),
+  images: Joi.array().items(Joi.string().uri()).min(1).required().messages({
+    'any.required': 'Images are required',
+    'array.min': 'At least one image is required'
+  }),
+  isActive: Joi.boolean().default(true)
+});
 
 module.exports = {
   registerValidation,
@@ -193,5 +217,6 @@ module.exports = {
   commonPatterns,
   customMessages,
   strongPasswordValidation,
-  categoryValidation
+  categoryValidation,
+  productValidation
 };
