@@ -33,7 +33,7 @@ const Navbar = ({ onLogout }) => {
 
     const navLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Categories', path: '/categories' },
+        { name: 'Products', path: '/products' },
         { name: 'Offers', path: '/offers' },
         { name: 'Orders', path: '/orders' }
     ];

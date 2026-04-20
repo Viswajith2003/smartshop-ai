@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +6,14 @@ import CategoryManager from '../components/admin/CategoryManager';
 import ProductManager from '../components/admin/productManager';
 
 const AdminDash = memo(() => {
-  const [activeItem, setActiveItem] = useState('Dashboard');
+  const [activeItem, setActiveItem] = useState(() => {
+    return localStorage.getItem('adminActiveItem') || 'Dashboard';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('adminActiveItem', activeItem);
+  }, [activeItem]);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

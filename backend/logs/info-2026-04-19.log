@@ -1,0 +1,116 @@
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products 404 - 1ms"}
+{"level":"info","message":"GET /api/admin/products 404 - 1ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/products 404 - 4ms"}
+{"level":"info","message":"User action - ADMIN_LOGIN by user: admin@smartshop.com"}
+{"level":"info","message":"POST /api/admin/login 200 - 104ms"}
+{"level":"info","message":"GET /api/admin/products 404 - 1ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/products 200 - 35ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 2ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 15ms"}
+{"level":"info","message":"User action - PRODUCT_DELETE by user: undefined"}
+{"level":"info","message":"DELETE /api/admin/products/69e3701b14a0aca20ea7675f 200 - 16ms"}
+{"level":"info","message":"User action - PRODUCT_DELETE by user: undefined"}
+{"level":"info","message":"DELETE /api/admin/products/69e3701b14a0aca20ea7675e 200 - 4ms"}
+{"level":"info","message":"User action - PRODUCT_DELETE by user: undefined"}
+{"level":"info","message":"DELETE /api/admin/products/69e3701b14a0aca20ea7675d 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"error","message":"Error: \"description\" is not allowed","stack":"ValidationError: \"description\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:13:46\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at done (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:69:7)\n    at indicateDone (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:73:68)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:232:11\n    at CloudinaryStorage.<anonymous> (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:107:25)\n    at step (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:33:23)"}
+{"level":"info","message":"POST /api/admin/products 400 - 3014ms"}
+{"level":"error","message":"Error: \"description\" is not allowed","stack":"ValidationError: \"description\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:13:46\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at done (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:69:7)\n    at indicateDone (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:73:68)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:232:11\n    at CloudinaryStorage.<anonymous> (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:107:25)\n    at step (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:33:23)"}
+{"level":"info","message":"POST /api/admin/products 400 - 2261ms"}
+{"level":"error","message":"Error: \"description\" is not allowed","stack":"ValidationError: \"description\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:13:46\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at done (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:69:7)\n    at indicateDone (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:73:68)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:232:11\n    at CloudinaryStorage.<anonymous> (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:107:25)\n    at step (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:33:23)"}
+{"level":"info","message":"POST /api/admin/products 400 - 2552ms"}
+{"level":"error","message":"Error: \"description\" is not allowed","stack":"ValidationError: \"description\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:13:46\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at done (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:69:7)\n    at indicateDone (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:73:68)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:232:11\n    at CloudinaryStorage.<anonymous> (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:107:25)\n    at step (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:33:23)"}
+{"level":"info","message":"POST /api/admin/products 400 - 2999ms"}
+{"level":"error","message":"Error: \"description\" is not allowed","stack":"ValidationError: \"description\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:13:46\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at done (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:69:7)\n    at indicateDone (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:73:68)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:232:11\n    at CloudinaryStorage.<anonymous> (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:107:25)\n    at step (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:33:23)"}
+{"level":"info","message":"POST /api/admin/products 400 - 3041ms"}
+{"level":"error","message":"Error: \"description\" is not allowed","stack":"ValidationError: \"description\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:13:46\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at done (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:69:7)\n    at indicateDone (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:73:68)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:232:11\n    at CloudinaryStorage.<anonymous> (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:107:25)\n    at step (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:33:23)"}
+{"level":"info","message":"POST /api/admin/products 400 - 2215ms"}
+{"level":"error","message":"Error: \"description\" is not allowed","stack":"ValidationError: \"description\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:13:46\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at done (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:69:7)\n    at indicateDone (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:73:68)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:232:11\n    at CloudinaryStorage.<anonymous> (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:107:25)\n    at step (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:33:23)"}
+{"level":"info","message":"POST /api/admin/products 400 - 2742ms"}
+{"level":"error","message":"Error: \"description\" is not allowed","stack":"ValidationError: \"description\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:13:46\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at done (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:69:7)\n    at indicateDone (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:73:68)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:232:11\n    at CloudinaryStorage.<anonymous> (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:107:25)\n    at step (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:33:23)"}
+{"level":"info","message":"POST /api/admin/products 400 - 2462ms"}
+{"level":"error","message":"Error: \"description\" is not allowed","stack":"ValidationError: \"description\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:13:46\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at done (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:69:7)\n    at indicateDone (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:73:68)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer/lib/make-middleware.js:232:11\n    at CloudinaryStorage.<anonymous> (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:107:25)\n    at step (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/multer-storage-cloudinary/lib/index.js:33:23)"}
+{"level":"info","message":"POST /api/admin/products 400 - 2804ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"error","message":"Error: Product validation failed: description: Path `description` is required.","stack":"ValidationError: Product validation failed: description: Path `description` is required.\n    at model.validate (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/document.js:2864:36)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async model.$__save (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/model.js:390:7)\n    at async model.save (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/model.js:664:5)\n    at async ProductService.createProduct (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/services/ProductService.js:16:7)\n    at async /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:17:24"}
+{"level":"info","message":"POST /api/admin/products 400 - 2373ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"MongoDB connected successfully"}

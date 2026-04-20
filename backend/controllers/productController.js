@@ -4,6 +4,12 @@ const ProductService = require("../services/ProductService");
 
 class ProductController extends BaseController {
     static createProduct = BaseController.asyncHandler(async (req, res) => {
+        if (req.files && req.files.length > 0) {
+            req.body.images = req.files.map(file => file.path);
+        } else if (typeof req.body.images === 'string') {
+            req.body.images = [req.body.images];
+        }
+
         const validatedData = BaseController.validateRequest(
             Validation.productValidation,
             req.body
@@ -15,6 +21,13 @@ class ProductController extends BaseController {
 
     static updateProduct = BaseController.asyncHandler(async (req, res) => {
         const { productId } = req.params;
+        
+        if (req.files && req.files.length > 0) {
+            req.body.images = req.files.map(file => file.path);
+        } else if (typeof req.body.images === 'string') {
+            req.body.images = [req.body.images];
+        }
+
         const validatedData = BaseController.validateRequest(
             Validation.productValidation,
             req.body

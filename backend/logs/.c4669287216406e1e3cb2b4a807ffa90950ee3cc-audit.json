@@ -6,16 +6,6 @@
     "auditLog": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/.c4669287216406e1e3cb2b4a807ffa90950ee3cc-audit.json",
     "files": [
         {
-            "date": 1775310458513,
-            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-04.log",
-            "hash": "2d5526d4f187fc3e40d30342d2daa2936cc509e391eee4fc565fbc405fc61564"
-        },
-        {
-            "date": 1775452373731,
-            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-06.log",
-            "hash": "beaa14a91d5e4d23dccb79d092ad2e97307be3262aadef5137f8e5065e36d602"
-        },
-        {
             "date": 1775500238492,
             "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-07.log",
             "hash": "e900e90f09e7b196d740d65220e95d5f344958c953fb5a5e49cd898012a2ba26"
@@ -54,6 +44,21 @@
             "date": 1776427934471,
             "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-17.log",
             "hash": "faa55b387e572fd56f013cec205a8c42901311321c91e1c8da5ca91f170acb9c"
+        },
+        {
+            "date": 1776499790422,
+            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-18.log",
+            "hash": "021bd2cf78d00d44bacf7001f68b70f8392bcc8fd9ae7f4882c6273674d785c5"
+        },
+        {
+            "date": 1776537741745,
+            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-19.log",
+            "hash": "f23bbb3ffbf001bfeb441e0b31cb402904d111c075dba8cf81489110c8bd75a2"
+        },
+        {
+            "date": 1776675402057,
+            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-20.log",
+            "hash": "6e8324728ee6a7bd457e994a0cdbf60c8e614e385666e5015818c5f5efcae400"
         }
     ],
     "hashType": "sha256"

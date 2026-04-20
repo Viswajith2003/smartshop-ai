@@ -17,6 +17,8 @@ const ResetPassword = React.lazy(() => import("./pages/ResetPswd"));
 const AdminDash = React.lazy(() => import("./pages/AdminDash"));
 const AdminLogin = React.lazy(() => import("./pages/AdminLogin"));
 const Profile = React.lazy(() => import("./pages/Profile"));
+const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
+const ProductsPage = React.lazy(() => import("./pages/ProductsPage"));
 
 
 function App() {
@@ -31,6 +33,26 @@ function App() {
                 <ProtectedRoute redirectTo="/login">
                   <AppLayout>
                     <Home />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/products"
+              element={
+                <ProtectedRoute redirectTo="/login">
+                  <AppLayout>
+                    <ProductsPage />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/products/:id"
+              element={
+                <ProtectedRoute redirectTo="/login">
+                  <AppLayout>
+                    <ProductsPage />
                   </AppLayout>
                 </ProtectedRoute>
               }
@@ -110,6 +132,7 @@ function App() {
               }
             />
             
+            <Route path="/error" element={<ErrorPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

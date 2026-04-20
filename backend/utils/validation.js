@@ -179,6 +179,10 @@ const productValidation = Joi.object({
     ...customMessages,
     'string.min': 'Product name must be at least 2 characters long'
   }),
+  description: Joi.string().required().trim().min(10).messages({
+    'any.required': 'Description is required',
+    'string.min': 'Description must be at least 10 characters long'
+  }),
   price: Joi.number().required().min(0).messages({
     'any.required': 'Price is required',
     'number.min': 'Price must be a positive number'

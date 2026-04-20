@@ -4,9 +4,10 @@ const { NotFoundError } = require("../utils/errors");
 class ProductService {
   static createProduct = async (data) => {
     try {
-      const { name, price, category, stock, images, isActive } = data;
+      const { name, description, price, category, stock, images, isActive } = data;
       const product = new Product({
         name,
+        description,
         price,
         category,
         stock,
@@ -14,6 +15,7 @@ class ProductService {
         isActive,
       });
       await product.save();
+      await product.populate("category", "name");
       return product;
     } catch (error) {
       throw error;
@@ -22,10 +24,10 @@ class ProductService {
 
   static updateProduct = async (id, data) => {
     try {
-      const { name, price, category, stock, images, isActive } = data;
+      const { name, description, price, category, stock, images, isActive } = data;
       const product = await Product.findByIdAndUpdate(
         id,
-        { name, price, category, stock, images, isActive },
+        { name, description, price, category, stock, images, isActive },
         { new: true, runValidators: true }
       ).populate("category", "name");
       if (!product) throw new NotFoundError("Product not found");

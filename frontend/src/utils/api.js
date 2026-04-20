@@ -148,6 +148,33 @@ export const categoryAPI = {
   }
 };
 
+export const productAPI = {
+  getProducts: async () => {
+    const response = await apiClient.get('/admin/products');
+    return response.data;
+  },
+
+  getProduct: async (id) => {
+    const response = await apiClient.get(`/admin/products/${id}`);
+    return response.data;
+  },
+
+  addProduct: async (productData) => {
+    const response = await apiClient.post('/admin/products', productData);
+    return response.data;
+  },
+
+  updateProduct: async (id, productData) => {
+    const response = await apiClient.put(`/admin/products/${id}`, productData);
+    return response.data;
+  },
+
+  deleteProduct: async (id) => {
+    const response = await apiClient.delete(`/admin/products/${id}`);
+    return response.data;
+  }
+};  
+
 const initializeAuth = () => {
   const token = localStorage.getItem('authToken') || localStorage.getItem('adminToken');
   if (token) {
