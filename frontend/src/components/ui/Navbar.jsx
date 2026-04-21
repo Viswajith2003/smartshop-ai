@@ -13,8 +13,10 @@ const Navbar = ({ onLogout }) => {
     const dispatch = useDispatch();
     const searchInputRef = useRef(null);
     
-    // Get user from Redux store
+    // Get user and counts from Redux store
     const { user } = useSelector((state) => state.auth);
+    const cartItems = useSelector((state) => state.cart.items);
+    const wishlistItems = useSelector((state) => state.wishlist.items);
 
     useEffect(() => {
         if (isSearchOpen && searchInputRef.current) {
@@ -124,20 +126,24 @@ const Navbar = ({ onLogout }) => {
 
                         <div className="hidden sm:flex items-center space-x-4">
                              {/* Wishlist */}
-                            <div className="relative group cursor-pointer transition-transform hover:scale-105 active:scale-95">
+                            <Link to="/wishlist" className="relative group cursor-pointer transition-transform hover:scale-105 active:scale-95">
                                 <i className="bi bi-heart text-2xl text-indigo-900/80 group-hover:text-indigo-600 transition-colors"></i>
-                                <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-black h-5 w-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm ring-1 ring-red-100">
-                                    2
-                                </span>
-                            </div>
+                                {wishlistItems.length > 0 && (
+                                    <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-black h-5 w-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm ring-1 ring-red-100">
+                                        {wishlistItems.length}
+                                    </span>
+                                )}
+                            </Link>
 
                             {/* Cart */}
-                            <div className="relative group cursor-pointer transition-transform hover:scale-105 active:scale-95">
+                            <Link to="/cart" className="relative group cursor-pointer transition-transform hover:scale-105 active:scale-95">
                                 <i className="bi bi-cart3 text-2xl text-indigo-900/80 group-hover:text-indigo-600 transition-colors"></i>
-                                <span className="absolute -top-1.5 -right-1.5 bg-indigo-600 text-white text-[9px] font-black h-5 w-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm ring-1 ring-indigo-100">
-                                    5
-                                </span>
-                            </div>
+                                {cartItems.length > 0 && (
+                                    <span className="absolute -top-1.5 -right-1.5 bg-indigo-600 text-white text-[9px] font-black h-5 w-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm ring-1 ring-indigo-100">
+                                        {cartItems.length}
+                                    </span>
+                                )}
+                            </Link>
                         </div>
 
                         {/* Profile Image */}

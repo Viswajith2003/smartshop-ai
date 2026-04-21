@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { categoryAPI, productAPI } from '../../utils/api';
 import { toast } from 'react-toastify';
+import usePagination from '../../hooks/usePagination';
+import { Pagination } from '../ui';
 
 const ProductManager = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,8 +16,12 @@ const ProductManager = () => {
     images: null,
     existingImage: '',
     description: '',
-    isActive: true
+    isActive: true,
+    rating: 0
   });
+
+  const { pagination, handlePageChange, updatePagination } = usePagination(5); // Admin limit, e.g., 5
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -43,7 +49,8 @@ const ProductManager = () => {
       images: null,
       existingImage: '',
       description: '',
-      isActive: true
+      isActive: true,
+      rating: 0
     });
   };
 
@@ -57,7 +64,8 @@ const ProductManager = () => {
       images: null,
       existingImage: product.images && product.images.length > 0 ? product.images[0] : '',
       description: product.description || '',
-      isActive: product.isActive
+      isActive: product.isActive,
+      rating: product.rating || 0
     });
     handleOpenModal();
   };
@@ -86,6 +94,7 @@ const ProductManager = () => {
       payload.append('stock', formData.stock);
       payload.append('description', formData.description);
       payload.append('isActive', formData.isActive);
+      payload.append('rating', formData.rating);
 
       if (formData.images && formData.images.length > 0) {
         Array.from(formData.images).forEach(file => {
@@ -115,21 +124,20 @@ const ProductManager = () => {
     }
   };
 
-  const [products, setProducts] = useState([]);
-
-  useEffect(()=>{
-    const fetchProducts = async () => {
+  useEffect(() => {
+    const fetchProductsData = async () => {
       try {
-        const res = await productAPI.getProducts();
+        const res = await productAPI.getProducts({ page: pagination.page, limit: pagination.limit });
         if (res.success) {
           setProducts(res.data);
+          updatePagination(res.meta);
         }
       } catch (error) {
         console.error(error);
       }
     };
-    fetchProducts();
-  }, []);
+    fetchProductsData();
+  }, [pagination.page, pagination.limit]);
 
   return (
     <div className="space-y-8 p-1">
@@ -158,6 +166,7 @@ const ProductManager = () => {
                 <th className="p-6 text-xs font-black tracking-[0.2em] text-gray-400 uppercase">Product Details</th>
                 <th className="p-6 text-xs font-black tracking-[0.2em] text-gray-400 uppercase">Category</th>
                 <th className="p-6 text-xs font-black tracking-[0.2em] text-gray-400 uppercase">Description</th>
+                <th className="p-6 text-xs font-black tracking-[0.2em] text-gray-400 uppercase">Rating</th>
                 <th className="p-6 text-xs font-black tracking-[0.2em] text-gray-400 uppercase">Price</th>
                 <th className="p-6 text-xs font-black tracking-[0.2em] text-gray-400 uppercase">Stock</th>
                 <th className="p-6 text-xs font-black tracking-[0.2em] text-gray-400 uppercase text-right">Actions</th>
@@ -209,6 +218,14 @@ const ProductManager = () => {
                     </p>
                   </td>
                   <td className="p-6">
+                    <div className="flex items-center gap-1">
+                      <span className="text-amber-400 font-black text-lg">{product.rating}</span>
+                      <svg className="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    </div>
+                  </td>
+                  <td className="p-6">
                     <span className="text-xl font-black tracking-tighter text-gray-200">
                       ₹{product.price.toLocaleString('en-IN')}
                     </span>
@@ -242,6 +259,12 @@ const ProductManager = () => {
             </tbody>
           </table>
         </div>
+        
+        {products.length > 0 && (
+          <div className="p-6 border-t border-[#1a1c3d]/50 bg-[#02001c]">
+            <Pagination pagination={pagination} onPageChange={handlePageChange} theme="dark" />
+          </div>
+        )}
       </div>
 
       {/* Modal */}
@@ -307,6 +330,21 @@ const ProductManager = () => {
                       onChange={(e) => setFormData({...formData, stock: e.target.value})}
                       className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
                       placeholder="e.g. 50"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Rating (0-5)</label>
+                    <input 
+                      type="number" 
+                      required 
+                      min="0"
+                      max="5"
+                      step="0.1"
+                      value={formData.rating}
+                      onChange={(e) => setFormData({...formData, rating: e.target.value})}
+                      className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
+                      placeholder="e.g. 4.5"
                     />
                   </div>
                 </div>

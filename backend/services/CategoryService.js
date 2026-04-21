@@ -34,12 +34,39 @@ class CategoryService{
         }
     }
 
-    static getAllCategories=async()=>{
+    static getAllCategories = async () => {
         try {
-            const categories=await Category.find()
-            return categories
+            const categories = await Category.aggregate([
+                {
+                    $lookup: {
+                        from: 'products',
+                        localField: '_id',
+                        foreignField: 'category',
+                        as: 'productData'
+                    }
+                },
+                {
+                    $addFields: {
+                        count: { 
+                            $size: {
+                                $filter: {
+                                    input: '$productData',
+                                    as: 'p',
+                                    cond: { $eq: ['$$p.isActive', true] }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    $project: {
+                        productData: 0
+                    }
+                }
+            ]);
+            return categories;
         } catch (error) {
-            throw error
+            throw error;
         }
     }
 

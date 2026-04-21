@@ -9,6 +9,13 @@ const productSchema = new mongoose.Schema(
       minlength: [2, "Product name must be at least 2 characters long"],
       maxlength: [100, "Product name cannot exceed 100 characters"],
     },
+    rating:{
+      type: Number,
+      required: true,
+      default: 0,
+      min: [0, "Rating must be a positive number"],
+      max: [5, "Rating cannot exceed 5"],
+    },
     description: {
       type: String,
       required: true,

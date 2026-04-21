@@ -149,8 +149,8 @@ export const categoryAPI = {
 };
 
 export const productAPI = {
-  getProducts: async () => {
-    const response = await apiClient.get('/admin/products');
+  getProducts: async (params = {}) => {
+    const response = await apiClient.get('/admin/products', { params });
     return response.data;
   },
 

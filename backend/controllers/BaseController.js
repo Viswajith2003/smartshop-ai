@@ -31,8 +31,8 @@ class BaseController {
     return sendValidationError(res, { error });
   }
 
-  static handleSendSuccess(res, message, data = null, statusCode = 200) {
-    return sendSuccess(res, message, data, statusCode);
+  static handleSendSuccess(res, message, data = null, statusCode = 200, meta = null) {
+    return sendSuccess(res, message, data, statusCode, meta);
   }
 
   static handleSendError(res, message, statusCode = 500, details = null) {

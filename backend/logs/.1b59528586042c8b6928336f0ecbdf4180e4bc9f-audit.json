@@ -59,6 +59,11 @@
             "date": 1776710183691,
             "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/info-2026-04-21.log",
             "hash": "ed3a48528435cc8023048a5c73731cc04b7649844bc389e6603ad11dfdf5442e"
+        },
+        {
+            "date": 1776796211905,
+            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/info-2026-04-22.log",
+            "hash": "7486e2dbe324a33f70d3113f31a8ce96c61d963fa4a031a579b5991e94f6fb3e"
         }
     ],
     "hashType": "sha256"

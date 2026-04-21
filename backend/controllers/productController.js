@@ -45,8 +45,12 @@ class ProductController extends BaseController {
     });
 
     static getAllProducts = BaseController.asyncHandler(async (req, res) => {
-        const result = await ProductService.getAllProducts();
-        BaseController.handleSendSuccess(res, "Products fetched successfully", result);
+        const validatedQuery = BaseController.validateRequest(
+            Validation.productSearchValidation,
+            req.query
+        );
+        const { products, meta } = await ProductService.getAllProducts(validatedQuery);
+        BaseController.handleSendSuccess(res, "Products fetched successfully", products, 200, meta);
     });
 
     static getProductById = BaseController.asyncHandler(async (req, res) => {

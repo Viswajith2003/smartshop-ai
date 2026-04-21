@@ -19,6 +19,8 @@ const AdminLogin = React.lazy(() => import("./pages/AdminLogin"));
 const Profile = React.lazy(() => import("./pages/Profile"));
 const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
 const ProductsPage = React.lazy(() => import("./pages/ProductsPage"));
+const CartPage = React.lazy(() => import("./pages/CartPage"));
+const WishlistPage = React.lazy(() => import("./pages/WishlistPage"));
 
 
 function App() {
@@ -63,6 +65,26 @@ function App() {
                 <ProtectedRoute redirectTo="/login">
                   <AppLayout>
                     <Profile />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/cart"
+              element={
+                <ProtectedRoute redirectTo="/login">
+                  <AppLayout>
+                    <CartPage />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/wishlist"
+              element={
+                <ProtectedRoute redirectTo="/login">
+                  <AppLayout>
+                    <WishlistPage />
                   </AppLayout>
                 </ProtectedRoute>
               }

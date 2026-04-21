@@ -1,5 +1,8 @@
 import React, { useState, useEffect, memo } from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar, Footer } from '../components/ui';
+import fetchProducts from '../hooks/useFetchProducts';
+import { categoryAPI } from '../utils/api';
 
 // Professional E-commerce Banner Images (Unsplash)
 const BANNERS = [
@@ -8,18 +11,6 @@ const BANNERS = [
     'https://images.unsplash.com/photo-1549463599-24794828f09d?auto=format&fit=crop&q=80&w=2000&h=800'
 ];
 
-const CATEGORIES = [
-    { id: 1, name: 'Mobiles', icon: 'bi-phone', count: '20+ items', color: 'bg-blue-50' },
-    { id: 2, name: 'Laptops', icon: 'bi-laptop', count: '15+ items', color: 'bg-green-50' },
-    { id: 3, name: 'Home', icon: 'bi-speaker', count: '50+ items', color: 'bg-orange-50' },
-    { id: 4, name: 'Fashion', icon: 'bi-bag-heart', count: '100+ items', color: 'bg-pink-50' }
-];
-
-const PRODUCTS = [
-    { id: 1, name: 'Apple Watch Ultra 2 (GPS)', price: '₹74,999', rating: 5, image: 'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?auto=format&fit=crop&q=80&w=600&h=600', tag: '20% OFF' },
-    { id: 2, name: 'Noise Quantum Pro 3', price: '₹14,999', rating: 5, image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=600&h=600', tag: 'HOT' },
-    { id: 3, name: 'Samsung Galaxy S24 Ultra', price: '₹1,24,999', rating: 5, image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&q=80&w=600&h=600', tag: 'NEW' }
-];
 
 const OFFERS = [
     { id: 1, title: 'SAVE 20', desc: 'EXTRA 20% DISCOUNT', icon: 'bi-gift', color: 'from-orange-500 to-yellow-500' },
@@ -91,16 +82,41 @@ const BannerCarousel = () => {
     );
 };
 
-const SectionHeader = ({ title, linkText = 'View All' }) => (
+const SectionHeader = ({ title, linkText = 'View All', to = '#' }) => (
     <div className="flex justify-between items-center mb-8">
         <h2 className="text-2xl font-black text-white tracking-tight">{title}</h2>
-        <a href="#" className="text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors flex items-center">
+        <Link to={to} className="text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors flex items-center">
             {linkText} <i className="bi bi-arrow-right-short text-xl ml-1"></i>
-        </a>
+        </Link>
     </div>
 );
 
 const Home = memo(() => {
+
+    const [products,setProducts]=useState([])
+    const [categories,setCategories]=useState([])
+
+    useEffect(() => {
+        fetchProducts().then((res) => {
+            if (res?.success) {
+                setProducts(res.data)
+            }
+        })
+    }, [])
+
+    useEffect(()=>{
+        const fetchCategories = async () => {
+            try {
+                const res = await categoryAPI.getCategories();
+                if(res.success){
+                    setCategories(res.data)
+                }
+            } catch (error) {
+                console.error("Error fetching categories:", error);
+            }
+        }
+        fetchCategories();
+    },[])
     return (
         <div className="min-h-screen bg-[#020c1b]">
             
@@ -112,42 +128,59 @@ const Home = memo(() => {
 
                 {/* Section 2: Shop by Category */}
                 <section className="mt-20">
-                    <SectionHeader title="Shop by Category" linkText="All Categories" />
+                    <SectionHeader title="Shop by Category" to="/products" />
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                        {CATEGORIES.map((cat) => (
-                            <div key={cat.id} className="bg-[#051630] p-8 rounded-[2rem] border border-white/5 hover:border-indigo-500/50 transition-all group flex flex-col items-center cursor-pointer shadow-xl hover:-translate-y-2">
-                                <div className={`w-16 h-16 rounded-2xl ${cat.color} flex items-center justify-center mb-4 transition-transform group-hover:scale-110 shadow-lg`}>
-                                    <i className={`bi ${cat.icon} text-3xl text-indigo-900 font-bold`}></i>
+                        {categories.slice(0, 4).map((cat) => {
+                            const style = { icon: 'bi-grid-fill', color: 'from-indigo-600 to-blue-400', bg: 'bg-indigo-500/10' };
+                            return (
+                                <div key={cat._id} className="relative group overflow-hidden bg-[#051630] rounded-[2.5rem] p-8 border border-white/5 hover:border-indigo-500/50 transition-all duration-500 cursor-pointer shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
+                                    {/* Glassmorphism background effect */}
+                                    <div className={`absolute -right-10 -top-10 w-32 h-32 blur-3xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 bg-gradient-to-br ${style.color}`}></div>
+                                    
+                                    <div className={`w-16 h-16 rounded-2xl ${style.bg} flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg border border-white/5`}>
+                                        <i className={`bi ${style.icon} text-3xl bg-gradient-to-br ${style.color} bg-clip-text text-transparent`}></i>
+                                    </div>
+                                    
+                                    <div className="space-y-1 relative z-10">
+                                        <h3 className="text-white font-black text-xl tracking-tight group-hover:text-indigo-400 transition-colors uppercase">{cat.name}</h3>
+                                        <div className="flex items-center space-x-2">
+                                            <span className="h-1 w-8 bg-indigo-500 rounded-full transition-all duration-500 group-hover:w-12"></span>
+                                            <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">Explore Collection</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Hover Arrow Indicator */}
+                                    <div className="absolute bottom-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0">
+                                        <i className="bi bi-arrow-right text-indigo-400 text-2xl"></i>
+                                    </div>
                                 </div>
-                                <h3 className="text-white font-black text-lg">{cat.name}</h3>
-                                <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mt-1">{cat.count}</p>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </section>
 
                 {/* Section 3: Featured Products */}
                 <section className="mt-20">
-                    <SectionHeader title="Featured Products" />
+                    <SectionHeader title="Featured Products" to="/products" />
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {PRODUCTS.map((prod) => (
-                            <div key={prod.id} className="bg-[#051630] rounded-[2.5rem] overflow-hidden border border-white/5 group hover:border-indigo-500/30 transition-all shadow-2xl relative">
-                                <span className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-black px-3 py-1 rounded-full z-10">{prod.tag}</span>
+                        {products.slice(0, 3).map((prod) => (
+                            <div key={prod._id} className="bg-[#051630] rounded-[2.5rem] overflow-hidden border border-white/5 group hover:border-indigo-500/30 transition-all shadow-2xl relative">
+                                {prod.tag && <span className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-black px-3 py-1 rounded-full z-10">{prod.tag}</span>}
                                 <button className="absolute top-4 right-4 text-white/50 hover:text-red-500 transition-colors z-10 bg-black/20 p-2 rounded-full backdrop-blur-sm">
                                     <i className="bi bi-heart text-xl"></i>
                                 </button>
                                 <div className="h-64 bg-[#0a1f3d] overflow-hidden flex items-center justify-center p-8 group-hover:p-4 transition-all">
-                                    <img src={prod.image} alt={prod.name} className="w-full h-full object-contain mix-blend-lighten transition-transform duration-500 group-hover:scale-110" />
+                                    <img src={prod.images && prod.images[0]} alt={prod.name} className="w-full h-full object-contain mix-blend-lighten transition-transform duration-500 group-hover:scale-110" />
                                 </div>
                                 <div className="p-8 bg-gradient-to-t from-indigo-900/50 to-transparent">
                                     <div className="flex text-yellow-400 mb-2">
-                                        {[...Array(prod.rating)].map((_, i) => (
+                                        {[...Array(Math.round(prod.rating || 0))].map((_, i) => (
                                             <i key={i} className="bi bi-star-fill text-xs mr-1"></i>
                                         ))}
                                     </div>
                                     <h3 className="text-white font-bold text-lg leading-tight mb-2 group-hover:text-indigo-400 transition-colors">{prod.name}</h3>
                                     <div className="flex justify-between items-center mt-6">
-                                        <span className="text-2xl font-black text-white">{prod.price}</span>
+                                        <span className="text-2xl font-black text-white">₹{prod.price?.toLocaleString()}</span>
                                         <button className="bg-white text-black h-12 w-12 rounded-2xl flex items-center justify-center hover:bg-indigo-500 hover:text-white transition-all shadow-lg active:scale-95">
                                             <i className="bi bi-cart-plus text-xl"></i>
                                         </button>

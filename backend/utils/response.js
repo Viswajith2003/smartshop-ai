@@ -58,8 +58,8 @@ class ResponseFormatter {
   }
 }
 
-const sendSuccess = (res, message, data = null, statusCode = 200) => {
-  return ResponseFormatter.success(res, message, data, statusCode);
+const sendSuccess = (res, message, data = null, statusCode = 200, meta = null) => {
+  return ResponseFormatter.success(res, message, data, statusCode, meta);
 };
 
 const sendError = (res, message, statusCode = 500, code = null, details = null) => {

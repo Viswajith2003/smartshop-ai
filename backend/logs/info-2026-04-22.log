@@ -1,0 +1,83 @@
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 3ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=10&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 36ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=10&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 26ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 7ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 40ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 49ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 71ms"}
+{"level":"info","message":"User action - ADMIN_LOGIN by user: admin@smartshop.com"}
+{"level":"info","message":"POST /api/admin/login 200 - 110ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 48ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 25ms"}
+{"level":"info","message":"User action - PRODUCT_CREATE by user: undefined"}
+{"level":"info","message":"POST /api/admin/products 201 - 2727ms"}
+{"level":"info","message":"User action - PRODUCT_CREATE by user: undefined"}
+{"level":"info","message":"POST /api/admin/products 201 - 3643ms"}
+{"level":"info","message":"User action - PRODUCT_CREATE by user: undefined"}
+{"level":"info","message":"POST /api/admin/products 201 - 3718ms"}
+{"level":"info","message":"User action - PRODUCT_CREATE by user: undefined"}
+{"level":"info","message":"POST /api/admin/products 201 - 4302ms"}
+{"level":"info","message":"User action - PRODUCT_CREATE by user: undefined"}
+{"level":"info","message":"POST /api/admin/products 201 - 4318ms"}
+{"level":"info","message":"User action - PRODUCT_CREATE by user: undefined"}
+{"level":"info","message":"POST /api/admin/products 201 - 3297ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 9ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=3&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 58ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd07 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 51ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=5 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=3&limit=5 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=5 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 6ms"}

@@ -1,2 +1,348 @@
 {"level":"info","message":"GET /api/auth/profile 200 - 58ms"}
 {"level":"info","message":"GET /api/auth/profile 200 - 16ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 5ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 4ms"}
+{"level":"info","message":"User action - ADMIN_LOGIN by user: admin@smartshop.com"}
+{"level":"info","message":"POST /api/admin/login 200 - 165ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 34ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"User action - CATEGORY_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/categories/69df53225fee7d6f30f4cd09 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 36ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 15ms"}
+{"level":"info","message":"User action - PRODUCT_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/products/69e64f2c59cfa1412b2b70db 200 - 35ms"}
+{"level":"info","message":"User action - PRODUCT_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/products/69e6503659cfa1412b2b70e4 200 - 12ms"}
+{"level":"info","message":"User action - PRODUCT_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/products/69e63eb259cfa1412b2b70c0 200 - 7ms"}
+{"level":"info","message":"User action - PRODUCT_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/products/69e650c159cfa1412b2b70ed 200 - 7ms"}
+{"level":"info","message":"User action - PRODUCT_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/products/69e6521eb5e87b65fca6ae15 200 - 10ms"}
+{"level":"info","message":"User action - PRODUCT_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/products/69e650c159cfa1412b2b70ed 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 39ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 45ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 28ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 32ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 41ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 32ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 36ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 36ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 52ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 49ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 80ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/auth/profile 401 - 5ms"}
+{"level":"info","message":"GET /api/auth/profile 401 - 3ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"User action - USER_LOGIN by user: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 114ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 3ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 2ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 2ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 3ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 4ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 34ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 54ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 3ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 38ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 34ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 14ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 37ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 49ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 28ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/products 200 - 26ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"error","message":"Error: \"minPrice\" is not allowed, \"maxPrice\" is not allowed, \"rating\" is not allowed","stack":"ValidationError: \"minPrice\" is not allowed, \"maxPrice\" is not allowed, \"rating\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=10&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 400 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 46ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"error","message":"Error: \"minPrice\" is not allowed, \"maxPrice\" is not allowed, \"rating\" is not allowed","stack":"ValidationError: \"minPrice\" is not allowed, \"maxPrice\" is not allowed, \"rating\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=10&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 400 - 4ms"}
+{"level":"error","message":"Error: \"minPrice\" is not allowed, \"maxPrice\" is not allowed, \"rating\" is not allowed","stack":"ValidationError: \"minPrice\" is not allowed, \"maxPrice\" is not allowed, \"rating\" is not allowed\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=10&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 400 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=10&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 53ms"}
