@@ -81,3 +81,615 @@
 {"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 6ms"}
 {"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 11ms"}
 {"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 6ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 66ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 54ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 51ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 39ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 43ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=5 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=3&limit=5 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=5 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 36ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 13ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 62ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 76ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 144ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 136ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 90ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 67ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 183ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 250ms"}
+{"level":"info","message":"User action - ADMIN_LOGIN by user: admin@smartshop.com"}
+{"level":"info","message":"POST /api/admin/login 200 - 170ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 15ms"}
+{"level":"info","message":"GET /api/api/coupons 404 - 8ms"}
+{"level":"info","message":"GET /api/api/coupons 404 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 25ms"}
+{"level":"info","message":"GET /api/api/coupons 404 - 0ms"}
+{"level":"info","message":"GET /api/api/coupons 404 - 1ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 36ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 25ms"}
+{"level":"info","message":"GET /api/auth/profile 401 - 22ms"}
+{"level":"info","message":"GET /api/auth/profile 401 - 4ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"User action - USER_LOGIN by user: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 136ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 17ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"HEAD /api/admin/products 200 - 86ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 15ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 38ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 79ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 111ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 90ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd09 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd09 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd09 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd09 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd09 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd09 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 43ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 62ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 102ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 73ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 45ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 86ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 104ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 25ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 50ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 39ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 39ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 52ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 77ms"}
+{"level":"info","message":"PUT /api/admin/products/69e7ce0f06902c6c586723bf 401 - 32ms"}
+{"level":"info","message":"User action - ADMIN_LOGIN by user: admin@smartshop.com"}
+{"level":"info","message":"POST /api/admin/login 200 - 121ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 38ms"}
+{"level":"info","message":"User action - PRODUCT_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/products/69e7ce0f06902c6c586723bf 200 - 81ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd07 200 - 6ms"}
+{"level":"info","message":"User action - PRODUCT_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/products/69e7ce0f06902c6c586723bf 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd07 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 10ms"}
+{"level":"info","message":"User action - PRODUCT_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/products/69e7ce0f06902c6c586723bf 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 33ms"}
+{"level":"info","message":"User action - PRODUCT_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/products/69e7ce0f06902c6c586723bf 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 68ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 74ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 110ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 86ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 2ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=5 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=3&limit=5 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 48ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 50ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 74ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 96ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 34ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd07 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd07 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd07 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd07 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd07 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd07 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd07 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd08 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd09 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd0b 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69e3701baec56f3475fd7b08 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd08 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd08 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0&category=69df53225fee7d6f30f4cd08 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=price&sortOrder=asc&minPrice=0&maxPrice=300000&rating=0 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=price&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=rating&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=0 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=295000&rating=0 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=293000&rating=0 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=292000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=288000&rating=0 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=275000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=249000&rating=0 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=226000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=214000&rating=0 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=206000&rating=0 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=198000&rating=0 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=193000&rating=0 200 - 8ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 54ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 71ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 66ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=2000 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=2000&category=69df53225fee7d6f30f4cd07 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&category=69df53225fee7d6f30f4cd07 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&category=69df53225fee7d6f30f4cd07,69df53225fee7d6f30f4cd08 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&category=69df53225fee7d6f30f4cd07,69df53225fee7d6f30f4cd08,69df53225fee7d6f30f4cd09 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&category=69df53225fee7d6f30f4cd07,69df53225fee7d6f30f4cd08 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&category=69df53225fee7d6f30f4cd07 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=4 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=3 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=4 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=5 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=3 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=1 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=2 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=3 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=4 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=5 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 32ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 48ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 45ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 40ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 111ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 76ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 41ms"}
+{"level":"info","message":"GET /api/auth/profile 401 - 28ms"}
+{"level":"info","message":"GET /api/auth/profile 401 - 5ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"User action - USER_LOGIN by user: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 114ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 41ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 29ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 53ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 63ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 57ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 43ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 64ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 122ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 88ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 66ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 182ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 126ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 27ms"}

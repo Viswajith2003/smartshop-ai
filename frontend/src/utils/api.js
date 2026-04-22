@@ -175,6 +175,38 @@ export const productAPI = {
   }
 };  
 
+export const couponAPI = {
+  getCoupons: async (params = {}) => {
+    const response = await apiClient.get('/coupons', { params });
+    return response.data;
+  },
+
+  getCoupon: async (id) => {
+    const response = await apiClient.get(`/coupons/${id}`);
+    return response.data;
+  },
+
+  addCoupon: async (couponData) => {
+    const response = await apiClient.post('/coupons', couponData);
+    return response.data;
+  },
+
+  updateCoupon: async (id, couponData) => {
+    const response = await apiClient.put(`/coupons/${id}`, couponData);
+    return response.data;
+  },
+
+  deleteCoupon: async (id) => {
+    const response = await apiClient.delete(`/coupons/${id}`);
+    return response.data;
+  },
+
+  applyCoupon: async (data) => {
+    const response = await apiClient.post('/coupons/apply', data);
+    return response.data;
+  }
+};
+
 const initializeAuth = () => {
   const token = localStorage.getItem('authToken') || localStorage.getItem('adminToken');
   if (token) {

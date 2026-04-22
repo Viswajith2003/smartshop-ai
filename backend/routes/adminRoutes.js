@@ -17,5 +17,7 @@ router.use('/categories', categoryRoutes);
 // Product Management
 router.use('/products', productRoutes);
 
+
+
 module.exports = router;
 

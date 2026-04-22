@@ -3,22 +3,36 @@ import { categoryAPI, productAPI } from '../../utils/api';
 import { toast } from 'react-toastify';
 import usePagination from '../../hooks/usePagination';
 import { Pagination } from '../ui';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+const ProductSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Name must be at least 2 characters')
+    .max(100, 'Name cannot exceed 100 characters')
+    .required('Product Name is required'),
+  category: Yup.string().required('Category is required'),
+  price: Yup.number()
+    .min(0, 'Price must be positive')
+    .required('Price is required'),
+  stock: Yup.number()
+    .min(0, 'Stock cannot be negative')
+    .integer('Stock must be an integer')
+    .required('Stock is required'),
+  rating: Yup.number()
+    .min(0, 'Rating must be at least 0')
+    .max(5, 'Rating cannot exceed 5')
+    .required('Rating is required'),
+  description: Yup.string()
+    .min(10, 'Description must be at least 10 characters')
+    .required('Description is required'),
+  isActive: Yup.boolean().default(true),
+});
 
 const ProductManager = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingId, setEditingId] = useState(null);
+  const [editingProduct, setEditingProduct] = useState(null);
   const [categories, setCategories] = useState([]);
-  const [formData, setFormData] = useState({
-    name: '',
-    category: '',
-    price: '',
-    stock: '',
-    images: null,
-    existingImage: '',
-    description: '',
-    isActive: true,
-    rating: 0
-  });
 
   const { pagination, handlePageChange, updatePagination } = usePagination(5); // Admin limit, e.g., 5
   const [products, setProducts] = useState([]);
@@ -40,33 +54,11 @@ const ProductManager = () => {
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setEditingId(null);
-    setFormData({
-      name: '',
-      category: '',
-      price: '',
-      stock: '',
-      images: null,
-      existingImage: '',
-      description: '',
-      isActive: true,
-      rating: 0
-    });
+    setEditingProduct(null);
   };
 
   const handleEdit = (product) => {
-    setEditingId(product._id);
-    setFormData({
-      name: product.name,
-      category: product.category?._id || product.category || '',
-      price: product.price,
-      stock: product.stock,
-      images: null,
-      existingImage: product.images && product.images.length > 0 ? product.images[0] : '',
-      description: product.description || '',
-      isActive: product.isActive,
-      rating: product.rating || 0
-    });
+    setEditingProduct(product);
     handleOpenModal();
   };
 
@@ -80,46 +72,6 @@ const ProductManager = () => {
       }
     } catch (error) {
       toast.error(error.response?.data?.message || 'Failed to delete product');
-      console.error(error);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const payload = new FormData();
-      payload.append('name', formData.name);
-      payload.append('category', formData.category);
-      payload.append('price', formData.price);
-      payload.append('stock', formData.stock);
-      payload.append('description', formData.description);
-      payload.append('isActive', formData.isActive);
-      payload.append('rating', formData.rating);
-
-      if (formData.images && formData.images.length > 0) {
-        Array.from(formData.images).forEach(file => {
-          payload.append('images', file);
-        });
-      } else if (formData.existingImage) {
-        payload.append('images', formData.existingImage);
-      }
-      
-      if (editingId) {
-        const res = await productAPI.updateProduct(editingId, payload);
-        if (res.success) {
-          toast.success('Product updated successfully');
-          setProducts(prev => prev.map(p => p._id === editingId ? res.data : p));
-        }
-      } else {
-        const res = await productAPI.addProduct(payload);
-        if (res.success) {
-          toast.success('Product added successfully');
-          setProducts(prev => [...prev, res.data]);
-        }
-      }
-      handleCloseModal();
-    } catch (error) {
-      toast.error(error.response?.data?.message || 'Operation failed!');
       console.error(error);
     }
   };
@@ -143,7 +95,12 @@ const ProductManager = () => {
     <div className="space-y-8 p-1">
       <div className="flex justify-between items-end">
         <div>
-          <h3 className="text-4xl font-black tracking-tighter bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Products</h3>
+          <div className="flex items-baseline gap-3">
+            <h3 className="text-4xl font-black tracking-tighter bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+              Products
+            </h3>
+            <span className="text-2xl font-bold text-gray-500">({pagination.totalProducts || products.length})</span>
+          </div>
           <p className="text-gray-500 text-sm font-bold tracking-widest mt-2 uppercase">Manage Your Inventory</p>
         </div>
         <button 
@@ -275,134 +232,192 @@ const ProductManager = () => {
             
             <div className="p-8">
               <h2 className="text-2xl font-black text-white tracking-tight mb-6">
-                {editingId ? 'Edit Product' : 'Add New Product'}
+                {editingProduct ? 'Edit Product' : 'Add New Product'}
               </h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Product Name</label>
-                    <input 
-                      type="text" 
-                      required 
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
-                      placeholder="e.g. iPhone 15 Pro"
-                    />
-                  </div>
+              <Formik
+                initialValues={{
+                  name: editingProduct ? editingProduct.name : '',
+                  category: editingProduct ? (editingProduct.category?._id || editingProduct.category || '') : '',
+                  price: editingProduct ? editingProduct.price : '',
+                  stock: editingProduct ? editingProduct.stock : '',
+                  description: editingProduct ? (editingProduct.description || '') : '',
+                  isActive: editingProduct ? editingProduct.isActive : true,
+                  rating: editingProduct ? (editingProduct.rating || 0) : 0,
+                  images: null,
+                  existingImage: editingProduct ? (editingProduct.images && editingProduct.images.length > 0 ? editingProduct.images[0] : '') : ''
+                }}
+                validationSchema={ProductSchema}
+                onSubmit={async (values, { setSubmitting }) => {
+                  try {
+                    const payload = new FormData();
+                    payload.append('name', values.name);
+                    payload.append('category', values.category);
+                    payload.append('price', values.price);
+                    payload.append('stock', values.stock);
+                    payload.append('description', values.description);
+                    payload.append('isActive', values.isActive);
+                    payload.append('rating', values.rating);
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Category</label>
-                    <select
-                      required
-                      value={formData.category}
-                      onChange={(e) => setFormData({...formData, category: e.target.value})}
-                      className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium"
-                    >
-                      <option value="">Select Category</option>
-                      {categories.map(cat => (
-                        <option key={cat._id || cat.id} value={cat._id || cat.id}>{cat.name}</option>
-                      ))}
-                    </select>
-                  </div>
+                    if (values.images && values.images.length > 0) {
+                      Array.from(values.images).forEach(file => {
+                        payload.append('images', file);
+                      });
+                    } else if (values.existingImage) {
+                      payload.append('images', values.existingImage);
+                    }
+                    
+                    if (editingProduct) {
+                      const id = editingProduct._id;
+                      const res = await productAPI.updateProduct(id, payload);
+                      if (res.success) {
+                        toast.success('Product updated successfully');
+                        setProducts(prev => prev.map(p => p._id === id ? res.data : p));
+                      }
+                    } else {
+                      const res = await productAPI.addProduct(payload);
+                      if (res.success) {
+                        toast.success('Product added successfully');
+                        setProducts(prev => [...prev, res.data]);
+                      }
+                    }
+                    handleCloseModal();
+                  } catch (error) {
+                    toast.error(error.response?.data?.message || 'Operation failed!');
+                    console.error(error);
+                  } finally {
+                    setSubmitting(false);
+                  }
+                }}
+              >
+                {({ isSubmitting, values, setFieldValue }) => (
+                  <Form className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Product Name</label>
+                        <Field 
+                          name="name"
+                          type="text" 
+                          className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
+                          placeholder="e.g. iPhone 15 Pro"
+                        />
+                        <ErrorMessage name="name" component="div" className="text-red-500 text-xs font-bold mt-1" />
+                      </div>
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Price</label>
-                    <input 
-                      type="number" 
-                      required 
-                      min="0"
-                      value={formData.price}
-                      onChange={(e) => setFormData({...formData, price: e.target.value})}
-                      className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
-                      placeholder="e.g. 999"
-                    />
-                  </div>
+                      <div className="space-y-2">
+                        <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Category</label>
+                        <Field
+                          name="category"
+                          as="select"
+                          className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium"
+                        >
+                          <option value="">Select Category</option>
+                          {categories.map(cat => (
+                            <option key={cat._id || cat.id} value={cat._id || cat.id}>{cat.name}</option>
+                          ))}
+                        </Field>
+                        <ErrorMessage name="category" component="div" className="text-red-500 text-xs font-bold mt-1" />
+                      </div>
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Stock</label>
-                    <input 
-                      type="number" 
-                      required 
-                      min="0"
-                      value={formData.stock}
-                      onChange={(e) => setFormData({...formData, stock: e.target.value})}
-                      className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
-                      placeholder="e.g. 50"
-                    />
-                  </div>
+                      <div className="space-y-2">
+                        <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Price</label>
+                        <Field 
+                          name="price"
+                          type="number" 
+                          min="0"
+                          className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
+                          placeholder="e.g. 999"
+                        />
+                        <ErrorMessage name="price" component="div" className="text-red-500 text-xs font-bold mt-1" />
+                      </div>
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Rating (0-5)</label>
-                    <input 
-                      type="number" 
-                      required 
-                      min="0"
-                      max="5"
-                      step="0.1"
-                      value={formData.rating}
-                      onChange={(e) => setFormData({...formData, rating: e.target.value})}
-                      className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
-                      placeholder="e.g. 4.5"
-                    />
-                  </div>
-                </div>
+                      <div className="space-y-2">
+                        <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Stock</label>
+                        <Field 
+                          name="stock"
+                          type="number" 
+                          min="0"
+                          className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
+                          placeholder="e.g. 50"
+                        />
+                        <ErrorMessage name="stock" component="div" className="text-red-500 text-xs font-bold mt-1" />
+                      </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Product Images</label>
-                  <input 
-                    type="file" 
-                    accept="image/*"
-                    multiple
-                    onChange={(e) => setFormData({...formData, images: e.target.files})}
-                    className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-2 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-black file:tracking-wider file:uppercase file:bg-purple-600 file:text-white hover:file:bg-purple-500 file:cursor-pointer"
-                  />
-                  {formData.existingImage && (!formData.images || formData.images.length === 0) && (
-                    <div className="mt-3 flex items-center gap-3 bg-[#1a1c3d]/40 p-2 rounded-xl border border-[#1a1c3d]">
-                       <img src={formData.existingImage} alt="Current" className="h-12 w-12 rounded-lg object-cover border border-purple-500/30" />
-                       <span className="text-xs font-bold text-gray-400">Current Image</span>
+                      <div className="space-y-2">
+                        <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Rating (0-5)</label>
+                        <Field 
+                          name="rating"
+                          type="number" 
+                          min="0"
+                          max="5"
+                          step="0.1"
+                          className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
+                          placeholder="e.g. 4.5"
+                        />
+                        <ErrorMessage name="rating" component="div" className="text-red-500 text-xs font-bold mt-1" />
+                      </div>
                     </div>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Description</label>
-                  <textarea 
-                    value={formData.description}
-                    onChange={(e) => setFormData({...formData, description: e.target.value})}
-                    className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium min-h-[150px] resize-y placeholder-gray-600"
-                    placeholder="Short description of the product..."
-                  ></textarea>
-                </div>
 
-                <div className="flex items-center gap-3 bg-[#1a1c3d]/30 p-4 rounded-xl border border-[#1a1c3d]/50">
-                  <button
-                    type="button"
-                    onClick={() => setFormData({...formData, isActive: !formData.isActive})}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${formData.isActive ? 'bg-purple-500' : 'bg-gray-600'}`}
-                  >
-                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${formData.isActive ? 'translate-x-6' : 'translate-x-1'}`} />
-                  </button>
-                  <span className="text-sm font-bold text-gray-300">Product is Active</span>
-                </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Product Images</label>
+                      <input 
+                        type="file" 
+                        accept="image/*"
+                        multiple
+                        name="images"
+                        onChange={(e) => setFieldValue('images', e.currentTarget.files)}
+                        className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-2 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-black file:tracking-wider file:uppercase file:bg-purple-600 file:text-white hover:file:bg-purple-500 file:cursor-pointer"
+                      />
+                      {values.existingImage && (!values.images || values.images.length === 0) && (
+                        <div className="mt-3 flex items-center gap-3 bg-[#1a1c3d]/40 p-2 rounded-xl border border-[#1a1c3d]">
+                          <img src={values.existingImage} alt="Current" className="h-12 w-12 rounded-lg object-cover border border-purple-500/30" />
+                          <span className="text-xs font-bold text-gray-400">Current Image</span>
+                        </div>
+                      )}
+                      <ErrorMessage name="images" component="div" className="text-red-500 text-xs font-bold mt-1" />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Description</label>
+                      <Field 
+                        name="description"
+                        as="textarea"
+                        className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium min-h-[150px] resize-y placeholder-gray-600"
+                        placeholder="Short description of the product..."
+                      />
+                      <ErrorMessage name="description" component="div" className="text-red-500 text-xs font-bold mt-1" />
+                    </div>
 
-                <div className="flex gap-4 pt-4 mt-2">
-                  <button 
-                    type="button" 
-                    onClick={handleCloseModal}
-                    className="flex-1 bg-transparent hover:bg-gray-800 text-gray-400 font-bold py-3 rounded-xl transition-colors border border-gray-700"
-                  >
-                    Cancel
-                  </button>
-                  <button 
-                    type="submit" 
-                    className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-black py-3 rounded-xl shadow-[0_0_15px_rgba(147,51,234,0.3)] hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transition-all transform hover:-translate-y-0.5"
-                  >
-                    {editingId ? 'Update' : 'Create'}
-                  </button>
-                </div>
-              </form>
+                    <div className="flex items-center gap-3 bg-[#1a1c3d]/30 p-4 rounded-xl border border-[#1a1c3d]/50">
+                      <button
+                        type="button"
+                        onClick={() => setFieldValue('isActive', !values.isActive)}
+                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${values.isActive ? 'bg-purple-500' : 'bg-gray-600'}`}
+                      >
+                        <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${values.isActive ? 'translate-x-6' : 'translate-x-1'}`} />
+                      </button>
+                      <span className="text-sm font-bold text-gray-300">Product is Active</span>
+                    </div>
+
+                    <div className="flex gap-4 pt-4 mt-2">
+                      <button 
+                        type="button" 
+                        onClick={handleCloseModal}
+                        className="flex-1 bg-transparent hover:bg-gray-800 text-gray-400 font-bold py-3 rounded-xl transition-colors border border-gray-700"
+                      >
+                        Cancel
+                      </button>
+                      <button 
+                        type="submit" 
+                        disabled={isSubmitting}
+                        className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-black py-3 rounded-xl shadow-[0_0_15px_rgba(147,51,234,0.3)] hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transition-all transform hover:-translate-y-0.5 disabled:opacity-50"
+                      >
+                        {editingProduct ? 'Update' : 'Create'}
+                      </button>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
             </div>
           </div>
         </div>

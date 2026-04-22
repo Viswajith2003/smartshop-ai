@@ -4,6 +4,7 @@ import { logout } from '../store/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 import CategoryManager from '../components/admin/CategoryManager';
 import ProductManager from '../components/admin/productManager';
+import CouponManager from '../components/admin/CouponManager';
 
 const AdminDash = memo(() => {
   const [activeItem, setActiveItem] = useState(() => {
@@ -283,6 +284,7 @@ const AdminDash = memo(() => {
 
           {activeItem === 'Categories' && <CategoryManager />}
           {activeItem === 'Products' && <ProductManager />}
+          {activeItem === 'Coupons' && <CouponManager />}
 
         </div>
       </main>

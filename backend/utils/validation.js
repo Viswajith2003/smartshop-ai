@@ -219,6 +219,23 @@ const productValidation = Joi.object({
   })
 });
 
+const couponValidation = Joi.object({
+  code: Joi.string().required().trim().uppercase(),
+  discountPercentage: Joi.number().min(0).max(100).required(),
+  minPurchaseAmount: Joi.number().min(0).required(),
+  maxDiscountAmount: Joi.number().min(0).required(),
+  validFrom: Joi.date().required(),
+  validUntil: Joi.date().required(),
+  isActive: Joi.boolean().default(true),
+  usageLimit: Joi.number().min(0).required()
+});
+
+const couponSearchValidation = Joi.object({
+  page: Joi.number().integer().min(1).default(1),
+  limit: Joi.number().integer().min(1).max(100).default(10),
+  search: Joi.string().optional()
+});
+
 module.exports = {
   registerValidation,
   loginValidation,
@@ -240,5 +257,7 @@ module.exports = {
   strongPasswordValidation,
   categoryValidation,
   productValidation,
-  productSearchValidation
+  productSearchValidation,
+  couponValidation,
+  couponSearchValidation
 };

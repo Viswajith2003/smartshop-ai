@@ -1,17 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { removeFromCart, updateQuantity } from '../store/slices/cartSlice';
+import { couponAPI } from '../utils/api';
+import { toast } from 'react-toastify';
 
 const CartPage = () => {
     const { items } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [couponCode, setCouponCode] = useState('');
+    const [appliedCoupon, setAppliedCoupon] = useState(null);
+    const [isApplying, setIsApplying] = useState(false);
+
     const subtotal = items.reduce((total, item) => total + (item.price * item.quantity), 0);
     const shipping = subtotal > 5000 ? 0 : 500;
     const tax = subtotal * 0.18;
-    const total = subtotal + shipping + tax;
+
+    const totalBeforeCoupon = subtotal + shipping + tax;
+    const discount = appliedCoupon ? appliedCoupon.discountAmount : 0;
+    const total = totalBeforeCoupon - discount;
+
+    const handleApplyCoupon = async () => {
+        if (!couponCode.trim()) return;
+        setIsApplying(true);
+        try {
+            const res = await couponAPI.applyCoupon({ couponCode: couponCode.trim(), cartTotal: subtotal });
+            setAppliedCoupon({ code: couponCode.trim(), discountAmount: res.data });
+            toast.success(res.message || "Coupon applied successfully!");
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Invalid or expired coupon");
+            setAppliedCoupon(null);
+        } finally {
+            setIsApplying(false);
+        }
+    };
+
+    const handleRemoveCoupon = () => {
+        setAppliedCoupon(null);
+        setCouponCode('');
+        toast.info("Coupon removed");
+    };
 
     if (items.length === 0) {
         return (
@@ -127,6 +157,12 @@ const CartPage = () => {
                                 <span>Tax (18% GST)</span>
                                 <span className="text-white">₹{tax.toLocaleString('en-IN')}</span>
                             </div>
+                            {appliedCoupon && (
+                                <div className="flex justify-between text-emerald-400 font-bold">
+                                    <span>Discount ({appliedCoupon.code})</span>
+                                    <span>-₹{appliedCoupon.discountAmount.toLocaleString('en-IN')}</span>
+                                </div>
+                            )}
                             <hr className="border-slate-800 my-2" />
                             <div className="flex justify-between text-xl font-black pt-2">
                                 <span>Total Price</span>
@@ -144,15 +180,49 @@ const CartPage = () => {
                         </div>
                     </div>
 
+                    {/* Coupon Section */}
                     <div className="mt-8 bg-indigo-50/50 rounded-2xl p-6 border border-indigo-100">
                         <h4 className="text-xs font-black text-indigo-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-                            <i className="bi bi-truck text-lg"></i>
-                            Shipping Information
+                            <i className="bi bi-tag-fill text-lg"></i>
+                            Apply Coupon
                         </h4>
-                        <p className="text-xs font-bold text-slate-600 leading-relaxed">
-                            Orders above ₹5,000 qualify for <span className="text-indigo-600">FREE delivery</span>. 
-                            Standard shipping takes 3-5 business days.
-                        </p>
+                        
+                        {!appliedCoupon ? (
+                            <div className="flex gap-2">
+                                <input 
+                                    type="text" 
+                                    value={couponCode}
+                                    onChange={(e) => setCouponCode(e.target.value)}
+                                    placeholder="Enter discount code" 
+                                    className="flex-1 bg-white border border-indigo-100 rounded-xl px-4 py-3 text-slate-700 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 uppercase tracking-wide font-bold"
+                                />
+                                <button 
+                                    onClick={handleApplyCoupon}
+                                    disabled={isApplying || !couponCode.trim()}
+                                    className={`bg-indigo-600 hover:bg-indigo-500 text-white font-black px-6 py-3 rounded-xl transition-all shadow-md ${isApplying ? 'opacity-70 cursor-not-allowed' : 'hover:-translate-y-0.5 active:scale-95'}`}
+                                >
+                                    {isApplying ? 'Applying...' : 'Apply'}
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="flex items-center justify-between bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3">
+                                <div className="flex items-center gap-3">
+                                    <div className="bg-emerald-500 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                        <i className="bi bi-check-lg text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <div className="text-sm font-black text-emerald-800 uppercase tracking-widest">{appliedCoupon.code}</div>
+                                        <div className="text-xs font-bold text-emerald-600">Savings applied!</div>
+                                    </div>
+                                </div>
+                                <button 
+                                    onClick={handleRemoveCoupon}
+                                    className="text-slate-400 hover:text-red-500 transition-colors"
+                                >
+                                    <i className="bi bi-x-circle-fill text-xl"></i>
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

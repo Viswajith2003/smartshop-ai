@@ -1,13 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import {categoryAPI} from '../../utils/api';
 import { toast } from 'react-toastify';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+const CategorySchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Name must be at least 2 characters')
+    .max(50, 'Name cannot exceed 50 characters')
+    .required('Category Name is required'),
+  description: Yup.string()
+    .min(2, 'Description must be at least 2 characters')
+    .max(200, 'Description cannot exceed 200 characters'),
+  isActive: Yup.boolean(),
+});
 
 const CategoryManager = () => {
   const [categories,setCategories]=useState([])
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState(null);
-  const [formData, setFormData] = useState({ name: '', description: '', isActive: true });
 
 
   useEffect(()=>{
@@ -27,39 +39,13 @@ const CategoryManager = () => {
   const handleEditCategory = (category = null) => {
     if (category) {
       setEditingCategory(category);
-      setFormData({ name: category.name, description: category.description, isActive: category.isActive });
     } else {
       setEditingCategory(null);
-      setFormData({ name: '', description: '', isActive: true });
     }
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => setIsModalOpen(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      if (editingCategory) {
-        const id = editingCategory._id || editingCategory.id;
-        const res = await categoryAPI.updateCategory(id, formData);
-        if (res.success) {
-          setCategories(categories.map(c => (c._id || c.id) === id ? res.data : c));
-          toast.success('Category updated successfully');
-        }
-      } else {
-        const res = await categoryAPI.addCategory(formData);
-        if (res.success) {
-          setCategories([...categories, res.data]);
-          toast.success('Category added successfully');
-        }
-      }
-      handleCloseModal();
-    } catch (error) {
-      console.error(error);
-      toast.error(error.response?.data?.message || 'Something went wrong');
-    }
-  };
 
   const handleDelete = async (id) => {
     if(window.confirm('Are you sure you want to delete this category?')) {
@@ -154,56 +140,92 @@ const CategoryManager = () => {
                 {editingCategory ? 'Edit Category' : 'New Category'}
               </h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Category Name</label>
-                  <input 
-                    type="text" 
-                    required 
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
-                    placeholder="e.g. Smart Watches"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Description</label>
-                  <textarea 
-                    value={formData.description}
-                    onChange={(e) => setFormData({...formData, description: e.target.value})}
-                    className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium min-h-[100px] resize-none placeholder-gray-600"
-                    placeholder="Short description of the category..."
-                  ></textarea>
-                </div>
+              <Formik
+                initialValues={{
+                  name: editingCategory ? editingCategory.name : '',
+                  description: editingCategory ? (editingCategory.description || '') : '',
+                  isActive: editingCategory ? editingCategory.isActive : true
+                }}
+                validationSchema={CategorySchema}
+                onSubmit={async (values, { setSubmitting }) => {
+                  try {
+                    if (editingCategory) {
+                      const id = editingCategory._id || editingCategory.id;
+                      const res = await categoryAPI.updateCategory(id, values);
+                      if (res.success) {
+                        setCategories(categories.map(c => (c._id || c.id) === id ? res.data : c));
+                        toast.success('Category updated successfully');
+                      }
+                    } else {
+                      const res = await categoryAPI.addCategory(values);
+                      if (res.success) {
+                        setCategories([...categories, res.data]);
+                        toast.success('Category added successfully');
+                      }
+                    }
+                    handleCloseModal();
+                  } catch (error) {
+                    console.error(error);
+                    toast.error(error.response?.data?.message || 'Something went wrong');
+                  } finally {
+                    setSubmitting(false);
+                  }
+                }}
+              >
+                {({ isSubmitting, values, setFieldValue }) => (
+                  <Form className="space-y-6">
+                    <div className="space-y-2">
+                      <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Category Name</label>
+                      <Field 
+                        name="name"
+                        type="text" 
+                        className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium placeholder-gray-600"
+                        placeholder="e.g. Smart Watches"
+                      />
+                      <ErrorMessage name="name" component="div" className="text-red-500 text-xs font-bold mt-1" />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label className="text-xs font-black tracking-widest text-gray-400 uppercase">Description</label>
+                      <Field 
+                        name="description"
+                        as="textarea"
+                        className="w-full bg-[#1a1c3d]/50 border border-[#1a1c3d] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all font-medium min-h-[100px] resize-none placeholder-gray-600"
+                        placeholder="Short description of the category..."
+                      />
+                      <ErrorMessage name="description" component="div" className="text-red-500 text-xs font-bold mt-1" />
+                    </div>
 
-                <div className="flex items-center gap-3 bg-[#1a1c3d]/30 p-4 rounded-xl border border-[#1a1c3d]/50">
-                  <button
-                    type="button"
-                    onClick={() => setFormData({...formData, isActive: !formData.isActive})}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${formData.isActive ? 'bg-purple-500' : 'bg-gray-600'}`}
-                  >
-                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${formData.isActive ? 'translate-x-6' : 'translate-x-1'}`} />
-                  </button>
-                  <span className="text-sm font-bold text-gray-300">Category is Active</span>
-                </div>
+                    <div className="flex items-center gap-3 bg-[#1a1c3d]/30 p-4 rounded-xl border border-[#1a1c3d]/50">
+                      <button
+                        type="button"
+                        onClick={() => setFieldValue('isActive', !values.isActive)}
+                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${values.isActive ? 'bg-purple-500' : 'bg-gray-600'}`}
+                      >
+                        <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${values.isActive ? 'translate-x-6' : 'translate-x-1'}`} />
+                      </button>
+                      <span className="text-sm font-bold text-gray-300">Category is Active</span>
+                    </div>
 
-                <div className="flex gap-4 pt-4 mt-2">
-                  <button 
-                    type="button" 
-                    onClick={handleCloseModal}
-                    className="flex-1 bg-transparent hover:bg-gray-800 text-gray-400 font-bold py-3 rounded-xl transition-colors border border-gray-700"
-                  >
-                    Cancel
-                  </button>
-                  <button 
-                    type="submit" 
-                    className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-black py-3 rounded-xl shadow-[0_0_15px_rgba(147,51,234,0.3)] hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transition-all transform hover:-translate-y-0.5"
-                  >
-                    {editingCategory ? 'Save Changes' : 'Create'}
-                  </button>
-                </div>
-              </form>
+                    <div className="flex gap-4 pt-4 mt-2">
+                      <button 
+                        type="button" 
+                        onClick={handleCloseModal}
+                        className="flex-1 bg-transparent hover:bg-gray-800 text-gray-400 font-bold py-3 rounded-xl transition-colors border border-gray-700"
+                      >
+                        Cancel
+                      </button>
+                      <button 
+                        type="submit" 
+                        disabled={isSubmitting}
+                        className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-black py-3 rounded-xl shadow-[0_0_15px_rgba(147,51,234,0.3)] hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transition-all transform hover:-translate-y-0.5 disabled:opacity-50"
+                      >
+                        {editingCategory ? 'Save Changes' : 'Create'}
+                      </button>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
             </div>
           </div>
         </div>

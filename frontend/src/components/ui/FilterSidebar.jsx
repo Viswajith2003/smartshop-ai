@@ -4,6 +4,7 @@ const FilterSidebar = ({
   categories = [], 
   price, 
   setPrice, 
+  setAppliedPrice,
   selectedCategories, 
   handleCategoryChange, 
   selectedRating, 
@@ -12,10 +13,10 @@ const FilterSidebar = ({
 }) => {
 
   return (
-    <aside className="w-full md:w-64 flex-shrink-0">
-      <div className="bg-[#f2f5f9] rounded-2xl p-6 shadow-lg h-full">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-bold text-slate-800">Filters</h2>
+    <aside className="w-full md:w-72 flex-shrink-0">
+      <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-full lg:sticky lg:top-24">
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-2xl font-black text-slate-800 tracking-tight">Filters</h2>
           <button 
             onClick={handleClearAll}
             className="bg-blue-500 hover:bg-blue-600 text-white text-xs px-4 py-1.5 rounded-full font-medium transition-colors"
@@ -43,9 +44,9 @@ const FilterSidebar = ({
               }}
             />
           </div>
-          <div className="flex justify-between items-center mt-4 text-xs font-medium text-slate-500">
+          <div className="flex justify-between items-center mt-6 text-xs font-bold text-slate-600">
             <span>₹0 - ₹{price.toLocaleString('en-IN')}</span>
-            <button className="bg-blue-500 hover:bg-blue-600 transition-colors text-white px-3 py-1 rounded-full text-[10px]">Filter</button>
+            <button onClick={() => setAppliedPrice(price)} className="bg-black hover:bg-blue-600 transition-colors text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider">Filter</button>
           </div>
         </div>
 
@@ -103,7 +104,7 @@ const FilterSidebar = ({
                   {[...Array(5)].map((_, i) => (
                     <i 
                       key={i} 
-                      className={`bi bi-star${i < rating ? '-fill' : ''} text-sm ${i < rating ? 'text-amber-400' : 'text-slate-300'}`}
+                      className={`bi bi-star${i < rating ? '-fill' : ''} text-sm ${i < rating ? 'text-amber-400' : 'text-slate-200'}`}
                     ></i>
                   ))}
                   {rating < 5 && <span className="text-xs font-medium text-slate-500 ml-2">& up</span>}

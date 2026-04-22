@@ -72,7 +72,11 @@ class ProductService {
       }
 
       if (category) {
-        query.category = category;
+        if (category.includes(',')) {
+          query.category = { $in: category.split(',') };
+        } else {
+          query.category = category;
+        }
       }
 
       if (minPrice !== undefined || maxPrice !== undefined) {
@@ -81,7 +85,7 @@ class ProductService {
         if (maxPrice !== undefined) query.price.$lte = Number(maxPrice);
       }
 
-      if (rating) {
+      if (rating !== undefined && rating !== null && rating !== '') {
         query.rating = { $gte: Number(rating) };
       }
 
