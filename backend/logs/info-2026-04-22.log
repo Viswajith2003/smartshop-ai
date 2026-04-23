@@ -693,3 +693,14 @@
 {"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
 {"level":"info","message":"GET /api/admin/products 200 - 27ms"}
 {"level":"info","message":"GET /api/admin/products 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 190ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 183ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 22ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 24ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 37ms"}
+{"level":"info","message":"MongoDB connected successfully"}

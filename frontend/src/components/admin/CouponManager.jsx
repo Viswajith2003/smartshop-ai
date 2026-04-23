@@ -34,7 +34,9 @@ const CouponManager = () => {
       try {
         const res = await couponAPI.getCoupons();
         if (res.success) {
-          setCoupons(res.data);
+          // Check if data is array or object with coupons property
+          const couponList = Array.isArray(res.data) ? res.data : (res.data.coupons || []);
+          setCoupons(couponList);
         }
       } catch (error) {
         console.error(error);

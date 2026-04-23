@@ -5,3 +5,4 @@ export { default as Footer } from './Footer';
 export { default as FilterSidebar } from './FilterSidebar';
 export { default as ProductDetail } from './ProductDetail';
 export { default as Pagination } from './Pagination';
+export { default as SearchBar } from './SearchBar';

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { categoryAPI, productAPI } from '../../utils/api';
 import { toast } from 'react-toastify';
 import usePagination from '../../hooks/usePagination';
-import { Pagination } from '../ui';
+import { Pagination, SearchBar } from '../ui';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -33,6 +33,7 @@ const ProductManager = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [adminSearchQuery, setAdminSearchQuery] = useState('');
 
   const { pagination, handlePageChange, updatePagination } = usePagination(5); // Admin limit, e.g., 5
   const [products, setProducts] = useState([]);
@@ -79,7 +80,16 @@ const ProductManager = () => {
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
-        const res = await productAPI.getProducts({ page: pagination.page, limit: pagination.limit });
+        const params = {
+          page: pagination.page,
+          limit: pagination.limit
+        };
+
+        if (adminSearchQuery && typeof adminSearchQuery === 'string') {
+          params.search = adminSearchQuery.trim();
+        }
+
+        const res = await productAPI.getProducts(params);
         if (res.success) {
           setProducts(res.data);
           updatePagination(res.meta);
@@ -89,23 +99,37 @@ const ProductManager = () => {
       }
     };
     fetchProductsData();
-  }, [pagination.page, pagination.limit]);
+  }, [pagination.page, pagination.limit, adminSearchQuery]);
+
+  // Reset page when search term changes
+  useEffect(() => {
+    handlePageChange(1);
+  }, [adminSearchQuery]);
 
   return (
     <div className="space-y-8 p-1">
-      <div className="flex justify-between items-end">
-        <div>
+      <div className="flex justify-between items-center bg-[#02001c]/40 p-6 rounded-[2rem] border border-[#1a1c3d]/50 shadow-xl gap-8">
+        <div className="shrink-0">
           <div className="flex items-baseline gap-3">
             <h3 className="text-4xl font-black tracking-tighter bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
               Products
             </h3>
             <span className="text-2xl font-bold text-gray-500">({pagination.totalProducts || products.length})</span>
           </div>
-          <p className="text-gray-500 text-sm font-bold tracking-widest mt-2 uppercase">Manage Your Inventory</p>
+          <p className="text-gray-500 text-xs font-black tracking-[0.2em] mt-1 uppercase">Inventory</p>
         </div>
+
+        <div className="flex-grow max-w-xl">
+          <SearchBar 
+            variant="admin" 
+            placeholder="Search Products..." 
+            onSearch={(val) => setAdminSearchQuery(val || '')}
+          />
+        </div>
+
         <button 
           onClick={handleOpenModal}
-          className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-3 rounded-2xl font-black tracking-widest uppercase text-sm shadow-[0_0_20px_rgba(147,51,234,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2"
+          className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-3 rounded-2xl font-black tracking-widest uppercase text-xs shadow-[0_0_20px_rgba(147,51,234,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2 h-fit shrink-0"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
             <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
@@ -113,6 +137,8 @@ const ProductManager = () => {
           Add Product
         </button>
       </div>
+
+
 
       <div className="bg-[#02001c] rounded-[2rem] border border-[#1a1c3d] shadow-[0_8px_30px_rgba(0,0,0,0.5)] overflow-hidden relative">
         <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none"></div>

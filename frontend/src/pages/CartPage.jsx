@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { removeFromCart, updateQuantity } from '../store/slices/cartSlice';
-import { couponAPI } from '../utils/api';
+import { removeFromCartDB, updateQuantityDB, fetchCart } from '../store/slices/cartSlice';
+import { couponAPI, getUser } from '../utils/api';
 import { toast } from 'react-toastify';
 
 const CartPage = () => {
-    const { items } = useSelector((state) => state.cart);
+    const { items, loading, totalPrice } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -14,12 +14,26 @@ const CartPage = () => {
     const [appliedCoupon, setAppliedCoupon] = useState(null);
     const [isApplying, setIsApplying] = useState(false);
 
-    const subtotal = items.reduce((total, item) => total + (item.price * item.quantity), 0);
+    useEffect(() => {
+        const user = getUser();
+        if (user) {
+            dispatch(fetchCart(user.id || user._id));
+        }
+    }, [dispatch]);
+
+    const subtotal = items.reduce((total, item) => total + (item.price), 0);
     const shipping = subtotal > 5000 ? 0 : 500;
     const tax = subtotal * 0.18;
 
     const totalBeforeCoupon = subtotal + shipping + tax;
-    const discount = appliedCoupon ? appliedCoupon.discountAmount : 0;
+    
+    // Dynamic Discount Calculation
+    const discount = appliedCoupon ? (
+        subtotal >= appliedCoupon.minPurchaseAmount 
+            ? Math.min((subtotal * appliedCoupon.discountPercentage) / 100, appliedCoupon.maxDiscountAmount)
+            : 0
+    ) : 0;
+
     const total = totalBeforeCoupon - discount;
 
     const handleApplyCoupon = async () => {
@@ -27,7 +41,7 @@ const CartPage = () => {
         setIsApplying(true);
         try {
             const res = await couponAPI.applyCoupon({ couponCode: couponCode.trim(), cartTotal: subtotal });
-            setAppliedCoupon({ code: couponCode.trim(), discountAmount: res.data });
+            setAppliedCoupon(res.data);
             toast.success(res.message || "Coupon applied successfully!");
         } catch (error) {
             toast.error(error.response?.data?.message || "Invalid or expired coupon");
@@ -42,6 +56,12 @@ const CartPage = () => {
         setCouponCode('');
         toast.info("Coupon removed");
     };
+
+    if (loading && items.length === 0) {
+        return <div className="min-h-[70vh] flex items-center justify-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+        </div>;
+    }
 
     if (items.length === 0) {
         return (
@@ -62,7 +82,7 @@ const CartPage = () => {
     }
 
     return (
-        <div className="max-w-7xl mx-auto py-8">
+        <div className="w-full py-8">
             <h1 className="text-4xl font-black text-slate-900 mb-10 tracking-tight flex items-center">
                 My Shopping Bag
                 <span className="ml-4 text-sm font-bold bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full uppercase tracking-widest">
@@ -74,37 +94,37 @@ const CartPage = () => {
                 {/* Cart Items List */}
                 <div className="flex-grow space-y-6">
                     {items.map((item) => (
-                        <div key={item._id} className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex items-center gap-6 group transition-all hover:shadow-md">
+                        <div key={item.product?._id} className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex items-center gap-6 group transition-all hover:shadow-md">
                             {/* Product Image */}
                             <div className="w-32 h-32 bg-slate-50 rounded-2xl overflow-hidden flex-shrink-0 border border-slate-100 flex items-center justify-center p-2">
                                 <img 
-                                    src={item.images && item.images[0]} 
-                                    alt={item.name} 
+                                    src={item.product?.images && item.product.images[0]} 
+                                    alt={item.product?.name} 
                                     className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" 
                                 />
                             </div>
 
                             {/* Item Details */}
                             <div className="flex-grow">
-                                <Link to={`/products/${item._id}`} className="text-lg font-black text-slate-800 hover:text-indigo-600 transition-colors mb-1 block">
-                                    {item.name}
+                                <Link to={`/products/${item.product?._id}`} className="text-lg font-black text-slate-800 hover:text-indigo-600 transition-colors mb-1 block">
+                                    {item.product?.name}
                                 </Link>
                                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-4">
-                                    {item.category?.name || 'Category'}
+                                    {item.product?.category?.name || 'Category'}
                                 </span>
                                 
                                 <div className="flex items-center gap-6">
                                     {/* Quantity Selector */}
                                     <div className="flex items-center bg-slate-50 rounded-xl p-1 border border-slate-100">
                                         <button 
-                                            onClick={() => dispatch(updateQuantity({ id: item._id, quantity: item.quantity - 1 }))}
+                                            onClick={() => item.quantity > 1 && dispatch(updateQuantityDB({ productId: item.product?._id, quantity: item.quantity - 1 }))}
                                             className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:bg-white rounded-lg transition-all"
                                         >
                                             <i className="bi bi-dash-lg"></i>
                                         </button>
                                         <span className="w-10 text-center font-black text-slate-800">{item.quantity}</span>
                                         <button 
-                                            onClick={() => dispatch(updateQuantity({ id: item._id, quantity: item.quantity + 1 }))}
+                                            onClick={() => dispatch(updateQuantityDB({ productId: item.product?._id, quantity: item.quantity + 1 }))}
                                             className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:bg-white rounded-lg transition-all"
                                         >
                                             <i className="bi bi-plus-lg"></i>
@@ -112,7 +132,7 @@ const CartPage = () => {
                                     </div>
 
                                     <button 
-                                        onClick={() => dispatch(removeFromCart(item._id))}
+                                        onClick={() => dispatch(removeFromCartDB(item.product?._id))}
                                         className="text-red-400 hover:text-red-500 text-sm font-bold flex items-center gap-1 transition-colors"
                                     >
                                         <i className="bi bi-trash3 text-lg"></i>
@@ -124,10 +144,10 @@ const CartPage = () => {
                             {/* Price */}
                             <div className="text-right flex-shrink-0">
                                 <span className="text-xl font-black text-slate-900 block">
-                                    ₹{(item.price * item.quantity).toLocaleString('en-IN')}
+                                    ₹{(item.price).toLocaleString('en-IN')}
                                 </span>
                                 <span className="text-xs font-bold text-slate-400">
-                                    ₹{item.price.toLocaleString('en-IN')} each
+                                    ₹{item.product?.price.toLocaleString('en-IN')} each
                                 </span>
                             </div>
                         </div>
@@ -158,10 +178,15 @@ const CartPage = () => {
                                 <span className="text-white">₹{tax.toLocaleString('en-IN')}</span>
                             </div>
                             {appliedCoupon && (
-                                <div className="flex justify-between text-emerald-400 font-bold">
+                                <div className={`flex justify-between font-bold ${discount > 0 ? 'text-emerald-400' : 'text-amber-500'}`}>
                                     <span>Discount ({appliedCoupon.code})</span>
-                                    <span>-₹{appliedCoupon.discountAmount.toLocaleString('en-IN')}</span>
+                                    <span>-₹{discount.toLocaleString('en-IN')}</span>
                                 </div>
+                            )}
+                            {appliedCoupon && discount === 0 && (
+                                <p className="text-[10px] text-amber-500 font-bold mb-2 uppercase italic text-right">
+                                    Min purchase ₹{appliedCoupon.minPurchaseAmount.toLocaleString()} required
+                                </p>
                             )}
                             <hr className="border-slate-800 my-2" />
                             <div className="flex justify-between text-xl font-black pt-2">

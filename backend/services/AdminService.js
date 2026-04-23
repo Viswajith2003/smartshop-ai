@@ -1,4 +1,7 @@
 const Admin = require("../models/Admin");
+const User = require("../models/User");
+const Product = require("../models/Product");
+const Category = require("../models/Category");
 const { generateAdminToken } = require("../utils/jwt");
 const { AuthenticationError, NotFoundError } = require("../utils/errors");
 
@@ -39,12 +42,18 @@ class AdminService {
   }
 
   static async getDashboardStats() {
-    // This will be implemented as we add more models (Users, Products, etc.)
+    const [totalUsers, totalProducts, totalCategories] = await Promise.all([
+      User.countDocuments({ role: 'user' }),
+      Product.countDocuments(),
+      Category.countDocuments()
+    ]);
+
     return {
-      totalUsers: 300,
-      totalProducts: 150,
-      totalSales: 200,
-      refunds: 50
+      totalUsers,
+      totalProducts,
+      totalCategories,
+      totalSales: 0, // Placeholder for now
+      refunds: 0     // Placeholder for now
     };
   }
 }

@@ -5,14 +5,30 @@ import { useNavigate } from 'react-router-dom';
 import CategoryManager from '../components/admin/CategoryManager';
 import ProductManager from '../components/admin/productManager';
 import CouponManager from '../components/admin/CouponManager';
+import { adminAPI } from '../utils/api';
 
 const AdminDash = memo(() => {
   const [activeItem, setActiveItem] = useState(() => {
     return localStorage.getItem('adminActiveItem') || 'Dashboard';
   });
+  const [statsData, setStatsData] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('adminActiveItem', activeItem);
+
+    if (activeItem === 'Dashboard') {
+      const fetchStats = async () => {
+        try {
+          const res = await adminAPI.getDashboard();
+          if (res.success) {
+            setStatsData(res.data);
+          }
+        } catch (err) {
+          console.error("Stats error:", err);
+        }
+      };
+      fetchStats();
+    }
   }, [activeItem]);
 
   const dispatch = useDispatch();
@@ -93,7 +109,7 @@ const AdminDash = memo(() => {
   const stats = [
     { 
       label: 'TOTAL USERS', 
-      value: '300', 
+      value: statsData?.totalUsers || 0, 
       color: 'text-[#00ff00]', 
       icon: (props) => (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
@@ -103,7 +119,7 @@ const AdminDash = memo(() => {
     },
     { 
       label: 'TOTAL PRODUCTS', 
-      value: '150', 
+      value: statsData?.totalProducts || 0, 
       color: 'text-[#00ff00]', 
       icon: (props) => (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
@@ -112,18 +128,18 @@ const AdminDash = memo(() => {
       )
     },
     { 
-      label: 'TOTAL SALES', 
-      value: '200', 
+      label: 'TOTAL CATEGORIES', 
+      value: statsData?.totalCategories || 0, 
       color: 'text-[#00ff00]', 
       icon: (props) => (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
-          <path d="M21.21 15.89A10 10 0 1 1 8 2.83" /><path d="M22 12A10 10 0 0 0 12 2v10z" />
+          <rect width="7" height="7" x="3" y="3" rx="1" /><rect width="7" height="7" x="14" y="3" rx="1" /><rect width="7" height="7" x="14" y="14" rx="1" /><rect width="7" height="7" x="3" y="14" rx="1" />
         </svg>
       )
     },
     { 
-      label: 'REFUNDS', 
-      value: '50', 
+      label: 'TOTAL REVENUE', 
+      value: `₹${(statsData?.totalSales || 0).toLocaleString()}`, 
       color: 'text-[#00ff00]', 
       icon: (props) => (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>

@@ -137,7 +137,7 @@ const Home = memo(() => {
     },[])
     return (
         <div className="min-h-screen bg-slate-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+            <div className="w-full pb-20">
                 
                 {/* Section 1: Banner Carousel */}
                 <BannerCarousel />
@@ -176,8 +176,8 @@ const Home = memo(() => {
                 {/* Section 3: Featured Products */}
                 <section className="mt-20">
                     <SectionHeader title="Featured Products" to="/products" />
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {products.slice(0, 3).map((prod) => (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {products.slice(0, 4).map((prod) => (
                             <Link to={`/products/${prod._id}`} key={prod._id} className="bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 group transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgb(0,0,0,0.12)] hover:-translate-y-2 relative flex flex-col cursor-pointer">
                                 {prod.tag && <span className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-black px-3 py-1 rounded-full z-20 shadow-sm">{prod.tag}</span>}
                                 <button onClick={(e) => { e.preventDefault(); }} className="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-slate-300 hover:text-pink-500 transition-all shadow-sm hover:scale-110">

@@ -1,0 +1,1161 @@
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 41ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 68ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 26ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 72ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 26ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 25ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 40ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 25ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 34ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 36ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 32ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 26ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=5 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=4 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=3 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=4 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=5 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=4 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 21ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 40ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 39ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 42ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 47ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 40ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/products?search=El&limit=5 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/products?search=Ele&limit=5 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&search=Electric+Race+Cooker 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&search=Electric+Race+Cooker 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&search=Electric+Race+Cooker 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 7ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 29ms"}
+{"level":"info","message":"User action - ADMIN_LOGIN by user: admin@smartshop.com"}
+{"level":"info","message":"POST /api/admin/login 200 - 95ms"}
+{"level":"error","message":"Error: \"search\" is not allowed to be empty","stack":"ValidationError: \"search\" is not allowed to be empty\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&search= 400 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"error","message":"Error: \"search\" is not allowed to be empty","stack":"ValidationError: \"search\" is not allowed to be empty\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&search= 400 - 2ms"}
+{"level":"error","message":"Error: \"search\" is not allowed to be empty","stack":"ValidationError: \"search\" is not allowed to be empty\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&search= 400 - 1ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"error","message":"Error: \"search\" is not allowed to be empty","stack":"ValidationError: \"search\" is not allowed to be empty\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&search= 400 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"error","message":"Error: \"search\" is not allowed to be empty","stack":"ValidationError: \"search\" is not allowed to be empty\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&search= 400 - 13ms"}
+{"level":"error","message":"Error: \"search\" is not allowed to be empty","stack":"ValidationError: \"search\" is not allowed to be empty\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&search= 400 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"User action - USER_LOGIN by user: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 100ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 29ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 2ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/coupons 200 - 4ms"}
+{"level":"info","message":"GET /api/coupons 200 - 5ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 2ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 54ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 59ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 51ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 43ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 32ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 30ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"User action - ADMIN_LOGIN by user: admin@smartshop.com"}
+{"level":"info","message":"POST /api/admin/login 200 - 68ms"}
+{"level":"info","message":"GET /api/coupons 200 - 3ms"}
+{"level":"info","message":"GET /api/coupons 200 - 3ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/coupons 200 - 13ms"}
+{"level":"info","message":"GET /api/coupons 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"error","message":"Error: \"search\" is not allowed to be empty","stack":"ValidationError: \"search\" is not allowed to be empty\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&search= 400 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 29ms"}
+{"level":"error","message":"Error: \"search\" is not allowed to be empty","stack":"ValidationError: \"search\" is not allowed to be empty\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&search= 400 - 16ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"error","message":"Error: \"search\" is not allowed to be empty","stack":"ValidationError: \"search\" is not allowed to be empty\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&search= 400 - 2ms"}
+{"level":"error","message":"Error: \"search\" is not allowed to be empty","stack":"ValidationError: \"search\" is not allowed to be empty\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/productController.js:48:47\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:117:3)\n    at handle (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:295:15\n    at processParams (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/index.js:582:12)"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&search= 400 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 38ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?search=Ele&limit=5 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?search=Ele&limit=5 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?search=El&limit=5 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/coupons 200 - 5ms"}
+{"level":"info","message":"GET /api/coupons 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 32ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 44ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 34ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 49ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 47ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 49ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 68ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 88ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 77ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 35ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 34ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 32ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 32ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&search=Electric+Race+Cooker 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 35ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 43ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 49ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 32ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 28ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 26ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 28ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 71ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 182ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/auth/profile 401 - 6ms"}
+{"level":"info","message":"GET /api/auth/profile 401 - 4ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"User action - USER_LOGIN by user: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 104ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 2ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 40ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 44ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 34ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 14ms"}
+{"level":"info","message":"User action - ADMIN_LOGIN by user: admin@smartshop.com"}
+{"level":"info","message":"POST /api/admin/login 200 - 71ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 2ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&category=69df53225fee7d6f30f4cd07 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&category=69df53225fee7d6f30f4cd08 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&category=69df53225fee7d6f30f4cd08,69df53225fee7d6f30f4cd09 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&category=69df53225fee7d6f30f4cd09 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&rating=5 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=2000 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=price&sortOrder=asc&minPrice=0&maxPrice=300000 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=price&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=rating&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 8ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"User action - USER_LOGIN by user: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 145ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 65ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 114ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 92ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 11ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 41ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 58ms"}
+{"level":"info","message":"New user registered: tpjishnu5@gmail.com"}
+{"level":"info","message":"Email sent: <8a032de6-0926-366d-b11e-e97ac9e21038@gmail.com>"}
+{"level":"info","message":"Registration OTP sent to: tpjishnu5@gmail.com"}
+{"level":"info","message":"User action - USER_REGISTER by user: tpjishnu5@gmail.com"}
+{"level":"info","message":"POST /api/auth/register 201 - 3419ms"}
+{"level":"info","message":"verifyOtp Check [tpjishnu5@gmail.com] - Received: 555969 | DB OTP: 556959 | DB Expiry: Thu Apr 23 2026 15:16:58 GMT+0530 (India Standard Time) | Expiry valid: true"}
+{"code":"AUTHENTICATION_ERROR","isOperational":true,"level":"error","message":"OTP verification error: Invalid or expired OTP","name":"AuthenticationError","stack":"AuthenticationError: Invalid or expired OTP\n    at AuthService.verifyOtp (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/services/AuthService.js:338:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/authController.js:70:20","statusCode":401}
+{"level":"error","message":"Error: Invalid or expired OTP","stack":"AuthenticationError: Invalid or expired OTP\n    at AuthService.verifyOtp (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/services/AuthService.js:338:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/authController.js:70:20"}
+{"level":"info","message":"POST /api/auth/verify-otp 401 - 8ms"}
+{"level":"info","message":"verifyOtp Check [tpjishnu5@gmail.com] - Received: 556959 | DB OTP: 556959 | DB Expiry: Thu Apr 23 2026 15:16:58 GMT+0530 (India Standard Time) | Expiry valid: true"}
+{"level":"info","message":"OTP verified for: tpjishnu5@gmail.com"}
+{"level":"info","message":"POST /api/auth/verify-otp 200 - 11ms"}
+{"level":"info","message":"User login successful: tpjishnu5@gmail.com"}
+{"level":"info","message":"User action - USER_LOGIN by user: tpjishnu5@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 88ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 59ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 52ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 74ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"Email sent: <6cf9b8af-cbb8-8256-6a40-a298fd799d0d@gmail.com>"}
+{"level":"info","message":"Forgot password OTP sent to: tpjishnu5@gmail.com"}
+{"level":"info","message":"POST /api/auth/forgot-password 200 - 2959ms"}
+{"level":"info","message":"verifyOtp Check [tpjishnu5@gmail.com] - Received: 808138 | DB OTP: 808138 | DB Expiry: Thu Apr 23 2026 15:18:52 GMT+0530 (India Standard Time) | Expiry valid: true"}
+{"level":"info","message":"OTP verified for: tpjishnu5@gmail.com"}
+{"level":"info","message":"POST /api/auth/verify-otp 200 - 11ms"}
+{"level":"info","message":"Password reset successful for: tpjishnu5@gmail.com"}
+{"level":"info","message":"POST /api/auth/reset-password 200 - 82ms"}
+{"code":"AUTHENTICATION_ERROR","isOperational":true,"level":"error","message":"Login error: Invalid email or password","name":"AuthenticationError","stack":"AuthenticationError: Invalid email or password\n    at AuthService.login (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/services/AuthService.js:63:15)\n    at async /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/authController.js:27:20","statusCode":401}
+{"level":"error","message":"Error: Invalid email or password","stack":"AuthenticationError: Invalid email or password\n    at AuthService.login (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/services/AuthService.js:63:15)\n    at async /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/authController.js:27:20"}
+{"level":"info","message":"POST /api/auth/login 401 - 66ms"}
+{"level":"info","message":"New user registered: tpjishnu5@gmail.com"}
+{"level":"info","message":"Email sent: <c51ce192-8388-9160-fece-d7f3ad68e93c@gmail.com>"}
+{"level":"info","message":"Registration OTP sent to: tpjishnu5@gmail.com"}
+{"level":"info","message":"User action - USER_REGISTER by user: tpjishnu5@gmail.com"}
+{"level":"info","message":"POST /api/auth/register 201 - 2929ms"}
+{"level":"info","message":"verifyOtp Check [tpjishnu5@gmail.com] - Received: 267965 | DB OTP: 267965 | DB Expiry: Thu Apr 23 2026 15:23:52 GMT+0530 (India Standard Time) | Expiry valid: true"}
+{"level":"info","message":"OTP verified for: tpjishnu5@gmail.com"}
+{"level":"info","message":"POST /api/auth/verify-otp 200 - 10ms"}
+{"level":"info","message":"User login successful: tpjishnu5@gmail.com"}
+{"level":"info","message":"User action - USER_LOGIN by user: tpjishnu5@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 77ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 50ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 35ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 40ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 25ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 16ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 10ms"}
+{"level":"error","message":"Error: \"street\" length must be at least 5 characters long","stack":"ValidationError: \"street\" length must be at least 5 characters long\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/authController.js:105:42\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at authenticateUser (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/middlewares/auth.js:31:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"}
+{"level":"info","message":"POST /api/auth/address 400 - 22ms"}
+{"level":"error","message":"Error: \"street\" length must be at least 5 characters long","stack":"ValidationError: \"street\" length must be at least 5 characters long\n    at BaseController.validateRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:24:13)\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/authController.js:105:42\n    at /home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/BaseController.js:12:23\n    at Layer.handleRequest (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/layer.js:152:17)\n    at next (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/router/lib/route.js:157:13)\n    at authenticateUser (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/middlewares/auth.js:31:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"}
+{"level":"info","message":"POST /api/auth/address 400 - 8ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 4ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 4ms"}
+{"level":"info","message":"POST /api/auth/address 200 - 18ms"}
+{"level":"info","message":"POST /api/auth/address 200 - 17ms"}
+{"level":"info","message":"PATCH /api/auth/address/69e9eb1a31ac51870958d734/default 200 - 17ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 10ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 8ms"}
+{"level":"info","message":"PUT /api/auth/address/69e9eb1a31ac51870958d734 200 - 21ms"}
+{"level":"info","message":"DELETE /api/auth/address/69e9eb1a31ac51870958d734 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/dashboard 401 - 3ms"}
+{"level":"info","message":"User action - ADMIN_LOGIN by user: admin@smartshop.com"}
+{"level":"info","message":"POST /api/admin/login 200 - 81ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 59ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 57ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 39ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 2ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 2ms"}
+{"level":"info","message":"User action - CATEGORY_CREATE by user: undefined"}
+{"level":"info","message":"POST /api/admin/categories 201 - 22ms"}
+{"level":"info","message":"User action - CATEGORY_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/categories/69e9ec2631ac51870958d766 200 - 39ms"}
+{"level":"info","message":"User action - CATEGORY_UPDATE by user: undefined"}
+{"level":"info","message":"PUT /api/admin/categories/69e9ec2631ac51870958d766 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 3ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 28ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 39ms"}
+{"level":"info","message":"User action - PRODUCT_CREATE by user: undefined"}
+{"level":"info","message":"POST /api/admin/products 201 - 3027ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=5 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 32ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=5 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000&category=69e9ec2631ac51870958d766 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=2000 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=price&sortOrder=desc&minPrice=0&maxPrice=2000 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=price&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=price&sortOrder=desc&minPrice=0&maxPrice=2000 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=price&sortOrder=desc&minPrice=0&maxPrice=2000&category=69df53225fee7d6f30f4cd07 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=price&sortOrder=desc&minPrice=0&maxPrice=2000 200 - 9ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 7ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 26ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 40ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 47ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 67ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 20ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 35ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 26ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 35ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 32ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 35ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 7ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 23ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 41ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 52ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 52ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 61ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 35ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 64ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 40ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 64ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 62ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 21ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 34ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 51ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 31ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 46ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 28ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 25ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 53ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 26ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 47ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 44ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 4ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/admin/categories 200 - 48ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 82ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 13ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"User action - USER_LOGIN by user: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 128ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 4ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 25ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 17ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 4ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}

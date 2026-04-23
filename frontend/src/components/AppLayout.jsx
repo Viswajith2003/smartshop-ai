@@ -19,7 +19,7 @@ const AppLayout = React.memo(({ children }) => {
 
       {/* Main Content Area - pt-20 offsets the new compact fixed navbar (80px) */}
       <main className="flex-grow pt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-20 xl:px-24 py-4">
           {children}
         </div>
       </main>

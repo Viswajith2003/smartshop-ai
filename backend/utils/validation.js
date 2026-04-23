@@ -236,6 +236,25 @@ const couponSearchValidation = Joi.object({
   search: Joi.string().optional()
 });
 
+const cartValidation = Joi.object({
+  userId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required().messages({
+    'any.required': 'User ID is required',
+    'string.pattern.base': 'Invalid user ID format'
+  }),
+  productId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required().messages({
+    'any.required': 'Product ID is required',
+    'string.pattern.base': 'Invalid product ID format'
+  }),
+  quantity: Joi.number().required().min(1).messages({
+    'any.required': 'Quantity is required',
+    'number.min': 'Quantity must be at least 1'
+  }),
+  price: Joi.number().required().min(0).messages({
+    'any.required': 'Price is required',
+    'number.min': 'Price must be a positive number'
+  })
+});
+
 module.exports = {
   registerValidation,
   loginValidation,
@@ -259,5 +278,6 @@ module.exports = {
   productValidation,
   productSearchValidation,
   couponValidation,
-  couponSearchValidation
+  couponSearchValidation,
+  cartValidation
 };

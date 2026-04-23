@@ -9,18 +9,27 @@ const ProductDetail = ({ products }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const wishlistItems = useSelector((state) => state.wishlist.items);
+  const cartItems = useSelector((state) => state.cart.items);
   
   if (!products) return null;
 
   const isWishlisted = wishlistItems.some(item => item._id === products._id);
+  const isInCart = cartItems.some(item => (item.product?._id || item.product) === products._id);
 
   const handleAddToCart = () => {
-    dispatch(addToCart(products));
-    toast.success(`${products.name} added to cart!`);
+    if (isInCart) {
+      navigate('/cart');
+      return;
+    }
+    dispatch(addToCart({ productId: products._id, quantity: 1, price: products.price }));
   };
 
   const handleBuyNow = () => {
-    dispatch(addToCart(products));
+    if (isInCart) {
+      navigate('/cart');
+      return;
+    }
+    dispatch(addToCart({ productId: products._id, quantity: 1, price: products.price }));
     navigate('/cart');
   };
 
@@ -106,7 +115,7 @@ const ProductDetail = ({ products }) => {
                 onClick={handleBuyNow}
                 className="flex-grow sm:flex-grow-0 bg-blue-600 hover:bg-blue-500 text-white font-black text-sm px-10 py-4 rounded-2xl shadow-[0_10px_20px_rgba(37,99,235,0.2)] hover:shadow-[0_15px_30px_rgba(37,99,235,0.3)] transition-all transform hover:-translate-y-1 active:scale-95 uppercase tracking-widest"
               >
-                Buy Now
+                {isInCart ? 'Checkout Now' : 'Buy Now'}
               </button>
               <button 
                 onClick={handleWishlist}
@@ -116,9 +125,10 @@ const ProductDetail = ({ products }) => {
               </button>
               <button 
                 onClick={handleAddToCart}
-                className="p-4 bg-white text-blue-600 border-2 border-slate-100 hover:border-blue-100 hover:bg-blue-50 rounded-2xl transition-all hover:scale-110 shadow-sm"
+                className={`p-4 border-2 rounded-2xl transition-all hover:scale-110 shadow-sm ${isInCart ? 'bg-indigo-50 text-indigo-600 border-indigo-100' : 'bg-white text-blue-600 border-slate-100 hover:border-blue-100 hover:bg-blue-50'}`}
+                title={isInCart ? 'View in Cart' : 'Add to Cart'}
               >
-                <i className="bi bi-cart-plus-fill text-xl"></i>
+                <i className={`bi ${isInCart ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'} text-xl`}></i>
               </button>
            </div>
         </div>

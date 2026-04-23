@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FilterSidebar, ProductDetail } from '../components/ui';
 import { categoryAPI, productAPI } from '../utils/api';
@@ -10,20 +10,28 @@ import fetchProducts from '../hooks/useFetchProducts';
 import usePagination from '../hooks/usePagination';
 import { Pagination } from '../components/ui';
 
-
-
 const ProductsPage = () => {
   const { id } = useParams();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const searchQuery = searchParams.get('search') || '';
   const dispatch = useDispatch();
   const wishlistItems = useSelector((state) => state.wishlist.items);
+  const cartItems = useSelector((state) => state.cart.items);
   
   const isWishlisted = (productId) => wishlistItems.some(item => item._id === productId);
+  const isInCart = (productId) => cartItems.some(item => (item.product?._id || item.product) === productId);
 
   const handleAddToCart = (e, product) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(addToCart(product));
-    toast.success(`${product.name} added to cart!`);
+    
+    if (isInCart(product._id)) {
+      navigate('/cart');
+      return;
+    }
+    
+    dispatch(addToCart({ productId: product._id, quantity: 1, price: product.price }));
   };
 
   const handleWishlist = (e, product) => {
@@ -72,6 +80,10 @@ const ProductsPage = () => {
         maxPrice: appliedPrice,
       };
 
+      if (searchQuery) {
+        params.search = searchQuery;
+      }
+
       if (selectedRating !== null) {
         params.rating = selectedRating;
       }
@@ -92,12 +104,12 @@ const ProductsPage = () => {
       }
     };
     getProducts();
-  }, [pagination.page, appliedPrice, selectedCategories, selectedRating, sortBy, sortLabel]);
+  }, [pagination.page, appliedPrice, selectedCategories, selectedRating, sortBy, sortLabel, searchQuery]);
 
   // Reset to page 1 when filters change
   useEffect(() => {
     resetPage();
-  }, [appliedPrice, selectedCategories, selectedRating, sortBy]);
+  }, [appliedPrice, selectedCategories, selectedRating, sortBy, searchQuery]);
 
   // Categories fetch on mount
   useEffect(() => {
@@ -256,9 +268,10 @@ const ProductsPage = () => {
                         {product.isActive !== false && (
                           <button 
                             onClick={(e) => handleAddToCart(e, product)}
-                            className="bg-black hover:bg-blue-600 text-white transition-colors duration-300 w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 transform"
+                            className={`${isInCart(product._id) ? 'bg-indigo-600' : 'bg-black hover:bg-indigo-600'} text-white transition-all duration-300 w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-1 transform`}
+                            title={isInCart(product._id) ? "View in Cart" : "Add to Cart"}
                           >
-                            <i className="bi bi-cart-plus-fill text-xl"></i>
+                            <i className={`bi ${isInCart(product._id) ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'} text-xl`}></i>
                           </button>
                         )}
                       </div>

@@ -6,16 +6,6 @@
     "auditLog": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/.c4669287216406e1e3cb2b4a807ffa90950ee3cc-audit.json",
     "files": [
         {
-            "date": 1775625964846,
-            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-08.log",
-            "hash": "2410bb9ef5de2c24409049a69a1ee220a526e142dca03f72e0766fc95a7a1db1"
-        },
-        {
-            "date": 1775675465348,
-            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-09.log",
-            "hash": "f64ffc89766e70495b53f713a02869446e6c5fc8348fe9459ff6a00a7dd5b11b"
-        },
-        {
             "date": 1775811799698,
             "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-10.log",
             "hash": "6f3bb4cbdc99ab3b5d5c3b0c95149c4249526ad7035ea51a6fbc5f3a2bc1b55d"
@@ -64,6 +54,16 @@
             "date": 1776796211916,
             "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-22.log",
             "hash": "8f7aadada6f9de8077f69f3c3c29c152140c4a2bf40a20cee55c6323cdfafbc4"
+        },
+        {
+            "date": 1776919517167,
+            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-23.log",
+            "hash": "9ea5ede94fe0a3bfb56ab61c3fe232bc6df5a35157a94565c5f1435ea924b72b"
+        },
+        {
+            "date": 1776969007660,
+            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/logs/error-2026-04-24.log",
+            "hash": "c26a80ba708ef0420bf4d45a568088300ee973d79270a87dbac6072222742fa4"
         }
     ],
     "hashType": "sha256"

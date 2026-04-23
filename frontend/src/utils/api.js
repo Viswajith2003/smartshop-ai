@@ -104,6 +104,10 @@ apiClient.interceptors.response.use(
       return Promise.reject(error);
     }
     
+    if (error.response?.status === 500 && !window.location.pathname.includes('/error')) {
+      window.location.href = '/error';
+    }
+
     return Promise.reject(error);
   }
 );
@@ -168,7 +172,6 @@ export const productAPI = {
     const response = await apiClient.put(`/admin/products/${id}`, productData);
     return response.data;
   },
-
   deleteProduct: async (id) => {
     const response = await apiClient.delete(`/admin/products/${id}`);
     return response.data;
@@ -203,6 +206,28 @@ export const couponAPI = {
 
   applyCoupon: async (data) => {
     const response = await apiClient.post('/coupons/apply', data);
+    return response.data;
+  }
+};
+
+export const cartAPI = {
+  addToCart: async (cartData) => {
+    const response = await apiClient.post('/cart/add', cartData);
+    return response.data;
+  },
+
+  getCart: async (userId) => {
+    const response = await apiClient.get(`/cart/${userId}`);
+    return response.data;
+  },
+  
+  updateQuantity: async (cartData) => {
+    const response = await apiClient.put('/cart/update-quantity', cartData);
+    return response.data;
+  },
+  
+  deleteCartItem: async (userId, productId) => {
+    const response = await apiClient.delete(`/cart/${userId}/${productId}`);
     return response.data;
   }
 };

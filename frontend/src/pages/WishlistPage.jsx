@@ -1,17 +1,24 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toggleWishlist } from '../store/slices/wishlistSlice';
 import { addToCart } from '../store/slices/cartSlice';
 import { toast } from 'react-toastify';
 
 const WishlistPage = () => {
     const { items } = useSelector((state) => state.wishlist);
+    const { items: cartItems } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const isInCart = (productId) => cartItems.some(item => (item.product?._id || item.product) === productId);
 
     const handleAddToCart = (product) => {
-        dispatch(addToCart(product));
-        toast.success(`${product.name} added to cart!`);
+        if (isInCart(product._id)) {
+            navigate('/cart');
+            return;
+        }
+        dispatch(addToCart({ productId: product._id, quantity: 1, price: product.price }));
     };
 
     if (items.length === 0) {
@@ -32,7 +39,7 @@ const WishlistPage = () => {
     }
 
     return (
-        <div className="max-w-7xl mx-auto py-8">
+        <div className="w-full py-8">
             <h1 className="text-4xl font-black text-slate-900 mb-10 tracking-tight flex items-center">
                 My Wishlist
                 <span className="ml-4 text-sm font-bold bg-rose-100 text-rose-600 px-3 py-1 rounded-full uppercase tracking-widest">
@@ -78,9 +85,10 @@ const WishlistPage = () => {
                                 </span>
                                 <button 
                                     onClick={() => handleAddToCart(product)}
-                                    className="p-3 bg-indigo-600 text-white rounded-xl shadow-lg shadow-indigo-100 hover:shadow-indigo-200 hover:-translate-y-1 transition-all active:scale-95"
+                                    className={`p-3 rounded-xl shadow-lg transition-all active:scale-95 ${isInCart(product._id) ? 'bg-indigo-50 text-indigo-600 shadow-indigo-50' : 'bg-indigo-600 text-white shadow-indigo-100 hover:shadow-indigo-200 hover:-translate-y-1'}`}
+                                    title={isInCart(product._id) ? 'View in Cart' : 'Add to Cart'}
                                 >
-                                    <i className="bi bi-cart-plus-fill"></i>
+                                    <i className={`bi ${isInCart(product._id) ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'}`}></i>
                                 </button>
                              </div>
                         </div>

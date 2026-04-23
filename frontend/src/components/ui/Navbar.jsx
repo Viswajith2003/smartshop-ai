@@ -3,11 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout as logoutAction } from '../../store/slices/authSlice';
 import { API_CONFIG } from '../../config/app';
+import { SearchBar } from './';
 
 const Navbar = ({ onLogout }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const Navbar = ({ onLogout }) => {
 
     return (
         <nav className="bg-white/95 backdrop-blur-md shadow-sm fixed top-0 w-full z-50 transition-all duration-300 border-b border-gray-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-20 xl:px-24">
                 <div className="flex justify-between items-center h-20 relative">
                     
                     {/* Logo Section */}
@@ -72,15 +72,13 @@ const Navbar = ({ onLogout }) => {
                     {isSearchOpen ? (
                         <div className="absolute inset-0 flex items-center justify-center px-4 md:px-0 z-50 bg-white md:bg-transparent">
                             <div className="w-full max-w-xl relative animate-in fade-in slide-in-from-top-2 duration-300">
-                                <i className="bi bi-search absolute left-5 top-1/2 -translate-y-1/2 text-indigo-400 font-bold"></i>
-                                <input
-                                    ref={searchInputRef}
-                                    type="text"
+                                <SearchBar 
+                                    autoFocus={true}
                                     placeholder="Search for anything..."
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full bg-indigo-50/50 border-2 border-indigo-100 rounded-2xl py-3 pl-14 pr-12 focus:outline-none focus:border-indigo-400 focus:bg-white transition-all font-bold text-indigo-900 placeholder:text-gray-400 shadow-sm"
-                                    onKeyDown={(e) => e.key === 'Escape' && setIsSearchOpen(false)}
+                                    onSearch={(val) => {
+                                        setIsSearchOpen(false);
+                                        navigate(`/products?search=${encodeURIComponent(val)}`);
+                                    }}
                                 />
                                 <button 
                                     onClick={() => setIsSearchOpen(false)}

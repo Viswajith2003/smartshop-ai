@@ -34,10 +34,32 @@ class CouponService{
         }
     }
 
-    async getAllCoupons(){
+    async getAllCoupons(query = {}) {
         try {
-            const coupons=await Coupon.find();
-            return coupons;
+            const { page = 1, limit = 10, search = '' } = query;
+            const skip = (page - 1) * limit;
+
+            const mongoQuery = {};
+            if (search) {
+                mongoQuery.code = { $regex: search, $options: 'i' };
+            }
+
+            const coupons = await Coupon.find(mongoQuery)
+                .sort({ createdAt: -1 })
+                .skip(skip)
+                .limit(limit);
+
+            const total = await Coupon.countDocuments(mongoQuery);
+
+            return {
+                coupons,
+                meta: {
+                    page: Number(page),
+                    limit: Number(limit),
+                    totalCoupons: total,
+                    totalPages: Math.ceil(total / limit)
+                }
+            };
         } catch (error) {
             throw error;
         }
@@ -74,7 +96,13 @@ class CouponService{
             if(discountAmount>coupon.maxDiscountAmount){
                 throw new Error("Discount amount is greater than maximum discount amount");
             }
-            return discountAmount;
+            return {
+                discountAmount,
+                discountPercentage: coupon.discountPercentage,
+                maxDiscountAmount: coupon.maxDiscountAmount,
+                minPurchaseAmount: coupon.minPurchaseAmount,
+                code: coupon.code
+            };
         } catch (error) {
             throw error;
         }
