@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { categoryAPI, productAPI } from '../../utils/api';
+import { categoryAPI, productAPI } from '../../services/api';
 import { toast } from 'react-toastify';
 import usePagination from '../../hooks/usePagination';
-import { Pagination, SearchBar } from '../ui';
+import { toastBackendError } from '../../utils/errorUtils';
+import { Pagination, SearchBar, ConfirmModal } from '../common';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -37,6 +38,9 @@ const ProductManager = () => {
 
   const { pagination, handlePageChange, updatePagination } = usePagination(5); // Admin limit, e.g., 5
   const [products, setProducts] = useState([]);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [productToDelete, setProductToDelete] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -63,17 +67,27 @@ const ProductManager = () => {
     handleOpenModal();
   };
 
-  const handleDelete = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this product?')) return;
+  const handleDelete = (id) => {
+    setProductToDelete(id);
+    setIsConfirmOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!productToDelete) return;
+    setIsDeleting(true);
     try {
-      const res = await productAPI.deleteProduct(id);
+      const res = await productAPI.deleteProduct(productToDelete);
       if (res.success) {
         toast.success('Product deleted successfully');
-        setProducts(prev => prev.filter(p => p._id !== id));
+        setProducts(prev => prev.filter(p => p._id !== productToDelete));
+        setIsConfirmOpen(false);
       }
     } catch (error) {
       toast.error(error.response?.data?.message || 'Failed to delete product');
       console.error(error);
+    } finally {
+      setIsDeleting(false);
+      setProductToDelete(null);
     }
   };
 
@@ -274,7 +288,7 @@ const ProductManager = () => {
                   existingImage: editingProduct ? (editingProduct.images && editingProduct.images.length > 0 ? editingProduct.images[0] : '') : ''
                 }}
                 validationSchema={ProductSchema}
-                onSubmit={async (values, { setSubmitting }) => {
+                onSubmit={async (values, { setSubmitting, setErrors }) => {
                   try {
                     const payload = new FormData();
                     payload.append('name', values.name);
@@ -309,7 +323,7 @@ const ProductManager = () => {
                     }
                     handleCloseModal();
                   } catch (error) {
-                    toast.error(error.response?.data?.message || 'Operation failed!');
+                    toastBackendError(error, (errors) => setErrors(errors));
                     console.error(error);
                   } finally {
                     setSubmitting(false);
@@ -448,6 +462,14 @@ const ProductManager = () => {
           </div>
         </div>
       )}
+      <ConfirmModal 
+        isOpen={isConfirmOpen}
+        onClose={() => setIsConfirmOpen(false)}
+        onConfirm={confirmDelete}
+        title="Delete Product"
+        message="Are you sure you want to permanently delete this product from the inventory?"
+        loading={isDeleting}
+      />
     </div>
   );
 };

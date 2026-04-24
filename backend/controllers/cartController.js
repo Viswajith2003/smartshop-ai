@@ -1,9 +1,14 @@
 const BaseController = require("./BaseController");
 const CartService = require("../services/CartService");
+const Validation = require("../utils/validation");
 
 class CartController extends BaseController {
     static addToCart = BaseController.asyncHandler(async (req, res) => {
-        const { userId, productId, quantity, price } = req.body;
+        const validatedData = BaseController.validateRequest(
+            Validation.cartValidation,
+            req.body
+        );
+        const { userId, productId, quantity, price } = validatedData;
         const cart = await CartService.addToCart(userId, productId, quantity, price);
         BaseController.handleSendSuccess(res, "Cart updated successfully", cart);
     });

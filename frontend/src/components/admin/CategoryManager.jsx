@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {categoryAPI} from '../../utils/api';
+import { categoryAPI } from '../../services/api';
 import { toast } from 'react-toastify';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { ConfirmModal } from '../common';
+import { toastBackendError } from '../../utils/errorUtils';
 
 const CategorySchema = Yup.object().shape({
   name: Yup.string()
@@ -20,6 +22,9 @@ const CategoryManager = () => {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState(null);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [categoryToDelete, setCategoryToDelete] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
 
   useEffect(()=>{
@@ -47,18 +52,27 @@ const CategoryManager = () => {
 
   const handleCloseModal = () => setIsModalOpen(false);
 
-  const handleDelete = async (id) => {
-    if(window.confirm('Are you sure you want to delete this category?')) {
-      try {
-        const res = await categoryAPI.deleteCategory(id);
-        if (res.success) {
-          setCategories(categories.filter(c => (c._id || c.id) !== id));
-          toast.success('Category deleted successfully');
-        }
-      } catch (error) {
-        console.error(error);
-        toast.error(error.response?.data?.message || 'Something went wrong');
+  const handleDelete = (id) => {
+    setCategoryToDelete(id);
+    setIsConfirmOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!categoryToDelete) return;
+    setIsDeleting(true);
+    try {
+      const res = await categoryAPI.deleteCategory(categoryToDelete);
+      if (res.success) {
+        setCategories(categories.filter(c => (c._id || c.id) !== categoryToDelete));
+        toast.success('Category deleted successfully');
+        setIsConfirmOpen(false);
       }
+    } catch (error) {
+      console.error(error);
+      toast.error(error.response?.data?.message || 'Something went wrong');
+    } finally {
+      setIsDeleting(false);
+      setCategoryToDelete(null);
     }
   };
 
@@ -147,7 +161,7 @@ const CategoryManager = () => {
                   isActive: editingCategory ? editingCategory.isActive : true
                 }}
                 validationSchema={CategorySchema}
-                onSubmit={async (values, { setSubmitting }) => {
+                onSubmit={async (values, { setSubmitting, setErrors }) => {
                   try {
                     if (editingCategory) {
                       const id = editingCategory._id || editingCategory.id;
@@ -165,8 +179,8 @@ const CategoryManager = () => {
                     }
                     handleCloseModal();
                   } catch (error) {
+                    toastBackendError(error, (errors) => setErrors(errors));
                     console.error(error);
-                    toast.error(error.response?.data?.message || 'Something went wrong');
                   } finally {
                     setSubmitting(false);
                   }
@@ -230,6 +244,14 @@ const CategoryManager = () => {
           </div>
         </div>
       )}
+      <ConfirmModal 
+        isOpen={isConfirmOpen}
+        onClose={() => setIsConfirmOpen(false)}
+        onConfirm={confirmDelete}
+        title="Delete Category"
+        message="Are you sure you want to permanently delete this category? This might affect products linked to it."
+        loading={isDeleting}
+      />
     </div>
   );
 };

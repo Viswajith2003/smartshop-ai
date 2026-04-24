@@ -1,4 +1,4 @@
-import { productAPI } from "../utils/api";
+import { productAPI } from "../services/api";
 
 const usefetchProducts = async (params = {}) => {
     try {

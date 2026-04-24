@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { couponAPI } from '../../utils/api';
+import { couponAPI } from '../../services/api';
 import { toast } from 'react-toastify';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { ConfirmModal } from '../common';
+import { toastBackendError } from '../../utils/errorUtils';
 
 const CouponSchema = Yup.object().shape({
   code: Yup.string().required('Code is required').uppercase(),
@@ -28,6 +30,9 @@ const CouponManager = () => {
   const [coupons, setCoupons] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingCoupon, setEditingCoupon] = useState(null);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [couponToDelete, setCouponToDelete] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const fetchCoupons = async () => {
@@ -53,18 +58,27 @@ const CouponManager = () => {
 
   const handleCloseModal = () => setIsModalOpen(false);
 
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this coupon?')) {
-      try {
-        const res = await couponAPI.deleteCoupon(id);
-        if (res.success) {
-          setCoupons(coupons.filter(c => (c._id || c.id) !== id));
-          toast.success('Coupon deleted successfully');
-        }
-      } catch (error) {
-        console.error(error);
-        toast.error(error.response?.data?.message || 'Something went wrong');
+  const handleDelete = (id) => {
+    setCouponToDelete(id);
+    setIsConfirmOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!couponToDelete) return;
+    setIsDeleting(true);
+    try {
+      const res = await couponAPI.deleteCoupon(couponToDelete);
+      if (res.success) {
+        setCoupons(coupons.filter(c => (c._id || c.id) !== couponToDelete));
+        toast.success('Coupon deleted successfully');
+        setIsConfirmOpen(false);
       }
+    } catch (error) {
+      console.error(error);
+      toast.error(error.response?.data?.message || 'Something went wrong');
+    } finally {
+      setIsDeleting(false);
+      setCouponToDelete(null);
     }
   };
 
@@ -191,7 +205,7 @@ const CouponManager = () => {
                   isActive: editingCoupon ? editingCoupon.isActive : true
                 }}
                 validationSchema={CouponSchema}
-                onSubmit={async (values, { setSubmitting }) => {
+                onSubmit={async (values, { setSubmitting, setErrors }) => {
                   try {
                     const payload = {
                       ...values,
@@ -213,8 +227,8 @@ const CouponManager = () => {
                     }
                     handleCloseModal();
                   } catch (error) {
+                    toastBackendError(error, (errors) => setErrors(errors));
                     console.error(error);
-                    toast.error(error.response?.data?.message || 'Something went wrong');
                   } finally {
                     setSubmitting(false);
                   }
@@ -366,6 +380,14 @@ const CouponManager = () => {
           </div>
         </div>
       )}
+      <ConfirmModal 
+        isOpen={isConfirmOpen}
+        onClose={() => setIsConfirmOpen(false)}
+        onConfirm={confirmDelete}
+        title="Delete Coupon"
+        message="Are you sure you want to permanently delete this discount code?"
+        loading={isDeleting}
+      />
     </div>
   );
 };

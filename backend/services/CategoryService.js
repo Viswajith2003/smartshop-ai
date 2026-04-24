@@ -62,6 +62,9 @@ class CategoryService{
                     $project: {
                         productData: 0
                     }
+                },
+                {
+                    $sort: { createdAt: -1 }
                 }
             ]);
             return categories;

@@ -95,7 +95,7 @@ class ProductService {
 
       const products = await Product.find(query)
         .populate("category", "name")
-        .sort({ [sortBy]: sortOrder === 'desc' ? -1 : 1 })
+        .sort({ [sortBy]: sortOrder === 'desc' ? -1 : 1, createdAt: -1 })
         .skip(skip)
         .limit(Number(limit));
 
