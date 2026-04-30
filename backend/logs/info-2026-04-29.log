@@ -1,0 +1,471 @@
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 40ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/admin/categories 200 - 79ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 115ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 116ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 140ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 70ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 60ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 27ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 24ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 18ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 19ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 27ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/wishlist 200 - 28ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 13ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 25ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/admin/categories 200 - 11ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 26ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 39ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 47ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 28ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 56ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 19ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 21ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 30ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 30ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 38ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 25ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 38ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"DELETE /api/cart/69cffc773501407550e3096f/69e7ce6306902c6c586723c3 200 - 35ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"DELETE /api/cart/69cffc773501407550e3096f/69e9eca431ac51870958d775 200 - 10ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"DELETE /api/cart/69cffc773501407550e3096f/69e7cdb606902c6c586723bb 200 - 8ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 6ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 7ms"}
+{"level":"info","message":"Creating Razorpay order for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Order created in DB: 69f0fe0ee823ffdc3ebef486"}
+{"level":"info","message":"POST /api/orders/create 201 - 331ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 7ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/admin/categories 200 - 49ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 62ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 22ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 95ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 84ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/wishlist 200 - 73ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 58ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 29ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 27ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 27ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 36ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 32ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 37ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 4ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 5ms"}
+{"level":"info","message":"Creating Razorpay order for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Order created in DB: 69f1b9c230d10359c26439bd"}
+{"level":"info","message":"POST /api/orders/create 201 - 416ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 8ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 5ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 17ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 16ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 14ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 14ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"DELETE /api/cart/69cffc773501407550e3096f/69e7ceb506902c6c586723c7 200 - 70ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 8ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 35ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 25ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 64ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 52ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 48ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 19ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 41ms"}
+{"level":"info","message":"GET /api/admin/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 8ms"}
+{"level":"info","message":"Adding to cart: user=69cffc773501407550e3096f, product=69e6503659cfa1412b2b70e4"}
+{"level":"info","message":"Cart saved successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"POST /api/cart/add 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 35ms"}
+{"level":"info","message":"GET /api/admin/products 200 - 37ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 35ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 16ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 16ms"}
+{"level":"info","message":"Adding to cart: user=69cffc773501407550e3096f, product=69e9eca431ac51870958d775"}
+{"level":"info","message":"Cart saved successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"POST /api/cart/add 200 - 11ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 15ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 19ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 31ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 29ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 35ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 35ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 8ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 164ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 159ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 192ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 180ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 125ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 64ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 44ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 38ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 74ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 40ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 66ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 32ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 2ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 23ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 44ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 71ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 47ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 88ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 41ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 37ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 57ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 44ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 72ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 79ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 70ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"PATCH /api/cart/toggle-selection 200 - 20ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"PATCH /api/cart/toggle-selection 200 - 19ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"PATCH /api/cart/toggle-selection 200 - 9ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 6ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 6ms"}
+{"level":"info","message":"Creating Razorpay order for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Order created in DB: 69f1ce906cd9a0bdeb27701e"}
+{"level":"info","message":"POST /api/orders/create 201 - 357ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 12ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 13ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 6ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 5ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 13ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 12ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 14ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 28ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 44ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 41ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 48ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 41ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 24ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 22ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 27ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 38ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 40ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 32ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 32ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 5ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 4ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 9ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 14ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 12ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 18ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 19ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 19ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 15ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 17ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 4ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 5ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 9ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 13ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 4ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 5ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 10ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 17ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"PATCH /api/cart/toggle-selection 200 - 10ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 4ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 3ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 15ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 16ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"PATCH /api/cart/toggle-selection 200 - 11ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 4ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 4ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 8ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 9ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 9ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 5ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 5ms"}
+{"level":"info","message":"Creating Razorpay order for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Order created in DB: 69f1d4d86cd9a0bdeb2770db"}
+{"level":"info","message":"POST /api/orders/create 201 - 300ms"}
+{"level":"info","message":"Creating Razorpay order for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Order created in DB: 69f1d57e6cd9a0bdeb2770e4"}
+{"level":"info","message":"POST /api/orders/create 201 - 272ms"}
+{"level":"info","message":"Creating Razorpay order for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Order created in DB: 69f1d80d6cd9a0bdeb2770ed"}
+{"level":"info","message":"POST /api/orders/create 201 - 215ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 8ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 11ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 23ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 19ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 13ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 21ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/wishlist 200 - 18ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 13ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 10ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 15ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/wishlist 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 27ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 24ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/admin/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 28ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 19ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 28ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 27ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/wishlist 200 - 40ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 36ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 20ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 38ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 4ms"}
+{"level":"info","message":"GET /api/auth/profile 200 - 4ms"}
+{"level":"info","message":"Creating Razorpay order for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Order created in DB: 69f1d8956cd9a0bdeb277170"}
+{"level":"info","message":"POST /api/orders/create 201 - 217ms"}
+{"level":"info","message":"Verifying payment for user: 69cffc773501407550e3096f, Razorpay Order: order_SjGnmTigxTScbR"}
+{"level":"info","message":"Payment verified and order updated: 69f1d8956cd9a0bdeb277170"}
+{"level":"info","message":"POST /api/orders/verify 200 - 45ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/wishlist 200 - 71ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 64ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/wishlist 200 - 81ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 31ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 23ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 24ms"}
+{"level":"info","message":"Cancelling order: 69f1d4d86cd9a0bdeb2770db for user: 69cffc773501407550e3096f"}
+{"level":"error","message":"Error: Order validation failed: shippingAddress.phone: Path `shippingAddress.phone` is required., shippingAddress.fullName: Path `shippingAddress.fullName` is required.","stack":"ValidationError: Order validation failed: shippingAddress.phone: Path `shippingAddress.phone` is required., shippingAddress.fullName: Path `shippingAddress.fullName` is required.\n    at model.validate (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/document.js:2864:36)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async model.$__save (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/model.js:390:7)\n    at async model.save (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/node_modules/mongoose/lib/model.js:664:5)\n    at async OrderService.cancelOrder (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/services/OrderService.js:193:5)\n    at async cancelOrder (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/controllers/orderController.js:53:21)"}
+{"level":"info","message":"POST /api/orders/69f1d4d86cd9a0bdeb2770db/cancel 400 - 38ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 28ms"}
+{"level":"info","message":"GET /api/admin/categories 200 - 14ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 13ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 18ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/admin/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 34ms"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 32ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 44ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 15ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 26ms"}
+{"level":"info","message":"Fetching cart for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"Cart populated successfully for user: 69cffc773501407550e3096f"}
+{"level":"info","message":"GET /api/cart/69cffc773501407550e3096f 200 - 18ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 32ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 22ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 24ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 55ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}

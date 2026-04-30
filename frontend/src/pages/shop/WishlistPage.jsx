@@ -1,25 +1,22 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { toggleWishlist } from '../../features/auth/wishlistSlice';
-import { addToCart } from '../../features/cart/cartSlice';
-import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { WishlistItem, WishlistSummary } from '../../components/wishlist';
 
 const WishlistPage = () => {
-    const { items } = useSelector((state) => state.wishlist);
+    const { items, loading } = useSelector((state) => state.wishlist);
     const { items: cartItems } = useSelector((state) => state.cart);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const isInCart = (productId) => cartItems.some(item => (item.product?._id || item.product) === productId);
+    const totalValue = items.reduce((total, item) => total + (item.product?.price || 0), 0);
 
-    const handleAddToCart = (product) => {
-        if (isInCart(product._id)) {
-            navigate('/cart');
-            return;
-        }
-        dispatch(addToCart({ productId: product._id, quantity: 1, price: product.price }));
-    };
+    if (loading && items.length === 0) {
+        return (
+            <div className="min-h-[70vh] flex items-center justify-center">
+                <div className="w-16 h-16 border-4 border-rose-200 border-t-rose-500 rounded-full animate-spin"></div>
+            </div>
+        );
+    }
 
     if (items.length === 0) {
         return (
@@ -47,56 +44,23 @@ const WishlistPage = () => {
                 </span>
             </h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                {items.map((product) => (
-                    <div key={product._id} className="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group border border-slate-100 group">
-                        {/* Image Section */}
-                        <div className="bg-slate-50 p-6 relative aspect-square flex items-center justify-center rounded-t-[2rem]">
-                            {/* Remove Icon */}
-                            <button 
-                                onClick={() => dispatch(toggleWishlist(product))}
-                                className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-rose-500 w-10 h-10 flex items-center justify-center rounded-xl shadow-sm hover:bg-rose-500 hover:text-white transition-all z-10"
-                            >
-                                <i className="bi bi-heart-fill text-lg"></i>
-                            </button>
-                            
-                            {/* Product Image */}
-                            <img 
-                                src={product.images && product.images[0]} 
-                                alt={product.name} 
-                                className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
-                            />
-                        </div>
+            <div className="flex flex-col lg:flex-row gap-10">
+                {/* Wishlist Items List */}
+                <div className="flex-grow space-y-6">
+                    {items.map((item) => (
+                        <WishlistItem 
+                            key={item.product?._id} 
+                            item={item} 
+                            isInCart={isInCart(item.product?._id)} 
+                        />
+                    ))}
+                </div>
 
-                        {/* Details Section */}
-                        <div className="p-6 flex flex-col flex-grow">
-                             <div className="mb-4">
-                                <span className="text-[10px] font-black tracking-widest text-indigo-400 uppercase block mb-1">
-                                    {product.category?.name || 'Category'}
-                                </span>
-                                <h3 className="text-slate-800 font-extrabold text-lg truncate group-hover:text-indigo-600 transition-colors">
-                                    {product.name}
-                                </h3>
-                             </div>
-
-                             <div className="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
-                                <span className="text-xl font-black text-slate-900">
-                                    ₹{product.price.toLocaleString('en-IN')}
-                                </span>
-                                <button 
-                                    onClick={() => handleAddToCart(product)}
-                                    className={`p-3 rounded-xl shadow-lg transition-all active:scale-95 ${isInCart(product._id) ? 'bg-indigo-50 text-indigo-600 shadow-indigo-50' : 'bg-indigo-600 text-white shadow-indigo-100 hover:shadow-indigo-200 hover:-translate-y-1'}`}
-                                    title={isInCart(product._id) ? 'View in Cart' : 'Add to Cart'}
-                                >
-                                    <i className={`bi ${isInCart(product._id) ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'}`}></i>
-                                </button>
-                             </div>
-                        </div>
-
-                        <Link to={`/products/${product._id}`} className="absolute inset-0 z-0"></Link>
-                        <div className="pointer-events-none absolute -inset-px rounded-[2rem] border-2 border-transparent group-hover:border-indigo-400/20 transition-colors"></div>
-                    </div>
-                ))}
+                {/* Wishlist Summary Sidebar */}
+                <WishlistSummary 
+                    items={items} 
+                    totalValue={totalValue} 
+                />
             </div>
         </div>
     );

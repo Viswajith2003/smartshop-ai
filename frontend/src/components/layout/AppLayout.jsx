@@ -1,17 +1,32 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logout } from "../../features/auth/authSlice";
+import { logout, fetchProfile } from "../../features/auth/authSlice";
+import { fetchWishlist } from "../../features/wishlist/wishlistSlice";
+import { fetchCart } from "../../features/cart/cartSlice";
+import { getUser } from "../../services/axiosInstance";
+import { useSelector, useDispatch } from "react-redux";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const AppLayout = React.memo(({ children }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(fetchProfile());
+      dispatch(fetchWishlist());
+      const user = getUser();
+      if (user) {
+        dispatch(fetchCart(user.id || user._id));
+      }
+    }
+  }, [isAuthenticated, dispatch]);
 
   const handleLogout = useCallback(() => {
+    navigate("/", { replace: true });
     dispatch(logout());
-    navigate("/");
   }, [dispatch, navigate]);
 
   return (

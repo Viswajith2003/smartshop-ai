@@ -1,13 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { removeFromCartDB, updateQuantityDB } from '../../features/cart/cartSlice';
+import { removeFromCartDB, updateQuantityDB, toggleSelectionDB } from '../../features/cart/cartSlice';
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
 
   return (
-    <div key={item.product?._id} className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex items-center gap-6 group transition-all hover:shadow-md">
+    <div key={item.product?._id} className={`bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex items-center gap-6 group transition-all hover:shadow-md ${!item.isSelected ? 'opacity-60 grayscale-[0.5]' : ''}`}>
+      {/* Selection Toggle */}
+      <div className="flex-shrink-0">
+        <button
+          onClick={() => dispatch(toggleSelectionDB(item.product?._id))}
+          className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${item.isSelected ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100' : 'bg-slate-100 text-slate-400 hover:bg-slate-200'}`}
+        >
+          {item.isSelected ? (
+            <i className="bi bi-check-lg text-lg"></i>
+          ) : (
+            <i className="bi bi-dash text-lg"></i>
+          )}
+        </button>
+      </div>
       {/* Product Image */}
       <div className="w-32 h-32 bg-slate-50 rounded-2xl overflow-hidden flex-shrink-0 border border-slate-100 flex items-center justify-center p-2">
         <img

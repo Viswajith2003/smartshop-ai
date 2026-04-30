@@ -9,7 +9,6 @@ const logger = require("./utils/logger");
 
 const { setupMiddleware } = require("./middlewares/setup");
 const routes = require("./routes");
-const BaseController = require("./controllers/BaseController");
 
 class Server {
   constructor() {

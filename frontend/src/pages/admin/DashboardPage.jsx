@@ -2,7 +2,23 @@ import React, { useState, useEffect, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
-import { CategoryManager, ProductManager, CouponManager } from '../../components/admin';
+import { 
+  LayoutDashboard, 
+  Users, 
+  Package, 
+  Layers, 
+  ShoppingCart, 
+  Ticket, 
+  Image as ImageIcon, 
+  FileText, 
+  LogOut, 
+  Bell, 
+  Search,
+  TrendingUp,
+  ShoppingBag,
+  ArrowUpRight
+} from 'lucide-react';
+import { CategoryManager, ProductManager, CouponManager, OrderManager, UserManager } from '../../components/admin';
 import { adminAPI } from '../../services/api';
 
 const DashboardPage = memo(() => {
@@ -38,133 +54,63 @@ const DashboardPage = memo(() => {
   };
 
   const sidebarItems = [
-    { 
-      name: 'Dashboard', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-          <path d="M3 3v18h18" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" />
-        </svg>
-      )
-    },
-    { 
-      name: 'Users', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
-        </svg>
-      )
-    },
-    { 
-      name: 'Products', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-          <path d="m7.5 4.27 9 5.15" /><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" />
-        </svg>
-      )
-    },
-    { 
-      name: 'Categories', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-          <rect width="7" height="7" x="3" y="3" rx="1" /><rect width="7" height="7" x="14" y="3" rx="1" /><rect width="7" height="7" x="14" y="14" rx="1" /><rect width="7" height="7" x="3" y="14" rx="1" />
-        </svg>
-      )
-    },
-    { 
-      name: 'Orders', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-          <circle cx="8" cy="21" r="1" /><circle cx="19" cy="21" r="1" /><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-        </svg>
-      )
-    },
-    { 
-      name: 'Coupons', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-          <path d="M2 9V5.25A1.25 1.25 0 0 1 3.25 4h17.5A1.25 1.25 0 0 1 22 5.25V9a2 2 0 0 0 0 4v3.75a1.25 1.25 0 0 1-1.25 1.25H3.25A1.25 1.25 0 0 1 2 16.25V13a2 2 0 0 0 0-4Z" />
-        </svg>
-      )
-    },
-    { 
-      name: 'Banners', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-          <rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-        </svg>
-      )
-    },
-    { 
-      name: 'Sales Report', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" />
-        </svg>
-      )
-    },
+    { name: 'Dashboard', icon: LayoutDashboard },
+    { name: 'Users', icon: Users },
+    { name: 'Products', icon: Package },
+    { name: 'Categories', icon: Layers },
+    { name: 'Orders', icon: ShoppingCart },
+    { name: 'Coupons', icon: Ticket },
+    { name: 'Banners', icon: ImageIcon },
+    { name: 'Sales Report', icon: FileText },
   ];
 
   const stats = [
     { 
-      label: 'TOTAL USERS', 
+      label: 'Total Users', 
       value: statsData?.totalUsers || 0, 
-      color: 'text-[#00ff00]', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
-        </svg>
-      )
+      trend: '+12%',
+      icon: Users,
+      color: 'bg-blue-500/10 text-blue-500'
     },
     { 
-      label: 'TOTAL PRODUCTS', 
+      label: 'Products', 
       value: statsData?.totalProducts || 0, 
-      color: 'text-[#00ff00]', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
-          <path d="M21 8v13H3V8" /><path d="M1 3h22v5H1z" /><path d="M10 12h4" />
-        </svg>
-      )
+      trend: '+5%',
+      icon: Package,
+      color: 'bg-indigo-500/10 text-indigo-500'
     },
     { 
-      label: 'TOTAL CATEGORIES', 
-      value: statsData?.totalCategories || 0, 
-      color: 'text-[#00ff00]', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
-          <rect width="7" height="7" x="3" y="3" rx="1" /><rect width="7" height="7" x="14" y="3" rx="1" /><rect width="7" height="7" x="14" y="14" rx="1" /><rect width="7" height="7" x="3" y="14" rx="1" />
-        </svg>
-      )
-    },
-    { 
-      label: 'TOTAL REVENUE', 
+      label: 'Revenue', 
       value: `₹${(statsData?.totalSales || 0).toLocaleString()}`, 
-      color: 'text-[#00ff00]', 
-      icon: (props) => (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
-          <path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-        </svg>
-      )
+      trend: '+18%',
+      icon: TrendingUp,
+      color: 'bg-emerald-500/10 text-emerald-500'
+    },
+    { 
+      label: 'Total Orders', 
+      value: statsData?.totalOrders || 0, 
+      trend: '+22%',
+      icon: ShoppingBag,
+      color: 'bg-amber-500/10 text-amber-500'
     },
   ];
 
   return (
-    <div className="flex min-h-screen bg-[#07011d] text-white font-sans">
+    <div className="flex min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-indigo-500/30">
       
       {/* Sidebar */}
-      <aside className="w-72 bg-[#02001c] flex flex-col border-r border-[#1a1c3d]">
-        <div className="p-8 flex items-center gap-3">
-          <div className="bg-[#1e1470]/40 p-3 rounded-2xl border border-purple-500/20 shadow-[0_0_15px_rgba(147,51,234,0.3)]">
-             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-8 h-8 text-[#9333ea]">
-                <circle cx="8" cy="21" r="1" /><circle cx="19" cy="21" r="1" /><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-             </svg>
+      <aside className="w-64 bg-[#1e293b] flex flex-col border-r border-slate-800 fixed h-full z-20">
+        <div className="p-6 flex items-center gap-3">
+          <div className="bg-indigo-600 p-2.5 rounded-xl shadow-lg shadow-indigo-500/20 text-white">
+             <ShoppingBag className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-xl font-black tracking-tight leading-none text-white transition-all hover:text-purple-400 cursor-default">Smart Shop</h1>
-            <p className="text-[10px] text-gray-500 font-extrabold uppercase mt-1 tracking-widest">Admin Panel</p>
+            <h1 className="text-lg font-black tracking-tight text-white leading-tight">SmartShop</h1>
+            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-tight">Admin Console</p>
           </div>
         </div>
 
-        <nav className="flex-1 px-4 py-8 space-y-3">
+        <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto custom-scrollbar">
           {sidebarItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeItem === item.name;
@@ -172,150 +118,199 @@ const DashboardPage = memo(() => {
               <button
                 key={item.name}
                 onClick={() => setActiveItem(item.name)}
-                className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl transition-all duration-300 group relative ${
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group relative ${
                   isActive 
-                    ? 'bg-[#1e1470]/40 text-white border-l-4 border-purple-500 shadow-[inset_0_0_20px_rgba(147,51,234,0.1)]' 
-                    : 'text-gray-400 hover:bg-[#1a1c3d] hover:text-white'
+                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' 
+                    : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
                 }`}
               >
-                <Icon className={`w-6 h-6 transition-transform duration-300 group-hover:scale-110 ${isActive ? 'text-purple-400' : ''}`} />
-                <span className="font-bold tracking-tight">{item.name}</span>
-                {isActive && <div className="absolute right-4 w-1.5 h-1.5 bg-purple-500 rounded-full shadow-[0_0_8px_rgba(147,51,234,1)]"></div>}
+                <Icon className={`w-5 h-5 transition-transform duration-200 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`} />
+                <span className="font-semibold text-sm">{item.name}</span>
+                {isActive && (
+                  <div className="absolute right-3 w-1.5 h-1.5 bg-white rounded-full"></div>
+                )}
               </button>
             );
           })}
         </nav>
 
-        <div className="p-8 border-t border-[#1a1c3d]">
+        <div className="p-4 border-t border-slate-800">
           <button 
             onClick={handleLogout}
-            className="flex items-center gap-4 text-red-500 font-black hover:text-red-400 transition-colors tracking-tight w-full text-left group"
+            className="flex items-center gap-3 text-slate-400 font-semibold hover:text-red-400 transition-colors py-3 px-4 w-full rounded-xl hover:bg-red-500/10 group"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6 transition-transform group-hover:-translate-x-1">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" />
-            </svg>
-            <span>Logout</span>
+            <LogOut className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            <span className="text-sm">Logout</span>
           </button>
         </div>
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col bg-gradient-to-br from-[#0c062c] to-[#040114]">
+      <main className="flex-1 ml-64 flex flex-col min-h-screen">
         
         {/* Header */}
-        <header className="h-20 flex items-center justify-between px-10 border-b border-[#1a1c3d] backdrop-blur-xl bg-[#02001c]/60 sticky top-0 z-10">
-          <h2 className="text-xl font-black tracking-tight text-gray-300">{activeItem}</h2>
-          <div className="flex items-center gap-6">
-            <div className="relative group cursor-pointer p-2 bg-[#1a1c3d] rounded-full transition-all hover:bg-[#2a2c4d]">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6 text-yellow-400">
-                  <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-                </svg>
-                <div className="absolute -top-1 -right-1 w-5 h-5 bg-[#ff2d55] text-[10px] flex items-center justify-center rounded-full border-2 border-[#02001c] font-black shadow-lg">
-                    5
-                </div>
+        <header className="h-20 flex items-center justify-between px-8 border-b border-slate-800 bg-[#0f172a]/80 backdrop-blur-md sticky top-0 z-10 w-full">
+          <div className="flex items-center gap-4">
+            <h2 className="text-xl font-bold tracking-tight text-white">{activeItem}</h2>
+          </div>
+          
+          <div className="flex items-center gap-5">
+            <div className="relative group hidden md:block">
+              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+              <input 
+                type="text" 
+                placeholder="Search metrics..." 
+                className="bg-slate-900 border border-slate-800 rounded-xl pl-10 pr-4 py-2 text-sm text-slate-200 w-64 focus:ring-2 focus:ring-indigo-500 focus:bg-slate-950 transition-all outline-none"
+              />
             </div>
-            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-600 to-blue-500 border-2 border-white/10 ring-4 ring-purple-500/10"></div>
+
+            <button className="relative p-2 text-slate-400 hover:text-white transition-colors bg-slate-900 rounded-xl border border-slate-800">
+                <Bell className="w-5 h-5" />
+                <div className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-[#1e293b]"></div>
+            </button>
+            
+            <div className="flex items-center gap-3 pl-2 border-l border-slate-800 text-white">
+              <div className="text-right hidden sm:block">
+                <p className="text-xs font-bold">Admin User</p>
+                <p className="text-[10px] text-slate-500 font-medium">Platform Admin</p>
+              </div>
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-500 shadow-lg border border-white/10 group-hover:scale-105 transition-transform cursor-pointer"></div>
+            </div>
           </div>
         </header>
 
         {/* Content Scrollable */}
-        <div className="p-10 space-y-12 overflow-y-auto max-h-[calc(100vh-80px)] custom-scrollbar">
+        <div className="p-8 space-y-10 flex-1">
           
           {activeItem === 'Dashboard' && (
             <>
-              <div className="flex justify-between items-end">
-                <h3 className="text-4xl font-black tracking-tighter bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">Overview</h3>
-                <span className="text-gray-500 text-sm font-bold tracking-widest">{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-3xl font-black tracking-tight text-white leading-none">Dashboard Overview</h3>
+                  <p className="text-slate-500 text-sm font-medium mt-2">Activity and business metrics overview.</p>
+                </div>
+                <div className="flex gap-3">
+                   <button className="bg-slate-900 text-slate-300 px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-slate-800 border border-slate-800 transition-all flex items-center gap-2">
+                     <FileText className="w-4 h-4" /> Download CSV
+                   </button>
+                </div>
               </div>
 
               {/* Stats Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {stats.map((stat, idx) => {
-              const Icon = stat.icon;
-              return (
-                <div 
-                  key={idx} 
-                  className="bg-[#02001c] p-8 rounded-3xl border border-[#1a1c3d] hover:border-purple-500/50 transition-all duration-500 shadow-[0_8px_30_rgba(0,0,0,0.5)] group relative overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-purple-500/20 transition-all duration-700"></div>
-                  
-                  <div className="flex justify-between items-start mb-8">
-                    <span className="text-[10px] font-black tracking-[0.2em] text-gray-500 uppercase">{stat.label}</span>
-                  </div>
-                  
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <div className={`text-5xl font-black ${stat.color} mb-1 tracking-tighter shadow-sm`}>{stat.value}</div>
-                    </div>
-                    <div className="opacity-30 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 text-purple-400">
-                      <Icon className="w-14 h-14" />
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                  const Icon = stat.icon;
+                  return (
+                    <div 
+                      key={idx} 
+                      className="bg-[#1e293b] p-6 rounded-2xl border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 shadow-lg group relative overflow-hidden"
+                    >
+                      <div className="flex justify-between items-start mb-6 relative z-10">
+                        <div className={`p-3 rounded-xl ${stat.color}`}>
+                          <Icon className="w-6 h-6" />
+                        </div>
+                        <div className="flex items-center gap-1 text-[10px] font-black text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-lg">
+                          <ArrowUpRight className="w-3 h-3" />
+                          {stat.trend}
+                        </div>
+                      </div>
+                      
+                      <div className="relative z-10">
+                        <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">{stat.label}</p>
+                        <h4 className="text-3xl font-black text-white tracking-tight">{stat.value}</h4>
+                      </div>
 
-          {/* Charts Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <div className="bg-[#02001c] p-10 rounded-[3rem] border border-cyan-500/20 shadow-[0_0_50px_rgba(6,182,212,0.05)] flex flex-col group">
-                <div className="flex justify-between items-center mb-10">
-                    <h4 className="text-lg font-black uppercase tracking-widest text-cyan-400">Daily Sales</h4>
-                    <span className="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full font-black">LIVE</span>
-                </div>
-                <div className="flex-1 h-64 relative">
+                      <div className="absolute -right-4 -bottom-4 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity">
+                         <Icon className="w-24 h-24" />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Charts Row */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* Sales Chart Mockup */}
+                <div className="lg:col-span-2 bg-[#1e293b] p-8 rounded-3xl border border-slate-700/50 shadow-xl">
+                  <div className="flex justify-between items-center mb-8">
+                    <h4 className="text-sm font-black uppercase tracking-widest text-slate-400 flex items-center gap-2 leading-none">
+                       <TrendingUp className="w-5 h-5 text-indigo-500" /> Performance Analysis
+                    </h4>
+                    <div className="flex gap-2">
+                      <span className="text-[10px] font-black bg-indigo-600/20 text-indigo-400 px-2.5 py-1 rounded-lg">WEEKLY</span>
+                      <span className="text-[10px] font-black hover:bg-slate-800 text-slate-500 px-2.5 py-1 rounded-lg cursor-pointer transition-colors">MONTHLY</span>
+                    </div>
+                  </div>
+                  
+                  <div className="h-72 relative mt-4">
                     <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-                        <path d="M 0 80 Q 15 50 25 70 T 40 40 T 60 60 T 80 30 T 100 50" fill="none" stroke="#a855f7" strokeWidth="3" />
-                        <path d="M 0 80 Q 15 50 25 70 T 40 40 T 60 60 T 80 30 T 100 50 L 100 100 L 0 100 Z" fill="url(#sales-gradient)" />
-                        <defs>
-                            <linearGradient id="sales-gradient" x1="0" x2="0" y1="0" y2="1">
-                                <stop offset="0%" stopColor="#a855f7" stopOpacity="0.3" />
-                                <stop offset="100%" stopColor="#a855f7" stopOpacity="0" />
-                            </linearGradient>
-                        </defs>
+                      <path d="M 0 80 Q 10 70 20 75 T 40 45 T 60 55 T 80 25 T 100 35" fill="none" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" />
+                      <path d="M 0 80 Q 10 70 20 75 T 40 45 T 60 55 T 80 25 T 100 35 L 100 100 L 0 100 Z" fill="url(#indigo-grad)" />
+                      <defs>
+                        <linearGradient id="indigo-grad" x1="0" x2="0" y1="0" y2="1">
+                          <stop offset="0%" stopColor="#6366f1" stopOpacity="0.2" />
+                          <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+                        </linearGradient>
+                      </defs>
                     </svg>
-                </div>
-            </div>
-
-            <div className="bg-[#02001c] p-10 rounded-[3rem] border border-emerald-500/20 shadow-[0_0_50px_rgba(16,185,129,0.05)] flex flex-col items-center">
-                <div className="flex justify-between items-center w-full mb-10">
-                    <h4 className="text-lg font-black uppercase tracking-widest text-emerald-400">Monthly Revenue</h4>
-                </div>
-                <div className="relative w-72 h-72">
-                    <svg className="w-full h-full transform -rotate-90">
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#10b981" strokeWidth="15" strokeDasharray="180 251.2" />
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#3b82f6" strokeWidth="15" strokeDasharray="71.2 251.2" strokeDashoffset="-180" />
-                    </svg>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-gray-500 text-[10px] font-black uppercase tracking-widest">Total</span>
-                        <span className="text-4xl font-black">$24.5k</span>
+                    
+                    <div className="absolute bottom-0 left-0 w-full flex justify-between px-2 pt-4 border-t border-slate-800/50">
+                       {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
+                         <span key={day} className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">{day}</span>
+                       ))}
                     </div>
+                  </div>
                 </div>
-            </div>
-          </div>
-          </>
+
+                {/* Top Actions */}
+                <div className="bg-[#1e293b] p-8 rounded-3xl border border-slate-700/50 shadow-xl flex flex-col">
+                  <h4 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-6 flex items-center gap-2">
+                     <Bell className="w-4 h-4 text-amber-500" /> Notifications
+                  </h4>
+                  <div className="space-y-6 flex-1">
+                     {[
+                       { name: 'Admin login detected', time: 'Just now', alert: true },
+                       { name: 'Product "iPhone 15" stock low', time: '14 mins ago', alert: true },
+                       { name: 'Category "Laptops" updated', time: '2 hours ago', alert: false },
+                       { name: 'Sales report generated', time: '5 hours ago', alert: false }
+                     ].map((item, i) => (
+                       <div key={i} className="flex gap-4 items-start">
+                          <div className={`w-2 h-2 rounded-full mt-1.5 ${item.alert ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]' : 'bg-slate-600'}`}></div>
+                          <div>
+                             <p className="text-xs font-bold text-slate-200">{item.name}</p>
+                             <p className="text-[10px] font-medium text-slate-500 mt-1 uppercase tracking-wider">{item.time}</p>
+                          </div>
+                       </div>
+                     ))}
+                  </div>
+                  <button className="w-full mt-6 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-400 py-3 rounded-xl text-[10px] font-black tracking-[0.2em] transition-all uppercase">Check All Alerts</button>
+                </div>
+              </div>
+            </>
           )}
 
+          {activeItem === 'Users' && <UserManager />}
           {activeItem === 'Categories' && <CategoryManager />}
           {activeItem === 'Products' && <ProductManager />}
           {activeItem === 'Coupons' && <CouponManager />}
+          {activeItem === 'Orders' && <OrderManager />}
 
         </div>
       </main>
 
       <style dangerouslySetInnerHTML={{ __html: `
         .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
+          width: 5px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-          background: #02001c;
+          background: transparent;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #1e1470;
+          background: #334155;
           border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #9333ea;
+          background: #475569;
         }
       `}} />
     </div>

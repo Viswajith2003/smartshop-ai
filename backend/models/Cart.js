@@ -21,6 +21,10 @@ const cartSchema=new mongoose.Schema({
             price:{
                 type:Number,
                 required:true
+            },
+            isSelected:{
+                type:Boolean,
+                default:true
             }
         }
     ],

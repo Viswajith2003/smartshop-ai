@@ -83,10 +83,6 @@ axiosInstance.interceptors.response.use(
       toast.error('Access denied. Insufficient permissions.');
     }
     
-    if (error.response?.status === 500 && !window.location.pathname.includes('/error')) {
-      window.location.href = '/error';
-    }
-
     return Promise.reject(error);
   }
 );

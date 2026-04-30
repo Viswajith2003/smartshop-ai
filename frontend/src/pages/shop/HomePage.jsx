@@ -1,5 +1,8 @@
 import React, { useState, useEffect, memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleWishlist } from '../../features/wishlist/wishlistSlice';
+import { addToCart } from '../../features/cart/cartSlice';
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
 import fetchProducts from '../../hooks/useFetchProducts';
@@ -111,6 +114,29 @@ const SectionHeader = ({ title, linkText = 'View All', to = '#' }) => (
 );
 
 const HomePage = memo(() => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { items: wishlistItems } = useSelector((state) => state.wishlist);
+    const { items: cartItems } = useSelector((state) => state.cart);
+
+    const isWishlisted = (productId) => wishlistItems.some(item => item.product?._id === productId);
+    const isInCart = (productId) => cartItems.some(item => (item.product?._id || item.product) === productId);
+
+    const handleWishlist = (e, productId) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dispatch(toggleWishlist(productId));
+    };
+
+    const handleAddToCart = (e, product) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (isInCart(product._id)) {
+            navigate('/cart');
+            return;
+        }
+        dispatch(addToCart({ productId: product._id, quantity: 1, price: product.price }));
+    };
 
     const [products,setProducts]=useState([])
     const [categories,setCategories]=useState([])
@@ -181,8 +207,11 @@ const HomePage = memo(() => {
                         {products.slice(0, 4).map((prod) => (
                             <Link to={`/products/${prod._id}`} key={prod._id} className="bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 group transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgb(0,0,0,0.12)] hover:-translate-y-2 relative flex flex-col cursor-pointer">
                                 {prod.tag && <span className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-black px-3 py-1 rounded-full z-20 shadow-sm">{prod.tag}</span>}
-                                <button onClick={(e) => { e.preventDefault(); }} className="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-slate-300 hover:text-pink-500 transition-all shadow-sm hover:scale-110">
-                                    <i className="bi bi-heart-fill text-lg mt-0.5"></i>
+                                <button 
+                                    onClick={(e) => handleWishlist(e, prod._id)} 
+                                    className={`absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center transition-all shadow-sm hover:scale-110 ${isWishlisted(prod._id) ? 'text-pink-500' : 'text-slate-300 hover:text-pink-500'}`}
+                                >
+                                    <i className={`bi bi-heart${isWishlisted(prod._id) ? '-fill' : ''} text-lg mt-0.5`}></i>
                                 </button>
                                 <div className="h-72 bg-slate-50/50 overflow-hidden flex items-center justify-center p-8 relative">
                                     <img src={prod.images && prod.images[0]} alt={prod.name} className="w-full h-full object-contain filter drop-shadow-xl transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-2 z-10" />
@@ -199,9 +228,13 @@ const HomePage = memo(() => {
                                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">Price</span>
                                             <span className="text-2xl font-black text-slate-900 tracking-tighter">₹{prod.price?.toLocaleString()}</span>
                                         </div>
-                                        <button onClick={(e) => { e.preventDefault(); /* handle Add to cart */ }} className="bg-black text-white h-12 w-12 rounded-2xl flex items-center justify-center hover:bg-blue-600 transition-all shadow-lg active:scale-95 group-hover:-translate-y-1">
-                                            <i className="bi bi-cart-plus-fill text-xl"></i>
-                                        </button>
+                                            <button 
+                                                onClick={(e) => handleAddToCart(e, prod)} 
+                                                className={`h-12 w-12 rounded-2xl flex items-center justify-center transition-all shadow-lg active:scale-95 group-hover:-translate-y-1 ${isInCart(prod._id) ? 'bg-indigo-600' : 'bg-black hover:bg-blue-600'}`}
+                                                title={isInCart(prod._id) ? "View in Cart" : "Add to Cart"}
+                                            >
+                                                <i className={`bi ${isInCart(prod._id) ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'} text-xl text-white`}></i>
+                                            </button>
                                     </div>
                                 </div>
                             </Link>

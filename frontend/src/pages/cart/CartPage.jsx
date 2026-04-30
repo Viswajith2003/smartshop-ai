@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { removeFromCartDB, updateQuantityDB, fetchCart } from '../../features/cart/cartSlice';
-import { couponAPI } from '../../services/api';
+import { removeFromCartDB, updateQuantityDB, fetchCart, applyCouponDB, removeCoupon } from '../../features/cart/cartSlice';
 import { getUser } from '../../services/axiosInstance';
 import { toast } from 'react-toastify';
 
 import CartItem from '../../components/cart/CartItem';
 import CartSummary from '../../components/cart/CartSummary';
 
+import useCartCalculations from '../../hooks/useCartCalculations';
+
 const CartPage = () => {
-    const { items, loading, totalPrice } = useSelector((state) => state.cart);
+    const { items, loading, appliedCoupon } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [couponCode, setCouponCode] = useState('');
-    const [appliedCoupon, setAppliedCoupon] = useState(null);
-    const [isApplying, setIsApplying] = useState(false);
 
     useEffect(() => {
         const user = getUser();
@@ -25,43 +24,31 @@ const CartPage = () => {
         }
     }, [dispatch]);
 
-    const subtotal = items.reduce((total, item) => total + (item.price), 0);
-    const shipping = subtotal > 5000 ? 0 : 500;
-    const tax = subtotal * 0.18;
-
-    const totalBeforeCoupon = subtotal + shipping + tax;
-    
-    // Dynamic Discount Calculation
-    const discount = appliedCoupon ? (
-        subtotal >= appliedCoupon.minPurchaseAmount 
-            ? Math.min((subtotal * appliedCoupon.discountPercentage) / 100, appliedCoupon.maxDiscountAmount)
-            : 0
-    ) : 0;
-
-    const total = totalBeforeCoupon - discount;
+    const { 
+        subtotal, 
+        shipping, 
+        tax, 
+        discount, 
+        total, 
+        selectedItems 
+    } = useCartCalculations(items, appliedCoupon);
 
     const handleApplyCoupon = async () => {
         if (!couponCode.trim()) return;
-        setIsApplying(true);
-        try {
-            const res = await couponAPI.applyCoupon({ couponCode: couponCode.trim(), cartTotal: subtotal });
-            setAppliedCoupon(res.data);
-            toast.success(res.message || "Coupon applied successfully!");
-        } catch (error) {
-            toast.error(error.response?.data?.message || "Invalid or expired coupon");
-            setAppliedCoupon(null);
-        } finally {
-            setIsApplying(false);
-        }
+        dispatch(applyCouponDB({ code: couponCode.trim(), totalPrice: subtotal }));
     };
 
     const handleRemoveCoupon = () => {
-        setAppliedCoupon(null);
+        dispatch(removeCoupon());
         setCouponCode('');
         toast.info("Coupon removed");
     };
 
     const handleCheckout = () => {
+        if (selectedItems.length === 0) {
+            toast.warning("Please select at least one item to checkout");
+            return;
+        }
         navigate('/checkout');
     };
 
@@ -107,10 +94,10 @@ const CartPage = () => {
                     />
                     <button 
                         onClick={handleApplyCoupon}
-                        disabled={isApplying || !couponCode.trim()}
-                        className={`bg-indigo-600 hover:bg-indigo-500 text-white font-black px-6 py-3 rounded-xl transition-all shadow-md ${isApplying ? 'opacity-70 cursor-not-allowed' : 'hover:-translate-y-0.5 active:scale-95'}`}
+                        disabled={loading || !couponCode.trim()}
+                        className={`bg-indigo-600 hover:bg-indigo-500 text-white font-black px-6 py-3 rounded-xl transition-all shadow-md ${loading ? 'opacity-70 cursor-not-allowed' : 'hover:-translate-y-0.5 active:scale-95'}`}
                     >
-                        {isApplying ? 'Applying...' : 'Apply'}
+                        {loading ? 'Applying...' : 'Apply'}
                     </button>
                 </div>
             ) : (

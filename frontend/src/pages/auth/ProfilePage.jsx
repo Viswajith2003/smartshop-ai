@@ -461,6 +461,73 @@ const ProfilePage = () => {
                             ))
                         )}
                     </div>
+
+                    {/* Wallet & Transactions Section */}
+                    <div className="space-y-8 animate-in slide-in-from-bottom duration-700 delay-200">
+                        <div className="flex justify-between items-center">
+                            <h3 className="text-2xl font-black text-indigo-900 tracking-tight">Wallet & Refunds</h3>
+                            <div className="bg-emerald-50 text-emerald-600 px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest border border-emerald-100 flex items-center gap-2">
+                                <i className="bi bi-shield-check"></i>
+                                Verified Balance
+                            </div>
+                        </div>
+
+                        {/* Wallet Balance Card */}
+                        <div className="bg-gradient-to-br from-indigo-900 to-indigo-800 p-10 rounded-[3rem] shadow-2xl text-white relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-white/10 transition-all duration-700"></div>
+                            <div className="relative z-10">
+                                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-300 mb-2">Total Available Balance</p>
+                                <h4 className="text-6xl font-black tracking-tighter mb-8">₹{user?.wallet?.balance?.toLocaleString('en-IN') || 0}</h4>
+                                <div className="flex items-center gap-4">
+                                    <div className="bg-white/10 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/10 flex items-center gap-2">
+                                        <i className="bi bi-wallet2 text-indigo-300"></i>
+                                        <span className="text-[10px] font-bold uppercase tracking-widest">Digital Wallet</span>
+                                    </div>
+                                    <p className="text-[10px] font-bold text-white/50 uppercase tracking-widest max-w-[200px]">Funds can be used for your future purchases</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Recent Transactions */}
+                        <div className="bg-white rounded-[2.5rem] shadow-xl border border-indigo-50 p-8 sm:p-10">
+                            <h4 className="font-black uppercase tracking-widest text-[10px] text-slate-400 mb-8 border-b border-slate-50 pb-4">Transaction History</h4>
+                            
+                            {!user?.wallet?.transactions || user?.wallet?.transactions.length === 0 ? (
+                                <div className="text-center py-12">
+                                    <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-100">
+                                        <i className="bi bi-receipt-cutoff text-slate-300 text-2xl"></i>
+                                    </div>
+                                    <p className="text-sm font-bold text-slate-400 font-bold uppercase tracking-widest">No transactions yet</p>
+                                </div>
+                            ) : (
+                                <div className="space-y-6">
+                                    {[...user.wallet.transactions].reverse().map((tx, idx) => (
+                                        <div key={idx} className="flex items-center justify-between group py-2 border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors rounded-xl px-2">
+                                            <div className="flex items-center gap-4">
+                                                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${tx.type === 'credit' ? 'bg-emerald-50 text-emerald-600' : 'bg-rose-50 text-rose-600'}`}>
+                                                    <i className={`bi ${tx.type === 'credit' ? 'bi-arrow-down-left-circle' : 'bi-arrow-up-right-circle'} text-xl`}></i>
+                                                </div>
+                                                <div>
+                                                    <p className="text-xs font-black uppercase tracking-widest text-slate-900">
+                                                        {tx.type === 'credit' ? 'Refund Credited' : 'Wallet Payment'}
+                                                    </p>
+                                                    <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{new Date(tx.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
+                                                </div>
+                                            </div>
+                                            <div className="text-right">
+                                                <p className={`text-lg font-black tracking-tighter ${tx.type === 'credit' ? 'text-emerald-600' : 'text-slate-900'}`}>
+                                                    {tx.type === 'credit' ? '+' : '-'}₹{tx.amount?.toLocaleString('en-IN')}
+                                                </p>
+                                                <span className="text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full bg-slate-100 text-slate-500">
+                                                    {tx.status}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
 

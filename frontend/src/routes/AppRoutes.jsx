@@ -2,14 +2,20 @@ import React, { Suspense, lazy } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
+import { useSelector } from "react-redux";
 import Loader from "../components/common/Loader";
 import AppLayout from "../components/layout/AppLayout";
 
 // Lazy loading pages
 const HomePage = lazy(() => import("../pages/shop/HomePage"));
+const LandingPage = lazy(() => import("../pages/shop/LandingPage"));
 const ProductsPage = lazy(() => import("../pages/shop/ProductsPage"));
 const WishlistPage = lazy(() => import("../pages/shop/WishlistPage"));
 const CartPage = lazy(() => import("../pages/cart/CartPage"));
+const CheckoutPage = lazy(() => import("../pages/cart/CheckoutPage"));
+const OrderConfirmationPage = lazy(() => import("../pages/shop/OrderConfirmationPage"));
+const PaymentFailurePage = lazy(() => import("../pages/shop/PaymentFailurePage"));
+const MyOrdersPage = lazy(() => import("../pages/orders/MyOrdersPage"));
 const ProfilePage = lazy(() => import("../pages/auth/ProfilePage"));
 const LoginPage = lazy(() => import("../pages/auth/LoginPage"));
 const RegisterPage = lazy(() => import("../pages/auth/RegisterPage"));
@@ -24,21 +30,48 @@ const ErrorPage = lazy(() => import("../pages/error/ErrorPage"));
 const NotFoundPage = lazy(() => import("../pages/error/NotFoundPage"));
 
 const AppRoutes = () => {
+    const { isAuthenticated } = useSelector((state) => state.auth);
+
     return (
         <Suspense fallback={<Loader fullScreen text="Loading..." />}>
             <Routes>
-                {/* Shop Routes */}
-                <Route path="/" element={<AppLayout><HomePage /></AppLayout>} />
+                
+                <Route path="/" element={isAuthenticated ? <Navigate to="/home" replace /> : <LandingPage />} />
+                <Route path="/home" element={
+                    <ProtectedRoute redirectTo="/">
+                        <AppLayout><HomePage /></AppLayout>
+                    </ProtectedRoute>
+                } />
                 <Route path="/products" element={<AppLayout><ProductsPage /></AppLayout>} />
                 <Route path="/products/:id" element={<AppLayout><ProductsPage /></AppLayout>} />
                 <Route path="/wishlist" element={
-                    <ProtectedRoute redirectTo="/login">
+                    <ProtectedRoute redirectTo="/">
                         <AppLayout><WishlistPage /></AppLayout>
                     </ProtectedRoute>
                 } />
                 <Route path="/cart" element={
-                    <ProtectedRoute redirectTo="/login">
+                    <ProtectedRoute redirectTo="/">
                         <AppLayout><CartPage /></AppLayout>
+                    </ProtectedRoute>
+                } />
+                <Route path="/checkout" element={
+                    <ProtectedRoute redirectTo="/">
+                        <AppLayout><CheckoutPage /></AppLayout>
+                    </ProtectedRoute>
+                } />
+                <Route path="/order-confirmation" element={
+                    <ProtectedRoute redirectTo="/">
+                        <AppLayout><OrderConfirmationPage /></AppLayout>
+                    </ProtectedRoute>
+                } />
+                <Route path="/my-orders" element={
+                    <ProtectedRoute redirectTo="/">
+                        <AppLayout><MyOrdersPage /></AppLayout>
+                    </ProtectedRoute>
+                } />
+                <Route path="/payment-failure" element={
+                    <ProtectedRoute redirectTo="/">
+                        <AppLayout><PaymentFailurePage /></AppLayout>
                     </ProtectedRoute>
                 } />
 
@@ -49,7 +82,7 @@ const AppRoutes = () => {
                 <Route path="/forgot-password" element={<PublicRoute><ForgotPasswordPage /></PublicRoute>} />
                 <Route path="/reset-pswd" element={<PublicRoute><ResetPasswordPage /></PublicRoute>} />
                 <Route path="/profile" element={
-                    <ProtectedRoute redirectTo="/login">
+                    <ProtectedRoute redirectTo="/">
                         <AppLayout><ProfilePage /></AppLayout>
                     </ProtectedRoute>
                 } />

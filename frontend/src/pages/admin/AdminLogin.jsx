@@ -44,6 +44,7 @@ const AdminLogin = () => {
 
       dispatch(adminLoginSuccess(admin));
       toast.success(`Welcome back, Commander ${userData.name}!`);
+      navigate('/admin/dashboard');
     } catch (err) {
       console.error("Admin login error:", err);
       const message =

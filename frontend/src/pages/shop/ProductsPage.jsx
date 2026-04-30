@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { ProductDetail, ProductList, ProductFilter } from '../../components/product'; 
 import { categoryAPI, productAPI } from '../../services/api';
 import { addToCart } from '../../features/cart/cartSlice';
-import { toggleWishlist } from '../../features/auth/wishlistSlice';
+import { toggleWishlist } from '../../features/wishlist/wishlistSlice';
 import { toast } from 'react-toastify';
 import fetchProducts from '../../hooks/useFetchProducts';
 import usePagination from '../../hooks/usePagination';
@@ -21,7 +21,7 @@ const ProductsPage = () => {
   const wishlistItems = useSelector((state) => state.wishlist.items);
   const cartItems = useSelector((state) => state.cart.items);
   
-  const isWishlisted = (productId) => wishlistItems.some(item => item._id === productId);
+  const isWishlisted = (productId) => wishlistItems.some(item => item.product?._id === productId);
   const isInCart = (productId) => cartItems.some(item => (item.product?._id || item.product) === productId);
   
   const handleAddToCart = (e, product) => {
@@ -39,12 +39,7 @@ const ProductsPage = () => {
   const handleWishlist = (e, product) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(toggleWishlist(product));
-    if (isWishlisted(product._id)) {
-        toast.info(`Removed ${product.name} from wishlist`);
-    } else {
-        toast.success(`Added ${product.name} to wishlist`);
-    }
+    dispatch(toggleWishlist(product._id));
   };
 
   const [price, setPrice] = useState(300000);

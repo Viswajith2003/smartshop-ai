@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { cartAPI } from '../../services/api';
+import { cartAPI } from './cartAPI';
+import { couponAPI } from '../../services/api';
 import { getUser } from '../../services/axiosInstance';
 import { toast } from 'react-toastify';
 
@@ -40,7 +41,7 @@ export const removeFromCartDB = createAsyncThunk(
     try {
       const user = getUser();
       if (!user) return rejectWithValue('User not logged in');
-      const response = await cartAPI.deleteCartItem(user.id || user._id, productId);
+      const response = await cartAPI.deleteCartItem(productId);
       toast.success('Item removed from cart');
       return response.data;
     } catch (error) {
@@ -65,12 +66,42 @@ export const updateQuantityDB = createAsyncThunk(
   }
 );
 
+export const toggleSelectionDB = createAsyncThunk(
+  'cart/toggleSelectionDB',
+  async (productId, { rejectWithValue }) => {
+    try {
+      const user = getUser();
+      if (!user) return rejectWithValue('User not logged in');
+      const response = await cartAPI.toggleSelection({ userId: user.id || user._id, productId });
+      return response.data;
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Failed to toggle selection');
+      return rejectWithValue(error.response?.data?.message || 'Failed to toggle selection');
+    }
+  }
+);
+
+export const applyCouponDB = createAsyncThunk(
+    'cart/applyCoupon',
+    async ({ code, totalPrice }, { rejectWithValue }) => {
+        try {
+            const response = await couponAPI.applyCoupon({ code, totalPrice });
+            return response.data;
+        } catch (error) {
+            const message = error.response?.data?.message || 'Invalid or expired coupon';
+            toast.error(message);
+            return rejectWithValue(message);
+        }
+    }
+);
+
 const initialState = {
   items: [],
   totalPrice: 0,
   totalItems: 0,
   loading: false,
   error: null,
+  appliedCoupon: null,
 };
 
 const cartSlice = createSlice({
@@ -81,6 +112,10 @@ const cartSlice = createSlice({
       state.items = [];
       state.totalPrice = 0;
       state.totalItems = 0;
+      state.appliedCoupon = null;
+    },
+    removeCoupon: (state) => {
+      state.appliedCoupon = null;
     }
   },
   extraReducers: (builder) => {
@@ -122,9 +157,27 @@ const cartSlice = createSlice({
         state.items = action.payload.items || [];
         state.totalPrice = action.payload.totalPrice || 0;
         state.totalItems = action.payload.totalItems || 0;
+      })
+      .addCase(toggleSelectionDB.fulfilled, (state, action) => {
+        state.items = action.payload.items || [];
+        state.totalPrice = action.payload.totalPrice || 0;
+        state.totalItems = action.payload.totalItems || 0;
+      })
+      // Apply Coupon
+      .addCase(applyCouponDB.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(applyCouponDB.fulfilled, (state, action) => {
+        state.loading = false;
+        state.appliedCoupon = action.payload;
+        toast.success('Coupon applied successfully!');
+      })
+      .addCase(applyCouponDB.rejected, (state) => {
+        state.loading = false;
+        state.appliedCoupon = null;
       });
   }
 });
 
-export const { clearCart } = cartSlice.actions;
+export const { clearCart, removeCoupon } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../features/cart/cartSlice';
-import { toggleWishlist } from '../../features/auth/wishlistSlice';
+import { toggleWishlist } from '../../features/wishlist/wishlistSlice';
 import { toast } from 'react-toastify';
 
 const ProductDetail = ({ products }) => {

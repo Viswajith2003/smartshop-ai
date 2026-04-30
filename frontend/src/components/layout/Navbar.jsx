@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout as logoutAction } from '../../features/auth/authSlice';
 import { API_CONFIG } from '../../config/app';
 import SearchBar from '../common/SearchBar';
+import { toast } from 'react-toastify';
 
 const Navbar = ({ onLogout }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,17 +29,23 @@ const Navbar = ({ onLogout }) => {
         if (onLogout) {
             onLogout();
         } else {
+            navigate('/', { replace: true });
             dispatch(logoutAction());
-            navigate('/');
         }
     };
 
     const navLinks = [
-        { name: 'Home', path: '/' },
-        { name: 'Products', path: '/products' }
+        { name: 'Home', path: user ? '/home' : '/' },
+        { name: 'Products', path: '/products' },
+        ...(user ? [{ name: 'My Orders', path: '/my-orders' }] : [])
     ];
 
-    const isActive = (path) => location.pathname === path;
+    const isActive = (path) => {
+        if (path === '/' || path === '/home') {
+            return location.pathname === '/' || location.pathname === '/home';
+        }
+        return location.pathname === path;
+    };
 
     // Construct avatar URL
     const avatarUrl = user?.avatar 
@@ -51,7 +58,7 @@ const Navbar = ({ onLogout }) => {
                 <div className="flex justify-between items-center h-20 relative">
                     
                     {/* Logo Section */}
-                    <Link to="/" className={`flex items-center space-x-2 group transition-opacity duration-300 ${isSearchOpen ? 'opacity-0 pointer-events-none md:opacity-100' : 'opacity-100'}`}>
+                    <Link to={user ? "/home" : "/"} className={`flex items-center space-x-2 group transition-opacity duration-300 ${isSearchOpen ? 'opacity-0 pointer-events-none md:opacity-100' : 'opacity-100'}`}>
                         <div className="relative">
                             <i className="bi bi-cart-fill text-3xl text-indigo-600 transition-transform group-hover:scale-110"></i>
                             <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-yellow-400 rounded-full border-2 border-white"></div>
@@ -120,29 +127,54 @@ const Navbar = ({ onLogout }) => {
                             <i className="bi bi-search text-xl"></i>
                         </button>
 
+                        {/* Cart & Wishlist Icons (Always Visible) */}
+                        <div className="hidden sm:flex items-center space-x-4">
+                            {/* Wishlist */}
+                            <Link 
+                                to={user ? "/wishlist" : "#"} 
+                                onClick={(e) => {
+                                    if (!user) {
+                                        e.preventDefault();
+                                        toast.error("Please login to see your wishlist");
+                                    }
+                                }}
+                                className="relative group cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                            >
+                                <i className="bi bi-heart text-2xl text-indigo-900/80 group-hover:text-indigo-600 transition-colors"></i>
+                                {wishlistItems.length > 0 && (
+                                    <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-black h-5 w-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm ring-1 ring-red-100">
+                                        {wishlistItems.length}
+                                    </span>
+                                )}
+                            </Link>
+
+                            {/* Cart */}
+                            <Link 
+                                to={user ? "/cart" : "#"}
+                                onClick={(e) => {
+                                    if (!user) {
+                                        e.preventDefault();
+                                        toast.error("Please login to see your cart");
+                                    }
+                                }}
+                                className="relative group cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                            >
+                                <i className="bi bi-cart3 text-2xl text-indigo-900/80 group-hover:text-indigo-600 transition-colors"></i>
+                                {cartItems.length > 0 && (
+                                    <span className="absolute -top-1.5 -right-1.5 bg-indigo-600 text-white text-[9px] font-black h-5 w-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm ring-1 ring-indigo-100">
+                                        {cartItems.length}
+                                    </span>
+                                )}
+                            </Link>
+                        </div>
+
                         {/* User Actions / Auth Buttons */}
                         {user ? (
                             <>
-                                <div className="hidden sm:flex items-center space-x-4">
-                                    {/* Wishlist */}
-                                    <Link to="/wishlist" className="relative group cursor-pointer transition-transform hover:scale-105 active:scale-95">
-                                        <i className="bi bi-heart text-2xl text-indigo-900/80 group-hover:text-indigo-600 transition-colors"></i>
-                                        {wishlistItems.length > 0 && (
-                                            <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-black h-5 w-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm ring-1 ring-red-100">
-                                                {wishlistItems.length}
-                                            </span>
-                                        )}
-                                    </Link>
-
-                                    {/* Cart */}
-                                    <Link to="/cart" className="relative group cursor-pointer transition-transform hover:scale-105 active:scale-95">
-                                        <i className="bi bi-cart3 text-2xl text-indigo-900/80 group-hover:text-indigo-600 transition-colors"></i>
-                                        {cartItems.length > 0 && (
-                                            <span className="absolute -top-1.5 -right-1.5 bg-indigo-600 text-white text-[9px] font-black h-5 w-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm ring-1 ring-indigo-100">
-                                                {cartItems.length}
-                                            </span>
-                                        )}
-                                    </Link>
+                                {/* Wallet Balance */}
+                                <div className="hidden lg:flex flex-col items-end mr-4 border-r border-gray-100 pr-5">
+                                    <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Wallet</span>
+                                    <span className="text-sm font-black text-emerald-600 tracking-tighter">₹{user?.wallet?.balance?.toLocaleString('en-IN') || 0}</span>
                                 </div>
 
                                 {/* Profile Image */}
@@ -214,11 +246,59 @@ const Navbar = ({ onLogout }) => {
                         </Link>
                     ))}
                     <div className="pt-4 mt-4 border-t border-gray-100 space-y-2">
+                        {/* Mobile Cart & Wishlist */}
+                        <Link 
+                            to={user ? "/wishlist" : "#"} 
+                            onClick={(e) => {
+                                if (!user) {
+                                    e.preventDefault();
+                                    toast.error("Please login to see your wishlist");
+                                } else {
+                                    setIsMenuOpen(false);
+                                }
+                            }}
+                            className="flex items-center px-4 py-3 text-indigo-900 font-black hover:bg-rose-50 rounded-2xl relative"
+                        >
+                            <i className="bi bi-heart text-2xl mr-3 text-rose-500"></i> Wishlist
+                            {wishlistItems.length > 0 && (
+                                <span className="ml-auto bg-rose-500 text-white text-[10px] px-2 py-0.5 rounded-full">{wishlistItems.length}</span>
+                            )}
+                        </Link>
+                        <Link 
+                            to={user ? "/cart" : "#"} 
+                            onClick={(e) => {
+                                if (!user) {
+                                    e.preventDefault();
+                                    toast.error("Please login to see your cart");
+                                } else {
+                                    setIsMenuOpen(false);
+                                }
+                            }}
+                            className="flex items-center px-4 py-3 text-indigo-900 font-black hover:bg-indigo-50 rounded-2xl"
+                        >
+                            <i className="bi bi-cart3 text-2xl mr-3 text-indigo-600"></i> My Cart
+                            {cartItems.length > 0 && (
+                                <span className="ml-auto bg-indigo-600 text-white text-[10px] px-2 py-0.5 rounded-full">{cartItems.length}</span>
+                            )}
+                        </Link>
+
+                        <div className="h-px bg-gray-100 my-2 mx-4"></div>
+
                         {user ? (
                             <>
                                 <Link to="/profile" onClick={() => setIsMenuOpen(false)} className="flex items-center px-4 py-3 text-indigo-900 font-black hover:bg-indigo-50 rounded-2xl">
                                     <i className="bi bi-person-circle text-2xl mr-3"></i> Profile
                                 </Link>
+                                {/* Mobile Wallet */}
+                                <div className="flex items-center px-4 py-3 text-emerald-600 font-black bg-emerald-50 rounded-2xl mx-4 mb-2">
+                                    <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                        <i className="bi bi-wallet2 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] uppercase tracking-widest text-emerald-400">Wallet Balance</p>
+                                        <p className="text-lg tracking-tighter">₹{user?.wallet?.balance?.toLocaleString('en-IN') || 0}</p>
+                                    </div>
+                                </div>
                                 <button onClick={handleLogout} className="w-full flex items-center px-4 py-3 text-red-600 font-black hover:bg-red-50 rounded-2xl">
                                     <i className="bi bi-box-arrow-right text-2xl mr-3"></i> Logout
                                 </button>

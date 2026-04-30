@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Loader from '../components/common/Loader'
 
-const PublicRoute = React.memo(({ children, redirectTo = "/" }) => {
+const PublicRoute = React.memo(({ children, redirectTo = "/home" }) => {
   const { isAuthenticated, isAdminAuthenticated, loading } = useSelector((state) => state.auth)
   const location = useLocation()
 

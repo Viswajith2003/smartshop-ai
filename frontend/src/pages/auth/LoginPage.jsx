@@ -38,18 +38,16 @@ const LoginPage = React.memo(() => {
 
       setAuthToken(response.data.token);
       const userData = response.data.user;
-
+      
       const user = {
+        ...userData,
         id: userData.id || userData._id,
-        name: userData.name,
-        email: userData.email,
-        role: "user",
-        avatar: userData.avatar || null,
+        role: userData.role || "user"
       };
 
       dispatch(loginSuccess(user));
       toast.success(`Welcome back, ${userData.name || "User"}!`);
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       console.error("Login error:", err);
       toastBackendError(err, (fieldErrors) => {

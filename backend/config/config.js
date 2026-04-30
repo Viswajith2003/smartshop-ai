@@ -34,5 +34,10 @@ module.exports = {
     SERVICE: process.env.MAIL_SERVICE || 'gmail',
     USER: process.env.MAIL_USER,
     PASS: process.env.MAIL_PASS
+  },
+
+  RAZORPAY: {
+    KEY_ID: process.env.RAZORPAY_KEY_ID || 'rzp_test_your_key_id',
+    KEY_SECRET: process.env.RAZORPAY_KEY_SECRET || 'your_key_secret'
   }
 };

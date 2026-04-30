@@ -1,4 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { authAPI } from './authAPI';
+
+export const fetchProfile = createAsyncThunk(
+  'auth/fetchProfile',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await authAPI.getProfile();
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || 'Failed to fetch profile');
+    }
+  }
+);
 
 const initialState = {
   user: JSON.parse(localStorage.getItem('user')) || null,
@@ -48,7 +61,18 @@ export const authSlice = createSlice({
     },
     clearError: (state) => {
       state.error = null;
+    },
+    updateUserInfo: (state, action) => {
+      state.user = { ...state.user, ...action.payload };
+      localStorage.setItem('user', JSON.stringify(state.user));
     }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchProfile.fulfilled, (state, action) => {
+        state.user = action.payload;
+        localStorage.setItem('user', JSON.stringify(action.payload));
+      });
   }
 });
 
@@ -58,7 +82,8 @@ export const {
   adminLoginSuccess, 
   loginFailure, 
   logout, 
-  clearError 
+  clearError,
+  updateUserInfo
 } = authSlice.actions;
 
 export default authSlice.reducer;
