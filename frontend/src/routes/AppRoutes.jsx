@@ -16,6 +16,7 @@ const CheckoutPage = lazy(() => import("../pages/cart/CheckoutPage"));
 const OrderConfirmationPage = lazy(() => import("../pages/shop/OrderConfirmationPage"));
 const PaymentFailurePage = lazy(() => import("../pages/shop/PaymentFailurePage"));
 const MyOrdersPage = lazy(() => import("../pages/orders/MyOrdersPage"));
+const OrderDetailPage = lazy(() => import("../pages/orders/OrderDetailPage"));
 const ProfilePage = lazy(() => import("../pages/auth/ProfilePage"));
 const LoginPage = lazy(() => import("../pages/auth/LoginPage"));
 const RegisterPage = lazy(() => import("../pages/auth/RegisterPage"));
@@ -42,8 +43,16 @@ const AppRoutes = () => {
                         <AppLayout><HomePage /></AppLayout>
                     </ProtectedRoute>
                 } />
-                <Route path="/products" element={<AppLayout><ProductsPage /></AppLayout>} />
-                <Route path="/products/:id" element={<AppLayout><ProductsPage /></AppLayout>} />
+                <Route path="/products" element={
+                    <ProtectedRoute redirectTo="/">
+                        <AppLayout><ProductsPage /></AppLayout>
+                    </ProtectedRoute>
+                } />
+                <Route path="/products/:id" element={
+                    <ProtectedRoute redirectTo="/">
+                        <AppLayout><ProductsPage /></AppLayout>
+                    </ProtectedRoute>
+                } />
                 <Route path="/wishlist" element={
                     <ProtectedRoute redirectTo="/">
                         <AppLayout><WishlistPage /></AppLayout>
@@ -67,6 +76,11 @@ const AppRoutes = () => {
                 <Route path="/my-orders" element={
                     <ProtectedRoute redirectTo="/">
                         <AppLayout><MyOrdersPage /></AppLayout>
+                    </ProtectedRoute>
+                } />
+                <Route path="/orders/:id" element={
+                    <ProtectedRoute redirectTo="/">
+                        <AppLayout><OrderDetailPage /></AppLayout>
                     </ProtectedRoute>
                 } />
                 <Route path="/payment-failure" element={

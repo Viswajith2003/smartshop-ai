@@ -64,17 +64,70 @@ class AdminService {
     };
   }
 
-  static async getAllUsers() {
-    return await User.find({ role: "user" })
+  static async getAllUsers(queryParams = {}) {
+    const { page = 1, limit = 10, search = "" } = queryParams;
+    const skip = (page - 1) * limit;
+
+    const mongoQuery = { role: "user" };
+    if (search) {
+      mongoQuery.$or = [
+        { name: { $regex: search, $options: "i" } },
+        { email: { $regex: search, $options: "i" } }
+      ];
+    }
+
+    const users = await User.find(mongoQuery)
       .select("-password")
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(Number(limit));
+
+    const total = await User.countDocuments(mongoQuery);
+
+    return {
+      users,
+      meta: {
+        page: Number(page),
+        limit: Number(limit),
+        totalUsers: total,
+        totalPages: Math.ceil(total / limit),
+      }
+    };
   }
 
-  static async getAllOrders() {
-    return await Order.find()
+  static async getAllOrders(queryParams = {}) {
+    const { page = 1, limit = 10, search = "", status = "" } = queryParams;
+    const skip = (page - 1) * limit;
+
+    const mongoQuery = {};
+    if (search) {
+      // Order ID search or user search (though user search would need aggregation or separate query)
+      if (search.match(/^[0-9a-fA-F]{24}$/)) {
+        mongoQuery._id = search;
+      }
+    }
+    if (status && status !== 'All') {
+      mongoQuery.orderStatus = status;
+    }
+
+    const orders = await Order.find(mongoQuery)
       .populate("user", "name email")
       .populate("items.product", "name price")
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(Number(limit));
+
+    const total = await Order.countDocuments(mongoQuery);
+
+    return {
+      orders,
+      meta: {
+        page: Number(page),
+        limit: Number(limit),
+        totalOrders: total,
+        totalPages: Math.ceil(total / limit),
+      }
+    };
   }
 
   static async updateOrderStatus(orderId, status) {
@@ -88,6 +141,75 @@ class AdminService {
 
     await order.save();
     return order;
+  }
+
+  static async getSalesReport(filters = {}) {
+    const { startDate, endDate } = filters;
+    const dateQuery = {};
+    if (startDate || endDate) {
+      dateQuery.createdAt = {};
+      if (startDate) dateQuery.createdAt.$gte = new Date(startDate);
+      if (endDate) dateQuery.createdAt.$lte = new Date(endDate);
+    }
+
+    // Match only completed orders
+    const matchQuery = { 
+      paymentStatus: "Completed",
+      ...dateQuery
+    };
+
+    // Sales by Date
+    const salesByDate = await Order.aggregate([
+      { $match: matchQuery },
+      {
+        $group: {
+          _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+          revenue: { $sum: "$pricing.totalPrice" },
+          orders: { $sum: 1 }
+        }
+      },
+      { $sort: { _id: -1 } }
+    ]);
+
+    // Sales by Product
+    const salesByProduct = await Order.aggregate([
+      { $match: matchQuery },
+      { $unwind: "$items" },
+      {
+        $group: {
+          _id: "$items.product",
+          revenue: { $sum: { $multiply: ["$items.price", "$items.quantity"] } },
+          quantity: { $sum: "$items.quantity" }
+        }
+      },
+      {
+        $lookup: {
+          from: "products",
+          localField: "_id",
+          foreignField: "_id",
+          as: "product"
+        }
+      },
+      { $unwind: "$product" },
+      { $project: { 
+          name: "$product.name", 
+          revenue: 1, 
+          quantity: 1,
+          category: "$product.category"
+        } 
+      },
+      { $sort: { revenue: -1 } }
+    ]);
+
+    return {
+      salesByDate,
+      salesByProduct,
+      summary: {
+        totalRevenue: salesByDate.reduce((acc, curr) => acc + curr.revenue, 0),
+        totalOrders: salesByDate.reduce((acc, curr) => acc + curr.orders, 0),
+        totalProducts: salesByProduct.length
+      }
+    };
   }
 
   // Private helper (Rule 1)

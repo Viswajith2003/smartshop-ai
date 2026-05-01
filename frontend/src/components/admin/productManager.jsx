@@ -140,7 +140,7 @@ const ProductManager = () => {
           <div className="flex items-center gap-3">
             <h3 className="text-2xl font-bold text-white">Inventory</h3>
             <span className="bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded-lg text-xs font-bold">
-              {pagination.totalProducts || products.length} Items
+              {pagination.totalItems || products.length} Items
             </span>
           </div>
           <p className="text-slate-500 text-xs font-medium mt-1 uppercase tracking-widest">Product Catalog</p>

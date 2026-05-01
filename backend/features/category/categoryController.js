@@ -33,8 +33,8 @@ class CategoryController {
 
   static async getAllCategories(req, res, next) {
     try {
-      const categories = await CategoryService.getAllCategories();
-      return ResponseFormatter.success(res, "Categories fetched successfully", categories);
+      const { categories, meta } = await CategoryService.getAllCategories(req.query);
+      return ResponseFormatter.success(res, "Categories fetched successfully", categories, 200, meta);
     } catch (error) {
       next(error);
     }

@@ -24,4 +24,7 @@ router.use("/products", productRoutes);
 router.get("/orders", AdminController.getAllOrders);
 router.put("/orders/:id/status", validate(updateOrderStatusSchema), AdminController.updateOrderStatus);
 
+// Reports
+router.get("/sales-report", AdminController.getSalesReport);
+
 module.exports = router;

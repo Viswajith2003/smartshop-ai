@@ -2,8 +2,8 @@ import axiosInstance from "../axiosInstance";
 import { API_ENDPOINTS } from "../../constants/apiEndpoints";
 
 export const categoryApi = {
-  getCategories: async () => {
-    const response = await axiosInstance.get(API_ENDPOINTS.CATEGORIES.BASE);
+  getCategories: async (params = {}) => {
+    const response = await axiosInstance.get(API_ENDPOINTS.CATEGORIES.BASE, { params });
     return response.data;
   },
   getCategory: async (id) => {

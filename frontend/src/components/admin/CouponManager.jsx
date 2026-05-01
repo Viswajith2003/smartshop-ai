@@ -3,8 +3,9 @@ import { couponAPI } from '../../services/api';
 import { toast } from 'react-toastify';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { ConfirmModal } from '../common';
+import { ConfirmModal, Pagination, SearchBar } from '../common';
 import { toastBackendError } from '../../utils/errorUtils';
+import usePagination from '../../hooks/usePagination';
 import { 
   Plus, 
   Edit2, 
@@ -45,22 +46,35 @@ const CouponManager = () => {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [couponToDelete, setCouponToDelete] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const { pagination, handlePageChange, updatePagination } = usePagination(10);
+
+  const fetchCoupons = async () => {
+    try {
+      const params = {
+        page: pagination.page,
+        limit: pagination.limit,
+        search: searchTerm
+      };
+      const res = await couponAPI.getCoupons(params);
+      if (res.success) {
+        const couponList = Array.isArray(res.data) ? res.data : (res.data.coupons || []);
+        setCoupons(couponList);
+        updatePagination(res.meta);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('Failed to fetch coupons');
+    }
+  };
 
   useEffect(() => {
-    const fetchCoupons = async () => {
-      try {
-        const res = await couponAPI.getCoupons();
-        if (res.success) {
-          const couponList = Array.isArray(res.data) ? res.data : (res.data.coupons || []);
-          setCoupons(couponList);
-        }
-      } catch (error) {
-        console.error(error);
-        toast.error('Failed to fetch coupons');
-      }
-    };
     fetchCoupons();
-  }, []);
+  }, [pagination.page, pagination.limit, searchTerm]);
+
+  useEffect(() => {
+    handlePageChange(1);
+  }, [searchTerm]);
 
   const handleEditCoupon = (coupon = null) => {
     setEditingCoupon(coupon || null);
@@ -95,84 +109,106 @@ const CouponManager = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-slate-800/20 p-6 rounded-3xl border border-slate-700/50">
         <div>
-          <h3 className="text-2xl font-bold text-white">Coupons</h3>
+          <div className="flex items-center gap-3">
+            <h3 className="text-2xl font-bold text-white">Coupons</h3>
+            <span className="bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded-lg text-xs font-bold">
+              {pagination.totalItems || coupons.length} Total
+            </span>
+          </div>
           <p className="text-slate-500 text-sm font-medium mt-1">Manage promotional offers and discounts</p>
         </div>
+
+        <div className="flex-grow max-w-md w-full">
+           <SearchBar 
+             variant="admin" 
+             placeholder="Search coupons..." 
+             onSearch={(val) => setSearchTerm(val || '')}
+           />
+        </div>
+
         <button 
           onClick={() => handleEditCoupon()}
-          className="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-indigo-600/20 transition-all flex items-center gap-2 group"
+          className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-indigo-600/20 transition-all flex items-center gap-2 group h-fit"
         >
           <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform" />
           Create Coupon
         </button>
       </div>
 
-      <div className="bg-[#1e293b] rounded-3xl border border-slate-700/50 shadow-xl overflow-hidden overflow-x-auto">
-        <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="border-b border-slate-700 bg-slate-800/30">
-              <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Code</th>
-              <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Discount</th>
-              <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Validity</th>
-              <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Usage</th>
-              <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Status</th>
-              <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-700/50">
-            {coupons.length === 0 ? (
-              <tr>
-                <td colSpan="6" className="p-10 text-center text-slate-500 font-medium italic">No active coupons found.</td>
+      <div className="bg-[#1e293b] rounded-3xl border border-slate-700/50 shadow-xl overflow-hidden relative">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-slate-700 bg-slate-800/30">
+                <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Code</th>
+                <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Discount</th>
+                <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Validity</th>
+                <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Usage</th>
+                <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Status</th>
+                <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Actions</th>
               </tr>
-            ) : coupons.map(coupon => (
-              <tr key={coupon._id || coupon.id} className="hover:bg-slate-800/20 transition-colors group">
-                <td className="p-5">
-                  <span className="font-black text-indigo-400 bg-indigo-500/10 px-3 py-1.5 rounded-lg border border-indigo-500/20 tracking-widest uppercase text-sm">{coupon.code}</span>
-                </td>
-                <td className="p-5">
-                  <div className="flex flex-col">
-                    <span className="text-slate-200 font-bold">
-                      {coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : `₹${coupon.discountValue} OFF`}
-                    </span>
-                    {coupon.minOrderAmount > 0 && <span className="text-slate-500 text-[10px] uppercase font-black tracking-tight mt-0.5">Min: ₹{coupon.minOrderAmount}</span>}
-                  </div>
-                </td>
-                <td className="p-5">
-                  <div className="flex items-center gap-3 text-[11px] font-bold text-slate-400">
-                     <span className="text-emerald-500 flex items-center gap-1"><Calendar size={12} /> {new Date(coupon.startDate).toLocaleDateString()}</span>
-                     <ChevronRight size={10} className="text-slate-600" />
-                     <span className="text-red-400 flex items-center gap-1"><Calendar size={12} /> {new Date(coupon.endDate).toLocaleDateString()}</span>
-                  </div>
-                </td>
-                <td className="p-5">
-                  <div className="flex items-center gap-2">
-                    <div className="flex -space-x-1">
-                       <Users size={14} className="text-slate-500" />
+            </thead>
+            <tbody className="divide-y divide-slate-700/50">
+              {coupons.length === 0 ? (
+                <tr>
+                  <td colSpan="6" className="p-10 text-center text-slate-500 font-medium italic">No active coupons found.</td>
+                </tr>
+              ) : coupons.map(coupon => (
+                <tr key={coupon._id || coupon.id} className="hover:bg-slate-800/20 transition-colors group">
+                  <td className="p-5">
+                    <span className="font-black text-indigo-400 bg-indigo-500/10 px-3 py-1.5 rounded-lg border border-indigo-500/20 tracking-widest uppercase text-sm">{coupon.code}</span>
+                  </td>
+                  <td className="p-5">
+                    <div className="flex flex-col">
+                      <span className="text-slate-200 font-bold">
+                        {coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : `₹${coupon.discountValue} OFF`}
+                      </span>
+                      {coupon.minOrderAmount > 0 && <span className="text-slate-500 text-[10px] uppercase font-black tracking-tight mt-0.5">Min: ₹{coupon.minOrderAmount}</span>}
                     </div>
-                    <span className="text-slate-300 font-bold text-xs">{coupon.usageCount || 0} / {coupon.usageLimit || '∞'}</span>
-                  </div>
-                </td>
-                <td className="p-5">
-                  <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 text-[9px] font-black uppercase rounded border ${coupon.isActive ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-slate-700/30 text-slate-500 border-slate-700'}`}>
-                    {coupon.isActive ? 'Active' : 'Expired'}
-                  </span>
-                </td>
-                <td className="p-5 text-right">
-                  <div className="flex items-center justify-end gap-2">
-                    <button onClick={() => handleEditCoupon(coupon)} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-lg transition-all" title="Edit">
-                      <Edit2 size={16} />
-                    </button>
-                    <button onClick={() => handleDelete(coupon._id || coupon.id)} className="p-2 text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all" title="Delete">
-                      <Trash2 size={16} />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                  </td>
+                  <td className="p-5">
+                    <div className="flex items-center gap-3 text-[11px] font-bold text-slate-400">
+                       <span className="text-emerald-500 flex items-center gap-1"><Calendar size={12} /> {new Date(coupon.startDate).toLocaleDateString()}</span>
+                       <ChevronRight size={10} className="text-slate-600" />
+                       <span className="text-red-400 flex items-center gap-1"><Calendar size={12} /> {new Date(coupon.endDate).toLocaleDateString()}</span>
+                    </div>
+                  </td>
+                  <td className="p-5">
+                    <div className="flex items-center gap-2">
+                      <div className="flex -space-x-1">
+                         <Users size={14} className="text-slate-500" />
+                      </div>
+                      <span className="text-slate-300 font-bold text-xs">{coupon.usageCount || 0} / {coupon.usageLimit || '∞'}</span>
+                    </div>
+                  </td>
+                  <td className="p-5">
+                    <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 text-[9px] font-black uppercase rounded border ${coupon.isActive ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-slate-700/30 text-slate-500 border-slate-700'}`}>
+                      {coupon.isActive ? 'Active' : 'Expired'}
+                    </span>
+                  </td>
+                  <td className="p-5 text-right">
+                    <div className="flex items-center justify-end gap-2">
+                      <button onClick={() => handleEditCoupon(coupon)} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-lg transition-all" title="Edit">
+                        <Edit2 size={16} />
+                      </button>
+                      <button onClick={() => handleDelete(coupon._id || coupon.id)} className="p-2 text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all" title="Delete">
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {coupons.length > 0 && (
+          <div className="p-5 border-t border-slate-700 bg-slate-800/10">
+            <Pagination pagination={pagination} onPageChange={handlePageChange} theme="dark" />
+          </div>
+        )}
       </div>
 
       {/* Modal */}

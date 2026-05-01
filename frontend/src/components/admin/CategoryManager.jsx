@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 import { ConfirmModal } from '../common';
 import { toastBackendError } from '../../utils/errorUtils';
 import { Plus, Edit2, Trash2, CheckCircle2, XCircle } from 'lucide-react';
+import usePagination from '../../hooks/usePagination';
+import { Pagination, SearchBar } from '../common';
 
 const CategorySchema = Yup.object().shape({
   name: Yup.string()
@@ -26,20 +28,33 @@ const CategoryManager = () => {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [categoryToDelete, setCategoryToDelete] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const { pagination, handlePageChange, updatePagination } = usePagination(10);
+
+  const fetchCategories=async()=>{
+    try {
+      const params = {
+        page: pagination.page,
+        limit: pagination.limit,
+        search: searchTerm
+      };
+      const res=await categoryAPI.getCategories(params)
+      if(res.success){
+        setCategories(res.data)
+        updatePagination(res.meta);
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(()=>{
-    const fetchCategories=async()=>{
-      try {
-        const res=await categoryAPI.getCategories()
-        if(res.success){
-          setCategories(res.data)
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
     fetchCategories()
-  },[])
+  },[pagination.page, pagination.limit, searchTerm])
+
+  useEffect(() => {
+    handlePageChange(1);
+  }, [searchTerm]);
 
   const handleEditCategory = (category = null) => {
     if (category) {
@@ -78,63 +93,85 @@ const CategoryManager = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-slate-800/20 p-6 rounded-3xl border border-slate-700/50">
         <div>
-          <h3 className="text-2xl font-bold text-white">Categories</h3>
+          <div className="flex items-center gap-3">
+            <h3 className="text-2xl font-bold text-white">Categories</h3>
+            <span className="bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded-lg text-xs font-bold">
+              {pagination.totalItems || categories.length} Total
+            </span>
+          </div>
           <p className="text-slate-500 text-sm font-medium mt-1">Organize your products into logical groups</p>
         </div>
+
+        <div className="flex-grow max-w-md w-full">
+           <SearchBar 
+             variant="admin" 
+             placeholder="Search categories..." 
+             onSearch={(val) => setSearchTerm(val || '')}
+           />
+        </div>
+
         <button 
           onClick={() => handleEditCategory()}
-          className="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-indigo-600/20 transition-all flex items-center gap-2 group"
+          className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-indigo-600/20 transition-all flex items-center gap-2 group h-fit"
         >
           <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform" />
           Add New Category
         </button>
       </div>
 
-      <div className="bg-[#1e293b] rounded-3xl border border-slate-700/50 shadow-xl overflow-hidden overflow-x-auto">
-        <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="border-b border-slate-700 bg-slate-800/30">
-              <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Name</th>
-              <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Description</th>
-              <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Status</th>
-              <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-700/50">
-            {categories.length === 0 ? (
-              <tr>
-                <td colSpan="4" className="p-10 text-center text-slate-500 font-medium italic">No categories found.</td>
+      <div className="bg-[#1e293b] rounded-3xl border border-slate-700/50 shadow-xl overflow-hidden relative">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-slate-700 bg-slate-800/30">
+                <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Name</th>
+                <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Description</th>
+                <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Status</th>
+                <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Actions</th>
               </tr>
-            ) : categories.map(category => (
-              <tr key={category._id || category.id} className="hover:bg-slate-800/20 transition-colors group">
-                <td className="p-5">
-                  <span className="font-bold text-slate-200 group-hover:text-indigo-400 transition-colors">{category.name}</span>
-                </td>
-                <td className="p-5">
-                   <p className="text-slate-400 text-xs font-medium max-w-md truncate">{category.description}</p>
-                </td>
-                <td className="p-5">
-                  <span className={`inline-flex items-center gap-1.5 px-3 py-1 text-[10px] font-bold uppercase rounded-lg border ${category.isActive ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-slate-700/30 text-slate-500 border-slate-700'}`}>
-                    {category.isActive ? <CheckCircle2 className="w-3 h-3" /> : <XCircle className="w-3 h-3" />}
-                    {category.isActive ? 'Active' : 'Inactive'}
-                  </span>
-                </td>
-                <td className="p-5 text-right">
-                  <div className="flex items-center justify-end gap-2">
-                    <button onClick={() => handleEditCategory(category)} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-lg transition-all" title="Edit">
-                      <Edit2 className="w-4 h-4" />
-                    </button>
-                    <button onClick={() => handleDelete(category._id || category.id)} className="p-2 text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all" title="Delete">
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-slate-700/50">
+              {categories.length === 0 ? (
+                <tr>
+                  <td colSpan="4" className="p-10 text-center text-slate-500 font-medium italic">No categories found.</td>
+                </tr>
+              ) : categories.map(category => (
+                <tr key={category._id || category.id} className="hover:bg-slate-800/20 transition-colors group">
+                  <td className="p-5">
+                    <span className="font-bold text-slate-200 group-hover:text-indigo-400 transition-colors">{category.name}</span>
+                  </td>
+                  <td className="p-5">
+                     <p className="text-slate-400 text-xs font-medium max-w-md truncate">{category.description}</p>
+                  </td>
+                  <td className="p-5">
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 text-[10px] font-bold uppercase rounded-lg border ${category.isActive ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-slate-700/30 text-slate-500 border-slate-700'}`}>
+                      {category.isActive ? <CheckCircle2 className="w-3 h-3" /> : <XCircle className="w-3 h-3" />}
+                      {category.isActive ? 'Active' : 'Inactive'}
+                    </span>
+                  </td>
+                  <td className="p-5 text-right">
+                    <div className="flex items-center justify-end gap-2">
+                      <button onClick={() => handleEditCategory(category)} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-lg transition-all" title="Edit">
+                        <Edit2 className="w-4 h-4" />
+                      </button>
+                      <button onClick={() => handleDelete(category._id || category.id)} className="p-2 text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all" title="Delete">
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {categories.length > 0 && (
+          <div className="p-5 border-t border-slate-700 bg-slate-800/10">
+            <Pagination pagination={pagination} onPageChange={handlePageChange} theme="dark" />
+          </div>
+        )}
       </div>
 
       {/* Modal */}

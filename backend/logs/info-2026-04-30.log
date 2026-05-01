@@ -1271,3 +1271,4 @@
 {"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 36ms"}
 {"level":"info","message":"GET /api/wishlist 200 - 23ms"}
 {"level":"info","message":"GET /api/cart 200 - 20ms"}
+{"level":"info","message":"MongoDB connected successfully"}

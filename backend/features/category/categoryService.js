@@ -22,8 +22,31 @@ class CategoryService {
     return category;
   }
 
-  static async getAllCategories() {
-    return await Category.find({}).sort({ name: 1 });
+  static async getAllCategories(queryParams = {}) {
+    const { page = 1, limit = 10, search = "" } = queryParams;
+    const skip = (page - 1) * limit;
+
+    const mongoQuery = {};
+    if (search) {
+      mongoQuery.name = { $regex: search, $options: "i" };
+    }
+
+    const categories = await Category.find(mongoQuery)
+      .sort({ name: 1 })
+      .skip(skip)
+      .limit(Number(limit));
+
+    const total = await Category.countDocuments(mongoQuery);
+
+    return {
+      categories,
+      meta: {
+        page: Number(page),
+        limit: Number(limit),
+        totalCategories: total,
+        totalPages: Math.ceil(total / limit),
+      }
+    };
   }
 
   static async getCategoryById(id) {
