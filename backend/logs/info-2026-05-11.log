@@ -1,0 +1,33 @@
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 6ms"}
+{"level":"info","message":"GET /api/categories 200 - 123ms"}
+{"level":"info","message":"GET /api/categories 200 - 106ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 109ms"}
+{"level":"info","message":"GET /api/products 200 - 207ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 170ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 212ms"}
+{"level":"info","message":"GET /api/products 200 - 91ms"}
+{"level":"info","message":"GET /api/cart 200 - 127ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 54ms"}
+{"level":"info","message":"GET /api/cart 200 - 114ms"}
+{"level":"info","message":"POST /api/admin/login 200 - 240ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 30ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 41ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 65ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 30ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 18ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 18ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 29ms"}
+{"level":"info","message":"GET /api/categories 200 - 34ms"}
+{"level":"info","message":"GET /api/categories 200 - 31ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 50ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 11ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 5ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 8ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 56ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 60ms"}
+{"level":"info","message":"MongoDB connected successfully"}

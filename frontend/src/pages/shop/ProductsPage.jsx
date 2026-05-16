@@ -187,7 +187,7 @@ const ProductsPage = () => {
                             }}
                             className={`px-4 py-2 text-sm cursor-pointer transition-colors flex items-center justify-between
                               ${sortLabel === option 
-                                ? 'bg-blue-50 text-blue-600 font-bold border-l-4 border-blue-500' 
+                                ? 'bg-indigo-50 text-indigo-600 font-bold border-l-4 border-indigo-500' 
                                 : 'text-slate-700 hover:bg-slate-50 border-l-4 border-transparent'
                               }`}
                           >

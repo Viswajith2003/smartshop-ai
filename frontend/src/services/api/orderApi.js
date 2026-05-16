@@ -6,6 +6,10 @@ export const orderApi = {
     const response = await axiosInstance.post(API_ENDPOINTS.ORDERS.CREATE, data);
     return response.data;
   },
+  sendWalletOTP: async () => {
+    const response = await axiosInstance.post(API_ENDPOINTS.ORDERS.SEND_WALLET_OTP);
+    return response.data;
+  },
   verifyPayment: async (data) => {
     const response = await axiosInstance.post(API_ENDPOINTS.ORDERS.VERIFY, data);
     return response.data;

@@ -70,7 +70,7 @@ const DashboardPage = memo(() => {
       value: statsData?.totalUsers || 0, 
       trend: '+12%',
       icon: Users,
-      color: 'bg-blue-500/10 text-blue-500'
+      color: 'bg-indigo-500/10 text-indigo-500'
     },
     { 
       label: 'Products', 
@@ -96,16 +96,16 @@ const DashboardPage = memo(() => {
   ];
 
   return (
-    <div className="flex min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-indigo-500/30">
+    <div className="flex min-h-screen bg-slate-50 font-sans">
       
       {/* Sidebar */}
-      <aside className="w-64 bg-[#1e293b] flex flex-col border-r border-slate-800 fixed h-full z-20">
+      <aside className="w-64 bg-white flex flex-col border-r border-slate-200 fixed h-full z-20">
         <div className="p-6 flex items-center gap-3">
           <div className="bg-indigo-600 p-2.5 rounded-xl shadow-lg shadow-indigo-500/20 text-white">
              <ShoppingBag className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-lg font-black tracking-tight text-white leading-tight">SmartShop</h1>
+            <h1 className="text-lg font-black tracking-tight text-slate-900 leading-tight">SmartShop</h1>
             <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-tight">Admin Console</p>
           </div>
         </div>
@@ -121,7 +121,7 @@ const DashboardPage = memo(() => {
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group relative ${
                   isActive 
                     ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' 
-                    : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+                    : 'text-slate-500 hover:bg-slate-50 hover:text-indigo-600'
                 }`}
               >
                 <Icon className={`w-5 h-5 transition-transform duration-200 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`} />
@@ -134,7 +134,7 @@ const DashboardPage = memo(() => {
           })}
         </nav>
 
-        <div className="p-4 border-t border-slate-800">
+        <div className="p-4 border-t border-slate-200">
           <button 
             onClick={handleLogout}
             className="flex items-center gap-3 text-slate-400 font-semibold hover:text-red-400 transition-colors py-3 px-4 w-full rounded-xl hover:bg-red-500/10 group"
@@ -149,9 +149,9 @@ const DashboardPage = memo(() => {
       <main className="flex-1 ml-64 flex flex-col min-h-screen">
         
         {/* Header */}
-        <header className="h-20 flex items-center justify-between px-8 border-b border-slate-800 bg-[#0f172a]/80 backdrop-blur-md sticky top-0 z-10 w-full">
+        <header className="h-20 flex items-center justify-between px-8 border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-10 w-full">
           <div className="flex items-center gap-4">
-            <h2 className="text-xl font-bold tracking-tight text-white">{activeItem}</h2>
+            <h2 className="text-xl font-bold tracking-tight text-slate-900">{activeItem}</h2>
           </div>
           
           <div className="flex items-center gap-5">
@@ -160,21 +160,21 @@ const DashboardPage = memo(() => {
               <input 
                 type="text" 
                 placeholder="Search metrics..." 
-                className="bg-slate-900 border border-slate-800 rounded-xl pl-10 pr-4 py-2 text-sm text-slate-200 w-64 focus:ring-2 focus:ring-indigo-500 focus:bg-slate-950 transition-all outline-none"
+                className="bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2 text-sm text-slate-900 w-64 focus:ring-2 focus:ring-indigo-500 transition-all outline-none"
               />
             </div>
 
-            <button className="relative p-2 text-slate-400 hover:text-white transition-colors bg-slate-900 rounded-xl border border-slate-800">
+            <button className="relative p-2 text-slate-400 hover:text-indigo-600 transition-colors bg-white rounded-xl border border-slate-200">
                 <Bell className="w-5 h-5" />
-                <div className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-[#1e293b]"></div>
+                <div className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></div>
             </button>
             
-            <div className="flex items-center gap-3 pl-2 border-l border-slate-800 text-white">
+            <div className="flex items-center gap-3 pl-2 border-l border-slate-200 text-slate-900">
               <div className="text-right hidden sm:block">
                 <p className="text-xs font-bold">Admin User</p>
                 <p className="text-[10px] text-slate-500 font-medium">Platform Admin</p>
               </div>
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-500 shadow-lg border border-white/10 group-hover:scale-105 transition-transform cursor-pointer"></div>
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-500 shadow-lg border border-white/10 group-hover:scale-105 transition-transform cursor-pointer"></div>
             </div>
           </div>
         </header>
@@ -186,11 +186,11 @@ const DashboardPage = memo(() => {
             <>
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-3xl font-black tracking-tight text-white leading-none">Dashboard Overview</h3>
+                  <h3 className="text-3xl font-black tracking-tight text-slate-900 leading-none">Dashboard Overview</h3>
                   <p className="text-slate-500 text-sm font-medium mt-2">Activity and business metrics overview.</p>
                 </div>
                 <div className="flex gap-3">
-                   <button className="bg-slate-900 text-slate-300 px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-slate-800 border border-slate-800 transition-all flex items-center gap-2">
+                   <button className="bg-white text-slate-600 px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-slate-50 border border-slate-200 transition-all flex items-center gap-2">
                      <FileText className="w-4 h-4" /> Download CSV
                    </button>
                 </div>
@@ -203,7 +203,7 @@ const DashboardPage = memo(() => {
                   return (
                     <div 
                       key={idx} 
-                      className="bg-[#1e293b] p-6 rounded-2xl border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 shadow-lg group relative overflow-hidden"
+                      className="bg-white p-6 rounded-2xl border border-slate-100 hover:border-indigo-500/50 transition-all duration-300 shadow-lg group relative overflow-hidden"
                     >
                       <div className="flex justify-between items-start mb-6 relative z-10">
                         <div className={`p-3 rounded-xl ${stat.color}`}>
@@ -217,7 +217,7 @@ const DashboardPage = memo(() => {
                       
                       <div className="relative z-10">
                         <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">{stat.label}</p>
-                        <h4 className="text-3xl font-black text-white tracking-tight">{stat.value}</h4>
+                        <h4 className="text-3xl font-black text-slate-900 tracking-tight">{stat.value}</h4>
                       </div>
 
                       <div className="absolute -right-4 -bottom-4 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity">
@@ -231,14 +231,14 @@ const DashboardPage = memo(() => {
               {/* Charts Row */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Sales Chart Mockup */}
-                <div className="lg:col-span-2 bg-[#1e293b] p-8 rounded-3xl border border-slate-700/50 shadow-xl">
-                  <div className="flex justify-between items-center mb-8">
-                    <h4 className="text-sm font-black uppercase tracking-widest text-slate-400 flex items-center gap-2 leading-none">
+                <div className="lg:col-span-2 bg-white rounded-2xl border border-slate-100 shadow-xl overflow-hidden">
+                  <div className="p-8 border-b border-slate-50 flex justify-between items-center bg-white">
+                    <h4 className="text-sm font-black uppercase tracking-widest text-slate-900 flex items-center gap-2 leading-none">
                        <TrendingUp className="w-5 h-5 text-indigo-500" /> Performance Analysis
                     </h4>
                     <div className="flex gap-2">
-                      <span className="text-[10px] font-black bg-indigo-600/20 text-indigo-400 px-2.5 py-1 rounded-lg">WEEKLY</span>
-                      <span className="text-[10px] font-black hover:bg-slate-800 text-slate-500 px-2.5 py-1 rounded-lg cursor-pointer transition-colors">MONTHLY</span>
+                      <span className="text-[10px] font-black bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-lg">WEEKLY</span>
+                      <span className="text-[10px] font-black hover:bg-slate-50 text-slate-500 px-2.5 py-1 rounded-lg cursor-pointer transition-colors">MONTHLY</span>
                     </div>
                   </div>
                   
@@ -254,17 +254,17 @@ const DashboardPage = memo(() => {
                       </defs>
                     </svg>
                     
-                    <div className="absolute bottom-0 left-0 w-full flex justify-between px-2 pt-4 border-t border-slate-800/50">
+                    <div className="absolute bottom-0 left-0 w-full flex justify-between px-2 pt-4 border-t border-slate-100">
                        {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
-                         <span key={day} className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">{day}</span>
+                         <span key={day} className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">{day}</span>
                        ))}
                     </div>
                   </div>
                 </div>
 
                 {/* Top Actions */}
-                <div className="bg-[#1e293b] p-8 rounded-3xl border border-slate-700/50 shadow-xl flex flex-col">
-                  <h4 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-6 flex items-center gap-2">
+                <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl flex flex-col">
+                  <h4 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-8 flex items-center gap-2">
                      <Bell className="w-4 h-4 text-amber-500" /> Notifications
                   </h4>
                   <div className="space-y-6 flex-1">
@@ -277,13 +277,13 @@ const DashboardPage = memo(() => {
                        <div key={i} className="flex gap-4 items-start">
                           <div className={`w-2 h-2 rounded-full mt-1.5 ${item.alert ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]' : 'bg-slate-600'}`}></div>
                           <div>
-                             <p className="text-xs font-bold text-slate-200">{item.name}</p>
+                             <p className="text-xs font-bold text-slate-900">{item.name}</p>
                              <p className="text-[10px] font-medium text-slate-500 mt-1 uppercase tracking-wider">{item.time}</p>
                           </div>
                        </div>
                      ))}
                   </div>
-                  <button className="w-full mt-6 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-400 py-3 rounded-xl text-[10px] font-black tracking-[0.2em] transition-all uppercase">Check All Alerts</button>
+                  <button className="w-full mt-6 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 py-3 rounded-xl text-[10px] font-black tracking-[0.2em] transition-all uppercase shadow-sm">Check All Alerts</button>
                 </div>
               </div>
             </>
@@ -307,7 +307,7 @@ const DashboardPage = memo(() => {
           background: transparent;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #334155;
+          background: #cbd5e1;
           border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {

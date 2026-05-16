@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const authRoutes = require('../features/auth/authRoutes');
-const userRoutes = require('../features/user/userRoutes');
-const adminRoutes = require('../features/admin/adminRoutes');
-const categoryRoutes = require('../features/category/categoryRoutes');
-const productRoutes = require('../features/product/productRoutes');
-const couponRoutes = require('../features/coupon/couponRoutes');
-const cartRoutes = require('../features/cart/cartRoutes');
-const orderRoutes = require('../features/order/orderRoutes');
-const wishlistRoutes = require('../features/wishlist/wishlistRoutes');
-const paymentRoutes = require('../features/payment/paymentRoutes');
+const authRoutes = require('../Modules/auth/authRoutes');
+const userRoutes = require('../Modules/user/userRoutes');
+const adminRoutes = require('../Modules/admin/adminRoutes');
+const categoryRoutes = require('../Modules/category/categoryRoutes');
+const productRoutes = require('../Modules/product/productRoutes');
+const couponRoutes = require('../Modules/coupon/couponRoutes');
+const cartRoutes = require('../Modules/cart/cartRoutes');
+const orderRoutes = require('../Modules/order/orderRoutes');
+const wishlistRoutes = require('../Modules/wishlist/wishlistRoutes');
+const paymentRoutes = require('../Modules/payment/paymentRoutes');
 
 router.use('/auth', authRoutes);
 router.use('/users', userRoutes);

@@ -17,8 +17,16 @@ const ProtectedRoute = React.memo(({ children, redirectTo = "/login", role }) =>
   }
 
   // If a specific role is required (like 'admin'), check the user's role
-  if (role && user?.role !== role) {
-    return <Navigate to="/" replace />
+  if (role) {
+    // If authenticated but user object not loaded yet, show loading
+    if ((isAuthenticated || isAdminAuthenticated) && !user) {
+      return <Loader fullScreen text="Loading user profile..." />
+    }
+    
+    // If user role doesn't match, redirect to home or root
+    if (user?.role !== role) {
+      return <Navigate to="/" replace />
+    }
   }
 
   return children

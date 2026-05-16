@@ -7,7 +7,7 @@ const ErrorPage = () => {
     return (
         <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-6 font-['Inter',sans-serif]">
             {/* Ambient Background Glows */}
-            <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 blur-[120px] rounded-full"></div>
+            <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-600/10 blur-[120px] rounded-full"></div>
             <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-600/10 blur-[120px] rounded-full"></div>
 
             <div className="relative z-10 max-w-2xl w-full text-center">
@@ -17,7 +17,7 @@ const ErrorPage = () => {
                         500
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-3xl rotate-12 flex items-center justify-center shadow-2xl shadow-blue-500/20 animate-pulse">
+                        <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-tr from-indigo-600 to-indigo-600 rounded-3xl rotate-12 flex items-center justify-center shadow-2xl shadow-indigo-500/20 animate-pulse">
                             <i className="bi bi-cpu-fill text-white text-5xl md:text-6xl"></i>
                         </div>
                     </div>

@@ -9,6 +9,7 @@ import { updateUserInfo } from '../../features/auth/authSlice';
 import { authAPI } from '../../features/auth/authAPI';
 
 import Modal from '../../components/common/Modal';
+import Breadcrumbs from '../../components/common/Breadcrumbs';
 
 const MyOrdersPage = () => {
     const [orders, setOrders] = useState([]);
@@ -108,7 +109,7 @@ const MyOrdersPage = () => {
             case 'delivered':
                 return 'bg-emerald-100 text-emerald-700';
             case 'shipped':
-                return 'bg-blue-100 text-blue-700';
+                return 'bg-indigo-100 text-indigo-700';
             case 'processing':
                 return 'bg-amber-100 text-amber-700';
             case 'cancelled':
@@ -143,18 +144,18 @@ const MyOrdersPage = () => {
 
     return (
         <div className="min-h-screen bg-slate-50/50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-                    <div>
-                        <h1 className="text-4xl font-black text-slate-900 tracking-tight flex items-center gap-4">
-                            <ShoppingBag className="w-10 h-10 text-indigo-600" />
-                            My Orders
-                        </h1>
-                        <p className="text-slate-400 font-bold mt-2 uppercase tracking-widest text-xs">Track and manage your recent purchases</p>
-                    </div>
+            <div className="max-w-7xl mx-auto">
+                <Breadcrumbs 
+                    items={[
+                        { label: 'Home', link: '/home' },
+                        { label: 'My Orders' }
+                    ]} 
+                    className="mb-12"
+                />
+                <div className="flex flex-col md:flex-row md:items-center justify-end gap-6 mb-12">
 
                     {/* View Toggle */}
-                    <div className="flex bg-white p-1.5 rounded-2xl shadow-sm border border-slate-100 items-center gap-1">
+                    <div className="flex bg-white p-1.5 rounded-xl shadow-sm border border-slate-100 items-center gap-1">
                         <button 
                             onClick={() => setViewMode('list')}
                             className={`p-2.5 rounded-xl transition-all flex items-center gap-2 ${viewMode === 'list' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100' : 'text-slate-400 hover:bg-slate-50'}`}
@@ -175,15 +176,15 @@ const MyOrdersPage = () => {
                 </div>
 
                 {orders.length === 0 ? (
-                    <div className="bg-white rounded-[3rem] p-16 text-center shadow-sm border border-slate-100">
-                        <div className="w-32 h-32 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-8">
+                    <div className="bg-white rounded-2xl p-16 text-center shadow-sm border border-slate-100">
+                        <div className="w-32 h-32 bg-indigo-50 rounded-2xl flex items-center justify-center mx-auto mb-8">
                             <Package className="w-16 h-16 text-indigo-200" />
                         </div>
                         <h2 className="text-2xl font-black text-slate-900 mb-4">No orders found yet</h2>
                         <p className="text-slate-500 font-bold mb-8 max-w-md mx-auto">Looks like you haven't placed any orders yet. Start shopping to see them here!</p>
                         <Link 
                             to="/products" 
-                            className="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-100 active:scale-95"
+                            className="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-100 active:scale-95"
                         >
                             Browse Products
                         </Link>
@@ -193,7 +194,7 @@ const MyOrdersPage = () => {
                         {orders.map((order) => (
                             <div 
                                 key={order._id}
-                                className={`bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-slate-100 hover:border-indigo-100 transition-all group flex flex-col ${viewMode === 'grid' ? 'h-full hover:shadow-xl hover:-translate-y-1' : ''}`}
+                                className={`bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:border-indigo-100 transition-all group flex flex-col ${viewMode === 'grid' ? 'h-full hover:shadow-xl hover:-translate-y-1' : ''}`}
                             >
                                 {/* Order Header */}
                                 <div className={`p-8 sm:px-10 border-b border-slate-50 flex flex-wrap items-center justify-between gap-6 bg-slate-50/30 ${viewMode === 'grid' ? 'flex-col items-start !p-6' : ''}`}>
@@ -330,14 +331,14 @@ const MyOrdersPage = () => {
                     <div className="flex gap-4 pt-2">
                         <button
                             onClick={handleCloseModal}
-                            className="flex-1 bg-slate-100 text-slate-600 font-black py-4 rounded-2xl hover:bg-slate-200 transition-all uppercase tracking-widest text-[11px]"
+                            className="flex-1 bg-slate-100 text-slate-600 font-black py-4 rounded-xl hover:bg-slate-200 transition-all uppercase tracking-widest text-[11px]"
                         >
                             Back
                         </button>
                         <button
                             onClick={handleActionSubmit}
                             disabled={actionLoading || !modalConfig.reason.trim()}
-                            className={`flex-1 font-black py-4 rounded-2xl transition-all uppercase tracking-widest text-[11px] shadow-lg ${
+                            className={`flex-1 font-black py-4 rounded-xl transition-all uppercase tracking-widest text-[11px] shadow-lg ${
                                 modalConfig.type === 'cancel' 
                                     ? 'bg-red-600 text-white hover:bg-red-700 shadow-red-600/20' 
                                     : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-indigo-600/20'

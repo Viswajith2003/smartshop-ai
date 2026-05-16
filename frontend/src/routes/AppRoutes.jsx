@@ -29,15 +29,39 @@ const ProductManagement = lazy(() => import("../pages/admin/ProductManagement"))
 const OrderManagement = lazy(() => import("../pages/admin/OrderManagement"));
 const ErrorPage = lazy(() => import("../pages/error/ErrorPage"));
 const NotFoundPage = lazy(() => import("../pages/error/NotFoundPage"));
+const AboutPage = lazy(() => import("../pages/common/AboutPage"));
+const ContactPage = lazy(() => import("../pages/common/ContactPage"));
 
 const AppRoutes = () => {
-    const { isAuthenticated } = useSelector((state) => state.auth);
+    const { isAuthenticated, isAdminAuthenticated, loading, user } = useSelector((state) => state.auth);
+
+    if (loading) {
+        return <Loader fullScreen text="Checking authentication..." />;
+    }
+
+    const getRootElement = () => {
+        if (loading) return <Loader fullScreen text="Checking authentication..." />;
+        
+        // If admin is authenticated AND has the admin role, go to admin dashboard
+        if (isAdminAuthenticated && user?.role === 'admin') {
+            return <Navigate to="/admin/dashboard" replace />;
+        }
+        
+        // If authenticated as user (or admin without role check yet), go to home
+        if (isAuthenticated) {
+            return <Navigate to="/home" replace />;
+        }
+        
+        return <LandingPage />;
+    };
 
     return (
         <Suspense fallback={<Loader fullScreen text="Loading..." />}>
             <Routes>
                 
-                <Route path="/" element={isAuthenticated ? <Navigate to="/home" replace /> : <LandingPage />} />
+                <Route path="/" element={getRootElement()} />
+                <Route path="/about" element={<AppLayout><AboutPage /></AppLayout>} />
+                <Route path="/contact" element={<AppLayout><ContactPage /></AppLayout>} />
                 <Route path="/home" element={
                     <ProtectedRoute redirectTo="/">
                         <AppLayout><HomePage /></AppLayout>
@@ -78,7 +102,7 @@ const AppRoutes = () => {
                         <AppLayout><MyOrdersPage /></AppLayout>
                     </ProtectedRoute>
                 } />
-                <Route path="/orders/:id" element={
+                <Route path="/order-detail/:id" element={
                     <ProtectedRoute redirectTo="/">
                         <AppLayout><OrderDetailPage /></AppLayout>
                     </ProtectedRoute>

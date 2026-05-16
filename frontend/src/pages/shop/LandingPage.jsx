@@ -73,8 +73,8 @@ const LandingPage = () => {
             { icon: Star, label: 'Premium Quality', desc: 'Curated Selections' },
             { icon: CreditCard, label: 'Digital Wallet', desc: 'Instant Refunds' }
           ].map((item, i) => (
-            <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-slate-100 hover:border-indigo-100 hover:shadow-xl hover:shadow-indigo-500/5 transition-all text-left group">
-              <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 mb-6 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+            <div key={i} className="bg-white p-8 rounded-2xl border border-slate-100 hover:border-indigo-100 hover:shadow-xl hover:shadow-indigo-500/5 transition-all text-left group">
+              <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 mb-6 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all">
                 <item.icon size={24} />
               </div>
               <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">{item.label}</h3>
@@ -96,11 +96,11 @@ const LandingPage = () => {
             <img 
               src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000&h=1200" 
               alt="Platform" 
-              className="relative rounded-[3rem] shadow-2xl border border-white/10"
+              className="relative rounded-2xl shadow-2xl border border-white/10"
             />
-            <div className="absolute -bottom-10 -right-10 bg-white p-8 rounded-[2rem] shadow-2xl animate-bounce-slow">
+            <div className="absolute -bottom-10 -right-10 bg-white p-8 rounded-2xl shadow-2xl animate-bounce-slow">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600">
+                <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600">
                   <Smartphone />
                 </div>
                 <div>

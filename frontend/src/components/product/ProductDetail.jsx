@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../features/cart/cartSlice';
 import { toggleWishlist } from '../../features/wishlist/wishlistSlice';
 import { toast } from 'react-toastify';
+import ProductReviews from './ProductReviews';
 
-const ProductDetail = ({ products }) => {
+const ProductDetail = ({ products: initialProduct }) => {
+  const [products, setProducts] = useState(initialProduct);
+  
+  React.useEffect(() => {
+    setProducts(initialProduct);
+  }, [initialProduct]);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const wishlistItems = useSelector((state) => state.wishlist.items);
@@ -48,7 +55,7 @@ const ProductDetail = ({ products }) => {
       <div className="mb-6">
         <button 
           onClick={() => navigate('/products')} 
-          className="text-slate-500 hover:text-blue-600 transition-colors flex items-center text-sm font-bold bg-white/50 px-4 py-2 rounded-full border border-slate-200 hover:border-blue-300 shadow-sm"
+          className="text-slate-500 hover:text-indigo-600 transition-colors flex items-center text-sm font-bold bg-white/50 px-4 py-2 rounded-xl border border-slate-200 hover:border-indigo-300 shadow-sm"
         >
           <i className="bi bi-arrow-left mr-2"></i> Back to Products
         </button>
@@ -56,15 +63,15 @@ const ProductDetail = ({ products }) => {
 
       <div className="flex flex-col lg:flex-row gap-10 items-start">
         {/* Product Image Section */}
-        <div className="bg-white rounded-3xl shadow-lg p-8 w-full lg:w-1/2 flex items-center justify-center relative min-h-[450px] border border-slate-100">
+        <div className="bg-white rounded-2xl shadow-lg p-8 w-full lg:w-1/2 flex items-center justify-center relative min-h-[450px] border border-slate-100">
            <img 
             src={products.images && products.images.length > 0 ? products.images[0] : products.image} 
             alt={products.name} 
             className="max-w-full max-h-[400px] object-contain hover:scale-105 transition-transform duration-500" 
            />
            {!products.isActive && (
-             <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] flex items-center justify-center rounded-3xl">
-               <span className="bg-red-500 text-white px-6 py-2 rounded-full font-black uppercase tracking-widest shadow-lg">Inactive</span>
+             <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] flex items-center justify-center rounded-2xl">
+               <span className="bg-red-500 text-white px-6 py-2 rounded-xl font-black uppercase tracking-widest shadow-lg">Inactive</span>
              </div>
            )}
         </div>
@@ -72,10 +79,10 @@ const ProductDetail = ({ products }) => {
         {/* Product Info Section */}
         <div className="w-full lg:w-1/2">
            <div className="flex items-center gap-3 mb-4">
-             <span className="px-3 py-1 text-[10px] font-black tracking-widest uppercase rounded-full bg-blue-500/10 text-blue-600 border border-blue-500/20">
+             <span className="px-3 py-1 text-[10px] font-black tracking-widest uppercase rounded-xl bg-indigo-500/10 text-indigo-600 border border-indigo-500/20">
                {products.category?.name || 'Category'}
              </span>
-             <span className={`px-3 py-1 text-[10px] font-black tracking-widest uppercase rounded-full border ${products.stock > 0 ? 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20' : 'bg-red-500/10 text-red-600 border-red-500/20'}`}>
+             <span className={`px-3 py-1 text-[10px] font-black tracking-widest uppercase rounded-xl border ${products.stock > 0 ? 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20' : 'bg-red-500/10 text-red-600 border-red-500/20'}`}>
                {products.stock > 0 ? `In Stock (${products.stock})` : 'Out of Stock'}
              </span>
            </div>
@@ -113,19 +120,19 @@ const ProductDetail = ({ products }) => {
            <div className="flex flex-wrap items-center gap-4">
               <button 
                 onClick={handleBuyNow}
-                className="flex-grow sm:flex-grow-0 bg-blue-600 hover:bg-blue-500 text-white font-black text-sm px-10 py-4 rounded-2xl shadow-[0_10px_20px_rgba(37,99,235,0.2)] hover:shadow-[0_15px_30px_rgba(37,99,235,0.3)] transition-all transform hover:-translate-y-1 active:scale-95 uppercase tracking-widest"
+                className="flex-grow sm:flex-grow-0 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-sm px-10 py-4 rounded-xl shadow-[0_10px_20px_rgba(37,99,235,0.2)] hover:shadow-[0_15px_30px_rgba(37,99,235,0.3)] transition-all transform hover:-translate-y-1 active:scale-95 uppercase tracking-widest"
               >
                 {isInCart ? 'Checkout Now' : 'Buy Now'}
               </button>
               <button 
                 onClick={handleWishlist}
-                className={`p-4 border-2 rounded-2xl transition-all hover:scale-110 shadow-sm ${isWishlisted ? 'bg-rose-50 text-rose-500 border-rose-100' : 'bg-white text-slate-400 border-slate-100 hover:border-rose-100 hover:bg-rose-50'}`}
+                className={`p-4 border-2 rounded-xl transition-all hover:scale-110 shadow-sm ${isWishlisted ? 'bg-rose-50 text-rose-500 border-rose-100' : 'bg-white text-slate-400 border-slate-100 hover:border-rose-100 hover:bg-rose-50'}`}
               >
                 <i className={`bi bi-heart${isWishlisted ? '-fill' : ''} text-xl`}></i>
               </button>
               <button 
                 onClick={handleAddToCart}
-                className={`p-4 border-2 rounded-2xl transition-all hover:scale-110 shadow-sm ${isInCart ? 'bg-indigo-50 text-indigo-600 border-indigo-100' : 'bg-white text-blue-600 border-slate-100 hover:border-blue-100 hover:bg-blue-50'}`}
+                className={`p-4 border-2 rounded-xl transition-all hover:scale-110 shadow-sm ${isInCart ? 'bg-indigo-50 text-indigo-600 border-indigo-100' : 'bg-white text-indigo-600 border-slate-100 hover:border-indigo-100 hover:bg-indigo-50'}`}
                 title={isInCart ? 'View in Cart' : 'Add to Cart'}
               >
                 <i className={`bi ${isInCart ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'} text-xl`}></i>
@@ -133,6 +140,12 @@ const ProductDetail = ({ products }) => {
            </div>
         </div>
       </div>
+
+      {/* Reviews Section */}
+      <ProductReviews 
+        product={products} 
+        onReviewAdded={(updatedProduct) => setProducts(updatedProduct)} 
+      />
     </div>
   );
 };

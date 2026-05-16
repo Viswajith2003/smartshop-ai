@@ -45,6 +45,7 @@ export const API_ENDPOINTS = {
   ORDERS: {
     BASE: '/orders',
     CREATE: '/orders/create',
+    SEND_WALLET_OTP: '/orders/send-wallet-otp',
     VERIFY: '/orders/verify',
     CANCEL: (id) => `/orders/${id}/cancel`,
     RETURN: (id) => `/orders/${id}/return`,

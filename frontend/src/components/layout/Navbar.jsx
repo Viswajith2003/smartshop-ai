@@ -37,7 +37,8 @@ const Navbar = ({ onLogout }) => {
     const navLinks = [
         { name: 'Home', path: user ? '/home' : '/' },
         { name: 'Products', path: '/products' },
-        ...(user ? [{ name: 'My Orders', path: '/my-orders' }] : [])
+        { name: 'About', path: '/about' },
+        { name: 'Contact', path: '/contact' }
     ];
 
     const isActive = (path) => {
@@ -121,10 +122,10 @@ const Navbar = ({ onLogout }) => {
                         {/* Search Icon (Newly Added) */}
                         <button 
                             onClick={() => setIsSearchOpen(true)}
-                            className="p-2.5 bg-indigo-50 text-indigo-600 rounded-xl hover:bg-indigo-600 hover:text-white transition-all shadow-sm active:scale-95"
+                            className="text-2xl text-indigo-900/80 hover:text-indigo-600 transition-all active:scale-95"
                             title="Search"
                         >
-                            <i className="bi bi-search text-xl"></i>
+                            <i className="bi bi-search"></i>
                         </button>
 
                         {/* Cart & Wishlist Icons (Always Visible) */}
@@ -180,9 +181,9 @@ const Navbar = ({ onLogout }) => {
                                 {/* Profile Image */}
                                 <Link to="/profile" className="flex items-center pr-4 border-r border-gray-100 mr-1 transition-all">
                                     <div className="relative group cursor-pointer transition-transform hover:scale-110 active:scale-95">
-                                        <div className="w-10 h-10 bg-indigo-50 rounded-full border-2 border-indigo-100 group-hover:border-indigo-400 transition-all overflow-hidden p-0.5">
+                                        <div className="w-10 h-10 bg-indigo-50 rounded-xl border-2 border-indigo-100 group-hover:border-indigo-400 transition-all overflow-hidden p-0.5">
                                             {avatarUrl ? (
-                                                <img src={avatarUrl} alt={user.name} className="w-full h-full rounded-full object-cover" />
+                                                <img src={avatarUrl} alt={user.name} className="w-full h-full rounded-xl object-cover" />
                                             ) : (
                                                 <i className="bi bi-person text-xl text-indigo-900"></i>
                                             )}
@@ -236,7 +237,7 @@ const Navbar = ({ onLogout }) => {
                             key={link.name}
                             to={link.path}
                             onClick={() => setIsMenuOpen(false)}
-                            className={`px-4 py-3 rounded-2xl text-base font-black transition-all ${
+                            className={`px-4 py-3 rounded-xl text-base font-black transition-all ${
                                 isActive(link.path) 
                                 ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200' 
                                 : 'text-indigo-400 hover:bg-indigo-50'
@@ -257,7 +258,7 @@ const Navbar = ({ onLogout }) => {
                                     setIsMenuOpen(false);
                                 }
                             }}
-                            className="flex items-center px-4 py-3 text-indigo-900 font-black hover:bg-rose-50 rounded-2xl relative"
+                            className="flex items-center px-4 py-3 text-indigo-900 font-black hover:bg-rose-50 rounded-xl relative"
                         >
                             <i className="bi bi-heart text-2xl mr-3 text-rose-500"></i> Wishlist
                             {wishlistItems.length > 0 && (
@@ -274,7 +275,7 @@ const Navbar = ({ onLogout }) => {
                                     setIsMenuOpen(false);
                                 }
                             }}
-                            className="flex items-center px-4 py-3 text-indigo-900 font-black hover:bg-indigo-50 rounded-2xl"
+                            className="flex items-center px-4 py-3 text-indigo-900 font-black hover:bg-indigo-50 rounded-xl"
                         >
                             <i className="bi bi-cart3 text-2xl mr-3 text-indigo-600"></i> My Cart
                             {cartItems.length > 0 && (
@@ -286,12 +287,12 @@ const Navbar = ({ onLogout }) => {
 
                         {user ? (
                             <>
-                                <Link to="/profile" onClick={() => setIsMenuOpen(false)} className="flex items-center px-4 py-3 text-indigo-900 font-black hover:bg-indigo-50 rounded-2xl">
+                                <Link to="/profile" onClick={() => setIsMenuOpen(false)} className="flex items-center px-4 py-3 text-indigo-900 font-black hover:bg-indigo-50 rounded-xl">
                                     <i className="bi bi-person-circle text-2xl mr-3"></i> Profile
                                 </Link>
                                 {/* Mobile Wallet */}
-                                <div className="flex items-center px-4 py-3 text-emerald-600 font-black bg-emerald-50 rounded-2xl mx-4 mb-2">
-                                    <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                <div className="flex items-center px-4 py-3 text-emerald-600 font-black bg-emerald-50 rounded-xl mx-4 mb-2">
+                                    <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center mr-3">
                                         <i className="bi bi-wallet2 text-xl"></i>
                                     </div>
                                     <div>
@@ -299,7 +300,7 @@ const Navbar = ({ onLogout }) => {
                                         <p className="text-lg tracking-tighter">₹{user?.wallet?.balance?.toLocaleString('en-IN') || 0}</p>
                                     </div>
                                 </div>
-                                <button onClick={handleLogout} className="w-full flex items-center px-4 py-3 text-red-600 font-black hover:bg-red-50 rounded-2xl">
+                                <button onClick={handleLogout} className="w-full flex items-center px-4 py-3 text-red-600 font-black hover:bg-red-50 rounded-xl">
                                     <i className="bi bi-box-arrow-right text-2xl mr-3"></i> Logout
                                 </button>
                             </>
@@ -308,14 +309,14 @@ const Navbar = ({ onLogout }) => {
                                 <Link 
                                     to="/login" 
                                     onClick={() => setIsMenuOpen(false)}
-                                    className="flex items-center justify-center px-4 py-3 text-indigo-600 font-black bg-indigo-50 rounded-2xl"
+                                    className="flex items-center justify-center px-4 py-3 text-indigo-600 font-black bg-indigo-50 rounded-xl"
                                 >
                                     Login
                                 </Link>
                                 <Link 
                                     to="/register" 
                                     onClick={() => setIsMenuOpen(false)}
-                                    className="flex items-center justify-center px-4 py-3 text-white font-black bg-indigo-600 rounded-2xl"
+                                    className="flex items-center justify-center px-4 py-3 text-white font-black bg-indigo-600 rounded-xl"
                                 >
                                     Register
                                 </Link>

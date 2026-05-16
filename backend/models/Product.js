@@ -16,6 +16,19 @@ const productSchema = new mongoose.Schema(
       min: [0, "Rating must be a positive number"],
       max: [5, "Rating cannot exceed 5"],
     },
+    numReviews: {
+      type: Number,
+      default: 0,
+    },
+    reviews: [
+      {
+        user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+        name: { type: String, required: true },
+        rating: { type: Number, required: true },
+        comment: { type: String, required: true },
+        createdAt: { type: Date, default: Date.now }
+      }
+    ],
     description: {
       type: String,
       required: true,

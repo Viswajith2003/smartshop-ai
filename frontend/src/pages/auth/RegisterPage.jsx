@@ -59,17 +59,17 @@ const RegisterPage = React.memo(() => {
   }, [navigate])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
       {/* Main Card Container */}
-      <div className="w-full max-w-4xl flex flex-col md:flex-row bg-white rounded-[2.5rem] overflow-hidden shadow-[0_0_50px_rgba(147,51,234,0.15)] min-h-[600px]">
+      <div className="w-full max-w-4xl flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(79,70,229,0.15)] min-h-[600px]">
         
         {/* Left Panel - Get Started */}
-        <div className="w-full md:w-[45%] bg-[#9333ea] p-8 md:p-12 flex flex-col items-center justify-center text-center text-white">
+        <div className="w-full md:w-[45%] bg-indigo-600 p-8 md:p-12 flex flex-col items-center justify-center text-center text-white">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Get Started</h2>
-          <p className="text-purple-100 mb-8 text-lg">Already have an account ?</p>
+          <p className="text-indigo-100 mb-8 text-lg">Already have an account ?</p>
           <Link 
             to="/login" 
-            className="px-12 py-3 border-2 border-white rounded-xl text-lg font-medium hover:bg-white hover:text-[#9333ea] transition-all duration-300"
+            className="px-12 py-3 border-2 border-white rounded-xl text-lg font-medium hover:bg-white hover:text-indigo-600 transition-all duration-300"
           >
             Login
           </Link>
@@ -77,7 +77,7 @@ const RegisterPage = React.memo(() => {
 
         {/* Right Panel - Create Account */}
         <div className="w-full md:w-[55%] p-8 md:p-12 flex flex-col justify-center">
-          <h2 className="text-3xl font-bold text-[#9333ea] text-center mb-10">Create Account</h2>
+          <h2 className="text-3xl font-bold text-indigo-600 text-center mb-10">Create Account</h2>
           
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div className="space-y-4">
@@ -86,7 +86,7 @@ const RegisterPage = React.memo(() => {
                   type="text"
                   placeholder="Full Name"
                   {...register('fullName', { required: 'Full name is required', minLength: { value: 2, message: 'Name must be at least 2 characters' } })}
-                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.fullName ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all`}
+                  className={`w-full px-6 py-4 bg-slate-50 border ${errors.fullName ? 'border-red-500' : 'border-indigo-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder:text-gray-400 text-gray-700 transition-all`}
                 />
                 {errors.fullName && <p className="text-red-500 text-xs mt-1 ml-2">{errors.fullName.message}</p>}
               </div>
@@ -102,7 +102,7 @@ const RegisterPage = React.memo(() => {
                       message: "Invalid email address"
                     }
                   })}
-                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.email ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all`}
+                  className={`w-full px-6 py-4 bg-slate-50 border ${errors.email ? 'border-red-500' : 'border-indigo-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder:text-gray-400 text-gray-700 transition-all`}
                 />
                 {errors.email && <p className="text-red-500 text-xs mt-1 ml-2">{errors.email.message}</p>}
               </div>
@@ -115,12 +115,12 @@ const RegisterPage = React.memo(() => {
                     required: 'Password is required', 
                     minLength: { value: 8, message: 'Password must be at least 8 characters' } 
                   })}
-                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.password ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all pr-12`}
+                  className={`w-full px-6 py-4 bg-slate-50 border ${errors.password ? 'border-red-500' : 'border-indigo-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder:text-gray-400 text-gray-700 transition-all pr-12`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-[18px] text-gray-400 hover:text-purple-600 transition-colors"
+                  className="absolute right-4 top-[18px] text-gray-400 hover:text-indigo-600 transition-colors"
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -139,12 +139,12 @@ const RegisterPage = React.memo(() => {
                       }
                     }
                   })}
-                  className={`w-full px-6 py-4 bg-[#fdf2ff] border ${errors.confirmPassword ? 'border-red-500' : 'border-purple-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder:text-gray-400 text-gray-700 transition-all pr-12`}
+                  className={`w-full px-6 py-4 bg-slate-50 border ${errors.confirmPassword ? 'border-red-500' : 'border-indigo-100'} rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder:text-gray-400 text-gray-700 transition-all pr-12`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-4 top-[18px] text-gray-400 hover:text-purple-600 transition-colors"
+                  className="absolute right-4 top-[18px] text-gray-400 hover:text-indigo-600 transition-colors"
                 >
                   {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -156,7 +156,7 @@ const RegisterPage = React.memo(() => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 bg-[#9333ea] text-white rounded-xl text-xl font-semibold shadow-lg hover:bg-purple-700 transform hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full py-4 bg-indigo-600 text-white rounded-xl text-xl font-semibold shadow-lg hover:bg-indigo-700 transform hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <span className="flex items-center justify-center">

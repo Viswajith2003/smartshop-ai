@@ -6,7 +6,7 @@ const ProductCard = ({ product, isWishlisted, isInCart, handleWishlist, handleAd
     <Link 
       to={product.isActive === false ? '#' : `/products/${product._id}`} 
       onClick={(e) => { if(product.isActive === false) e.preventDefault() }}
-      className={`bg-white rounded-[2rem] border border-slate-100 overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] flex flex-col group ${product.isActive === false ? 'opacity-60 grayscale cursor-not-allowed' : 'hover:-translate-y-2 hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.12)] transition-all duration-500 cursor-pointer'}`}
+      className={`bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] flex flex-col group ${product.isActive === false ? 'opacity-60 grayscale cursor-not-allowed' : 'hover:-translate-y-2 hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.12)] transition-all duration-500 cursor-pointer'}`}
     >
       <div className="bg-slate-50/50 p-8 relative aspect-square flex items-center justify-center overflow-hidden">
         {product.isActive === false && (
@@ -14,7 +14,7 @@ const ProductCard = ({ product, isWishlisted, isInCart, handleWishlist, handleAd
             <span className="bg-slate-900 text-white font-black tracking-widest px-6 py-2 text-xs rounded-xl shadow-2xl transform -rotate-12 border-2 border-slate-800">UNAVAILABLE</span>
           </div>
         )}
-        <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-md text-slate-800 text-[10px] font-black tracking-widest px-3 py-1.5 rounded-full shadow-sm border border-slate-200 uppercase">
+        <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-md text-slate-800 text-[10px] font-black tracking-widest px-3 py-1.5 rounded-xl shadow-sm border border-slate-200 uppercase">
           {product.stock} Left
         </div>
         <div 
@@ -22,7 +22,7 @@ const ProductCard = ({ product, isWishlisted, isInCart, handleWishlist, handleAd
             if(product.isActive === false) { e.preventDefault(); return; }
             handleWishlist(e, product);
           }}
-          className={`absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-md hover:scale-110 transition-transform ${isWishlisted ? 'text-pink-500' : 'text-slate-300 hover:text-pink-500'} ${product.isActive === false ? 'hidden' : ''}`}
+          className={`absolute top-4 right-4 z-10 w-9 h-9 rounded-xl bg-white flex items-center justify-center shadow-md hover:scale-110 transition-transform ${isWishlisted ? 'text-pink-500' : 'text-slate-300 hover:text-pink-500'} ${product.isActive === false ? 'hidden' : ''}`}
         >
           <i className={`bi bi-heart${isWishlisted ? '-fill' : ''} text-sm mt-0.5`}></i>
         </div>
@@ -49,7 +49,7 @@ const ProductCard = ({ product, isWishlisted, isInCart, handleWishlist, handleAd
           {product.isActive !== false && (
             <button 
               onClick={(e) => handleAddToCart(e, product)}
-              className={`${isInCart ? 'bg-indigo-600' : 'bg-black hover:bg-indigo-600'} text-white transition-all duration-300 w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-1 transform`}
+              className={`${isInCart ? 'bg-indigo-600' : 'bg-black hover:bg-indigo-600'} text-white transition-all duration-300 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-1 transform`}
               title={isInCart ? "View in Cart" : "Add to Cart"}
             >
               <i className={`bi ${isInCart ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'} text-xl`}></i>

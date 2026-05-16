@@ -15,14 +15,14 @@ const useCartCalculations = (items = [], appliedCoupon = null) => {
         // 2. Calculate Subtotal
         const subtotal = selectedItems.reduce((total, item) => total + (item.price), 0);
 
-        // 3. Calculate Shipping (Free over ₹5,000)
-        const shipping = subtotal > 5000 ? 0 : (subtotal > 0 ? 500 : 0);
+        // 3. Shipping — FREE for all orders
+        const shipping = 0;
 
-        // 4. Calculate Tax (18% GST)
-        const tax = subtotal * 0.18;
+        // 4. Tax — not applicable
+        const tax = 0;
 
         // 5. Total before discount
-        const totalBeforeCoupon = subtotal + shipping + tax;
+        const totalBeforeCoupon = subtotal + shipping;
 
         // 6. Calculate Discount
         const discount = appliedCoupon ? (

@@ -10,7 +10,7 @@ import {
 } from "../../features/auth/authSlice";
 import { adminAPI } from "../../services/api";
 import { setAdminToken } from "../../services/axiosInstance";
-import { ShoppingCart, LogIn, Eye, EyeOff } from "lucide-react";
+import { ShoppingCart, LogIn, Eye, EyeOff, Lock, Mail, Shield } from "lucide-react";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -43,8 +43,8 @@ const AdminLogin = () => {
       };
 
       dispatch(adminLoginSuccess(admin));
-      toast.success(`Welcome back, Commander ${userData.name}!`);
-      navigate('/admin/dashboard');
+      toast.success(`Welcome back, Admin ${userData.name}!`);
+      navigate('/admin/dashboard', { replace: true });
     } catch (err) {
       console.error("Admin login error:", err);
       const message =
@@ -60,83 +60,100 @@ const AdminLogin = () => {
   }, [navigate, dispatch]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#07011d] p-4 font-sans">
-      <div className="w-full max-w-md bg-[#02001c] rounded-[2rem] p-10 border border-[#1a1c3d] shadow-[0_0_50px_rgba(147,51,234,0.1)] relative overflow-hidden group">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4 font-sans">
+      <div className="w-full max-w-4xl flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(79,70,229,0.15)] min-h-[600px]">
         
-        {/* Subtle Background Glow */}
-        <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full -mr-20 -mt-20 blur-3xl group-hover:bg-purple-500/20 transition-all duration-700"></div>
-        <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-500/10 rounded-full -ml-20 -mb-20 blur-3xl group-hover:bg-blue-500/20 transition-all duration-700"></div>
-
-        <div className="text-center mb-10 relative">
-          <div className="inline-flex p-4 bg-[#1e1470]/40 rounded-2xl border border-purple-500/30 mb-6 shadow-[0_0_15px_rgba(147,51,234,0.2)]">
-            {/* Inline SVG since we already have it in dashboard */}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-8 h-8 text-[#9333ea]">
-                <circle cx="8" cy="21" r="1" /><circle cx="19" cy="21" r="1" /><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-            </svg>
+        {/* Left Panel - Admin Portal */}
+        <div className="w-full md:w-[45%] bg-indigo-600 p-8 md:p-12 flex flex-col items-center justify-center text-center text-white relative overflow-hidden">
+          {/* Decorative Circles */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+          
+          <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-md border border-white/20 relative z-10">
+            <Shield className="w-10 h-10 text-white" />
           </div>
-          <h1 className="text-3xl font-black text-white tracking-tight mb-2">Smart Shop</h1>
-          <p className="text-[11px] text-gray-500 uppercase font-black tracking-[0.3em]">Management Portal</p>
+          <h2 className="text-4xl font-black mb-4 tracking-tight uppercase relative z-10">Admin Portal</h2>
+          <p className="text-indigo-100 font-bold uppercase tracking-widest text-xs opacity-80 relative z-10">Restricted Access Only</p>
+          
+          <div className="mt-12 space-y-4 w-full relative z-10">
+            <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
+              <Lock className="w-5 h-5 text-indigo-300" />
+              <p className="text-[10px] font-black uppercase tracking-widest text-left">Secure 256-bit Encryption</p>
+            </div>
+            <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
+              <LogIn className="w-5 h-5 text-indigo-300" />
+              <p className="text-[10px] font-black uppercase tracking-widest text-left">IP Logging Enabled</p>
+            </div>
+          </div>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 relative">
-          <div className="space-y-4">
-            <div className="space-y-1">
-              <label className="text-[10px] uppercase font-black text-gray-500 tracking-widest ml-1">Admin Email</label>
-              <input
-                type="email"
-                placeholder="admin@smartshop.com"
-                {...register('email', { required: 'Admin email is required' })}
-                className="w-full px-6 py-4 bg-[#0a052d] border border-[#1a1c3d] rounded-2xl text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition-all placeholder:text-gray-600 font-bold"
-              />
-              {errors.email && <p className="text-red-500 text-[10px] font-bold mt-1 ml-1 uppercase">{errors.email.message}</p>}
-            </div>
+        {/* Right Panel - Login Form */}
+        <div className="w-full md:w-[55%] p-8 md:p-16 flex flex-col justify-center bg-white">
+          <div className="mb-10 text-center md:text-left">
+            <h1 className="text-3xl font-black text-slate-900 mb-2">Welcome Back</h1>
+            <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Enter your administrative credentials</p>
+          </div>
 
-            <div className="space-y-1 relative">
-              <label className="text-[10px] uppercase font-black text-gray-500 tracking-widest ml-1">Secure Password</label>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="••••••••"
-                  {...register('password', { required: 'Password is required' })}
-                  className="w-full px-6 py-4 bg-[#0a052d] border border-[#1a1c3d] rounded-2xl text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition-all placeholder:text-gray-600 font-bold pr-12"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-[18px] text-gray-500 hover:text-purple-500 transition-colors cursor-pointer"
-                >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                </button>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <div className="space-y-5">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Admin Email</label>
+                <div className="relative group">
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
+                  <input 
+                    type="email"
+                    placeholder="admin@smartshop.ai"
+                    {...register('email', { required: 'Admin email is required' })}
+                    className="w-full bg-slate-50 border border-slate-100 rounded-xl pl-12 pr-4 py-4 text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 focus:border-indigo-600 transition-all"
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-[10px] font-bold mt-1 ml-1">{errors.email.message}</p>
+                  )}
+                </div>
               </div>
-              {errors.password && <p className="text-red-500 text-[10px] font-bold mt-1 ml-1 uppercase">{errors.password.message}</p>}
+
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Security Password</label>
+                <div className="relative group">
+                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
+                  <input 
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    {...register('password', { required: 'Password is required' })}
+                    className="w-full bg-slate-50 border border-slate-100 rounded-xl pl-12 pr-12 py-4 text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 focus:border-indigo-600 transition-all"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-indigo-600 transition-colors"
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                  {errors.password && (
+                    <p className="text-red-500 text-[10px] font-bold mt-1 ml-1">{errors.password.message}</p>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white rounded-2xl text-sm font-black uppercase tracking-widest shadow-[0_10px_20px_-10px_rgba(147,51,234,0.5)] transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed group"
-          >
-            {loading ? (
-              <span className="flex items-center justify-center gap-2">
-                <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
-                Authorizing...
-              </span>
-            ) : (
-              <span className="flex items-center justify-center gap-2">
-                Sign In to Control Center
-              </span>
-            )}
-          </button>
-        </form>
+            <button 
+              type="submit" 
+              disabled={loading}
+              className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-black uppercase tracking-widest shadow-lg shadow-indigo-100 transition-all transform active:scale-95 disabled:opacity-50 group mt-4"
+            >
+              {loading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  Verifying...
+                </span>
+              ) : 'Access Dashboard'}
+            </button>
+          </form>
 
-        <div className="mt-10 pt-8 border-t border-[#1a1c3d] text-center">
-            <p className="text-gray-600 text-xs font-bold leading-relaxed">
-                Unauthorized access is strictly monitored. <br/>
-                IP logged by security systems.
-            </p>
+          <p className="mt-8 text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+            Forgot credentials? <a href="#" className="text-indigo-600 hover:underline">Contact Support</a>
+          </p>
         </div>
-
       </div>
     </div>
   );

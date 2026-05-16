@@ -19,7 +19,7 @@ const Sidebar = ({
           <h2 className="text-2xl font-black text-slate-800 tracking-tight">Filters</h2>
           <button 
             onClick={handleClearAll}
-            className="bg-blue-500 hover:bg-blue-600 text-white text-xs px-4 py-1.5 rounded-full font-medium transition-colors"
+            className="bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-4 py-1.5 rounded-full font-medium transition-colors"
           >
             Clear All
           </button>
@@ -38,7 +38,7 @@ const Sidebar = ({
               step="1000"
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
-              className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 transition-all"
+              className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 transition-all"
               style={{
                 background: `linear-gradient(to right, #2563eb 0%, #2563eb ${(price / 300000) * 100}%, #e2e8f0 ${(price / 300000) * 100}%, #e2e8f0 100%)`
               }}
@@ -46,7 +46,7 @@ const Sidebar = ({
           </div>
           <div className="flex justify-between items-center mt-6 text-xs font-bold text-slate-600">
             <span>₹0 - ₹{price.toLocaleString('en-IN')}</span>
-            <button onClick={() => setAppliedPrice(price)} className="bg-black hover:bg-blue-600 transition-colors text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider">Filter</button>
+            <button onClick={() => setAppliedPrice(price)} className="bg-black hover:bg-indigo-600 transition-colors text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider">Filter</button>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ const Sidebar = ({
             {categories.map((cat) => (
               <label key={cat._id || cat.id} className="flex items-center justify-between cursor-pointer group">
                 <div className="flex items-center">
-                  <div className={`w-5 h-5 rounded border-2 mr-3 flex items-center justify-center transition-colors ${selectedCategories.includes(cat._id || cat.id) ? 'bg-blue-500 border-blue-500' : 'border-slate-300 group-hover:border-blue-500'}`}>
+                  <div className={`w-5 h-5 rounded border-2 mr-3 flex items-center justify-center transition-colors ${selectedCategories.includes(cat._id || cat.id) ? 'bg-indigo-500 border-indigo-500' : 'border-slate-300 group-hover:border-indigo-500'}`}>
                       {selectedCategories.includes(cat._id || cat.id) && <i className="bi bi-check text-white text-lg leading-none"></i>}
                   </div>
                   <input

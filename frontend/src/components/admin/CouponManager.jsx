@@ -109,10 +109,10 @@ const CouponManager = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-slate-800/20 p-6 rounded-3xl border border-slate-700/50">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
         <div>
           <div className="flex items-center gap-3">
-            <h3 className="text-2xl font-bold text-white">Coupons</h3>
+            <h3 className="text-2xl font-black text-slate-900 tracking-tight">Coupons</h3>
             <span className="bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded-lg text-xs font-bold">
               {pagination.totalItems || coupons.length} Total
             </span>
@@ -137,11 +137,11 @@ const CouponManager = () => {
         </button>
       </div>
 
-      <div className="bg-[#1e293b] rounded-3xl border border-slate-700/50 shadow-xl overflow-hidden relative">
+      <div className="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden relative">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-slate-700 bg-slate-800/30">
+              <tr className="border-b border-slate-100 bg-slate-50/50">
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Code</th>
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Discount</th>
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Validity</th>
@@ -150,29 +150,29 @@ const CouponManager = () => {
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-700/50">
+            <tbody className="divide-y divide-slate-50">
               {coupons.length === 0 ? (
                 <tr>
                   <td colSpan="6" className="p-10 text-center text-slate-500 font-medium italic">No active coupons found.</td>
                 </tr>
               ) : coupons.map(coupon => (
-                <tr key={coupon._id || coupon.id} className="hover:bg-slate-800/20 transition-colors group">
+                <tr key={coupon._id || coupon.id} className="hover:bg-slate-50/50 transition-colors group">
                   <td className="p-5">
-                    <span className="font-black text-indigo-400 bg-indigo-500/10 px-3 py-1.5 rounded-lg border border-indigo-500/20 tracking-widest uppercase text-sm">{coupon.code}</span>
+                    <span className="font-black text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-lg border border-indigo-100 tracking-widest uppercase text-sm">{coupon.code}</span>
                   </td>
                   <td className="p-5">
                     <div className="flex flex-col">
-                      <span className="text-slate-200 font-bold">
+                      <span className="text-slate-900 font-bold">
                         {coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : `₹${coupon.discountValue} OFF`}
                       </span>
-                      {coupon.minOrderAmount > 0 && <span className="text-slate-500 text-[10px] uppercase font-black tracking-tight mt-0.5">Min: ₹{coupon.minOrderAmount}</span>}
+                      {coupon.minPurchaseAmount > 0 && <span className="text-slate-500 text-[10px] uppercase font-black tracking-tight mt-0.5">Min: ₹{coupon.minPurchaseAmount}</span>}
                     </div>
                   </td>
                   <td className="p-5">
                     <div className="flex items-center gap-3 text-[11px] font-bold text-slate-400">
-                       <span className="text-emerald-500 flex items-center gap-1"><Calendar size={12} /> {new Date(coupon.startDate).toLocaleDateString()}</span>
+                       <span className="text-emerald-500 flex items-center gap-1"><Calendar size={12} /> {new Date(coupon.validFrom).toLocaleDateString()}</span>
                        <ChevronRight size={10} className="text-slate-600" />
-                       <span className="text-red-400 flex items-center gap-1"><Calendar size={12} /> {new Date(coupon.endDate).toLocaleDateString()}</span>
+                       <span className="text-red-400 flex items-center gap-1"><Calendar size={12} /> {new Date(coupon.validUntil).toLocaleDateString()}</span>
                     </div>
                   </td>
                   <td className="p-5">
@@ -180,17 +180,17 @@ const CouponManager = () => {
                       <div className="flex -space-x-1">
                          <Users size={14} className="text-slate-500" />
                       </div>
-                      <span className="text-slate-300 font-bold text-xs">{coupon.usageCount || 0} / {coupon.usageLimit || '∞'}</span>
+                      <span className="text-slate-600 font-bold text-xs">{coupon.usageCount || 0} / {coupon.usageLimit || '∞'}</span>
                     </div>
                   </td>
                   <td className="p-5">
-                    <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 text-[9px] font-black uppercase rounded border ${coupon.isActive ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-slate-700/30 text-slate-500 border-slate-700'}`}>
+                    <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 text-[9px] font-black uppercase rounded border ${coupon.isActive ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 'bg-slate-50 text-slate-500 border-slate-200'}`}>
                       {coupon.isActive ? 'Active' : 'Expired'}
                     </span>
                   </td>
                   <td className="p-5 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <button onClick={() => handleEditCoupon(coupon)} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-lg transition-all" title="Edit">
+                      <button onClick={() => handleEditCoupon(coupon)} className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all" title="Edit">
                         <Edit2 size={16} />
                       </button>
                       <button onClick={() => handleDelete(coupon._id || coupon.id)} className="p-2 text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all" title="Delete">
@@ -205,18 +205,18 @@ const CouponManager = () => {
         </div>
 
         {coupons.length > 0 && (
-          <div className="p-5 border-t border-slate-700 bg-slate-800/10">
-            <Pagination pagination={pagination} onPageChange={handlePageChange} theme="dark" />
+          <div className="p-5 border-t border-slate-50 bg-slate-50/20">
+            <Pagination pagination={pagination} onPageChange={handlePageChange} theme="light" />
           </div>
         )}
       </div>
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm overflow-y-auto">
-          <div className="bg-[#1e293b] w-full max-w-2xl rounded-[2rem] border border-slate-700 shadow-2xl relative overflow-hidden transform transition-all scale-100 my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+          <div className="bg-white w-full max-w-2xl rounded-[2rem] border border-slate-100 shadow-2xl relative overflow-hidden transform transition-all scale-100 my-8">
             <div className="p-8">
-              <h2 className="text-2xl font-bold text-white tracking-tight mb-2 flex items-center gap-2">
+              <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2 flex items-center gap-2">
                 <Ticket className="text-indigo-500" size={24} />
                 {editingCoupon ? 'Update Offer' : 'New Promotional Code'}
               </h2>
@@ -227,10 +227,10 @@ const CouponManager = () => {
                   code: editingCoupon ? editingCoupon.code : '',
                   discountType: editingCoupon ? editingCoupon.discountType : 'percentage',
                   discountValue: editingCoupon ? editingCoupon.discountValue : '',
-                  minOrderAmount: editingCoupon && editingCoupon.minOrderAmount ? editingCoupon.minOrderAmount : '',
-                  maxDiscount: editingCoupon && editingCoupon.maxDiscount ? editingCoupon.maxDiscount : '',
-                  startDate: editingCoupon && editingCoupon.startDate ? new Date(editingCoupon.startDate).toISOString().split('T')[0] : '',
-                  endDate: editingCoupon && editingCoupon.endDate ? new Date(editingCoupon.endDate).toISOString().split('T')[0] : '',
+                  minOrderAmount: editingCoupon ? (editingCoupon.minPurchaseAmount || '') : '',
+                  maxDiscount: editingCoupon ? (editingCoupon.maxDiscountAmount || '') : '',
+                  startDate: editingCoupon && editingCoupon.validFrom ? new Date(editingCoupon.validFrom).toISOString().split('T')[0] : '',
+                  endDate: editingCoupon && editingCoupon.validUntil ? new Date(editingCoupon.validUntil).toISOString().split('T')[0] : '',
                   usageLimit: editingCoupon && editingCoupon.usageLimit ? editingCoupon.usageLimit : '',
                   isActive: editingCoupon ? editingCoupon.isActive : true
                 }}
@@ -238,9 +238,17 @@ const CouponManager = () => {
                 onSubmit={async (values, { setSubmitting, setErrors }) => {
                   try {
                     const payload = {
-                      ...values,
-                      code: values.code.toUpperCase()
+                      code: values.code.toUpperCase(),
+                      discountType: values.discountType,
+                      discountValue: values.discountValue,
+                      minPurchaseAmount: values.minOrderAmount || 0,
+                      maxDiscountAmount: values.maxDiscount || 0,
+                      validFrom: values.startDate,
+                      validUntil: values.endDate,
+                      usageLimit: values.usageLimit || 0,
+                      isActive: values.isActive
                     };
+
                     if (editingCoupon) {
                       const id = editingCoupon._id || editingCoupon.id;
                       const res = await couponAPI.updateCoupon(id, payload);
@@ -272,7 +280,7 @@ const CouponManager = () => {
                         <Field 
                           name="code"
                           type="text" 
-                          className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-black tracking-widest placeholder-slate-600 uppercase text-sm"
+                          className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-black tracking-widest placeholder-slate-400 uppercase text-sm"
                           placeholder="e.g. SAVE20"
                           onChange={(e) => setFieldValue('code', e.target.value.toUpperCase())}
                         />
@@ -284,7 +292,7 @@ const CouponManager = () => {
                         <Field
                           name="discountType"
                           as="select"
-                          className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
+                          className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
                         >
                           <option value="percentage">Percentage (%)</option>
                           <option value="fixed">Fixed Amount (₹)</option>
@@ -298,13 +306,13 @@ const CouponManager = () => {
                           <Field 
                             name="discountValue"
                             type="number" 
-                            className="w-full flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
+                            className="w-full flex-1 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
                             placeholder={values.discountType === 'percentage' ? 'Percent %' : 'Amount ₹'}
                           />
                           <Field 
                             name="minOrderAmount"
                             type="number" 
-                            className="w-full flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
+                            className="w-full flex-1 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
                             placeholder="Min ₹"
                           />
                         </div>
@@ -316,14 +324,14 @@ const CouponManager = () => {
                           <Field 
                             name="usageLimit"
                             type="number" 
-                            className="w-full flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
+                            className="w-full flex-1 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
                             placeholder="Usage Limit"
                           />
                           <Field 
                             name="maxDiscount"
                             type="number" 
                             disabled={values.discountType === 'fixed'}
-                            className={`w-full flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm ${values.discountType === 'fixed' ? 'opacity-30' : ''}`}
+                            className={`w-full flex-1 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm ${values.discountType === 'fixed' ? 'opacity-30' : ''}`}
                             placeholder="Max ₹"
                           />
                         </div>
@@ -334,7 +342,7 @@ const CouponManager = () => {
                         <Field 
                           name="startDate"
                           type="date" 
-                          className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm [color-scheme:dark]"
+                          className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
                         />
                         <ErrorMessage name="startDate" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
                       </div>
@@ -344,19 +352,19 @@ const CouponManager = () => {
                         <Field 
                           name="endDate"
                           type="date" 
-                          className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm [color-scheme:dark]"
+                          className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
                         />
                         <ErrorMessage name="endDate" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
                       </div>
 
                     </div>
 
-                    <div onClick={() => setFieldValue('isActive', !values.isActive)} className="flex items-center justify-between bg-slate-900/50 p-4 rounded-xl border border-slate-700 cursor-pointer group hover:bg-slate-900 transition-colors">
+                    <div onClick={() => setFieldValue('isActive', !values.isActive)} className="flex items-center justify-between bg-slate-50 p-4 rounded-xl border border-slate-100 cursor-pointer group hover:bg-slate-100 transition-colors">
                        <div className="flex items-center gap-3">
                           <CheckCircle2 className={`w-4 h-4 ${values.isActive ? 'text-emerald-500' : 'text-slate-600'}`} />
-                          <span className="text-xs font-bold text-slate-300">Set as Active</span>
+                          <span className="text-xs font-bold text-slate-600">Set as Active</span>
                        </div>
-                       <div className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${values.isActive ? 'bg-indigo-600' : 'bg-slate-700'}`}>
+                       <div className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${values.isActive ? 'bg-indigo-600' : 'bg-slate-300'}`}>
                           <span className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform ${values.isActive ? 'translate-x-5' : 'translate-x-1'}`} />
                        </div>
                     </div>
@@ -365,7 +373,7 @@ const CouponManager = () => {
                       <button 
                         type="button" 
                         onClick={handleCloseModal}
-                        className="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-3 rounded-xl transition-colors text-xs uppercase tracking-widest border border-slate-700"
+                        className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-3 rounded-xl transition-colors text-xs uppercase tracking-widest border border-slate-200"
                       >
                         Cancel
                       </button>

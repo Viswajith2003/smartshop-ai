@@ -23,6 +23,14 @@ export const productApi = {
     const response = await axiosInstance.delete(`${API_ENDPOINTS.ADMIN.PRODUCTS}/${id}`);
     return response.data;
   },
+  addReview: async (productId, reviewData) => {
+    const response = await axiosInstance.post(`${API_ENDPOINTS.PRODUCTS.BASE}/${productId}/reviews`, reviewData);
+    return response.data;
+  },
+  getMyReviews: async () => {
+    const response = await axiosInstance.get(`${API_ENDPOINTS.PRODUCTS.BASE}/my-reviews`);
+    return response.data;
+  },
 };
 
 export default productApi;

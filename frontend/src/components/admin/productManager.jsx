@@ -44,11 +44,18 @@ const ProductSchema = Yup.object().shape({
   isActive: Yup.boolean().default(true),
 });
 
+const STATUS_FILTERS = [
+  { label: 'All', value: 'all' },
+  { label: 'Active', value: 'true' },
+  { label: 'Inactive', value: 'false' },
+];
+
 const ProductManager = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
   const [categories, setCategories] = useState([]);
   const [adminSearchQuery, setAdminSearchQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all'); // 'all' | 'true' | 'false'
 
   const { pagination, handlePageChange, updatePagination } = usePagination(5); 
   const [products, setProducts] = useState([]);
@@ -117,6 +124,11 @@ const ProductManager = () => {
           params.search = adminSearchQuery.trim();
         }
 
+        // Pass isActive filter ('true' | 'false' | omit for all)
+        if (statusFilter !== 'all') {
+          params.isActive = statusFilter;
+        }
+
         const res = await productAPI.getProducts(params);
         if (res.success) {
           setProducts(res.data);
@@ -127,19 +139,19 @@ const ProductManager = () => {
       }
     };
     fetchProductsData();
-  }, [pagination.page, pagination.limit, adminSearchQuery]);
+  }, [pagination.page, pagination.limit, adminSearchQuery, statusFilter]);
 
   useEffect(() => {
     handlePageChange(1);
-  }, [adminSearchQuery]);
+  }, [adminSearchQuery, statusFilter]);
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-slate-800/20 p-6 rounded-3xl border border-slate-700/50 gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-white p-6 rounded-3xl border border-slate-100 shadow-sm gap-6">
         <div className="shrink-0">
           <div className="flex items-center gap-3">
-            <h3 className="text-2xl font-bold text-white">Inventory</h3>
-            <span className="bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded-lg text-xs font-bold">
+            <h3 className="text-2xl font-black text-slate-900 tracking-tight">Inventory</h3>
+            <span className="bg-indigo-500/10 text-indigo-600 px-2 py-0.5 rounded-lg text-xs font-bold">
               {pagination.totalItems || products.length} Items
             </span>
           </div>
@@ -163,11 +175,32 @@ const ProductManager = () => {
         </button>
       </div>
 
-      <div className="bg-[#1e293b] rounded-3xl border border-slate-700/50 shadow-xl overflow-hidden relative">
+      {/* Status Filter Tabs */}
+      <div className="flex items-center gap-2 bg-white p-2 rounded-2xl border border-slate-100 shadow-sm w-fit">
+        {STATUS_FILTERS.map((f) => (
+          <button
+            key={f.value}
+            onClick={() => setStatusFilter(f.value)}
+            className={`px-5 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
+              statusFilter === f.value
+                ? f.value === 'false'
+                  ? 'bg-rose-500 text-white shadow-md shadow-rose-500/20'
+                  : f.value === 'true'
+                  ? 'bg-emerald-500 text-white shadow-md shadow-emerald-500/20'
+                  : 'bg-slate-900 text-white shadow-md shadow-slate-900/10'
+                : 'text-slate-500 hover:text-slate-900 hover:bg-slate-50'
+            }`}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden relative">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-slate-700 bg-slate-800/30">
+              <tr className="border-b border-slate-100 bg-slate-50/50">
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Product Details</th>
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Category</th>
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Price & Rating</th>
@@ -175,16 +208,16 @@ const ProductManager = () => {
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-700/50">
+            <tbody className="divide-y divide-slate-50">
               {products.length === 0 ? (
-                <tr>
+                <tr className="opacity-0 animate-[fadeIn_0.3s_ease_forwards]">
                   <td colSpan="5" className="p-10 text-center text-slate-500 font-medium italic">No products found.</td>
                 </tr>
               ) : products.map(product => (
-                <tr key={product._id} className="hover:bg-slate-800/20 transition-colors group">
+                <tr key={product._id} className={`hover:bg-slate-50 transition-colors group ${!product.isActive ? 'opacity-60' : ''}`}>
                   <td className="p-5">
                     <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-xl overflow-hidden bg-slate-900 border border-slate-700 shrink-0 shadow-inner relative group/image">
+                      <div className="w-14 h-14 rounded-xl overflow-hidden bg-slate-50 border border-slate-100 shrink-0 shadow-inner relative group/image">
                         <img 
                           src={product.images && product.images.length > 0 ? product.images[0] : ''} 
                           alt={product.name}
@@ -201,9 +234,9 @@ const ProductManager = () => {
                         )}
                       </div>
                       <div>
-                        <span className="font-bold text-slate-200 group-hover:text-indigo-400 transition-colors block leading-tight">{product.name}</span>
+                        <span className="font-black text-slate-900 group-hover:text-indigo-600 transition-colors block leading-tight">{product.name}</span>
                         <div className="flex items-center gap-2 mt-1.5">
-                           <span className={`inline-flex items-center px-1.5 py-0.5 text-[9px] font-black uppercase rounded bg-slate-800 border ${product.isActive ? 'text-emerald-400 border-emerald-500/20' : 'text-slate-500 border-slate-700'}`}>
+                           <span className={`inline-flex items-center px-1.5 py-0.5 text-[9px] font-black uppercase rounded bg-slate-50 border ${product.isActive ? 'text-emerald-600 border-emerald-100' : 'text-slate-500 border-slate-200'}`}>
                              {product.isActive ? 'Live' : 'Hidden'}
                            </span>
                         </div>
@@ -218,7 +251,7 @@ const ProductManager = () => {
                   </td>
                   <td className="p-5">
                     <div className="space-y-1.5">
-                       <p className="text-white font-bold text-base flex items-center">
+                       <p className="text-slate-900 font-bold text-base flex items-center">
                           <IndianRupee size={14} className="text-slate-400 mr-0.5" />
                           {product.price.toLocaleString('en-IN')}
                        </p>
@@ -231,7 +264,7 @@ const ProductManager = () => {
                   <td className="p-5">
                     <div className="flex flex-col gap-1">
                       <div className="flex items-center gap-2">
-                        <span className={`text-lg font-black tracking-tight ${product.stock > 10 ? 'text-slate-200' : product.stock > 0 ? 'text-amber-400' : 'text-red-500'}`}>
+                        <span className={`text-lg font-black tracking-tight ${product.stock > 10 ? 'text-slate-900' : product.stock > 0 ? 'text-amber-600' : 'text-red-500'}`}>
                           {product.stock}
                         </span>
                         <Database size={12} className="text-slate-600" />
@@ -243,7 +276,7 @@ const ProductManager = () => {
                   </td>
                   <td className="p-5 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <button onClick={() => handleEdit(product)} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-lg transition-all" title="Edit">
+                      <button onClick={() => handleEdit(product)} className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all" title="Edit">
                         <Edit2 size={16} />
                       </button>
                       <button onClick={() => handleDelete(product._id)} className="p-2 text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all" title="Delete">
@@ -259,17 +292,17 @@ const ProductManager = () => {
         
         {products.length > 0 && (
           <div className="p-5 border-t border-slate-700 bg-slate-800/10">
-            <Pagination pagination={pagination} onPageChange={handlePageChange} theme="dark" />
+            <Pagination pagination={pagination} onPageChange={handlePageChange} theme="light" />
           </div>
         )}
       </div>
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm overflow-y-auto custom-scrollbar">
-          <div className="bg-[#1e293b] w-full max-w-2xl rounded-[2rem] border border-slate-700 shadow-2xl relative overflow-hidden transform transition-all scale-100 my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto custom-scrollbar">
+          <div className="bg-white w-full max-w-2xl rounded-[2rem] border border-slate-100 shadow-2xl relative overflow-hidden transform transition-all scale-100 my-8">
             <div className="p-8">
-              <h2 className="text-2xl font-bold text-white tracking-tight mb-2">
+              <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
                 {editingProduct ? 'Edit Product' : 'Add New Product'}
               </h2>
               <p className="text-slate-500 text-sm font-medium mb-8">Update your inventory with precise details.</p>
@@ -337,7 +370,7 @@ const ProductManager = () => {
                         <Field 
                           name="name"
                           type="text" 
-                          className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium placeholder-slate-600 text-sm"
+                          className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium placeholder-slate-400 text-sm"
                           placeholder="e.g. MacBook Pro"
                         />
                         <ErrorMessage name="name" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
@@ -348,7 +381,7 @@ const ProductManager = () => {
                         <Field
                           name="category"
                           as="select"
-                          className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
+                          className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
                         >
                           <option value="">Select Category</option>
                           {categories.map(cat => (
@@ -365,7 +398,7 @@ const ProductManager = () => {
                           <Field 
                             name="price"
                             type="number" 
-                            className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium placeholder-slate-600 text-sm"
+                            className="w-full bg-slate-50 border border-slate-100 rounded-xl pl-10 pr-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium placeholder-slate-400 text-sm"
                             placeholder="Amount"
                           />
                         </div>
@@ -377,7 +410,7 @@ const ProductManager = () => {
                         <Field 
                           name="stock"
                           type="number" 
-                          className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium placeholder-slate-600 text-sm"
+                          className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium placeholder-slate-400 text-sm"
                           placeholder="Quantity"
                         />
                         <ErrorMessage name="stock" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
@@ -391,7 +424,7 @@ const ProductManager = () => {
                             name="rating"
                             type="number" 
                             step="0.1"
-                            className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium placeholder-slate-600 text-sm"
+                            className="w-full bg-slate-50 border border-slate-100 rounded-xl pl-10 pr-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium placeholder-slate-400 text-sm"
                             placeholder="4.5"
                           />
                         </div>
@@ -401,7 +434,7 @@ const ProductManager = () => {
 
                     <div className="space-y-2">
                       <label className="text-[10px] font-black tracking-widest text-slate-500 uppercase">Media Assets</label>
-                      <div className="flex gap-4 items-center bg-slate-900 border border-slate-700 rounded-2xl p-4">
+                      <div className="flex gap-4 items-center bg-slate-50 border border-slate-100 rounded-2xl p-4">
                         <input 
                           type="file" 
                           accept="image/*"
@@ -411,7 +444,7 @@ const ProductManager = () => {
                           onChange={(e) => setFieldValue('images', e.currentTarget.files)}
                           className="hidden"
                         />
-                        <label htmlFor="file-upload" className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold cursor-pointer transition-all border border-slate-600">
+                        <label htmlFor="file-upload" className="flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-600 px-4 py-2 rounded-xl text-xs font-bold cursor-pointer transition-all border border-slate-200">
                            <Plus size={14} /> Upload Images
                         </label>
                         <div className="text-[10px] text-slate-500 font-medium">
@@ -420,8 +453,8 @@ const ProductManager = () => {
                       </div>
                       
                       {values.existingImage && (!values.images || values.images.length === 0) && (
-                        <div className="mt-2 flex items-center gap-3 bg-slate-900/40 p-2 rounded-xl border border-slate-800/50 w-fit">
-                          <img src={values.existingImage} alt="Current" className="h-10 w-10 rounded-lg object-cover border border-slate-700" />
+                        <div className="mt-2 flex items-center gap-3 bg-slate-50 p-2 rounded-xl border border-slate-100 w-fit">
+                          <img src={values.existingImage} alt="Current" className="h-10 w-10 rounded-lg object-cover border border-slate-100" />
                           <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Active Preview</span>
                         </div>
                       )}
@@ -432,20 +465,20 @@ const ProductManager = () => {
                       <Field 
                         name="description"
                         as="textarea"
-                        className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium min-h-[100px] resize-none placeholder-slate-600 text-sm"
+                        className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium min-h-[100px] resize-none placeholder-slate-400 text-sm"
                         placeholder="Write something professional about this product..."
                       />
                       <ErrorMessage name="description" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
                     </div>
 
-                    <div onClick={() => setFieldValue('isActive', !values.isActive)} className="flex items-center justify-between bg-emerald-500/5 p-4 rounded-xl border border-emerald-500/10 cursor-pointer group hover:bg-emerald-500/10 transition-colors">
+                    <div onClick={() => setFieldValue('isActive', !values.isActive)} className="flex items-center justify-between bg-emerald-50 p-4 rounded-xl border border-emerald-100 cursor-pointer group hover:bg-emerald-100 transition-colors">
                        <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-lg ${values.isActive ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-800 text-slate-600'}`}>
+                          <div className={`p-2 rounded-lg ${values.isActive ? 'bg-emerald-100 text-emerald-600' : 'bg-slate-100 text-slate-400'}`}>
                              {values.isActive ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}
                           </div>
-                          <span className="text-xs font-bold text-slate-300">Marketplace Availability (Live)</span>
+                          <span className="text-xs font-bold text-slate-600">Marketplace Availability (Live)</span>
                        </div>
-                       <div className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${values.isActive ? 'bg-emerald-500' : 'bg-slate-700'}`}>
+                       <div className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${values.isActive ? 'bg-emerald-500' : 'bg-slate-300'}`}>
                           <span className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform ${values.isActive ? 'translate-x-5' : 'translate-x-1'}`} />
                        </div>
                     </div>
@@ -454,7 +487,7 @@ const ProductManager = () => {
                       <button 
                         type="button" 
                         onClick={handleCloseModal}
-                        className="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-3 rounded-xl transition-colors text-xs uppercase tracking-widest border border-slate-700"
+                        className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-3 rounded-xl transition-colors text-xs uppercase tracking-widest border border-slate-200"
                       >
                         Cancel
                       </button>

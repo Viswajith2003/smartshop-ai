@@ -58,7 +58,7 @@ const UserManager = () => {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex items-center gap-3">
-            <h3 className="text-2xl font-bold text-white">Registered Users</h3>
+            <h3 className="text-2xl font-black text-slate-900 tracking-tight">Registered Users</h3>
             <span className="bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded-lg text-xs font-bold">
               {pagination.totalItems || users.length} Total
             </span>
@@ -74,22 +74,22 @@ const UserManager = () => {
               placeholder="Search by name or email..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-sm text-white focus:border-indigo-500 outline-none"
+              className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2 text-sm text-slate-900 focus:border-indigo-500 outline-none font-bold"
             />
           </div>
           <button 
             onClick={fetchUsers}
-            className="p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-400 rounded-xl transition-all"
+            className="p-2.5 bg-white hover:bg-slate-50 text-slate-400 border border-slate-200 rounded-xl transition-all shadow-sm"
           >
-            <RefreshCcw className="w-5 h-5" />
+            <RefreshCcw className="w-5 h-5 text-indigo-600" />
           </button>
         </div>
 
-      <div className="bg-[#1e293b] rounded-3xl border border-slate-700/50 shadow-xl overflow-hidden relative">
+      <div className="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden relative">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-slate-700 bg-slate-800/30">
+              <tr className="border-b border-slate-100 bg-slate-50/50">
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">User Profile</th>
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Contact Info</th>
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Wallet Balance</th>
@@ -98,20 +98,20 @@ const UserManager = () => {
                 <th className="p-5 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-700/50">
+            <tbody className="divide-y divide-slate-50">
               {users.length === 0 ? (
                 <tr>
                   <td colSpan="6" className="p-10 text-center text-slate-500 font-medium italic">No users found.</td>
                 </tr>
               ) : users.map(user => (
-                <tr key={user._id} className="hover:bg-slate-800/20 transition-colors group">
+                <tr key={user._id} className="hover:bg-slate-50 transition-colors group">
                   <td className="p-5">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-500 flex items-center justify-center text-white font-bold text-sm shadow-lg border border-white/10">
                          {user.name?.charAt(0).toUpperCase()}
                       </div>
                       <div>
-                        <p className="font-bold text-slate-200 text-sm">{user.name}</p>
+                        <p className="font-bold text-slate-900 text-sm">{user.name}</p>
                         <div className="flex items-center gap-1 mt-0.5">
                            <Shield size={10} className="text-indigo-400" />
                            <span className="text-[10px] text-slate-500 font-black uppercase tracking-widest">{user.role}</span>
@@ -121,8 +121,8 @@ const UserManager = () => {
                   </td>
                   <td className="p-5">
                     <div className="flex flex-col gap-1">
-                      <div className="flex items-center gap-2 text-slate-300 text-xs font-medium">
-                         <Mail size={12} className="text-slate-500" />
+                      <div className="flex items-center gap-2 text-slate-600 text-xs font-medium">
+                         <Mail size={12} className="text-slate-400" />
                          {user.email}
                       </div>
                     </div>
@@ -132,7 +132,7 @@ const UserManager = () => {
                       <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
                          <Wallet size={14} />
                       </div>
-                      <span className="text-slate-200 font-black text-sm tracking-tight">₹{user.wallet?.balance?.toLocaleString() || 0}</span>
+                      <span className="text-slate-900 font-black text-sm tracking-tight">₹{user.wallet?.balance?.toLocaleString() || 0}</span>
                     </div>
                   </td>
                   <td className="p-5">
@@ -149,10 +149,10 @@ const UserManager = () => {
                   </td>
                   <td className="p-5 text-right">
                      <div className="flex items-center justify-end gap-2">
-                        <button className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-lg transition-all" title="View Profile">
+                        <button className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all" title="View Profile">
                           <ExternalLink size={16} />
                         </button>
-                        <button className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-lg transition-all" title="More Options">
+                        <button className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all" title="More Options">
                           <MoreVertical size={16} />
                         </button>
                      </div>
@@ -164,8 +164,8 @@ const UserManager = () => {
         </div>
 
         {users.length > 0 && (
-          <div className="p-5 border-t border-slate-700 bg-slate-800/10">
-            <Pagination pagination={pagination} onPageChange={handlePageChange} theme="dark" />
+          <div className="p-5 border-t border-slate-50 bg-slate-50/20">
+            <Pagination pagination={pagination} onPageChange={handlePageChange} theme="light" />
           </div>
         )}
       </div>

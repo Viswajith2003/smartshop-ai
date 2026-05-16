@@ -98,7 +98,7 @@ const SearchBar = ({
                     onKeyDown={handleKeyDown}
                     className={`w-full border-2 transition-all font-bold placeholder:text-gray-400 shadow-sm outline-none
                         ${variant === 'admin' 
-                            ? 'bg-[#0a0c2e] border-[#1a1c3d] text-white rounded-xl py-2.5 pl-12 pr-4 focus:border-indigo-500' 
+                            ? 'bg-slate-50 border-slate-100 text-slate-900 rounded-xl py-2.5 pl-12 pr-4 focus:border-indigo-500 focus:bg-white' 
                             : 'bg-indigo-50/50 border-indigo-100 text-indigo-900 rounded-2xl py-3 pl-14 pr-12 focus:border-indigo-400 focus:bg-white'
                         }`}
                 />
@@ -114,7 +114,7 @@ const SearchBar = ({
             {showSuggestions && suggestions.length > 0 && (
                 <div className={`absolute left-0 right-0 mt-2 rounded-2xl shadow-2xl border overflow-hidden z-[100] animate-in fade-in slide-in-from-top-2 duration-200
                     ${variant === 'admin' 
-                        ? 'bg-[#0f113a] border-[#1a1c3d] text-gray-200' 
+                        ? 'bg-white border-slate-100 text-slate-900' 
                         : 'bg-white border-indigo-50 text-indigo-900'
                     }`}>
                     <div className="p-2">
@@ -127,7 +127,7 @@ const SearchBar = ({
                                     handleSearchSubmit(product.name);
                                 }}
                                 className={`flex items-center gap-4 px-4 py-3 cursor-pointer transition-colors rounded-xl
-                                    ${variant === 'admin' ? 'hover:bg-indigo-500/20' : 'hover:bg-indigo-50'}`}
+                                    ${variant === 'admin' ? 'hover:bg-slate-50' : 'hover:bg-indigo-50'}`}
                             >
                                 <div className="w-10 h-10 rounded-lg bg-gray-100 flex-shrink-0 overflow-hidden p-1">
                                     <img src={product.images?.[0]} alt="" className="w-full h-full object-contain" />

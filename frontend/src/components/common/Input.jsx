@@ -12,7 +12,7 @@ const Input = ({ label, type = 'text', value, onChange, placeholder, error, clas
         className={`px-4 py-3 rounded-2xl border-2 transition-all outline-none text-slate-900 font-medium ${
           error 
             ? 'border-rose-100 bg-rose-50/50 focus:border-rose-400' 
-            : 'border-slate-100 focus:border-blue-400 bg-slate-50'
+            : 'border-slate-100 focus:border-indigo-400 bg-slate-50'
         }`}
         {...props}
       />

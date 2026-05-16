@@ -1,0 +1,33 @@
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 162ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 3ms"}
+{"level":"info","message":"GET /api/categories 200 - 35ms"}
+{"level":"info","message":"GET /api/cart 200 - 38ms"}
+{"level":"info","message":"GET /api/categories 200 - 61ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 71ms"}
+{"level":"info","message":"GET /api/products 200 - 107ms"}
+{"level":"info","message":"GET /api/products 200 - 110ms"}
+{"level":"info","message":"GET /api/cart 200 - 40ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 63ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 29ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 21ms"}
+{"level":"info","message":"GET /api/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 19ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 23ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 19ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 18ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/products 200 - 36ms"}
+{"level":"info","message":"GET /api/categories 200 - 35ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 44ms"}
+{"level":"info","message":"GET /api/cart 200 - 42ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 40ms"}
+{"level":"info","message":"GET /api/products 200 - 69ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 23ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 61ms"}
+{"level":"info","message":"GET /api/cart 200 - 22ms"}

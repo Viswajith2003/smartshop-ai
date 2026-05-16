@@ -33,9 +33,9 @@ const OtpPage = memo(() => {
         toast.success(response.message || 'OTP Verified successfully!')
         
         if (location.state?.from === 'forgotPassword') {
-          navigate('/reset-pswd', { state: { email, otp: otpValue } })
+          navigate('/reset-pswd', { replace: true, state: { email, otp: otpValue } })
         } else {
-          navigate('/login')
+          navigate('/login', { replace: true })
         }
       } catch (err) {
         console.error('OTP Verification error:', err)
@@ -52,10 +52,10 @@ const OtpPage = memo(() => {
     if (!email) {
       if (location.state?.from === 'forgotPassword') {
         toast.error('Session expired. Please enter your email again.')
-        navigate('/forgot-password')
+        navigate('/forgot-password', { replace: true })
       } else {
         toast.error('Please register first')
-        navigate('/register')
+        navigate('/register', { replace: true })
       }
     }
   }, [email, navigate, location.state])
@@ -95,9 +95,9 @@ const OtpPage = memo(() => {
   }, [email, timer])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
       {/* Main Card Container */}
-      <div className="w-full max-w-4xl flex flex-col md:flex-row bg-white rounded-[2.5rem] overflow-hidden shadow-[0_0_50px_rgba(147,51,234,0.15)] min-h-[500px] items-center">
+      <div className="w-full max-w-4xl flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(79,70,229,0.15)] min-h-[500px] items-center">
         
         {/* Left Panel - Illustration */}
         <div className="w-full md:w-[45%] p-8 md:p-12 flex items-center justify-center">
@@ -111,8 +111,8 @@ const OtpPage = memo(() => {
         {/* Right Panel - Form */}
         <div className="w-full md:w-[55%] p-8 md:p-12 flex flex-col justify-center">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#9333ea] mb-6">Verify OTP</h2>
-            <p className="text-gray-500 font-medium">
+            <h2 className="text-3xl md:text-4xl font-bold text-indigo-600 mb-6">Verify OTP</h2>
+            <p className="text-slate-500 font-medium">
               Enter 6 digit code sent to <span className="text-gray-700">{email}</span>
             </p>
           </div>
@@ -146,7 +146,7 @@ const OtpPage = memo(() => {
                       inputRefs.current[index - 1].focus();
                     }
                   }}
-                  className={`w-12 h-12 md:w-14 md:h-14 text-center text-2xl font-bold bg-white border-2 ${formik.errors.otp && typeof formik.errors.otp === 'string' ? 'border-red-500 focus:ring-red-100 text-red-500' : 'text-[#9333ea] border-[#9333ea] focus:ring-purple-100'} rounded-xl focus:outline-none focus:ring-4 transition-all`}
+                  className={`w-12 h-12 md:w-14 md:h-14 text-center text-2xl font-bold bg-white border-2 ${formik.errors.otp && typeof formik.errors.otp === 'string' ? 'border-red-500 focus:ring-red-100 text-red-500' : 'text-indigo-600 border-indigo-600 focus:ring-indigo-100'} rounded-xl focus:outline-none focus:ring-4 transition-all`}
                 />
               ))}
             </div>
@@ -164,7 +164,7 @@ const OtpPage = memo(() => {
                   type="button"
                   onClick={handleResend}
                   disabled={timer > 0}
-                  className={`font-bold transition-all ${timer > 0 ? 'text-gray-400 cursor-not-allowed' : 'text-[#9333ea] hover:underline'}`}
+                  className={`font-bold transition-all ${timer > 0 ? 'text-gray-400 cursor-not-allowed' : 'text-indigo-600 hover:underline'}`}
                 >
                   {timer > 0 ? `Resend OTP in ${timer}s` : 'Resend OTP'}
                 </button>
@@ -173,7 +173,7 @@ const OtpPage = memo(() => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 bg-[#9333ea] text-white rounded-xl text-xl font-semibold shadow-lg hover:bg-purple-700 transform hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full py-4 bg-indigo-600 text-white rounded-xl text-xl font-semibold shadow-lg hover:bg-indigo-700 transform hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <span className="flex items-center justify-center">

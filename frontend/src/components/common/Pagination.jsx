@@ -15,7 +15,7 @@ const Pagination = ({ pagination, onPageChange, theme = 'light' }) => {
                 : 'text-slate-300 border-slate-100 cursor-not-allowed'
             : theme === 'dark'
                 ? 'text-slate-300 border-slate-600 hover:border-purple-500 hover:text-purple-400 hover:bg-purple-500/10'
-                : 'text-slate-600 border-slate-200 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50'
+                : 'text-slate-600 border-slate-200 hover:border-indigo-500 hover:text-indigo-600 hover:bg-indigo-50'
         }`}
       >
         <i className="bi bi-chevron-left mr-2"></i> Previous
@@ -51,7 +51,7 @@ const Pagination = ({ pagination, onPageChange, theme = 'light' }) => {
                 : 'text-slate-300 border-slate-100 cursor-not-allowed'
             : theme === 'dark'
                 ? 'text-slate-300 border-slate-600 hover:border-purple-500 hover:text-purple-400 hover:bg-purple-500/10'
-                : 'text-slate-600 border-slate-200 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50'
+                : 'text-slate-600 border-slate-200 hover:border-indigo-500 hover:text-indigo-600 hover:bg-indigo-50'
         }`}
       >
         Next <i className="bi bi-chevron-right ml-2"></i>

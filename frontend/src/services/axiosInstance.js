@@ -82,6 +82,22 @@ axiosInstance.interceptors.response.use(
     if (error.response?.status === 403) {
       toast.error('Access denied. Insufficient permissions.');
     }
+
+    // Redirect to 500 error page on server errors
+    if (error.response?.status >= 500) {
+      const noRedirectPaths = ['/error'];
+      if (!noRedirectPaths.includes(window.location.pathname)) {
+        window.location.href = '/error';
+      }
+    }
+
+    // Network / timeout error (no response from server)
+    if (!error.response && error.code !== 'ERR_CANCELED') {
+      const noRedirectPaths = ['/error'];
+      if (!noRedirectPaths.includes(window.location.pathname)) {
+        toast.error('Network error. Please check your connection.');
+      }
+    }
     
     return Promise.reject(error);
   }
