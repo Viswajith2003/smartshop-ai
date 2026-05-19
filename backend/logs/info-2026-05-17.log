@@ -563,3 +563,8 @@
 {"level":"info","message":"GET /api/categories 200 - 27ms"}
 {"level":"info","message":"GET /api/products 200 - 32ms"}
 {"level":"info","message":"GET /api/products 200 - 54ms"}
+{"level":"info","message":"GET /api/cart 200 - 31ms"}
+{"level":"info","message":"GET /api/cart 200 - 30ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 14ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 28ms"}
+{"level":"info","message":"MongoDB connected successfully"}

@@ -1,0 +1,39 @@
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 24ms"}
+{"level":"info","message":"GET /api/cart 200 - 144ms"}
+{"level":"info","message":"GET /api/categories 200 - 94ms"}
+{"level":"info","message":"GET /api/products 200 - 128ms"}
+{"level":"info","message":"GET /api/products 200 - 294ms"}
+{"level":"info","message":"GET /api/categories 200 - 53ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 81ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 86ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 81ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 81ms"}
+{"level":"info","message":"GET /api/cart 200 - 36ms"}
+{"level":"info","message":"GET /api/cart 200 - 18ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 20ms"}
+{"level":"info","message":"GET /api/cart 200 - 23ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 25ms"}
+{"level":"info","message":"GET /api/categories 200 - 13ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 21ms"}
+{"level":"info","message":"GET /api/categories 200 - 22ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 29ms"}
+{"level":"info","message":"POST /api/cart/add 200 - 50ms"}
+{"level":"info","message":"GET /api/cart 200 - 20ms"}
+{"level":"info","message":"GET /api/cart 200 - 26ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 24ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 25ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 142ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 13ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 58ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 97ms"}
+{"level":"info","message":"GET /api/cart 200 - 119ms"}
+{"level":"info","message":"GET /api/cart 200 - 212ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 214ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 148ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 223ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 210ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 201ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 221ms"}

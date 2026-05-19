@@ -77,10 +77,15 @@ class CouponService {
       }
     }
 
+    // Increment usage count after successful validation
+    await Coupon.findByIdAndUpdate(coupon._id, { $inc: { usedCount: 1 } });
+
     return {
-      discountAmount,
+      discountAmount: Math.round(discountAmount),
       discountType: coupon.discountType,
       discountValue: coupon.discountValue,
+      minPurchaseAmount: coupon.minPurchaseAmount,
+      maxDiscountAmount: coupon.maxDiscountAmount,
       code: coupon.code,
     };
   }

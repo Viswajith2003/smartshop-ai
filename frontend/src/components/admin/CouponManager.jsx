@@ -29,12 +29,12 @@ const CouponSchema = Yup.object().shape({
       if (this.parent.discountType === 'percentage' && value > 100) return false;
       return true;
     }),
-  minOrderAmount: Yup.number().min(0, 'Cannot be negative').nullable().transform((v, o) => o === '' ? null : v),
-  maxDiscount: Yup.number().min(0, 'Cannot be negative').nullable().transform((v, o) => o === '' ? null : v),
-  usageLimit: Yup.number().integer().min(1).nullable().transform((v, o) => o === '' ? null : v),
-  startDate: Yup.date().required('Start Date is required'),
-  endDate: Yup.date()
-    .min(Yup.ref('startDate'), 'Cannot be earlier than Start Date')
+  minPurchaseAmount: Yup.number().min(0, 'Cannot be negative').required('Minimum order is required'),
+  maxDiscountAmount: Yup.number().min(0, 'Cannot be negative').required('Maximum discount cap is required'),
+  usageLimit: Yup.number().integer().min(1, 'Must be at least 1').required('Usage limit is required'),
+  validFrom: Yup.date().required('Start Date is required'),
+  validUntil: Yup.date()
+    .min(Yup.ref('validFrom'), 'Cannot be earlier than Start Date')
     .required('End Date is required'),
   isActive: Yup.boolean().default(true)
 });
@@ -180,7 +180,7 @@ const CouponManager = () => {
                       <div className="flex -space-x-1">
                          <Users size={14} className="text-slate-500" />
                       </div>
-                      <span className="text-slate-600 font-bold text-xs">{coupon.usageCount || 0} / {coupon.usageLimit || '∞'}</span>
+                      <span className="text-slate-600 font-bold text-xs">{coupon.usedCount || 0} / {coupon.usageLimit || '∞'}</span>
                     </div>
                   </td>
                   <td className="p-5">
@@ -227,11 +227,11 @@ const CouponManager = () => {
                   code: editingCoupon ? editingCoupon.code : '',
                   discountType: editingCoupon ? editingCoupon.discountType : 'percentage',
                   discountValue: editingCoupon ? editingCoupon.discountValue : '',
-                  minOrderAmount: editingCoupon ? (editingCoupon.minPurchaseAmount || '') : '',
-                  maxDiscount: editingCoupon ? (editingCoupon.maxDiscountAmount || '') : '',
-                  startDate: editingCoupon && editingCoupon.validFrom ? new Date(editingCoupon.validFrom).toISOString().split('T')[0] : '',
-                  endDate: editingCoupon && editingCoupon.validUntil ? new Date(editingCoupon.validUntil).toISOString().split('T')[0] : '',
-                  usageLimit: editingCoupon && editingCoupon.usageLimit ? editingCoupon.usageLimit : '',
+                  minPurchaseAmount: editingCoupon ? (editingCoupon.minPurchaseAmount ?? 0) : 0,
+                  maxDiscountAmount: editingCoupon ? (editingCoupon.maxDiscountAmount ?? 0) : 0,
+                  validFrom: editingCoupon && editingCoupon.validFrom ? new Date(editingCoupon.validFrom).toISOString().split('T')[0] : '',
+                  validUntil: editingCoupon && editingCoupon.validUntil ? new Date(editingCoupon.validUntil).toISOString().split('T')[0] : '',
+                  usageLimit: editingCoupon && editingCoupon.usageLimit ? editingCoupon.usageLimit : 100,
                   isActive: editingCoupon ? editingCoupon.isActive : true
                 }}
                 validationSchema={CouponSchema}
@@ -241,11 +241,11 @@ const CouponManager = () => {
                       code: values.code.toUpperCase(),
                       discountType: values.discountType,
                       discountValue: values.discountValue,
-                      minPurchaseAmount: values.minOrderAmount || 0,
-                      maxDiscountAmount: values.maxDiscount || 0,
-                      validFrom: values.startDate,
-                      validUntil: values.endDate,
-                      usageLimit: values.usageLimit || 0,
+                      minPurchaseAmount: values.minPurchaseAmount ?? 0,
+                      maxDiscountAmount: values.maxDiscountAmount ?? 0,
+                      validFrom: values.validFrom,
+                      validUntil: values.validUntil,
+                      usageLimit: values.usageLimit ?? 100,
                       isActive: values.isActive
                     };
 
@@ -301,60 +301,68 @@ const CouponManager = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <label className="text-[10px] font-black tracking-widest text-slate-500 uppercase">Value & Min Order</label>
-                        <div className="flex gap-2">
-                          <Field 
-                            name="discountValue"
-                            type="number" 
-                            className="w-full flex-1 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
-                            placeholder={values.discountType === 'percentage' ? 'Percent %' : 'Amount ₹'}
-                          />
-                          <Field 
-                            name="minOrderAmount"
-                            type="number" 
-                            className="w-full flex-1 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
-                            placeholder="Min ₹"
-                          />
-                        </div>
+                        <label className="text-[10px] font-black tracking-widest text-slate-500 uppercase">Discount Value</label>
+                        <Field 
+                          name="discountValue"
+                          type="number" 
+                          className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
+                          placeholder={values.discountType === 'percentage' ? 'Percent %' : 'Amount ₹'}
+                        />
+                        <ErrorMessage name="discountValue" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
                       </div>
 
                       <div className="space-y-2">
-                        <label className="text-[10px] font-black tracking-widest text-slate-500 uppercase">Usage Limit & Max Discount</label>
-                        <div className="flex gap-2">
-                          <Field 
-                            name="usageLimit"
-                            type="number" 
-                            className="w-full flex-1 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
-                            placeholder="Usage Limit"
-                          />
-                          <Field 
-                            name="maxDiscount"
-                            type="number" 
-                            disabled={values.discountType === 'fixed'}
-                            className={`w-full flex-1 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm ${values.discountType === 'fixed' ? 'opacity-30' : ''}`}
-                            placeholder="Max ₹"
-                          />
-                        </div>
+                        <label className="text-[10px] font-black tracking-widest text-slate-500 uppercase">Min Purchase Amount (₹)</label>
+                        <Field 
+                          name="minPurchaseAmount"
+                          type="number" 
+                          className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
+                          placeholder="Min ₹"
+                        />
+                        <ErrorMessage name="minPurchaseAmount" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black tracking-widest text-slate-500 uppercase">Usage Limit</label>
+                        <Field 
+                          name="usageLimit"
+                          type="number" 
+                          className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
+                          placeholder="Usage Limit"
+                        />
+                        <ErrorMessage name="usageLimit" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black tracking-widest text-slate-500 uppercase">Max Discount Cap (₹)</label>
+                        <Field 
+                          name="maxDiscountAmount"
+                          type="number" 
+                          disabled={values.discountType === 'fixed'}
+                          className={`w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm ${values.discountType === 'fixed' ? 'opacity-30' : ''}`}
+                          placeholder="Max ₹"
+                        />
+                        <ErrorMessage name="maxDiscountAmount" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
                       </div>
 
                       <div className="space-y-2">
                         <label className="text-[10px] font-black tracking-widest text-slate-500 uppercase">Starts On</label>
                         <Field 
-                          name="startDate"
+                          name="validFrom"
                           type="date" 
                           className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
                         />
-                        <ErrorMessage name="startDate" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
+                        <ErrorMessage name="validFrom" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
                       </div>
                       
                       <div className="space-y-2">
                         <label className="text-[10px] font-black tracking-widest text-slate-500 uppercase">Expires On</label>
                         <Field 
-                          name="endDate"
+                          name="validUntil"
                           type="date" 
                           className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-medium text-sm"
                         />
-                        <ErrorMessage name="endDate" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
+                        <ErrorMessage name="validUntil" component="div" className="text-red-400 text-[10px] font-bold mt-1 uppercase" />
                       </div>
 
                     </div>

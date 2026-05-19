@@ -109,11 +109,17 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
             } else {
                 toast.error(response.message || `Failed to ${type} order`);
             }
-        } catch (err) {
-            toast.error(`Error processing ${type} request`);
         } finally {
             setActionLoading(false);
         }
+    };
+
+    const getImageUrl = (imagePath) => {
+        if (!imagePath) return 'https://via.placeholder.com/150';
+        if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+            return imagePath;
+        }
+        return `${API_CONFIG.baseURL.replace('/api', '')}${imagePath}`;
     };
 
     const getStatusStyles = (status) => {
@@ -207,7 +213,7 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
                             <div key={idx} className="p-10 flex items-center gap-8 hover:bg-slate-50/50 transition-all group">
                                 <div className="w-24 h-24 bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 p-2 flex-shrink-0 group-hover:scale-105 transition-transform">
                                     <img 
-                                        src={`${API_CONFIG.baseURL.replace('/api', '')}${item.product?.images?.[0]}`}
+                                        src={getImageUrl(item.product?.images?.[0])}
                                         alt={item.product?.name} 
                                         className="w-full h-full object-contain"
                                     />

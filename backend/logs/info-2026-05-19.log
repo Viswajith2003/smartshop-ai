@@ -1,0 +1,845 @@
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 6ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 104ms"}
+{"level":"info","message":"GET /api/categories 200 - 127ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 180ms"}
+{"level":"info","message":"GET /api/products 200 - 239ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 208ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 47ms"}
+{"level":"info","message":"GET /api/cart 200 - 256ms"}
+{"level":"info","message":"GET /api/products 200 - 85ms"}
+{"level":"info","message":"GET /api/categories 200 - 68ms"}
+{"level":"info","message":"GET /api/cart 200 - 50ms"}
+{"level":"info","message":"GET /api/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 26ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 25ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 17ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 30ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 27ms"}
+{"level":"info","message":"GET /api/cart 200 - 31ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 33ms"}
+{"level":"info","message":"GET /api/cart 200 - 24ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 23ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 34ms"}
+{"level":"info","message":"GET /api/cart 200 - 35ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 35ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 24ms"}
+{"level":"info","message":"GET /api/cart 200 - 49ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 31ms"}
+{"level":"info","message":"GET /api/cart 200 - 50ms"}
+{"level":"info","message":"GET /api/cart 200 - 47ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 47ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 27ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 30ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 10ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 10ms"}
+{"level":"info","message":"Processing payment for Order: 6a0b719ae6a28332fca3034c, Method: Razorpay"}
+{"level":"info","message":"POST /api/orders/create 201 - 462ms"}
+{"level":"info","message":"POST /api/orders/verify 200 - 65ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 27ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 34ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 16ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 14ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 15ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 40ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 39ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 48ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 26ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 21ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 25ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 9ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 15ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 28ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 25ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 22ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 18ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 25ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 38ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 46ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 28ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 3ms"}
+{"level":"info","message":"GET /api/products 200 - 51ms"}
+{"level":"info","message":"GET /api/categories 200 - 47ms"}
+{"level":"info","message":"GET /api/products 200 - 60ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 79ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 84ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 80ms"}
+{"level":"info","message":"GET /api/cart 200 - 72ms"}
+{"level":"info","message":"GET /api/categories 200 - 109ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 65ms"}
+{"level":"info","message":"GET /api/cart 200 - 43ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 18ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 27ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 50ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 39ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 37ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 43ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 17ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 17ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 18ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 17ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 19ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 15ms"}
+{"level":"info","message":"GET /api/orders/6a0b719ae6a28332fca3034c 200 - 9ms"}
+{"level":"info","message":"GET /api/orders/6a0b719ae6a28332fca3034c 200 - 12ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 3ms"}
+{"level":"info","message":"GET /api/categories 200 - 76ms"}
+{"level":"info","message":"GET /api/cart 200 - 91ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 90ms"}
+{"level":"info","message":"GET /api/products 200 - 170ms"}
+{"level":"info","message":"GET /api/products 200 - 129ms"}
+{"level":"info","message":"GET /api/cart 200 - 127ms"}
+{"level":"info","message":"GET /api/categories 200 - 32ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 34ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 38ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 36ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 30ms"}
+{"level":"info","message":"GET /api/categories 200 - 34ms"}
+{"level":"info","message":"GET /api/categories 200 - 35ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 50ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 28ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 34ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 30ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 40ms"}
+{"level":"info","message":"GET /api/cart 200 - 27ms"}
+{"level":"info","message":"GET /api/cart 200 - 20ms"}
+{"level":"info","message":"GET /api/cart 200 - 28ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 34ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 31ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 26ms"}
+{"level":"info","message":"GET /api/cart 200 - 35ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 31ms"}
+{"level":"info","message":"GET /api/cart 200 - 30ms"}
+{"level":"info","message":"GET /api/cart 200 - 42ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 37ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 16ms"}
+{"level":"info","message":"GET /api/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 16ms"}
+{"level":"info","message":"GET /api/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 24ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/products 200 - 31ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 28ms"}
+{"level":"info","message":"GET /api/cart 200 - 43ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 68ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 67ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 74ms"}
+{"level":"info","message":"GET /api/products 200 - 98ms"}
+{"level":"info","message":"GET /api/cart 200 - 16ms"}
+{"level":"info","message":"POST /api/admin/login 200 - 105ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 24ms"}
+{"level":"info","message":"GET /api/categories 200 - 5ms"}
+{"level":"info","message":"GET /api/categories 200 - 9ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 25ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 28ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 5ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 9ms"}
+{"level":"info","message":"GET /api/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/categories 200 - 16ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 24ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 23ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 5ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 49ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 50ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 8ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/sales-report?startDate=&endDate= 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/sales-report?startDate=&endDate= 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 11ms"}
+{"level":"info","message":"GET /api/users/profile 401 - 3ms"}
+{"level":"info","message":"GET /api/cart 401 - 1ms"}
+{"level":"info","message":"GET /api/cart 401 - 3ms"}
+{"level":"info","message":"GET /api/users/profile 401 - 2ms"}
+{"level":"info","message":"GET /api/wishlist 401 - 1ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 81ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/products 200 - 65ms"}
+{"level":"info","message":"GET /api/categories 200 - 66ms"}
+{"level":"info","message":"GET /api/categories 200 - 90ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 118ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 126ms"}
+{"level":"info","message":"GET /api/products 200 - 79ms"}
+{"level":"info","message":"GET /api/cart 200 - 42ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 28ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 60ms"}
+{"level":"info","message":"GET /api/cart 200 - 42ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 91ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 73ms"}
+{"level":"info","message":"PUT /api/coupons/6a05fc5409967d73f3dcc3e4 401 - 24ms"}
+{"level":"info","message":"POST /api/admin/login 200 - 86ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 15ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 17ms"}
+{"level":"info","message":"PUT /api/coupons/6a05fc5409967d73f3dcc3e4 200 - 29ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 21ms"}
+{"level":"info","message":"GET /api/categories 200 - 24ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 29ms"}
+{"level":"info","message":"GET /api/categories 200 - 21ms"}
+{"level":"info","message":"GET /api/users/profile 401 - 3ms"}
+{"level":"info","message":"GET /api/wishlist 401 - 2ms"}
+{"level":"info","message":"GET /api/wishlist 401 - 2ms"}
+{"level":"info","message":"GET /api/users/profile 401 - 3ms"}
+{"level":"info","message":"GET /api/cart 401 - 4ms"}
+{"level":"info","message":"GET /api/cart 401 - 3ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 76ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 2ms"}
+{"level":"info","message":"GET /api/categories 200 - 26ms"}
+{"level":"info","message":"GET /api/products 200 - 62ms"}
+{"level":"info","message":"GET /api/products 200 - 76ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 76ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 92ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 30ms"}
+{"level":"info","message":"GET /api/categories 200 - 56ms"}
+{"level":"info","message":"GET /api/cart 200 - 26ms"}
+{"level":"info","message":"GET /api/cart 200 - 31ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 49ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 8ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 29ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 26ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 14ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 46ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 25ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 25ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 21ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 21ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 29ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 84ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 112ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 98ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 12ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 40ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 38ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 41ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 22ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 13ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 26ms"}
+{"level":"info","message":"GET /api/cart 200 - 25ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 52ms"}
+{"level":"info","message":"GET /api/cart 200 - 38ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 60ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 53ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 23ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 24ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 18ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 1ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 18ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 23ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 21ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 15ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 23ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 34ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 35ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 22ms"}
+{"level":"info","message":"GET /api/cart 200 - 19ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 41ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 49ms"}
+{"level":"info","message":"GET /api/cart 200 - 23ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 20ms"}
+{"level":"info","message":"GET /api/orders/6a0b719ae6a28332fca3034c 200 - 22ms"}
+{"level":"info","message":"GET /api/orders/6a0b719ae6a28332fca3034c 200 - 14ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 23ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 42ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 15ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 17ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 56ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 50ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 80ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 18ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 13ms"}
+{"level":"info","message":"GET /api/categories 200 - 68ms"}
+{"level":"info","message":"GET /api/categories 200 - 59ms"}
+{"level":"info","message":"GET /api/products 200 - 114ms"}
+{"level":"info","message":"GET /api/products 200 - 123ms"}
+{"level":"info","message":"GET /api/categories 200 - 12ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 17ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 22ms"}
+{"level":"info","message":"GET /api/categories 200 - 20ms"}
+{"level":"info","message":"GET /api/products?page=2&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 14ms"}
+{"level":"info","message":"POST /api/cart/add 200 - 54ms"}
+{"level":"info","message":"POST /api/cart/add 200 - 14ms"}
+{"level":"info","message":"POST /api/cart/add 200 - 9ms"}
+{"level":"info","message":"GET /api/cart 200 - 18ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 21ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 38ms"}
+{"level":"info","message":"GET /api/cart 200 - 45ms"}
+{"level":"info","message":"GET /api/products 200 - 46ms"}
+{"level":"info","message":"GET /api/products 200 - 59ms"}
+{"level":"info","message":"GET /api/categories 200 - 62ms"}
+{"level":"info","message":"GET /api/categories 200 - 50ms"}
+{"level":"info","message":"GET /api/products 200 - 48ms"}
+{"level":"info","message":"GET /api/categories 200 - 56ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 54ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"warn","message":"MongoDB disconnected"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/auth/register 404 - 9ms"}
+{"level":"info","message":"GET /api/auth/register 404 - 3ms"}
+{"level":"warn","message":"MongoDB disconnected"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"New user registered: johndoe123@example.com"}
+{"level":"info","message":"POST /api/auth/register 201 - 142ms"}
+{"level":"info","message":"Email sent: <cc1c7099-b853-96fe-dbd8-9f0b3c107adc@gmail.com>"}
+{"level":"info","message":"OTP sent to: johndoe123@example.com"}
+{"level":"info","message":"POST /api/auth/register 400 - 24ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"error","message":"Error: Email is already registered","stack":"ValidationError: Email is already registered\n    at AuthService.register (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/Modules/auth/authService.js:17:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async register (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/Modules/auth/authController.js:7:22)"}
+{"level":"info","message":"POST /api/auth/register 400 - 64ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1775506313660-437228526.jpg 304 - 4ms"}
+{"level":"info","message":"GET /api/users/profile 404 - 47ms"}
+{"level":"info","message":"GET /api/categories 200 - 76ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 96ms"}
+{"level":"info","message":"GET /api/products 200 - 120ms"}
+{"level":"info","message":"GET /api/products 200 - 151ms"}
+{"level":"info","message":"GET /api/categories 200 - 56ms"}
+{"level":"info","message":"GET /api/cart 404 - 58ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 40ms"}
+{"level":"info","message":"GET /api/wishlist 404 - 21ms"}
+{"level":"info","message":"GET /api/users/profile 404 - 45ms"}
+{"level":"info","message":"GET /api/wishlist 404 - 10ms"}
+{"level":"info","message":"GET /api/cart 404 - 8ms"}
+{"level":"info","message":"GET /api/users/profile 404 - 12ms"}
+{"level":"info","message":"GET /api/users/profile 404 - 9ms"}
+{"level":"info","message":"GET /api/products/my-reviews 404 - 13ms"}
+{"level":"info","message":"GET /api/orders/my-orders 404 - 12ms"}
+{"level":"info","message":"GET /api/products/my-reviews 404 - 12ms"}
+{"level":"info","message":"GET /api/orders/my-orders 404 - 8ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"New user registered: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/register 201 - 156ms"}
+{"level":"info","message":"Email sent: <ed70649b-0623-d709-db82-b88be2dba873@gmail.com>"}
+{"level":"info","message":"OTP sent to: viswajithviswa715@gmail.com"}
+{"level":"info","message":"OTP verified for: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/verify-otp 200 - 20ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 73ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 64ms"}
+{"level":"info","message":"GET /api/categories 200 - 79ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 69ms"}
+{"level":"info","message":"GET /api/categories 200 - 40ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 42ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 45ms"}
+{"level":"info","message":"GET /api/products 200 - 121ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 40ms"}
+{"level":"info","message":"GET /api/products 200 - 88ms"}
+{"level":"info","message":"GET /api/cart 200 - 126ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 34ms"}
+{"level":"info","message":"GET /api/cart 200 - 22ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 13ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 19ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 11ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 14ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 23ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 14ms"}
+{"level":"info","message":"PUT /api/users/avatar 200 - 26ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1779204486975-191086360.jpg 200 - 4ms"}
+{"level":"info","message":"Profile updated: viswajithviswa715@gmail.com"}
+{"level":"info","message":"PUT /api/users/profile 200 - 76ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1779204486975-191086360.jpg 304 - 16ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 58ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 54ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 87ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 66ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 62ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 73ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 24ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 28ms"}
+{"level":"info","message":"GET /api/cart 200 - 27ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 28ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 46ms"}
+{"level":"info","message":"GET /api/cart 200 - 30ms"}
+{"level":"warn","message":"MongoDB disconnected"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1779204486975-191086360.jpg 304 - 5ms"}
+{"level":"info","message":"GET /api/categories 200 - 165ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 69ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 107ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 119ms"}
+{"level":"info","message":"GET /api/products 200 - 148ms"}
+{"level":"info","message":"GET /api/categories 200 - 29ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 21ms"}
+{"level":"info","message":"GET /api/cart 200 - 145ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 41ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 48ms"}
+{"level":"info","message":"GET /api/products 200 - 42ms"}
+{"level":"info","message":"GET /api/cart 200 - 15ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 15ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 14ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 19ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 14ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 28ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 25ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 28ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 28ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 21ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 14ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 21ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 15ms"}
+{"level":"info","message":"POST /api/users/address 200 - 48ms"}
+{"level":"info","message":"POST /api/users/address 200 - 228ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 77ms"}
+{"level":"info","message":"GET /api/categories 200 - 117ms"}
+{"level":"info","message":"GET /api/products 200 - 129ms"}
+{"level":"info","message":"GET /api/products 200 - 163ms"}
+{"level":"info","message":"GET /api/categories 200 - 136ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 76ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 38ms"}
+{"level":"info","message":"GET /api/categories 200 - 34ms"}
+{"level":"info","message":"GET /api/categories 200 - 38ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 48ms"}
+{"level":"info","message":"POST /api/wishlist/toggle 200 - 41ms"}
+{"level":"info","message":"POST /api/wishlist/toggle 200 - 30ms"}
+{"level":"info","message":"POST /api/cart/add 200 - 48ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 36ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 36ms"}
+{"level":"info","message":"GET /api/cart 200 - 78ms"}
+{"level":"info","message":"GET /api/cart 200 - 72ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 5ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 16ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 19ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 22ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1779204486975-191086360.jpg 304 - 3ms"}
+{"level":"info","message":"GET /api/products 200 - 116ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 90ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 85ms"}
+{"level":"info","message":"GET /api/categories 200 - 135ms"}
+{"level":"info","message":"GET /api/products 200 - 101ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 92ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 72ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 93ms"}
+{"level":"info","message":"GET /api/categories 200 - 103ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 114ms"}
+{"level":"info","message":"GET /api/cart 200 - 97ms"}
+{"level":"info","message":"GET /api/cart 200 - 107ms"}
+{"level":"info","message":"POST /api/admin/login 200 - 115ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 21ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 56ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 47ms"}
+{"level":"info","message":"GET /api/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 37ms"}
+{"level":"info","message":"GET /api/categories 200 - 28ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 29ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 88ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1779204486975-191086360.jpg 304 - 2ms"}
+{"level":"info","message":"GET /api/products 200 - 38ms"}
+{"level":"info","message":"GET /api/products 200 - 59ms"}
+{"level":"info","message":"GET /api/categories 200 - 45ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 47ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 101ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 78ms"}
+{"level":"info","message":"GET /api/categories 200 - 85ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 48ms"}
+{"level":"info","message":"GET /api/cart 200 - 56ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 50ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 78ms"}
+{"level":"info","message":"GET /api/cart 200 - 68ms"}
+{"level":"info","message":"GET /api/categories 200 - 31ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 50ms"}
+{"level":"info","message":"GET /api/categories 200 - 59ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 78ms"}
+{"level":"info","message":"POST /api/cart/add 200 - 34ms"}
+{"level":"info","message":"GET /api/cart 200 - 59ms"}
+{"level":"info","message":"GET /api/cart 200 - 66ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 35ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 59ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 26ms"}
+{"level":"info","message":"GET /api/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 52ms"}
+{"level":"info","message":"GET /api/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 35ms"}
+{"level":"info","message":"GET /api/cart 200 - 56ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 41ms"}
+{"level":"info","message":"GET /api/cart 200 - 71ms"}
+{"level":"info","message":"DELETE /api/cart/69e7ce6306902c6c586723c3 200 - 14ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 22ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 25ms"}
+{"level":"info","message":"Processing payment for Order: 6a0c85f2356f1f43066d089e, Method: Razorpay"}
+{"level":"info","message":"POST /api/orders/create 201 - 847ms"}
+{"level":"info","message":"POST /api/orders/verify 200 - 76ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 8ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 28ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 11ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 30ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 59ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 37ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 30ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 64ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 19ms"}
+{"level":"info","message":"GET /api/products 200 - 44ms"}
+{"level":"info","message":"GET /api/categories 200 - 45ms"}
+{"level":"info","message":"GET /api/products 200 - 69ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 44ms"}
+{"level":"info","message":"GET /api/categories 200 - 35ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 24ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 30ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 55ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 73ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 68ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 70ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 50ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 19ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 35ms"}
+{"level":"info","message":"GET /api/categories 200 - 30ms"}
+{"level":"info","message":"GET /api/categories 200 - 32ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 47ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 53ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 53ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 61ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 84ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 84ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 56ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 19ms"}
+{"level":"info","message":"GET /api/orders/6a0c85f2356f1f43066d089e 200 - 19ms"}
+{"level":"info","message":"GET /api/orders/6a0c85f2356f1f43066d089e 200 - 26ms"}
+{"level":"info","message":"POST /api/orders/6a0c85f2356f1f43066d089e/cancel 200 - 67ms"}
+{"level":"info","message":"GET /api/orders/6a0c85f2356f1f43066d089e 200 - 33ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 18ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 21ms"}
+{"level":"info","message":"GET /api/orders/6a0c85f2356f1f43066d089e 200 - 42ms"}
+{"level":"info","message":"GET /api/orders/6a0c85f2356f1f43066d089e 200 - 48ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1779204486975-191086360.jpg 200 - 20ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 26ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 60ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 96ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 84ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 82ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 105ms"}
+{"level":"info","message":"GET /api/cart 200 - 47ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 66ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 104ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 131ms"}
+{"level":"info","message":"GET /api/cart 200 - 32ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 90ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 13ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 25ms"}
+{"level":"info","message":"GET /api/orders/6a0c85f2356f1f43066d089e 200 - 33ms"}
+{"level":"info","message":"GET /api/orders/6a0c85f2356f1f43066d089e 200 - 33ms"}
+{"level":"info","message":"GET /api/orders/6a0c85f2356f1f43066d089e 200 - 25ms"}
+{"level":"info","message":"GET /api/orders/6a0c85f2356f1f43066d089e 200 - 30ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 26ms"}
+{"level":"info","message":"GET /api/categories 200 - 15ms"}
+{"level":"info","message":"GET /api/categories 200 - 30ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 29ms"}
+{"level":"info","message":"POST /api/cart/add 200 - 22ms"}
+{"level":"info","message":"GET /api/cart 200 - 43ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 38ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 49ms"}
+{"level":"info","message":"GET /api/cart 200 - 71ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 16ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 27ms"}
+{"level":"info","message":"Processing payment for Order: 6a0c86d7356f1f43066d0a49, Method: Razorpay"}
+{"level":"info","message":"POST /api/orders/create 201 - 970ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"Processing payment for Order: 6a0c896623d1a3328a22b66b, Method: Razorpay"}
+{"level":"info","message":"POST /api/orders/create 201 - 582ms"}
+{"level":"info","message":"GET /api/cart 200 - 65ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 82ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 32ms"}
+{"level":"info","message":"GET /api/cart 200 - 71ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 22ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 43ms"}
+{"level":"info","message":"POST /api/coupons/apply 200 - 18ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 14ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 19ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"POST /api/coupons/apply 200 - 94ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 16ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 25ms"}
+{"level":"info","message":"Processing payment for Order: 6a0c8b6b7cd49a8c63e741c9, Method: Razorpay"}
+{"level":"info","message":"POST /api/orders/create 201 - 531ms"}
+{"level":"info","message":"POST /api/orders/verify 200 - 110ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 52ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 51ms"}
+{"level":"info","message":"POST /api/orders/6a0c86d7356f1f43066d0a49/cancel 400 - 25ms"}
+{"level":"error","message":"Error: Invalid email or password","stack":"AuthenticationError: Invalid email or password\n    at AuthService.login (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/Modules/auth/authService.js:46:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async login (/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/backend/Modules/auth/authController.js:16:22)"}
+{"level":"info","message":"POST /api/auth/login 401 - 18ms"}
+{"level":"info","message":"POST /api/admin/login 200 - 104ms"}
+{"level":"info","message":"GET /api/categories 200 - 47ms"}
+{"level":"info","message":"GET /api/categories 200 - 45ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 48ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 75ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 6ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 63ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 48ms"}
+{"level":"info","message":"GET /api/categories 200 - 42ms"}
+{"level":"info","message":"GET /api/categories 200 - 30ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 74ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 24ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 141ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 114ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 144ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 76ms"}
+{"level":"info","message":"GET /api/admin/orders?page=2&limit=10&search=&status=All 200 - 69ms"}
+{"level":"info","message":"GET /api/admin/orders?page=3&limit=10&search=&status=All 200 - 64ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 28ms"}
+{"level":"info","message":"PUT /api/admin/orders/6a0c8b6b7cd49a8c63e741c9/status 200 - 78ms"}
+{"level":"info","message":"PUT /api/admin/orders/6a0c8b6b7cd49a8c63e741c9/status 200 - 51ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 33ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 36ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 72ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 20ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 29ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 46ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 63ms"}
+{"level":"info","message":"DELETE /api/coupons/6a05fc5409967d73f3dcc3e4 200 - 22ms"}
+{"level":"info","message":"DELETE /api/coupons/6a05fc1a09967d73f3dcc3e1 200 - 5ms"}
+{"level":"info","message":"DELETE /api/coupons/6a05f9bef533d7fbd88a88e6 200 - 8ms"}
+{"level":"info","message":"DELETE /api/coupons/6a05f9bef533d7fbd88a88e7 200 - 12ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 35ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 6ms"}
+{"level":"info","message":"POST /api/coupons 201 - 83ms"}
+{"level":"info","message":"POST /api/coupons 201 - 15ms"}
+{"level":"info","message":"POST /api/coupons 201 - 5ms"}
+{"level":"info","message":"GET /api/admin/sales-report?startDate=&endDate= 200 - 48ms"}
+{"level":"info","message":"GET /api/admin/sales-report?startDate=&endDate= 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 10ms"}
+{"level":"info","message":"GET /api/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 31ms"}
+{"level":"info","message":"GET /api/categories 200 - 18ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 10ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 29ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 30ms"}
+{"level":"info","message":"GET /api/categories 200 - 7ms"}
+{"level":"info","message":"GET /api/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 16ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 27ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 7ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 5ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 24ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 18ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 100ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1779204486975-191086360.jpg 200 - 6ms"}
+{"level":"info","message":"GET /api/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/products 200 - 19ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 16ms"}
+{"level":"info","message":"GET /api/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/products 200 - 33ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 29ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 45ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 44ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 59ms"}
+{"level":"info","message":"GET /api/cart 200 - 61ms"}
+{"level":"info","message":"GET /api/cart 200 - 60ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 99ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 13ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 17ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 16ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 20ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 17ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 8ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 13ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 13ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 10ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 12ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 13ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 13ms"}
+{"level":"info","message":"GET /api/orders/6a0c8b6b7cd49a8c63e741c9 200 - 13ms"}
+{"level":"info","message":"GET /api/orders/6a0c8b6b7cd49a8c63e741c9 200 - 14ms"}
+{"level":"info","message":"POST /api/orders/6a0c8b6b7cd49a8c63e741c9/return 200 - 47ms"}
+{"level":"info","message":"GET /api/orders/6a0c8b6b7cd49a8c63e741c9 200 - 17ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 5ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 22ms"}
+{"level":"info","message":"GET /api/orders/6a0c8b6b7cd49a8c63e741c9 200 - 19ms"}
+{"level":"info","message":"GET /api/orders/6a0c8b6b7cd49a8c63e741c9 200 - 17ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 4ms"}
+{"level":"info","message":"GET /api/orders/6a0c8b6b7cd49a8c63e741c9 200 - 25ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 25ms"}
+{"level":"info","message":"GET /api/orders/6a0c8b6b7cd49a8c63e741c9 200 - 37ms"}
+{"level":"info","message":"GET /api/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/categories 200 - 8ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 11ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 6ms"}
+{"level":"info","message":"POST /api/cart/add 200 - 14ms"}
+{"level":"info","message":"GET /api/cart 200 - 20ms"}
+{"level":"info","message":"GET /api/cart 200 - 25ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 22ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 21ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 29ms"}
+{"level":"info","message":"GET /api/coupons?limit=50 200 - 10ms"}
+{"level":"info","message":"POST /api/coupons/apply 200 - 7ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 7ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 7ms"}
+{"level":"info","message":"Processing payment for Order: 6a0c9976c4a8e33dfd84ba82, Method: COD"}
+{"level":"info","message":"POST /api/orders/create 201 - 37ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 13ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 13ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 16ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 21ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 20ms"}
+{"level":"info","message":"GET /api/cart 200 - 17ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 22ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 20ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 31ms"}
+{"level":"info","message":"GET /api/cart 200 - 22ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 10ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 17ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 15ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 18ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 35ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 17ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 8ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 12ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 10ms"}
+{"level":"info","message":"POST /api/admin/login 200 - 71ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 10ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 6ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 11ms"}
+{"level":"info","message":"GET /api/categories 200 - 10ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 13ms"}
+{"level":"info","message":"GET /api/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 9ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 6ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 7ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 12ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 14ms"}
+{"level":"info","message":"PUT /api/admin/orders/6a0c9976c4a8e33dfd84ba82/status 200 - 15ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 5ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 15ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 13ms"}
+{"level":"info","message":"GET /api/admin/users?page=1&limit=10&search= 200 - 9ms"}
+{"level":"info","message":"GET /api/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/categories 200 - 17ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 24ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 33ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5&isActive=true 200 - 12ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5&isActive=false 200 - 4ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 9ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 8ms"}
+{"level":"info","message":"GET /api/categories?page=1&limit=10&search= 200 - 4ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 17ms"}
+{"level":"info","message":"GET /api/admin/orders?page=1&limit=10&search=&status=All 200 - 17ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 5ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/sales-report?startDate=&endDate= 200 - 19ms"}
+{"level":"info","message":"GET /api/admin/sales-report?startDate=&endDate= 200 - 6ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 9ms"}
+{"level":"info","message":"User login successful: viswajithviswa715@gmail.com"}
+{"level":"info","message":"POST /api/auth/login 200 - 74ms"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1779204486975-191086360.jpg 200 - 5ms"}
+{"level":"info","message":"GET /api/products 200 - 11ms"}
+{"level":"info","message":"GET /api/categories 200 - 19ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 20ms"}
+{"level":"info","message":"GET /api/products 200 - 31ms"}
+{"level":"info","message":"GET /api/categories 200 - 28ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 38ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 50ms"}
+{"level":"info","message":"GET /api/cart 200 - 36ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 62ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 72ms"}
+{"level":"info","message":"GET /api/cart 200 - 24ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 51ms"}
+{"level":"info","message":"POST /api/admin/login 200 - 77ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 22ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 35ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 6ms"}
+{"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 7ms"}
+{"level":"info","message":"POST /api/coupons 201 - 12ms"}
+{"level":"info","message":"GET /api/admin/dashboard 200 - 9ms"}

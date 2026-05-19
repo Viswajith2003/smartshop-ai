@@ -192,7 +192,7 @@ const CartPage = () => {
                                                         <CheckCircle className="absolute top-3 right-3 w-4 h-4 text-indigo-600" />
                                                     )}
                                                     <p className="font-bold text-slate-800">{addr.fullName}</p>
-                                                    <p className="text-slate-500 mt-0.5">{addr.street}, {addr.city}, {addr.state} — {addr.pincode}</p>
+                                                    <p className="text-slate-500 mt-0.5">{addr.street}, {addr.city}, {addr.district && `${addr.district}, `}{addr.state} — {addr.pincode}</p>
                                                     <p className="text-slate-400 text-xs mt-1">{addr.phone}</p>
                                                     {addr.isDefault && (
                                                         <span className="mt-1 inline-block text-[9px] font-bold uppercase bg-emerald-100 text-emerald-600 px-2 py-0.5 rounded-full">Default</span>
@@ -489,8 +489,11 @@ const CouponsModal = ({ onClose, onSelectCoupon, subtotal }) => {
                                                 )}
                                             </div>
                                             <p className="text-sm font-semibold text-slate-700">
-                                                {coupon.discountPercentage}% off
-                                                {coupon.maxDiscountAmount && (
+                                                {coupon.discountType === 'percentage' 
+                                                    ? `${coupon.discountValue}% off` 
+                                                    : `₹${coupon.discountValue} off`
+                                                }
+                                                {coupon.discountType === 'percentage' && coupon.maxDiscountAmount > 0 && (
                                                     <span className="text-slate-400 font-normal text-xs ml-1">
                                                         (up to ₹{coupon.maxDiscountAmount.toLocaleString('en-IN')})
                                                     </span>

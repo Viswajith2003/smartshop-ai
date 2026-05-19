@@ -240,8 +240,8 @@ class OrderService {
 
   static async _calculatePricing(items, couponCode = null) {
     const subtotal = items.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
-    const shippingPrice = subtotal > 5000 ? 0 : 500;
-    const taxPrice = Math.round(subtotal * 0.18);
+    const shippingPrice = 0;
+    const taxPrice = 0;
     
     let discount = 0;
     if (couponCode) {

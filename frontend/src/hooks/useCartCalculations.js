@@ -26,8 +26,10 @@ const useCartCalculations = (items = [], appliedCoupon = null) => {
 
         // 6. Calculate Discount
         const discount = appliedCoupon ? (
-            subtotal >= appliedCoupon.minPurchaseAmount 
-                ? Math.min((subtotal * appliedCoupon.discountPercentage) / 100, appliedCoupon.maxDiscountAmount)
+            subtotal >= (appliedCoupon.minPurchaseAmount || 0) 
+                ? (appliedCoupon.discountType === 'percentage'
+                    ? Math.min((subtotal * (appliedCoupon.discountValue || 0)) / 100, appliedCoupon.maxDiscountAmount || Infinity)
+                    : (appliedCoupon.discountValue || 0))
                 : 0
         ) : 0;
 

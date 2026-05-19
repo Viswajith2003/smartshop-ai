@@ -71,6 +71,15 @@ const ProfilePage = () => {
     const [addressToDelete, setAddressToDelete] = useState(null);
     const [activeTab, setActiveTab] = useState('profile'); // 'profile', 'address', 'wallet', 'orders', 'returns', 'cancellations', 'reviews'
 
+    // Calculate dynamic totals from orders list
+    const allOrdersAmount = orders.reduce((sum, o) => sum + (o.pricing?.totalPrice || o.totalAmount || 0), 0);
+    
+    const returnedOrders = orders.filter(o => o.orderStatus?.toUpperCase() === 'RETURNED');
+    const returnedAmount = returnedOrders.reduce((sum, o) => sum + (o.pricing?.totalPrice || o.totalAmount || 0), 0);
+    
+    const cancelledOrders = orders.filter(o => o.orderStatus?.toUpperCase() === 'CANCELLED');
+    const cancelledAmount = cancelledOrders.reduce((sum, o) => sum + (o.pricing?.totalPrice || o.totalAmount || 0), 0);
+
     const addressValidationSchema = Yup.object({
         fullName: Yup.string().required('Full name is required'),
         phone: Yup.string().matches(/^\d{10}$/, 'Phone must be 10 digits').required('Phone is required'),
@@ -291,9 +300,17 @@ const ProfilePage = () => {
 
     if (loading) return <Loader fullScreen text="Loading your profile..." />;
 
+    const getImageUrl = (imagePath) => {
+        if (!imagePath) return 'https://via.placeholder.com/150';
+        if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+            return imagePath;
+        }
+        return `${API_CONFIG.baseURL.replace('/api', '')}${imagePath}`;
+    };
+
     // Construct full avatar URL
     const avatarUrl = user?.avatar 
-        ? `${API_CONFIG.baseURL.replace('/api', '')}${user.avatar}`
+        ? getImageUrl(user.avatar)
         : null;
 
     return (
@@ -424,6 +441,9 @@ const ProfilePage = () => {
                                     </div>
                                     <div className="flex items-center gap-2">
                                         {orders.length > 0 && (
+                                            <span className="text-[9px] font-black bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-lg">₹{allOrdersAmount.toLocaleString('en-IN')}</span>
+                                        )}
+                                        {orders.length > 0 && (
                                             <span className="text-[10px] font-black bg-slate-100 text-slate-500 px-2 py-0.5 rounded-lg">{orders.length}</span>
                                         )}
                                         <ChevronRight className={`w-4 h-4 transition-transform ${activeTab === 'orders' ? 'translate-x-0 opacity-100' : '-translate-x-2 opacity-0'}`} />
@@ -441,8 +461,11 @@ const ProfilePage = () => {
                                         <span className="text-xs font-black uppercase tracking-widest">Returns</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        {orders.filter(o => o.orderStatus === 'Returned').length > 0 && (
-                                            <span className="text-[10px] font-black bg-amber-100 text-amber-600 px-2 py-0.5 rounded-lg">{orders.filter(o => o.orderStatus === 'Returned').length}</span>
+                                        {returnedOrders.length > 0 && (
+                                            <span className="text-[9px] font-black bg-amber-50 text-amber-600 px-2 py-0.5 rounded-lg">₹{returnedAmount.toLocaleString('en-IN')}</span>
+                                        )}
+                                        {returnedOrders.length > 0 && (
+                                            <span className="text-[10px] font-black bg-slate-100 text-slate-500 px-2 py-0.5 rounded-lg">{returnedOrders.length}</span>
                                         )}
                                         <ChevronRight className={`w-4 h-4 transition-transform ${activeTab === 'returns' ? 'translate-x-0 opacity-100' : '-translate-x-2 opacity-0'}`} />
                                     </div>
@@ -459,8 +482,11 @@ const ProfilePage = () => {
                                         <span className="text-xs font-black uppercase tracking-widest">Cancellations</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        {orders.filter(o => o.orderStatus === 'Cancelled').length > 0 && (
-                                            <span className="text-[10px] font-black bg-rose-100 text-rose-600 px-2 py-0.5 rounded-lg">{orders.filter(o => o.orderStatus === 'Cancelled').length}</span>
+                                        {cancelledOrders.length > 0 && (
+                                            <span className="text-[9px] font-black bg-rose-50 text-rose-600 px-2 py-0.5 rounded-lg">₹{cancelledAmount.toLocaleString('en-IN')}</span>
+                                        )}
+                                        {cancelledOrders.length > 0 && (
+                                            <span className="text-[10px] font-black bg-slate-100 text-slate-500 px-2 py-0.5 rounded-lg">{cancelledOrders.length}</span>
                                         )}
                                         <ChevronRight className={`w-4 h-4 transition-transform ${activeTab === 'cancellations' ? 'translate-x-0 opacity-100' : '-translate-x-2 opacity-0'}`} />
                                     </div>
@@ -491,40 +517,56 @@ const ProfilePage = () => {
                         {/* Dashboard Overview - Real-time Stats */}
                         {activeTab === 'profile' && !selectedOrderId && (
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group">
+                                <div 
+                                    onClick={() => setActiveTab('orders')}
+                                    className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group cursor-pointer animate-in fade-in duration-300"
+                                >
                                     <div className="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-all">
                                         <ShoppingBag className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Total Orders</p>
+                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Orders</p>
                                         <h4 className="text-2xl font-black text-slate-900 tracking-tight">{orders.length}</h4>
+                                        <p className="text-xs font-bold text-indigo-600 mt-2">₹{allOrdersAmount.toLocaleString('en-IN')}</p>
                                     </div>
                                 </div>
-                                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group">
+                                <div 
+                                    onClick={() => setActiveTab('wallet')}
+                                    className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group cursor-pointer animate-in fade-in duration-300"
+                                >
                                     <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-all">
                                         <Wallet className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Wallet Balance</p>
+                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Wallet Balance</p>
                                         <h4 className="text-2xl font-black text-slate-900 tracking-tight">₹{user?.wallet?.balance?.toLocaleString('en-IN') || 0}</h4>
+                                        <p className="text-xs font-bold text-emerald-600 mt-2">Available</p>
                                     </div>
                                 </div>
-                                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group">
+                                <div 
+                                    onClick={() => setActiveTab('returns')}
+                                    className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group cursor-pointer animate-in fade-in duration-300"
+                                >
                                     <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-4 group-hover:bg-amber-600 group-hover:text-white transition-all">
-                                        <Star className="w-5 h-5" />
+                                        <RefreshCcw className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">My Reviews</p>
-                                        <h4 className="text-2xl font-black text-slate-900 tracking-tight">{reviews.length}</h4>
+                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Returns Amount</p>
+                                        <h4 className="text-2xl font-black text-slate-900 tracking-tight">{returnedOrders.length}</h4>
+                                        <p className="text-xs font-bold text-amber-600 mt-2">₹{returnedAmount.toLocaleString('en-IN')}</p>
                                     </div>
                                 </div>
-                                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group">
-                                    <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                                        <MapPin className="w-5 h-5" />
+                                <div 
+                                    onClick={() => setActiveTab('cancellations')}
+                                    className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group cursor-pointer animate-in fade-in duration-300"
+                                >
+                                    <div className="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center text-rose-600 mb-4 group-hover:bg-rose-600 group-hover:text-white transition-all">
+                                        <XCircle className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Addresses</p>
-                                        <h4 className="text-2xl font-black text-slate-900 tracking-tight">{addresses.length}</h4>
+                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Cancelled Amount</p>
+                                        <h4 className="text-2xl font-black text-slate-900 tracking-tight">{cancelledOrders.length}</h4>
+                                        <p className="text-xs font-bold text-rose-600 mt-2">₹{cancelledAmount.toLocaleString('en-IN')}</p>
                                     </div>
                                 </div>
                             </div>
@@ -551,6 +593,17 @@ const ProfilePage = () => {
                                                 if (activeTab === 'cancellations') return o.orderStatus?.toUpperCase() === 'CANCELLED';
                                                 return true;
                                             }).length} Items
+                                        </span>
+                                        <span className={`text-[10px] font-black px-3 py-1.5 rounded-xl uppercase tracking-widest shadow-sm ${
+                                            activeTab === 'returns' ? 'bg-amber-50 text-amber-600 border border-amber-100' :
+                                            activeTab === 'cancellations' ? 'bg-rose-50 text-rose-600 border border-rose-100' :
+                                            'bg-indigo-50 text-indigo-600 border border-indigo-100'
+                                        }`}>
+                                            Total: ₹{
+                                                (activeTab === 'returns' ? returnedAmount :
+                                                 activeTab === 'cancellations' ? cancelledAmount :
+                                                 allOrdersAmount).toLocaleString('en-IN')
+                                            }
                                         </span>
                                     </div>
 
@@ -605,7 +658,7 @@ const ProfilePage = () => {
                                         // Search Filter
                                         const searchLower = orderSearch.toLowerCase();
                                         const idMatch = (o.paymentDetails?.razorpayOrderId || o._id).toLowerCase().includes(searchLower);
-                                        const productMatch = o.items?.some(item => item.product?.name?.toLowerCase().includes(searchLower));
+                                        const productMatch = o.items?.some(item => item.product?.name && item.product.name.toLowerCase().includes(searchLower));
                                         return idMatch || productMatch;
                                     });
 
@@ -635,7 +688,7 @@ const ProfilePage = () => {
                                                                 <div className="w-24 h-24 bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 flex-shrink-0 p-2">
                                                                     {order.items?.[0]?.product?.images?.[0] ? (
                                                                         <img 
-                                                                            src={`${API_CONFIG.baseURL.replace('/api', '')}${order.items[0].product.images[0]}`}
+                                                                            src={getImageUrl(order.items[0].product.images[0])}
                                                                             alt="order-item" 
                                                                             className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
                                                                         />
@@ -673,7 +726,7 @@ const ProfilePage = () => {
 
                                                             <div className="flex items-center gap-10">
                                                                 <span className="text-xl font-black text-slate-900 tracking-tighter">
-                                                                    ₹{order.totalAmount?.toLocaleString('en-IN')}
+                                                                    ₹{(order.pricing?.totalPrice || order.totalAmount || 0).toLocaleString('en-IN')}
                                                                 </span>
                                                                 <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:bg-indigo-600 group-hover:text-white transition-all">
                                                                     <ChevronRight className="w-5 h-5" />
@@ -702,7 +755,7 @@ const ProfilePage = () => {
                                                             <div className="aspect-square bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 p-4 relative">
                                                                 {order.items?.[0]?.product?.images?.[0] ? (
                                                                     <img 
-                                                                        src={`${API_CONFIG.baseURL.replace('/api', '')}${order.items[0].product.images[0]}`}
+                                                                        src={getImageUrl(order.items[0].product.images[0])}
                                                                         alt="order-item" 
                                                                         className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
                                                                     />
@@ -726,7 +779,7 @@ const ProfilePage = () => {
                                                             </div>
 
                                                             <div className="pt-4 border-t border-slate-50 flex items-center justify-between">
-                                                                <span className="text-lg font-black text-slate-900 tracking-tighter">₹{order.totalAmount?.toLocaleString('en-IN')}</span>
+                                                                <span className="text-lg font-black text-slate-900 tracking-tighter">₹{(order.pricing?.totalPrice || order.totalAmount || 0).toLocaleString('en-IN')}</span>
                                                                 <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:bg-indigo-600 group-hover:text-white transition-all">
                                                                     <ChevronRight className="w-4 h-4" />
                                                                 </div>
@@ -924,53 +977,115 @@ const ProfilePage = () => {
                                                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Recipient Name</label>
                                                 <input 
                                                     name="fullName"
-                                                    className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all" 
+                                                    className={`w-full bg-slate-50 border rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all ${
+                                                        formik.touched.fullName && formik.errors.fullName ? 'border-rose-500 ring-1 ring-rose-500' : 'border-slate-100'
+                                                    }`} 
                                                     placeholder="Full Name" 
                                                     value={formik.values.fullName}
                                                     onChange={formik.handleChange}
+                                                    onBlur={formik.handleBlur}
                                                 />
+                                                {formik.touched.fullName && formik.errors.fullName && (
+                                                    <p className="text-[10px] font-bold text-rose-500 ml-1 mt-1">{formik.errors.fullName}</p>
+                                                )}
                                             </div>
                                             <div className="md:col-span-1 space-y-2">
                                                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Phone Number</label>
                                                 <input 
                                                     name="phone"
-                                                    className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all" 
+                                                    className={`w-full bg-slate-50 border rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all ${
+                                                        formik.touched.phone && formik.errors.phone ? 'border-rose-500 ring-1 ring-rose-500' : 'border-slate-100'
+                                                    }`} 
                                                     placeholder="10-digit Phone" 
                                                     value={formik.values.phone}
                                                     onChange={formik.handleChange}
+                                                    onBlur={formik.handleBlur}
                                                     maxLength="10"
                                                 />
+                                                {formik.touched.phone && formik.errors.phone && (
+                                                    <p className="text-[10px] font-bold text-rose-500 ml-1 mt-1">{formik.errors.phone}</p>
+                                                )}
                                             </div>
                                             <div className="md:col-span-2 space-y-2">
                                                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Street Address</label>
                                                 <input 
                                                     name="street"
-                                                    className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all" 
+                                                    className={`w-full bg-slate-50 border rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all ${
+                                                        formik.touched.street && formik.errors.street ? 'border-rose-500 ring-1 ring-rose-500' : 'border-slate-100'
+                                                    }`} 
                                                     placeholder="Flat / House No. / Building / Street" 
                                                     value={formik.values.street}
                                                     onChange={formik.handleChange}
+                                                    onBlur={formik.handleBlur}
                                                 />
+                                                {formik.touched.street && formik.errors.street && (
+                                                    <p className="text-[10px] font-bold text-rose-500 ml-1 mt-1">{formik.errors.street}</p>
+                                                )}
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">City</label>
                                                 <input 
                                                     name="city"
-                                                    className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all" 
+                                                    className={`w-full bg-slate-50 border rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all ${
+                                                        formik.touched.city && formik.errors.city ? 'border-rose-500 ring-1 ring-rose-500' : 'border-slate-100'
+                                                    }`} 
                                                     placeholder="City" 
                                                     value={formik.values.city}
                                                     onChange={formik.handleChange}
+                                                    onBlur={formik.handleBlur}
                                                 />
+                                                {formik.touched.city && formik.errors.city && (
+                                                    <p className="text-[10px] font-bold text-rose-500 ml-1 mt-1">{formik.errors.city}</p>
+                                                )}
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">District</label>
+                                                <input 
+                                                    name="district"
+                                                    className={`w-full bg-slate-50 border rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all ${
+                                                        formik.touched.district && formik.errors.district ? 'border-rose-500 ring-1 ring-rose-500' : 'border-slate-100'
+                                                    }`} 
+                                                    placeholder="District" 
+                                                    value={formik.values.district}
+                                                    onChange={formik.handleChange}
+                                                    onBlur={formik.handleBlur}
+                                                />
+                                                {formik.touched.district && formik.errors.district && (
+                                                    <p className="text-[10px] font-bold text-rose-500 ml-1 mt-1">{formik.errors.district}</p>
+                                                )}
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">State</label>
+                                                <input 
+                                                    name="state"
+                                                    className={`w-full bg-slate-50 border rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all ${
+                                                        formik.touched.state && formik.errors.state ? 'border-rose-500 ring-1 ring-rose-500' : 'border-slate-100'
+                                                    }`} 
+                                                    placeholder="State" 
+                                                    value={formik.values.state}
+                                                    onChange={formik.handleChange}
+                                                    onBlur={formik.handleBlur}
+                                                />
+                                                {formik.touched.state && formik.errors.state && (
+                                                    <p className="text-[10px] font-bold text-rose-500 ml-1 mt-1">{formik.errors.state}</p>
+                                                )}
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Pincode</label>
                                                 <input 
                                                     name="pincode"
-                                                    className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all" 
+                                                    className={`w-full bg-slate-50 border rounded-2xl px-6 py-4 font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all ${
+                                                        formik.touched.pincode && formik.errors.pincode ? 'border-rose-500 ring-1 ring-rose-500' : 'border-slate-100'
+                                                    }`} 
                                                     placeholder="6-digit Pincode" 
                                                     value={formik.values.pincode}
                                                     onChange={formik.handleChange}
+                                                    onBlur={formik.handleBlur}
                                                     maxLength="6"
                                                 />
+                                                {formik.touched.pincode && formik.errors.pincode && (
+                                                    <p className="text-[10px] font-bold text-rose-500 ml-1 mt-1">{formik.errors.pincode}</p>
+                                                )}
                                             </div>
                                             <div className="flex items-center gap-3 px-2 md:col-span-2 py-2">
                                                 <input 
@@ -983,7 +1098,7 @@ const ProfilePage = () => {
                                                 <span className="text-xs font-black text-slate-500 uppercase tracking-widest">Set as default address</span>
                                             </div>
                                             <div className="md:col-span-2 pt-4">
-                                                <button type="submit" disabled={updating || !formik.isValid} className="w-full bg-indigo-600 text-white font-black py-5 rounded-2xl hover:bg-indigo-700 shadow-xl shadow-indigo-100 transition-all disabled:opacity-50">
+                                                <button type="submit" disabled={updating || !formik.isValid} className="w-full bg-indigo-600 text-white font-black py-5 rounded-2xl hover:bg-indigo-700 shadow-xl shadow-indigo-100 transition-all disabled:opacity-50 active:scale-[0.99]">
                                                     {updating ? 'SAVING...' : (editingAddressId ? 'UPDATE ADDRESS' : 'ADD NEW ADDRESS')}
                                                 </button>
                                             </div>
@@ -1012,7 +1127,7 @@ const ProfilePage = () => {
                                                     </div>
                                                 </div>
                                                 <p className="font-black text-slate-900 leading-tight mb-2">{addr.street}</p>
-                                                <p className="text-slate-400 font-bold uppercase tracking-widest text-[9px] mb-6">{addr.city}, {addr.state} - {addr.pincode}</p>
+                                                <p className="text-slate-400 font-bold uppercase tracking-widest text-[9px] mb-6">{addr.city}, {addr.district && `${addr.district}, `}{addr.state} - {addr.pincode}</p>
                                                 <div className="flex items-center gap-2 text-slate-400">
                                                     <Phone className="w-3 h-3" />
                                                     <span className="text-[10px] font-black tracking-widest">{addr.phone}</span>
@@ -1110,7 +1225,7 @@ const ProfilePage = () => {
                                                 <div className="flex flex-col sm:flex-row gap-8">
                                                     <div className="w-full sm:w-32 h-32 bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 flex-shrink-0 p-2">
                                                         <img 
-                                                            src={`${API_CONFIG.baseURL.replace('/api', '')}${review.productImage}`} 
+                                                            src={getImageUrl(review.productImage)} 
                                                             alt={review.productName} 
                                                             className="w-full h-full object-contain"
                                                         />

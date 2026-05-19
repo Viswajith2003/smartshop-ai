@@ -6,7 +6,17 @@ import { addToCart } from '../../features/cart/cartSlice';
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
 import fetchProducts from '../../hooks/useFetchProducts';
-import { categoryAPI } from '../../services/api';
+import { categoryAPI, couponAPI } from '../../services/api';
+import { toast } from 'react-toastify';
+
+const GRADIENTS = [
+    'from-orange-500 to-yellow-500',
+    'from-indigo-600 to-indigo-400',
+    'from-red-600 to-pink-500',
+    'from-purple-600 to-indigo-500',
+    'from-emerald-600 to-teal-500',
+    'from-cyan-500 to-blue-600'
+];
 
 // Premium E-commerce Banner Images (Unsplash)
 const BANNERS = [
@@ -34,12 +44,7 @@ const BANNERS = [
 ];
 
 
-const OFFERS = [
-    { id: 1, title: 'SAVE 20', desc: 'EXTRA 20% DISCOUNT', icon: 'bi-gift', color: 'from-orange-500 to-yellow-500' },
-    { id: 2, title: 'FIRST 100', desc: '1ST 100 CUSTOMERS', icon: 'bi-rocket-takeoff', color: 'from-indigo-600 to-indigo-400' },
-    { id: 3, title: 'FLASH 25', desc: 'LIMITES TIME DEAL', icon: 'bi-lightning-charge', color: 'from-red-600 to-pink-500' },
-    { id: 4, title: 'SAVE 30', desc: 'OFF ON ALL JEANS', icon: 'bi-bag-check', color: 'from-purple-600 to-indigo-500' }
-];
+// Dynamic offers loaded from backend
 
 const REVIEWS = [
     { id: 1, name: 'Alex Cooper', date: 'Oct 12, 2024', comment: 'The product quality exceeded my expectations. Fast delivery and great support! Highly recommended for everyone.', avatar: 'AC' },
@@ -140,6 +145,14 @@ const HomePage = memo(() => {
 
     const [products,setProducts]=useState([])
     const [categories,setCategories]=useState([])
+    const [coupons, setCoupons] = useState([])
+
+    const handleCopyCode = (e, code) => {
+        e.preventDefault();
+        e.stopPropagation();
+        navigator.clipboard.writeText(code);
+        toast.success(`Coupon code "${code}" copied to clipboard!`);
+    };
 
     useEffect(() => {
         fetchProducts().then((res) => {
@@ -162,6 +175,25 @@ const HomePage = memo(() => {
         }
         fetchCategories();
     },[])
+
+    useEffect(() => {
+        const fetchCoupons = async () => {
+            try {
+                const res = await couponAPI.getCoupons({ limit: 12 });
+                if (res.success) {
+                    // Only show active and unexpired coupons
+                    const activeCoupons = (res.data || res.coupons || []).filter(
+                        c => c.isActive && new Date(c.validUntil) > new Date()
+                    );
+                    setCoupons(activeCoupons);
+                }
+            } catch (error) {
+                console.error("Error fetching coupons:", error);
+            }
+        };
+        fetchCoupons();
+    }, []);
+
     return (
         <div className="min-h-screen bg-slate-50">
             <div className="w-full pb-20">
@@ -241,24 +273,95 @@ const HomePage = memo(() => {
                         ))}
                     </div>
                 </section>                {/* Section 4: Exclusive Offers */}
-                <section className="mt-20">
+                <section className="mt-20 animate-in fade-in slide-in-from-bottom duration-700">
                     <SectionHeader title="Exclusive Offers" linkText="All Coupons" />
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {OFFERS.map((offer) => (
-                            <div key={offer.id} className={`bg-gradient-to-br ${offer.color} p-8 rounded-2xl shadow-xl relative overflow-hidden group hover:-translate-y-2 transition-all cursor-pointer`}>
-                                <div className="absolute -right-4 -bottom-4 bg-white/20 w-32 h-32 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
-                                <div className="relative z-10">
-                                    <div className="flex justify-between items-start mb-6">
-                                        <span className="text-white font-black text-2xl tracking-tighter drop-shadow-md">{offer.title}</span>
-                                        <i className={`bi ${offer.icon} text-3xl text-white/40 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500`}></i>
+                        {coupons.length > 0 ? (
+                            coupons.map((coupon, index) => {
+                                const gradient = GRADIENTS[index % GRADIENTS.length];
+                                const discountLabel = coupon.discountType === 'percentage' 
+                                    ? `${coupon.discountValue}% OFF` 
+                                    : `₹${coupon.discountValue} OFF`;
+                                const capLabel = coupon.discountType === 'percentage' && coupon.maxDiscountAmount > 0
+                                    ? `UP TO ₹${coupon.maxDiscountAmount}`
+                                    : `FLAT DISCOUNT`;
+                                return (
+                                    <div 
+                                        key={coupon._id} 
+                                        onClick={(e) => handleCopyCode(e, coupon.code)}
+                                        className={`bg-gradient-to-br ${gradient} p-8 rounded-2xl shadow-xl relative overflow-hidden group hover:-translate-y-2 transition-all cursor-pointer`}
+                                    >
+                                        <div className="absolute -right-4 -bottom-4 bg-white/20 w-32 h-32 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                                        <div className="relative z-10 flex flex-col h-full justify-between min-h-[160px]">
+                                            <div>
+                                                <div className="flex justify-between items-start mb-6">
+                                                    <span className="text-white font-black text-2xl tracking-tighter drop-shadow-md">
+                                                        {discountLabel}
+                                                    </span>
+                                                    <i className="bi bi-gift text-3xl text-white/40 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500"></i>
+                                                </div>
+                                                <p className="text-white font-bold text-xs uppercase tracking-wider mb-2">
+                                                    Code: <span className="bg-white/25 px-2 py-0.5 rounded text-white font-black">{coupon.code}</span>
+                                                </p>
+                                                <p className="text-white/80 text-[10px] font-black uppercase tracking-widest mb-4">
+                                                    Min Order: ₹{coupon.minPurchaseAmount} | {capLabel}
+                                                </p>
+                                            </div>
+                                            <button 
+                                                className="w-full bg-white/20 hover:bg-white text-white hover:text-slate-900 text-[10px] font-extrabold px-4 py-3 rounded-lg backdrop-blur-md transition-all uppercase tracking-widest text-center shadow-sm"
+                                            >
+                                                Copy Code
+                                            </button>
+                                        </div>
                                     </div>
-                                    <p className="text-white/90 text-[10px] font-black uppercase tracking-widest mb-4">{offer.desc}</p>
-                                    <button className="bg-white/20 hover:bg-white text-white hover:text-slate-900 text-[10px] font-extrabold px-4 py-2 rounded-lg backdrop-blur-md transition-all uppercase tracking-widest">
-                                        Copy Code
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
+                                );
+                            })
+                        ) : (
+                            [
+                                { code: 'WELCOME200', discountType: 'fixed', discountValue: 200, minPurchaseAmount: 1000, maxDiscountAmount: 0 },
+                                { code: 'FESTIVE15', discountType: 'percentage', discountValue: 15, minPurchaseAmount: 1500, maxDiscountAmount: 300 },
+                                { code: 'SUPERFLAT500', discountType: 'fixed', discountValue: 500, minPurchaseAmount: 3000, maxDiscountAmount: 0 },
+                                { code: 'QUICK25', discountType: 'percentage', discountValue: 25, minPurchaseAmount: 800, maxDiscountAmount: 200 }
+                            ].map((coupon, index) => {
+                                const gradient = GRADIENTS[index % GRADIENTS.length];
+                                const discountLabel = coupon.discountType === 'percentage' 
+                                    ? `${coupon.discountValue}% OFF` 
+                                    : `₹${coupon.discountValue} OFF`;
+                                const capLabel = coupon.discountType === 'percentage' && coupon.maxDiscountAmount > 0
+                                    ? `UP TO ₹${coupon.maxDiscountAmount}`
+                                    : `FLAT DISCOUNT`;
+                                return (
+                                    <div 
+                                        key={coupon.code} 
+                                        onClick={(e) => handleCopyCode(e, coupon.code)}
+                                        className={`bg-gradient-to-br ${gradient} p-8 rounded-2xl shadow-xl relative overflow-hidden group hover:-translate-y-2 transition-all cursor-pointer`}
+                                    >
+                                        <div className="absolute -right-4 -bottom-4 bg-white/20 w-32 h-32 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                                        <div className="relative z-10 flex flex-col h-full justify-between min-h-[160px]">
+                                            <div>
+                                                <div className="flex justify-between items-start mb-6">
+                                                    <span className="text-white font-black text-2xl tracking-tighter drop-shadow-md">
+                                                        {discountLabel}
+                                                    </span>
+                                                    <i className="bi bi-gift text-3xl text-white/40 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500"></i>
+                                                </div>
+                                                <p className="text-white font-bold text-xs uppercase tracking-wider mb-2">
+                                                    Code: <span className="bg-white/25 px-2 py-0.5 rounded text-white font-black">{coupon.code}</span>
+                                                </p>
+                                                <p className="text-white/80 text-[10px] font-black uppercase tracking-widest mb-4">
+                                                    Min Order: ₹{coupon.minPurchaseAmount} | {capLabel}
+                                                </p>
+                                            </div>
+                                            <button 
+                                                className="w-full bg-white/20 hover:bg-white text-white hover:text-slate-900 text-[10px] font-extrabold px-4 py-3 rounded-lg backdrop-blur-md transition-all uppercase tracking-widest text-center shadow-sm"
+                                            >
+                                                Copy Code
+                                            </button>
+                                        </div>
+                                    </div>
+                                );
+                            })
+                        )}
                     </div>
                 </section>
 
