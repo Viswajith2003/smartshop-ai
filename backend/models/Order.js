@@ -24,6 +24,13 @@ const orderSchema = new mongoose.Schema(
           type: Number,
           required: true,
         },
+        itemStatus: {
+          type: String,
+          enum: ["Active", "Cancelled", "Returned", "Cancel Requested", "Return Requested"],
+          default: "Active",
+        },
+        cancelReason: { type: String },
+        returnReason: { type: String }
       },
     ],
     shippingAddress: addressSchema,
@@ -46,15 +53,9 @@ const orderSchema = new mongoose.Schema(
     },
     orderStatus: {
       type: String,
-      enum: ["Pending", "Processing", "Shipped", "Delivered", "Cancelled", "Returned"],
+      enum: ["Pending", "Processing", "Shipped", "Delivered", "Cancelled", "Returned", "Cancel Requested", "Return Requested"],
       default: "Pending",
     },
-    paymentStatus: {
-      type: String,
-      enum: ["Pending", "Completed", "Failed", "Refunded"],
-      default: "Pending",
-    },
-    paidAt: { type: Date },
     deliveredAt: { type: Date },
     cancelReason: { type: String },
     returnReason: { type: String },

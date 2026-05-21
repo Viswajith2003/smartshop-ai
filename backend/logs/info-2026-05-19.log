@@ -843,3 +843,4 @@
 {"level":"info","message":"GET /api/coupons?page=1&limit=10&search= 200 - 7ms"}
 {"level":"info","message":"POST /api/coupons 201 - 12ms"}
 {"level":"info","message":"GET /api/admin/dashboard 200 - 9ms"}
+{"level":"info","message":"MongoDB connected successfully"}

@@ -4,7 +4,6 @@ const { ResponseFormatter } = require("../../utils/response");
 class ProductController {
   static async createProduct(req, res, next) {
     try {
-      this._handleImages(req);
       const product = await ProductService.createProduct(req.body);
       return ResponseFormatter.success(res, "Product created successfully", product, 201);
     } catch (error) {
@@ -15,7 +14,6 @@ class ProductController {
   static async updateProduct(req, res, next) {
     try {
       const { productId } = req.params;
-      this._handleImages(req);
       const product = await ProductService.updateProduct(productId, req.body);
       return ResponseFormatter.success(res, "Product updated successfully", product);
     } catch (error) {

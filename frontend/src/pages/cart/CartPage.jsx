@@ -63,15 +63,20 @@ const CartPage = () => {
     };
 
     const handleCheckout = () => {
-        if (selectedItems.length === 0) {
-            toast.warning('Please select at least one item to checkout');
+        const activeSelectedItems = selectedItems.filter(item => item.product?.isActive !== false);
+        if (activeSelectedItems.length === 0) {
+            toast.warning('Please select at least one available item to checkout');
             return;
+        }
+        if (activeSelectedItems.length < selectedItems.length) {
+            toast.warning('Some selected items are no longer available. They have been ignored.');
         }
         if (!selectedAddress) {
             toast.warning('Please select a delivery address before proceeding');
             setShowAddressPanel(true);
             return;
         }
+        // Proceed with only active items, or if backend handles it, just pass along
         navigate('/checkout', { state: { preSelectedAddress: selectedAddress } });
     };
 
@@ -332,11 +337,12 @@ const CartPage = () => {
 
 /* ─── CartRow (inline table row matching reference design) ────────── */
 const CartRow = ({ item, dispatch }) => {
+    const isInactive = item.product && item.product.isActive === false;
     const maxQty = item.product?.stock || 20;
     const qtyOptions = Array.from({ length: Math.min(maxQty, 10) }, (_, i) => i + 1);
 
     return (
-        <div className="grid grid-cols-[auto_1fr_auto_auto_auto] gap-4 items-center px-6 py-4 hover:bg-slate-50 transition-colors group">
+        <div className={`grid grid-cols-[auto_1fr_auto_auto_auto] gap-4 items-center px-6 py-4 transition-colors group ${isInactive ? 'opacity-50 grayscale bg-slate-50' : 'hover:bg-slate-50'}`}>
             {/* Image */}
             <div className="w-16 h-16 bg-slate-100 rounded-xl overflow-hidden flex items-center justify-center border border-slate-100 shrink-0">
                 <img
@@ -354,14 +360,22 @@ const CartRow = ({ item, dispatch }) => {
                 >
                     {item.product?.name}
                 </Link>
-                <p className="text-xs text-slate-400 mt-0.5">
-                    {item.product?.category?.name && `Brand: ${item.product.category.name}`}
-                </p>
+                <div className="flex items-center gap-2 mt-0.5">
+                    <p className="text-xs text-slate-400">
+                        {item.product?.category?.name && `Brand: ${item.product.category.name}`}
+                    </p>
+                    {isInactive && (
+                        <span className="bg-red-100 text-red-600 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
+                            Inactive
+                        </span>
+                    )}
+                </div>
             </div>
 
             {/* Quantity dropdown */}
             <div className="w-28 flex justify-center">
                 <select
+                    disabled={isInactive}
                     value={item.quantity}
                     onChange={(e) =>
                         dispatch(
@@ -371,7 +385,7 @@ const CartRow = ({ item, dispatch }) => {
                             })
                         )
                     }
-                    className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400 cursor-pointer"
+                    className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400 cursor-pointer disabled:cursor-not-allowed"
                 >
                     {qtyOptions.map((n) => (
                         <option key={n} value={n}>{n}</option>
@@ -388,15 +402,18 @@ const CartRow = ({ item, dispatch }) => {
             {/* Actions */}
             <div className="w-20 flex items-center justify-end gap-2 shrink-0">
                 <button
-                    onClick={() => dispatch(toggleSelectionDB(item.product?._id))}
+                    onClick={() => !isInactive && dispatch(toggleSelectionDB(item.product?._id))}
+                    disabled={isInactive}
                     className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-all ${
-                        item.isSelected
-                            ? 'border-rose-300 text-rose-500 bg-rose-50'
-                            : 'border-slate-200 text-slate-300 hover:border-rose-300 hover:text-rose-400'
+                        isInactive
+                            ? 'border-slate-200 bg-slate-200 text-slate-400 cursor-not-allowed'
+                            : item.isSelected
+                                ? 'border-rose-300 text-rose-500 bg-rose-50'
+                                : 'border-slate-200 text-slate-300 hover:border-rose-300 hover:text-rose-400'
                     }`}
-                    title={item.isSelected ? 'Deselect' : 'Select'}
+                    title={isInactive ? 'Unavailable' : item.isSelected ? 'Deselect' : 'Select'}
                 >
-                    <Heart className="w-4 h-4" fill={item.isSelected ? 'currentColor' : 'none'} />
+                    <Heart className="w-4 h-4" fill={item.isSelected && !isInactive ? 'currentColor' : 'none'} />
                 </button>
                 <button
                     onClick={() => dispatch(removeFromCartDB(item.product?._id))}

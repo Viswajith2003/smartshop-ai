@@ -78,6 +78,12 @@ const CheckoutPage = () => {
     } = useCartCalculations(items, appliedCoupon);
 
     const handlePayment = async () => {
+        const hasInactiveItems = selectedItems.some(item => item.product?.isActive === false);
+        if (hasInactiveItems) {
+            toast.error("Some items in your order are no longer available. Please return to the cart to remove them.");
+            return;
+        }
+
         if (!selectedAddress) {
             toast.warning("Please select a delivery address to continue");
             return;
@@ -164,6 +170,7 @@ const CheckoutPage = () => {
                                 } 
                             });
                         } else {
+                            try { await orderAPI.cancelOrder(backendOrder.data.orderId, "Payment verification failed"); } catch(e){}
                             navigate('/payment-failure', { 
                                 state: { 
                                     error: verificationResult.message || "Payment verification failed"
@@ -172,6 +179,7 @@ const CheckoutPage = () => {
                         }
                     } catch (err) {
                         console.error("Verification Error:", err);
+                        try { await orderAPI.cancelOrder(backendOrder.data.orderId, "Payment verification error"); } catch(e){}
                         navigate('/payment-failure', { 
                             state: { 
                                 error: "An unexpected error occurred during payment verification."
@@ -182,7 +190,8 @@ const CheckoutPage = () => {
                     }
                 },
                 modal: {
-                    ondismiss: function() {
+                    ondismiss: async function() {
+                        try { await orderAPI.cancelOrder(backendOrder.data.orderId, "Payment cancelled by user"); } catch(e){}
                         setIsProcessing(false);
                     }
                 },
@@ -197,19 +206,25 @@ const CheckoutPage = () => {
             };
 
             if (typeof window.Razorpay === 'undefined') {
+                try { await orderAPI.cancelOrder(backendOrder.data.orderId, "Razorpay SDK not loaded"); } catch(e){}
                 toast.error("Razorpay SDK not loaded. Please refresh.");
                 setIsProcessing(false);
                 return;
             }
 
             const rzp = new window.Razorpay(options);
+            rzp.on('payment.failed', async function (response) {
+                 try { await orderAPI.cancelOrder(backendOrder.data.orderId, "Payment failed: " + response.error.description); } catch(e){}
+                 navigate('/payment-failure', { state: { error: response.error.description }});
+            });
             rzp.open();
 
         } catch (error) {
             console.error("Payment Initiation Error:", error);
+            const errorMessage = error.response?.data?.error?.message || error.response?.data?.message || error.message || "We could not bridge the connection to the payment gateway.";
             navigate('/payment-failure', { 
                 state: { 
-                    error: error.message || "We could not bridge the connection to the payment gateway."
+                    error: errorMessage
                 } 
             });
             setIsProcessing(false);
@@ -244,7 +259,8 @@ const CheckoutPage = () => {
             }
         } catch (error) {
             console.error("Wallet Order Error:", error);
-            toast.error("Wallet payment failed. Please try again.");
+            const errorMessage = error.response?.data?.error?.message || error.response?.data?.message || "Wallet payment failed. Please try again.";
+            toast.error(errorMessage);
         } finally {
             setIsVerifyingWallet(false);
         }
@@ -426,7 +442,14 @@ const CheckoutPage = () => {
                                     </div>
                                     <div className="flex-grow min-w-0">
                                         <p className="text-sm font-bold text-slate-800 truncate">{item.product?.name}</p>
-                                        <p className="text-xs text-slate-500 mt-0.5 font-medium">Quantity: {item.quantity}</p>
+                                        <div className="flex items-center gap-2 mt-0.5">
+                                            <p className="text-xs text-slate-500 font-medium">Quantity: {item.quantity}</p>
+                                            {item.product?.isActive === false && (
+                                                <span className="bg-red-100 text-red-600 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
+                                                    Inactive
+                                                </span>
+                                            )}
+                                        </div>
                                     </div>
                                     <div className="text-right">
                                         <p className="text-sm font-bold text-slate-900">₹{(item.price * item.quantity).toLocaleString('en-IN')}</p>
@@ -467,6 +490,7 @@ const CheckoutPage = () => {
                                             </p>
                                             <p className="text-[11px] text-slate-400 font-medium mt-0.5">
                                                 {item.variant || 'Standard Version'}
+                                                {item.product?.isActive === false && ' • (Unavailable)'}
                                             </p>
                                         </div>
                                         <div className="text-right shrink-0">
@@ -519,9 +543,9 @@ const CheckoutPage = () => {
 
                             <button
                                 onClick={handlePayment}
-                                disabled={isProcessing || !selectedAddress}
+                                disabled={isProcessing || !selectedAddress || selectedItems.some(item => item.product?.isActive === false)}
                                 className={`w-full bg-[#2D0081] hover:bg-[#1e0057] text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-3 active:scale-[0.98] ${
-                                    isProcessing || !selectedAddress ? 'opacity-50 cursor-not-allowed' : ''
+                                    isProcessing || !selectedAddress || selectedItems.some(item => item.product?.isActive === false) ? 'opacity-50 cursor-not-allowed' : ''
                                 }`}
                             >
                                 {isProcessing ? (

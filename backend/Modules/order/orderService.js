@@ -31,6 +31,8 @@ class OrderService {
       await PaymentService.processPayment(userId, order._id, "Razorpay", pricing.totalPrice, {
         orderId: razorpayOrder.id
       });
+      
+      await this._updateStock(order.items, -1);
 
       return {
         orderId: order._id,
@@ -159,7 +161,6 @@ class OrderService {
     order.orderStatus = "Processing";
     await order.save();
 
-    await this._updateStock(order.items, -1);
     await this._clearPurchasedItemsFromCart(userId, order.items);
 
     return order;
@@ -177,24 +178,118 @@ class OrderService {
     return order;
   }
 
+  static async cancelOrderItem(userId, orderId, itemId, reason) {
+    const order = await Order.findOne({ _id: orderId, user: userId });
+    if (!order) throw new NotFoundError("Order not found");
+
+    const item = order.items.id(itemId);
+    if (!item) throw new NotFoundError("Item not found in order");
+
+    if (item.itemStatus !== "Active") {
+      throw new BadRequestError(`Cannot cancel item which is already ${item.itemStatus}`);
+    }
+
+    const uncancelableStatuses = ["Shipped", "Delivered", "Cancelled", "Returned", "Cancel Requested", "Return Requested"];
+    if (uncancelableStatuses.includes(order.orderStatus)) {
+      throw new BadRequestError(`Cannot cancel item in order which is ${order.orderStatus}`);
+    }
+
+    if (order.orderStatus === "Pending") {
+      await this._updateStock([item], 1);
+      item.itemStatus = "Cancelled";
+      item.cancelReason = reason;
+
+      const allInactive = order.items.every(i => i.itemStatus !== "Active");
+      if (allInactive) {
+        order.orderStatus = "Cancelled";
+      }
+      await order.save();
+      return order;
+    }
+
+    await this._updateStock([item], 1);
+
+    if (order.paymentStatus === "Completed") {
+      const itemTotal = item.price * item.quantity;
+      const refundAmount = order.pricing.subtotal > 0 
+        ? itemTotal - (order.pricing.discount * (itemTotal / order.pricing.subtotal))
+        : itemTotal;
+      await this._refundToWallet(userId, refundAmount, orderId);
+    }
+
+    item.itemStatus = "Cancelled";
+    item.cancelReason = reason;
+
+    const allInactive = order.items.every(i => i.itemStatus !== "Active");
+    if (allInactive) {
+      order.orderStatus = "Cancelled";
+      if (order.paymentStatus === "Completed") {
+        order.paymentStatus = "Refunded";
+        const Payment = require("../../models/Payment");
+        await Payment.findOneAndUpdate({ order: orderId }, { status: "Refunded" });
+      }
+    }
+
+    await order.save();
+    return order;
+  }
+
+  static async returnOrderItem(userId, orderId, itemId, reason) {
+    const order = await Order.findOne({ _id: orderId, user: userId });
+    if (!order) throw new NotFoundError("Order not found");
+
+    const item = order.items.id(itemId);
+    if (!item) throw new NotFoundError("Item not found in order");
+
+    if (item.itemStatus !== "Active") {
+      throw new BadRequestError(`Cannot return item which is already ${item.itemStatus}`);
+    }
+
+    if (order.orderStatus !== "Delivered") {
+      throw new BadRequestError("Only items from delivered orders can be returned");
+    }
+
+    item.itemStatus = "Returned";
+    item.returnReason = reason;
+
+    await this._updateStock([item], 1);
+
+    const itemTotal = item.price * item.quantity;
+    const refundAmount = order.pricing.subtotal > 0 
+      ? itemTotal - (order.pricing.discount * (itemTotal / order.pricing.subtotal))
+      : itemTotal;
+    await this._refundToWallet(userId, refundAmount, orderId);
+
+    const allInactive = order.items.every(i => i.itemStatus !== "Active");
+    if (allInactive) {
+      order.orderStatus = "Returned";
+      order.paymentStatus = "Refunded";
+      const Payment = require("../../models/Payment");
+      await Payment.findOneAndUpdate({ order: orderId }, { status: "Refunded" });
+    }
+
+    await order.save();
+    return order;
+  }
+
   static async cancelOrder(userId, orderId, reason) {
     const order = await Order.findOne({ _id: orderId, user: userId });
     if (!order) throw new NotFoundError("Order not found");
 
-    const uncancelableStatuses = ["Shipped", "Delivered", "Cancelled", "Returned"];
+    const uncancelableStatuses = ["Shipped", "Delivered", "Cancelled", "Returned", "Cancel Requested", "Return Requested"];
     if (uncancelableStatuses.includes(order.orderStatus)) {
       throw new BadRequestError(`Cannot cancel order which is already ${order.orderStatus}`);
     }
 
-    await this._updateStock(order.items, 1);
-    
-    if (order.paymentStatus === "Completed") {
-      await this._refundToWallet(userId, order.pricing.totalPrice, orderId);
-      order.paymentStatus = "Refunded";
-      await Payment.findOneAndUpdate({ order: orderId }, { status: "Refunded" });
+    if (order.orderStatus === "Pending") {
+      await this._updateStock(order.items, 1);
+      order.orderStatus = "Cancelled";
+      order.cancelReason = reason;
+      await order.save();
+      return order;
     }
 
-    order.orderStatus = "Cancelled";
+    order.orderStatus = "Cancel Requested";
     order.cancelReason = reason;
     await order.save();
 
@@ -209,14 +304,9 @@ class OrderService {
       throw new BadRequestError("Only delivered orders can be returned");
     }
 
-    order.orderStatus = "Returned";
+    order.orderStatus = "Return Requested";
     order.returnReason = reason;
     
-    await this._updateStock(order.items, 1);
-    await this._refundToWallet(userId, order.pricing.totalPrice, orderId);
-
-    order.paymentStatus = "Refunded";
-    await Payment.findOneAndUpdate({ order: orderId }, { status: "Refunded" });
     await order.save();
 
     return order;
@@ -233,6 +323,9 @@ class OrderService {
     for (const item of selectedItems) {
       if (item.product.stock < item.quantity) {
         throw new BadRequestError(`Product ${item.product.name} is out of stock`);
+      }
+      if (!item.product.isActive) {
+        throw new BadRequestError(`Product ${item.product.name} is currently unavailable`);
       }
     }
     return selectedItems;

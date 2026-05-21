@@ -17,8 +17,13 @@ router.post("/:productId/reviews", authenticateUser, ProductController.createPro
 // Admin routes
 router.use(authenticateAdmin);
 
-router.post("/", productUpload.array("images", 5), validate(productSchema), ProductController.createProduct);
-router.put("/:productId", productUpload.array("images", 5), validate(productSchema), ProductController.updateProduct);
+const handleImagesMiddleware = (req, res, next) => {
+  ProductController._handleImages(req);
+  next();
+};
+
+router.post("/", productUpload.array("images", 5), handleImagesMiddleware, validate(productSchema), ProductController.createProduct);
+router.put("/:productId", productUpload.array("images", 5), handleImagesMiddleware, validate(productSchema), ProductController.updateProduct);
 router.delete("/:productId", ProductController.deleteProduct);
 
 module.exports = router;

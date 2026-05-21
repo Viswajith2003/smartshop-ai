@@ -25,8 +25,14 @@ const cancelReturnSchema = Joi.object({
   reason: Joi.string().required().min(5).max(500),
 });
 
+const cancelReturnItemSchema = Joi.object({
+  itemId: Joi.string().required(),
+  reason: Joi.string().required().min(5).max(500),
+});
+
 module.exports = {
   orderCreateSchema,
   paymentVerifySchema,
   cancelReturnSchema,
+  cancelReturnItemSchema,
 };

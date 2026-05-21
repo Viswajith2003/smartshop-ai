@@ -350,7 +350,7 @@ const ProductManager = () => {
                       const res = await productAPI.addProduct(payload);
                       if (res.success) {
                         toast.success('Product added successfully');
-                        setProducts(prev => [...prev, res.data]);
+                        setProducts(prev => [res.data, ...prev]);
                       }
                     }
                     handleCloseModal();

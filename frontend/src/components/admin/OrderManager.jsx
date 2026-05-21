@@ -24,6 +24,7 @@ const OrderManager = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState(null);
+  const [requestModal, setRequestModal] = useState({ isOpen: false, order: null });
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
   const { pagination, handlePageChange, updatePagination } = usePagination(10);
@@ -75,6 +76,34 @@ const OrderManager = () => {
     }
   };
 
+  const handleRequestAction = async (action) => {
+    try {
+      const orderId = requestModal.order._id;
+      const currentStatus = requestModal.order.orderStatus;
+      
+      let newStatus;
+      if (action === 'approve') {
+        newStatus = currentStatus === 'Cancel Requested' ? 'Cancelled' : 'Returned';
+      } else {
+        newStatus = currentStatus === 'Cancel Requested' ? 'Processing' : 'Delivered';
+      }
+
+      setUpdatingId(orderId);
+      const res = await adminApi.updateOrderStatus(orderId, newStatus);
+      if (res.success) {
+        toast.success(`Request ${action}d successfully`);
+        setOrders(orders.map(order => 
+          order._id === orderId ? { ...order, orderStatus: newStatus } : order
+        ));
+      }
+    } catch (error) {
+      toast.error('Failed to update request status');
+    } finally {
+      setUpdatingId(null);
+      setRequestModal({ isOpen: false, order: null });
+    }
+  };
+
   const getStatusConfig = (status) => {
     switch (status) {
       case 'Pending': 
@@ -105,6 +134,12 @@ const OrderManager = () => {
       case 'Returned': 
         return { 
           style: 'bg-slate-500/10 text-slate-400 border-slate-500/20', 
+          icon: AlertCircle 
+        };
+      case 'Cancel Requested': 
+      case 'Return Requested':
+        return { 
+          style: 'bg-rose-500/10 text-rose-500 border-rose-500/20', 
           icon: AlertCircle 
         };
       default: 
@@ -147,6 +182,8 @@ const OrderManager = () => {
                <option value="Delivered">Delivered</option>
                <option value="Cancelled">Cancelled</option>
                <option value="Returned">Returned</option>
+               <option value="Cancel Requested">Cancel Requests</option>
+               <option value="Return Requested">Return Requests</option>
              </select>
              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
           </div>
@@ -245,20 +282,29 @@ const OrderManager = () => {
                     </td>
                     <td className="px-6 py-5 bg-white border-y border-r border-slate-100 rounded-r-[2rem] text-right last:pr-8">
                       <div className="flex items-center justify-end gap-3">
-                        <div className="relative group/select">
-                          <select 
-                            disabled={updatingId === order._id || ['Cancelled', 'Returned'].includes(order.orderStatus)}
-                            value={order.orderStatus}
-                            onChange={(e) => handleStatusUpdate(order._id, e.target.value)}
-                            className={`bg-slate-50 border border-slate-200 rounded-xl pl-3 pr-8 py-2.5 text-[9px] font-black uppercase tracking-widest outline-none focus:border-indigo-500 appearance-none disabled:opacity-20 cursor-pointer transition-all hover:bg-slate-100 ${updatingId === order._id ? 'animate-pulse' : ''}`}
+                        {['Cancel Requested', 'Return Requested'].includes(order.orderStatus) ? (
+                          <button 
+                             onClick={() => setRequestModal({ isOpen: true, order })}
+                             className="bg-rose-500 text-white text-[9px] font-black uppercase tracking-widest px-4 py-2.5 rounded-xl hover:bg-rose-600 transition-all shadow-lg shadow-rose-200"
                           >
-                            <option value="Pending">Pending</option>
-                            <option value="Processing">Processing</option>
-                            <option value="Shipped">Shipped</option>
-                            <option value="Delivered">Delivered</option>
-                          </select>
-                          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-3 h-3 text-slate-500 pointer-events-none" />
-                        </div>
+                             Review Request
+                          </button>
+                        ) : (
+                          <div className="relative group/select">
+                            <select 
+                              disabled={updatingId === order._id || ['Cancelled', 'Returned'].includes(order.orderStatus)}
+                              value={order.orderStatus}
+                              onChange={(e) => handleStatusUpdate(order._id, e.target.value)}
+                              className={`bg-slate-50 border border-slate-200 rounded-xl pl-3 pr-8 py-2.5 text-[9px] font-black uppercase tracking-widest outline-none focus:border-indigo-500 appearance-none disabled:opacity-20 cursor-pointer transition-all hover:bg-slate-100 ${updatingId === order._id ? 'animate-pulse' : ''}`}
+                            >
+                              <option value="Pending">Pending</option>
+                              <option value="Processing">Processing</option>
+                              <option value="Shipped">Shipped</option>
+                              <option value="Delivered">Delivered</option>
+                            </select>
+                            <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-3 h-3 text-slate-500 pointer-events-none" />
+                          </div>
+                        )}
                         
                         <button className="p-3 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-xl transition-all group/btn" title="View Details">
                           <Eye size={18} className="group-hover/btn:scale-110 transition-transform" />
@@ -283,6 +329,53 @@ const OrderManager = () => {
       {orders.length > 0 && (
         <div className="flex items-center justify-center pt-8">
           <Pagination pagination={pagination} onPageChange={handlePageChange} theme="light" />
+        </div>
+      )}
+
+      {/* Review Request Modal */}
+      {requestModal.isOpen && requestModal.order && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
+           <div className="bg-white w-full max-w-md rounded-[2rem] p-8 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+              <div className="w-12 h-12 bg-rose-50 text-rose-500 rounded-2xl flex items-center justify-center mb-6">
+                 <AlertCircle size={24} />
+              </div>
+              <h3 className="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight">
+                 {requestModal.order.orderStatus}
+              </h3>
+              <p className="text-sm font-bold text-slate-500 mb-6">
+                 The customer has requested to {requestModal.order.orderStatus === 'Cancel Requested' ? 'cancel' : 'return'} this order.
+              </p>
+              
+              <div className="bg-slate-50 p-4 rounded-2xl mb-8">
+                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Reason Provided:</p>
+                 <p className="text-sm font-bold text-slate-700">
+                    "{requestModal.order.cancelReason || requestModal.order.returnReason || 'No reason provided.'}"
+                 </p>
+              </div>
+
+              <div className="flex gap-4">
+                 <button 
+                    onClick={() => setRequestModal({ isOpen: false, order: null })}
+                    className="flex-1 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:bg-slate-50 rounded-xl transition-all"
+                 >
+                    Close
+                 </button>
+                 <button 
+                    onClick={() => handleRequestAction('reject')}
+                    disabled={updatingId === requestModal.order._id}
+                    className="flex-1 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all"
+                 >
+                    Reject
+                 </button>
+                 <button 
+                    onClick={() => handleRequestAction('approve')}
+                    disabled={updatingId === requestModal.order._id}
+                    className="flex-1 py-4 text-[10px] font-black uppercase tracking-widest text-white bg-emerald-500 hover:bg-emerald-600 rounded-xl transition-all shadow-lg shadow-emerald-200"
+                 >
+                    Approve
+                 </button>
+              </div>
+           </div>
         </div>
       )}
     </div>

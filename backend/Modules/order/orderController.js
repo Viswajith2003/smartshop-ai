@@ -89,12 +89,34 @@ class OrderController {
     }
   }
 
+  static async cancelOrderItem(req, res, next) {
+    try {
+      const { id } = req.params;
+      const { itemId, reason } = req.body;
+      const order = await OrderService.cancelOrderItem(req.user.id, id, itemId, reason);
+      return ResponseFormatter.success(res, "Item cancelled successfully", order);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async returnOrder(req, res, next) {
     try {
       const { id } = req.params;
       const { reason } = req.body;
       const order = await OrderService.returnOrder(req.user.id, id, reason);
       return ResponseFormatter.success(res, "Return requested and processed successfully", order);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async returnOrderItem(req, res, next) {
+    try {
+      const { id } = req.params;
+      const { itemId, reason } = req.body;
+      const order = await OrderService.returnOrderItem(req.user.id, id, itemId, reason);
+      return ResponseFormatter.success(res, "Item return requested and processed successfully", order);
     } catch (error) {
       next(error);
     }

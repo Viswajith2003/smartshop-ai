@@ -39,8 +39,9 @@ const OrderDetailPage = () => {
     // Modal State for Cancel/Return
     const [modalConfig, setModalConfig] = useState({
         isOpen: false,
-        type: 'cancel', // 'cancel' or 'return'
-        reason: ''
+        type: 'cancel', // 'cancel' or 'return' or 'cancel-item' or 'return-item'
+        reason: '',
+        itemId: null
     });
 
     const fetchOrderDetails = async () => {
@@ -77,11 +78,12 @@ const OrderDetailPage = () => {
         }
     };
 
-    const handleOpenModal = (type) => {
+    const handleOpenModal = (type, itemId = null) => {
         setModalConfig({
             isOpen: true,
             type,
-            reason: ''
+            reason: '',
+            itemId
         });
     };
 
@@ -90,22 +92,29 @@ const OrderDetailPage = () => {
     };
 
     const handleActionSubmit = async () => {
-        const { type, reason } = modalConfig;
+        const { type, reason, itemId } = modalConfig;
         
         if (!reason.trim()) {
-            toast.warning(`Please provide a reason for ${type === 'cancel' ? 'cancellation' : 'return'}`);
+            toast.warning(`Please provide a reason for ${type.includes('cancel') ? 'cancellation' : 'return'}`);
             return;
         }
 
         try {
             setActionLoading(true);
-            const response = type === 'cancel' 
-                ? await orderAPI.cancelOrder(id, reason)
-                : await orderAPI.returnOrder(id, reason);
+            let response;
+            if (type === 'cancel') {
+                response = await orderAPI.cancelOrder(id, reason);
+            } else if (type === 'return') {
+                response = await orderAPI.returnOrder(id, reason);
+            } else if (type === 'cancel-item') {
+                response = await orderAPI.cancelOrderItem(id, itemId, reason);
+            } else if (type === 'return-item') {
+                response = await orderAPI.returnOrderItem(id, itemId, reason);
+            }
 
             if (response.success) {
-                toast.success(type === 'cancel' 
-                    ? "Order cancelled successfully!" 
+                toast.success(type.includes('cancel') 
+                    ? "Cancelled successfully!" 
                     : "Return processed successfully!"
                 );
                 await fetchOrderDetails();
@@ -222,24 +231,51 @@ const OrderDetailPage = () => {
                         </div>
                         <div className="divide-y divide-slate-100">
                             {order.items?.map((item, idx) => (
-                                <div key={idx} className="p-10 flex items-center gap-8 hover:bg-slate-50/50 transition-all group">
-                                    <div className="w-24 h-24 bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 p-2 flex-shrink-0 group-hover:scale-105 transition-transform">
-                                        <img 
-                                            src={`${API_CONFIG.baseURL.replace('/api', '')}${item.product?.images?.[0]}`}
-                                            alt={item.product?.name} 
-                                            className="w-full h-full object-contain"
-                                        />
+                                <div key={idx} className="p-10 flex flex-col md:flex-row items-start md:items-center gap-8 hover:bg-slate-50/50 transition-all group">
+                                    <div className="flex items-center gap-8 flex-grow">
+                                        <div className="w-24 h-24 bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 p-2 flex-shrink-0 group-hover:scale-105 transition-transform">
+                                            <img 
+                                                src={`${API_CONFIG.baseURL.replace('/api', '')}${item.product?.images?.[0]}`}
+                                                alt={item.product?.name} 
+                                                className="w-full h-full object-contain"
+                                            />
+                                        </div>
+                                        <div className="flex-grow space-y-2">
+                                            <h4 className="text-sm font-black text-slate-800 leading-snug group-hover:text-indigo-600 transition-colors">{item.product?.name}</h4>
+                                            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-tight">
+                                                {item.variant || 'Standard'} <span className="mx-2 text-slate-200">|</span> x {item.quantity}
+                                            </p>
+                                            <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${
+                                                item.itemStatus === 'Cancelled' ? 'bg-rose-50 text-rose-500' : 
+                                                item.itemStatus === 'Returned' ? 'bg-purple-50 text-purple-500' : 
+                                                'bg-emerald-50 text-emerald-500'
+                                            }`}>
+                                                {item.itemStatus || 'Active'}
+                                            </span>
+                                        </div>
+                                        <div className="text-right flex-shrink-0 mr-8">
+                                            <p className="text-lg font-black text-slate-900 tracking-tight">₹{item.price?.toLocaleString('en-IN')}</p>
+                                            {item.product?.originalPrice > item.price && (
+                                                <p className="text-[11px] font-bold text-slate-300 line-through">₹{item.product.originalPrice?.toLocaleString('en-IN')}</p>
+                                            )}
+                                        </div>
                                     </div>
-                                    <div className="flex-grow space-y-2">
-                                        <h4 className="text-sm font-black text-slate-800 leading-snug group-hover:text-indigo-600 transition-colors">{item.product?.name}</h4>
-                                        <p className="text-[11px] font-bold text-slate-400 uppercase tracking-tight">
-                                            {item.variant || 'Standard'} <span className="mx-2 text-slate-200">|</span> x {item.quantity}
-                                        </p>
-                                    </div>
-                                    <div className="text-right flex-shrink-0">
-                                        <p className="text-lg font-black text-slate-900 tracking-tight">₹{item.price?.toLocaleString('en-IN')}</p>
-                                        {item.product?.originalPrice > item.price && (
-                                            <p className="text-[11px] font-bold text-slate-300 line-through">₹{item.product.originalPrice?.toLocaleString('en-IN')}</p>
+                                    <div className="flex-shrink-0 md:ml-auto flex gap-3">
+                                        {(item.itemStatus === 'Active' || !item.itemStatus) && (order.orderStatus === 'Processing' || order.orderStatus === 'Confirmed') && (
+                                            <button 
+                                                onClick={() => handleOpenModal('cancel-item', item._id)}
+                                                className="text-rose-500 text-[10px] font-black uppercase tracking-widest border border-rose-100 px-4 py-2 rounded-xl hover:bg-rose-50 transition-all"
+                                            >
+                                                Cancel Item
+                                            </button>
+                                        )}
+                                        {(item.itemStatus === 'Active' || !item.itemStatus) && order.orderStatus === 'Delivered' && (
+                                            <button 
+                                                onClick={() => handleOpenModal('return-item', item._id)}
+                                                className="text-indigo-500 text-[10px] font-black uppercase tracking-widest border border-indigo-100 px-4 py-2 rounded-xl hover:bg-indigo-50 transition-all"
+                                            >
+                                                Return Item
+                                            </button>
                                         )}
                                     </div>
                                 </div>
@@ -335,13 +371,13 @@ const OrderDetailPage = () => {
             <Modal
                 isOpen={modalConfig.isOpen}
                 onClose={handleCloseModal}
-                title={modalConfig.type === 'cancel' ? 'Cancel Order' : 'Return Order'}
+                title={modalConfig.type.includes('cancel') ? 'Cancel Order' : 'Return Order'}
                 maxWidth="max-w-md"
             >
                 <div className="space-y-6">
-                    <div className={`p-5 rounded-2xl border ${modalConfig.type === 'cancel' ? 'bg-rose-50 border-rose-100' : 'bg-indigo-50 border-indigo-100'}`}>
-                        <p className={`text-[11px] font-bold leading-relaxed ${modalConfig.type === 'cancel' ? 'text-rose-600' : 'text-indigo-600'}`}>
-                            {modalConfig.type === 'cancel' 
+                    <div className={`p-5 rounded-2xl border ${modalConfig.type.includes('cancel') ? 'bg-rose-50 border-rose-100' : 'bg-indigo-50 border-indigo-100'}`}>
+                        <p className={`text-[11px] font-bold leading-relaxed ${modalConfig.type.includes('cancel') ? 'text-rose-600' : 'text-indigo-600'}`}>
+                            {modalConfig.type.includes('cancel') 
                                 ? "Are you sure you want to cancel? The amount will be refunded to your wallet instantly upon approval."
                                 : "Please provide a reason for return. Our team will review and update your wallet after pick-up."
                             }
@@ -369,12 +405,12 @@ const OrderDetailPage = () => {
                             onClick={handleActionSubmit}
                             disabled={actionLoading || !modalConfig.reason.trim()}
                             className={`flex-1 font-black py-5 rounded-2xl transition-all uppercase tracking-widest text-[10px] shadow-xl ${
-                                modalConfig.type === 'cancel' 
+                                modalConfig.type.includes('cancel') 
                                     ? 'bg-rose-600 text-white hover:bg-rose-700 shadow-rose-100' 
                                     : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-indigo-100'
                             } disabled:opacity-50`}
                         >
-                            {actionLoading ? 'Processing...' : `Confirm ${modalConfig.type}`}
+                            {actionLoading ? 'Processing...' : `Confirm ${modalConfig.type.includes('cancel') ? 'Cancel' : 'Return'}`}
                         </button>
                     </div>
                 </div>

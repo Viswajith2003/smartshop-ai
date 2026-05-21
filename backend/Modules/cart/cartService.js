@@ -1,12 +1,20 @@
 const Cart = require("../../models/Cart");
-const { NotFoundError } = require("../../utils/errors");
+const Product = require("../../models/Product");
+const { NotFoundError, BadRequestError } = require("../../utils/errors");
 const logger = require("../../utils/logger");
 
 class CartService {
   static async addToCart(userId, productId, quantity, price) {
+    const product = await Product.findById(productId);
+    if (!product) throw new NotFoundError("Product not found");
+    if (!product.isActive) throw new BadRequestError("Product is currently unavailable");
+
     let cart = await Cart.findOne({ user: userId });
     
     if (!cart) {
+      if (quantity > product.stock) {
+        throw new BadRequestError(`Cannot add more than available stock (${product.stock})`);
+      }
       cart = new Cart({
         user: userId,
         items: [{ product: productId, quantity, price: price * quantity }],
@@ -16,9 +24,16 @@ class CartService {
     } else {
       const itemIndex = cart.items.findIndex(item => item.product.toString() === productId);
       if (itemIndex > -1) {
-        cart.items[itemIndex].quantity += quantity;
+        const newQuantity = cart.items[itemIndex].quantity + quantity;
+        if (newQuantity > product.stock) {
+          throw new BadRequestError(`Cannot add more than available stock (${product.stock})`);
+        }
+        cart.items[itemIndex].quantity = newQuantity;
         cart.items[itemIndex].price += price * quantity;
       } else {
+        if (quantity > product.stock) {
+          throw new BadRequestError(`Cannot add more than available stock (${product.stock})`);
+        }
         cart.items.push({ product: productId, quantity, price: price * quantity });
         cart.totalItems += 1;
       }
@@ -43,6 +58,10 @@ class CartService {
 
     const item = cart.items.find(item => item.product._id.toString() === productId);
     if (!item) throw new NotFoundError("Item not found");
+
+    if (quantity > item.product.stock) {
+      throw new BadRequestError(`Cannot update quantity beyond available stock (${item.product.stock})`);
+    }
 
     const unitPrice = item.price / item.quantity;
     item.quantity = quantity;

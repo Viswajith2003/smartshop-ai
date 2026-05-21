@@ -22,8 +22,16 @@ export const orderApi = {
     const response = await axiosInstance.post(API_ENDPOINTS.ORDERS.CANCEL(id), { reason });
     return response.data;
   },
+  cancelOrderItem: async (id, itemId, reason) => {
+    const response = await axiosInstance.post(API_ENDPOINTS.ORDERS.CANCEL_ITEM(id), { itemId, reason });
+    return response.data;
+  },
   returnOrder: async (id, reason) => {
     const response = await axiosInstance.post(API_ENDPOINTS.ORDERS.RETURN(id), { reason });
+    return response.data;
+  },
+  returnOrderItem: async (id, itemId, reason) => {
+    const response = await axiosInstance.post(API_ENDPOINTS.ORDERS.RETURN_ITEM(id), { itemId, reason });
     return response.data;
   },
   getOrderById: async (id) => {

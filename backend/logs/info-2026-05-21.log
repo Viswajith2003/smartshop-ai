@@ -1,0 +1,87 @@
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1779204486975-191086360.jpg 304 - 36ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 129ms"}
+{"level":"info","message":"GET /api/products 200 - 174ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 158ms"}
+{"level":"info","message":"GET /api/categories 200 - 220ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 136ms"}
+{"level":"info","message":"GET /api/cart 200 - 165ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 77ms"}
+{"level":"info","message":"GET /api/products 200 - 66ms"}
+{"level":"info","message":"GET /api/categories 200 - 43ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 74ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 77ms"}
+{"level":"info","message":"GET /api/cart 200 - 54ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 33ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 44ms"}
+{"level":"info","message":"GET /api/cart 200 - 87ms"}
+{"level":"info","message":"GET /api/cart 200 - 60ms"}
+{"level":"info","message":"PUT /api/cart/update-quantity 200 - 126ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"POST /api/admin/login 200 - 263ms"}
+{"level":"info","message":"GET /api/categories 200 - 38ms"}
+{"level":"info","message":"GET /api/categories 200 - 54ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 63ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 84ms"}
+{"level":"info","message":"POST /api/admin/products 201 - 4767ms"}
+{"level":"info","message":"GET /api/categories 200 - 87ms"}
+{"level":"info","message":"GET /api/categories 200 - 186ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 117ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 143ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/categories 200 - 31ms"}
+{"level":"info","message":"GET /api/categories 200 - 57ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 61ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 73ms"}
+{"level":"info","message":"GET /api/categories 200 - 11ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 24ms"}
+{"level":"info","message":"GET /api/categories 200 - 36ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=5 200 - 31ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}

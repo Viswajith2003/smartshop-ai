@@ -6,13 +6,16 @@ import { removeFromCartDB, updateQuantityDB, toggleSelectionDB } from '../../fea
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
 
+  const isInactive = item.product && item.product.isActive === false;
+
   return (
-    <div key={item.product?._id} className={`bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex items-center gap-6 group transition-all hover:shadow-md ${!item.isSelected ? 'opacity-60 grayscale-[0.5]' : ''}`}>
+    <div key={item.product?._id} className={`bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex items-center gap-6 group transition-all hover:shadow-md ${isInactive ? 'opacity-50 grayscale' : !item.isSelected ? 'opacity-60 grayscale-[0.5]' : ''}`}>
       {/* Selection Toggle */}
       <div className="flex-shrink-0">
         <button
-          onClick={() => dispatch(toggleSelectionDB(item.product?._id))}
-          className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${item.isSelected ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100' : 'bg-slate-100 text-slate-400 hover:bg-slate-200'}`}
+          onClick={() => !isInactive && dispatch(toggleSelectionDB(item.product?._id))}
+          disabled={isInactive}
+          className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${isInactive ? 'bg-slate-200 cursor-not-allowed' : item.isSelected ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100' : 'bg-slate-100 text-slate-400 hover:bg-slate-200'}`}
         >
           {item.isSelected ? (
             <i className="bi bi-check-lg text-lg"></i>
@@ -35,23 +38,36 @@ const CartItem = ({ item }) => {
         <Link to={`/products/${item.product?._id}`} className="text-lg font-black text-slate-800 hover:text-indigo-600 transition-colors mb-1 block">
           {item.product?.name}
         </Link>
-        <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-4">
-          {item.product?.category?.name || 'Category'}
-        </span>
+        <div className="flex items-center gap-2 mb-4">
+          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block">
+            {item.product?.category?.name || 'Category'}
+          </span>
+          {isInactive && (
+            <span className="bg-red-100 text-red-600 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
+              Inactive
+            </span>
+          )}
+        </div>
 
         <div className="flex items-center gap-6">
           {/* Quantity Selector */}
           <div className="flex items-center bg-slate-50 rounded-xl p-1 border border-slate-100">
             <button
-              onClick={() => item.quantity > 1 && dispatch(updateQuantityDB({ productId: item.product?._id, quantity: item.quantity - 1 }))}
-              className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:bg-white rounded-lg transition-all"
+              onClick={() => !isInactive && item.quantity > 1 && dispatch(updateQuantityDB({ productId: item.product?._id, quantity: item.quantity - 1 }))}
+              disabled={isInactive}
+              className={`w-8 h-8 flex items-center justify-center text-slate-400 rounded-lg transition-all ${isInactive ? 'cursor-not-allowed' : 'hover:text-indigo-600 hover:bg-white'}`}
             >
               <i className="bi bi-dash-lg"></i>
             </button>
             <span className="w-10 text-center font-black text-slate-800">{item.quantity}</span>
             <button
-              onClick={() => dispatch(updateQuantityDB({ productId: item.product?._id, quantity: item.quantity + 1 }))}
-              className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:bg-white rounded-lg transition-all"
+              onClick={() => !isInactive && dispatch(updateQuantityDB({ productId: item.product?._id, quantity: item.quantity + 1 }))}
+              disabled={isInactive || item.quantity >= (item.product?.stock || 0)}
+              className={`w-8 h-8 flex items-center justify-center text-slate-400 rounded-lg transition-all ${
+                isInactive || item.quantity >= (item.product?.stock || 0) 
+                  ? 'opacity-50 cursor-not-allowed bg-slate-100' 
+                  : 'hover:text-indigo-600 hover:bg-white'
+              }`}
             >
               <i className="bi bi-plus-lg"></i>
             </button>

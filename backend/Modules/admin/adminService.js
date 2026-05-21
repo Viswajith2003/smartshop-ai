@@ -134,9 +134,20 @@ class AdminService {
     const order = await Order.findById(orderId);
     if (!order) throw new NotFoundError("Order not found");
 
+    const wasInactive = order.orderStatus === "Cancelled" || order.orderStatus === "Returned";
+    const isNowInactive = status === "Cancelled" || status === "Returned";
+
     order.orderStatus = status;
     if (status === "Delivered") {
       await this._handleDeliveredOrder(order);
+    } else if (isNowInactive && !wasInactive) {
+      const OrderService = require("../order/orderService");
+      await OrderService._updateStock(order.items, 1);
+      
+      // Update itemStatus to match order status
+      order.items.forEach(item => {
+        item.itemStatus = status;
+      });
     }
 
     await order.save();
