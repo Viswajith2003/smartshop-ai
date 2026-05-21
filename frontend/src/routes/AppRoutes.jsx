@@ -23,17 +23,13 @@ const RegisterPage = lazy(() => import("../pages/auth/RegisterPage"));
 const OtpPage = lazy(() => import("../pages/auth/OtpPage"));
 const ForgotPasswordPage = lazy(() => import("../pages/auth/ForgotPasswordPage"));
 const ResetPasswordPage = lazy(() => import("../pages/auth/ResetPasswordPage"));
-const DashboardPage = lazy(() => import("../pages/admin/DashboardPage"));
-const AdminLoginPage = lazy(() => import("../pages/admin/AdminLogin"));
-const ProductManagement = lazy(() => import("../pages/admin/ProductManagement"));
-const OrderManagement = lazy(() => import("../pages/admin/OrderManagement"));
 const ErrorPage = lazy(() => import("../pages/error/ErrorPage"));
 const NotFoundPage = lazy(() => import("../pages/error/NotFoundPage"));
 const AboutPage = lazy(() => import("../pages/common/AboutPage"));
 const ContactPage = lazy(() => import("../pages/common/ContactPage"));
 
 const AppRoutes = () => {
-    const { isAuthenticated, isAdminAuthenticated, loading, user } = useSelector((state) => state.auth);
+    const { isAuthenticated, loading } = useSelector((state) => state.auth);
 
     if (loading) {
         return <Loader fullScreen text="Checking authentication..." />;
@@ -42,12 +38,7 @@ const AppRoutes = () => {
     const getRootElement = () => {
         if (loading) return <Loader fullScreen text="Checking authentication..." />;
         
-        // If admin is authenticated AND has the admin role, go to admin dashboard
-        if (isAdminAuthenticated && user?.role === 'admin') {
-            return <Navigate to="/admin/dashboard" replace />;
-        }
-        
-        // If authenticated as user (or admin without role check yet), go to home
+        // If authenticated as user go to home
         if (isAuthenticated) {
             return <Navigate to="/home" replace />;
         }
@@ -122,24 +113,6 @@ const AppRoutes = () => {
                 <Route path="/profile" element={
                     <ProtectedRoute redirectTo="/">
                         <AppLayout><ProfilePage /></AppLayout>
-                    </ProtectedRoute>
-                } />
-
-                {/* Admin Routes */}
-                <Route path="/admin/login" element={<PublicRoute redirectTo="/admin/dashboard"><AdminLoginPage /></PublicRoute>} />
-                <Route path="/admin/dashboard" element={
-                    <ProtectedRoute role="admin">
-                        <DashboardPage />
-                    </ProtectedRoute>
-                } />
-                <Route path="/admin/products" element={
-                    <ProtectedRoute role="admin">
-                        <ProductManagement />
-                    </ProtectedRoute>
-                } />
-                <Route path="/admin/orders" element={
-                    <ProtectedRoute role="admin">
-                        <OrderManagement />
                     </ProtectedRoute>
                 } />
 
