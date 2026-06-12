@@ -7,6 +7,7 @@ import { getUser } from "../../services/axiosInstance";
 import { useSelector, useDispatch } from "react-redux";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Chatbot from "../chatbot/Chatbot";
 
 const AppLayout = React.memo(({ children }) => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const AppLayout = React.memo(({ children }) => {
       </main>
 
       <Footer />
+      <Chatbot />
     </div>
   );
 });

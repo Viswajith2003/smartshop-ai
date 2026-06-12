@@ -79,8 +79,10 @@ const CheckoutPage = () => {
 
     const handlePayment = async () => {
         const hasInactiveItems = selectedItems.some(item => item.product?.isActive === false);
-        if (hasInactiveItems) {
-            toast.error("Some items in your order are no longer available. Please return to the cart to remove them.");
+        const hasOutOfStockItems = selectedItems.some(item => !item.product || item.product.stock === 0);
+
+        if (hasInactiveItems || hasOutOfStockItems) {
+            toast.error("Some items in your order are no longer available or out of stock. Please return to the cart to update them.");
             return;
         }
 
@@ -444,9 +446,13 @@ const CheckoutPage = () => {
                                         <p className="text-sm font-bold text-slate-800 truncate">{item.product?.name}</p>
                                         <div className="flex items-center gap-2 mt-0.5">
                                             <p className="text-xs text-slate-500 font-medium">Quantity: {item.quantity}</p>
-                                            {item.product?.isActive === false && (
+                                            {item.product?.isActive === false ? (
                                                 <span className="bg-red-100 text-red-600 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
                                                     Inactive
+                                                </span>
+                                            ) : item.product?.stock === 0 && (
+                                                <span className="bg-red-100 text-red-600 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
+                                                    Out of Stock
                                                 </span>
                                             )}
                                         </div>
@@ -491,6 +497,7 @@ const CheckoutPage = () => {
                                             <p className="text-[11px] text-slate-400 font-medium mt-0.5">
                                                 {item.variant || 'Standard Version'}
                                                 {item.product?.isActive === false && ' • (Unavailable)'}
+                                                {item.product?.stock === 0 && ' • (Out of Stock)'}
                                             </p>
                                         </div>
                                         <div className="text-right shrink-0">
@@ -543,9 +550,9 @@ const CheckoutPage = () => {
 
                             <button
                                 onClick={handlePayment}
-                                disabled={isProcessing || !selectedAddress || selectedItems.some(item => item.product?.isActive === false)}
+                                disabled={isProcessing || !selectedAddress || selectedItems.some(item => item.product?.isActive === false || item.product?.stock === 0)}
                                 className={`w-full bg-[#2D0081] hover:bg-[#1e0057] text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-3 active:scale-[0.98] ${
-                                    isProcessing || !selectedAddress || selectedItems.some(item => item.product?.isActive === false) ? 'opacity-50 cursor-not-allowed' : ''
+                                    isProcessing || !selectedAddress || selectedItems.some(item => item.product?.isActive === false || item.product?.stock === 0) ? 'opacity-50 cursor-not-allowed' : ''
                                 }`}
                             >
                                 {isProcessing ? (

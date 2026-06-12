@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
     User, 
     MapPin, 
@@ -23,7 +23,8 @@ import {
     Eye,
     EyeOff,
     LayoutList,
-    LayoutGrid
+    LayoutGrid,
+    Copy
 } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -69,7 +70,8 @@ const ProfilePage = () => {
     const [editingAddressId, setEditingAddressId] = useState(null);
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
     const [addressToDelete, setAddressToDelete] = useState(null);
-    const [activeTab, setActiveTab] = useState('profile'); // 'profile', 'address', 'wallet', 'orders', 'returns', 'cancellations', 'reviews'
+    const location = useLocation();
+    const [activeTab, setActiveTab] = useState(location.state?.activeTab || 'profile'); // 'profile', 'address', 'wallet', 'orders', 'returns', 'cancellations', 'reviews'
 
     // Calculate dynamic totals from orders list
     const allOrdersAmount = orders.reduce((sum, o) => sum + (o.pricing?.totalPrice || o.totalAmount || 0), 0);
@@ -176,8 +178,10 @@ const ProfilePage = () => {
             setOrderPage(1);
         } else if (activeTab === 'reviews') {
             fetchReviews();
+        } else if (activeTab === 'wallet' || activeTab === 'profile') {
+            fetchProfile();
         }
-    }, [activeTab, fetchOrders, fetchReviews]);
+    }, [activeTab, fetchOrders, fetchReviews, fetchProfile]);
 
     const handleProfileUpdate = async (e) => {
         e.preventDefault();
@@ -701,9 +705,22 @@ const ProfilePage = () => {
 
                                                                 <div className="space-y-2">
                                                                     <div className="flex items-center gap-4">
-                                                                        <span className="text-base font-black text-slate-900 tracking-tight">
-                                                                            #{order.paymentDetails?.razorpayOrderId?.split('_')[1] || order._id.toUpperCase().substring(0, 10)}
-                                                                        </span>
+                                                                        <div className="flex items-center gap-2">
+                                                                            <span className="text-base font-black text-slate-900 tracking-tight">
+                                                                                #{order.paymentDetails?.razorpayOrderId?.split('_')[1] || order._id.toUpperCase().slice(-8)}
+                                                                            </span>
+                                                                            <button
+                                                                                onClick={(e) => {
+                                                                                    e.stopPropagation();
+                                                                                    navigator.clipboard.writeText(`#${order.paymentDetails?.razorpayOrderId?.split('_')[1] || order._id.toUpperCase().slice(-8)}`);
+                                                                                    toast.success('Order ID copied');
+                                                                                }}
+                                                                                className="text-slate-400 hover:text-indigo-600 transition-colors p-1"
+                                                                                title="Copy Order ID"
+                                                                            >
+                                                                                <Copy className="w-4 h-4" />
+                                                                            </button>
+                                                                        </div>
                                                                         <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-xl border ${getStatusBadgeStyles(order.orderStatus)}`}>
                                                                             {order.orderStatus}
                                                                         </span>
@@ -773,9 +790,22 @@ const ProfilePage = () => {
 
                                                             <div className="space-y-1">
                                                                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Order ID</p>
-                                                                <p className="text-sm font-black text-slate-900 truncate tracking-tight">
-                                                                    #{order.paymentDetails?.razorpayOrderId?.split('_')[1] || order._id.toUpperCase().substring(0, 8)}
-                                                                </p>
+                                                                <div className="flex items-center gap-2">
+                                                                    <p className="text-sm font-black text-slate-900 truncate tracking-tight">
+                                                                        #{order.paymentDetails?.razorpayOrderId?.split('_')[1] || order._id.toUpperCase().slice(-8)}
+                                                                    </p>
+                                                                    <button
+                                                                        onClick={(e) => {
+                                                                            e.stopPropagation();
+                                                                            navigator.clipboard.writeText(`#${order.paymentDetails?.razorpayOrderId?.split('_')[1] || order._id.toUpperCase().slice(-8)}`);
+                                                                            toast.success('Order ID copied');
+                                                                        }}
+                                                                        className="text-slate-400 hover:text-indigo-600 transition-colors p-1"
+                                                                        title="Copy Order ID"
+                                                                    >
+                                                                        <Copy className="w-3.5 h-3.5" />
+                                                                    </button>
+                                                                </div>
                                                             </div>
 
                                                             <div className="pt-4 border-t border-slate-50 flex items-center justify-between">
@@ -1170,7 +1200,13 @@ const ProfilePage = () => {
                                                             )}
                                                         </div>
                                                         <div>
-                                                            <p className="text-sm font-black text-slate-800">{tx.type === 'credit' ? 'Refund for ' : 'Payment for '}{tx.description || `order ${tx.orderId?.toUpperCase() || 'ORD-N/A'}`}</p>
+                                                            <p className="text-sm font-black text-slate-800">
+                                                                {tx.description 
+                                                                    ? (tx.description.toLowerCase().startsWith('refund') || tx.description.toLowerCase().startsWith('payment') 
+                                                                        ? tx.description 
+                                                                        : `${tx.type === 'credit' ? 'Refund for ' : 'Payment for '}${tx.description}`)
+                                                                    : `${tx.type === 'credit' ? 'Refund for ' : 'Payment for '}order ${tx.orderId?.toUpperCase() || 'ORD-N/A'}`}
+                                                            </p>
                                                             <p className="text-[11px] font-bold text-slate-400 mt-1 uppercase tracking-tight">{new Date(tx.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}, {new Date(tx.createdAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true }).toLowerCase()}</p>
                                                         </div>
                                                     </div>

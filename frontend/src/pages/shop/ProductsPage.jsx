@@ -28,6 +28,8 @@ const ProductsPage = () => {
     e.preventDefault();
     e.stopPropagation();
     
+    if (product.stock === 0) return;
+    
     if (isInCart(product._id)) {
       navigate('/cart');
       return;

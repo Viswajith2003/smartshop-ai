@@ -12,6 +12,7 @@ const WishlistItem = ({ item, isInCart }) => {
     if (!product) return null;
 
     const handleMoveToCart = () => {
+        if (!product.stock || product.stock === 0) return;
         if (isInCart) {
             navigate('/cart');
             return;
@@ -33,7 +34,7 @@ const WishlistItem = ({ item, isInCart }) => {
                     alt={product.name}
                     className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
                 />
-                {!product.stock || product.stock === 0 && (
+                {(!product.stock || product.stock === 0) && (
                      <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] flex items-center justify-center">
                         <span className="text-[10px] font-black bg-red-500 text-white px-2 py-1 rounded-lg uppercase tracking-widest">Out of Stock</span>
                     </div>
@@ -60,15 +61,15 @@ const WishlistItem = ({ item, isInCart }) => {
                     {/* Add to Cart Button */}
                     <button
                         onClick={handleMoveToCart}
-                        disabled={product.stock === 0}
+                        disabled={!product.stock || product.stock === 0}
                         className={`flex-grow sm:flex-grow-0 px-6 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest transition-all active:scale-95 flex items-center justify-center gap-2 ${
                             isInCart 
                             ? 'bg-indigo-50 text-indigo-600 border border-indigo-100' 
                             : 'bg-indigo-600 text-white shadow-lg shadow-indigo-100 hover:bg-indigo-500'
-                        } ${product.stock === 0 ? 'opacity-50 cursor-not-allowed grayscale' : ''}`}
+                        } ${(!product.stock || product.stock === 0) ? 'opacity-50 cursor-not-allowed grayscale' : ''}`}
                     >
                         <i className={`bi ${isInCart ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'}`}></i>
-                        {isInCart ? 'In Cart' : 'Move to Cart'}
+                        {(!product.stock || product.stock === 0) ? 'Out of Stock' : isInCart ? 'In Cart' : 'Move to Cart'}
                     </button>
 
                     {/* Remove Button */}

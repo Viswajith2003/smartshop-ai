@@ -54,52 +54,52 @@ const AppRoutes = () => {
                 <Route path="/about" element={<AppLayout><AboutPage /></AppLayout>} />
                 <Route path="/contact" element={<AppLayout><ContactPage /></AppLayout>} />
                 <Route path="/home" element={
-                    <ProtectedRoute redirectTo="/">
+                    <ProtectedRoute redirectTo="/login">
                         <AppLayout><HomePage /></AppLayout>
                     </ProtectedRoute>
                 } />
                 <Route path="/products" element={
-                    <ProtectedRoute redirectTo="/">
+                    <ProtectedRoute redirectTo="/login">
                         <AppLayout><ProductsPage /></AppLayout>
                     </ProtectedRoute>
                 } />
                 <Route path="/products/:id" element={
-                    <ProtectedRoute redirectTo="/">
+                    <ProtectedRoute redirectTo="/login">
                         <AppLayout><ProductsPage /></AppLayout>
                     </ProtectedRoute>
                 } />
                 <Route path="/wishlist" element={
-                    <ProtectedRoute redirectTo="/">
+                    <ProtectedRoute redirectTo="/login">
                         <AppLayout><WishlistPage /></AppLayout>
                     </ProtectedRoute>
                 } />
                 <Route path="/cart" element={
-                    <ProtectedRoute redirectTo="/">
+                    <ProtectedRoute redirectTo="/login">
                         <AppLayout><CartPage /></AppLayout>
                     </ProtectedRoute>
                 } />
                 <Route path="/checkout" element={
-                    <ProtectedRoute redirectTo="/">
+                    <ProtectedRoute redirectTo="/login">
                         <AppLayout><CheckoutPage /></AppLayout>
                     </ProtectedRoute>
                 } />
                 <Route path="/order-confirmation" element={
-                    <ProtectedRoute redirectTo="/">
+                    <ProtectedRoute redirectTo="/login">
                         <AppLayout><OrderConfirmationPage /></AppLayout>
                     </ProtectedRoute>
                 } />
                 <Route path="/my-orders" element={
-                    <ProtectedRoute redirectTo="/">
+                    <ProtectedRoute redirectTo="/login">
                         <AppLayout><MyOrdersPage /></AppLayout>
                     </ProtectedRoute>
                 } />
                 <Route path="/order-detail/:id" element={
-                    <ProtectedRoute redirectTo="/">
+                    <ProtectedRoute redirectTo="/login">
                         <AppLayout><OrderDetailPage /></AppLayout>
                     </ProtectedRoute>
                 } />
                 <Route path="/payment-failure" element={
-                    <ProtectedRoute redirectTo="/">
+                    <ProtectedRoute redirectTo="/login">
                         <AppLayout><PaymentFailurePage /></AppLayout>
                     </ProtectedRoute>
                 } />
@@ -111,7 +111,7 @@ const AppRoutes = () => {
                 <Route path="/forgot-password" element={<PublicRoute><ForgotPasswordPage /></PublicRoute>} />
                 <Route path="/reset-pswd" element={<PublicRoute><ResetPasswordPage /></PublicRoute>} />
                 <Route path="/profile" element={
-                    <ProtectedRoute redirectTo="/">
+                    <ProtectedRoute redirectTo="/login">
                         <AppLayout><ProfilePage /></AppLayout>
                     </ProtectedRoute>
                 } />

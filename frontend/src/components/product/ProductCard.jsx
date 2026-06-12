@@ -9,9 +9,13 @@ const ProductCard = ({ product, isWishlisted, isInCart, handleWishlist, handleAd
       className={`bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] flex flex-col group ${product.isActive === false ? 'opacity-60 grayscale cursor-not-allowed' : 'hover:-translate-y-2 hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.12)] transition-all duration-500 cursor-pointer'}`}
     >
       <div className="bg-slate-50/50 p-8 relative aspect-square flex items-center justify-center overflow-hidden">
-        {product.isActive === false && (
+        {product.isActive === false ? (
           <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/40 backdrop-blur-sm">
             <span className="bg-slate-900 text-white font-black tracking-widest px-6 py-2 text-xs rounded-xl shadow-2xl transform -rotate-12 border-2 border-slate-800">UNAVAILABLE</span>
+          </div>
+        ) : product.stock === 0 && (
+          <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/40 backdrop-blur-sm">
+            <span className="bg-red-600 text-white font-black tracking-widest px-6 py-2 text-xs rounded-xl shadow-2xl transform -rotate-12 border-2 border-red-700">OUT OF STOCK</span>
           </div>
         )}
         <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-md text-slate-800 text-[10px] font-black tracking-widest px-3 py-1.5 rounded-xl shadow-sm border border-slate-200 uppercase">
@@ -48,11 +52,19 @@ const ProductCard = ({ product, isWishlisted, isInCart, handleWishlist, handleAd
           </div>
           {product.isActive !== false && (
             <button 
-              onClick={(e) => handleAddToCart(e, product)}
-              className={`${isInCart ? 'bg-indigo-600' : 'bg-black hover:bg-indigo-600'} text-white transition-all duration-300 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-1 transform`}
-              title={isInCart ? "View in Cart" : "Add to Cart"}
+              onClick={(e) => {
+                if (product.stock === 0) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  return;
+                }
+                handleAddToCart(e, product);
+              }}
+              disabled={product.stock === 0}
+              className={`${product.stock === 0 ? 'bg-slate-300 text-slate-500 cursor-not-allowed shadow-none' : isInCart ? 'bg-indigo-600 shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-1 transform' : 'bg-black hover:bg-indigo-600 shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-1 transform'} text-white transition-all duration-300 w-12 h-12 rounded-xl flex items-center justify-center`}
+              title={product.stock === 0 ? "Out of Stock" : isInCart ? "View in Cart" : "Add to Cart"}
             >
-              <i className={`bi ${isInCart ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'} text-xl`}></i>
+              <i className={`bi ${product.stock === 0 ? 'bi-cart-x-fill' : isInCart ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'} text-xl`}></i>
             </button>
           )}
         </div>

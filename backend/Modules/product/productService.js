@@ -62,9 +62,9 @@ class ProductService {
     };
   }
 
-  static async getProductById(id) {
+  static async getProductById(id, checkActive = true) {
     const product = await Product.findById(id).populate("category", "name");
-    if (!product) throw new NotFoundError("Product not found");
+    if (!product || (checkActive && !product.isActive)) throw new NotFoundError("Product not found");
     return product;
   }
 
@@ -148,11 +148,16 @@ class ProductService {
       query.rating = { $gte: Number(rating) };
     }
 
-    // isActive filter: "true" → active only, "false" → inactive only, "all"/undefined → no filter
-    if (isActive === "true") {
+    // isActive filter: "true"/true → active only, "false"/false → inactive only, "all" → no filter (allows both), undefined → active only by default
+    if (isActive === "true" || isActive === true) {
       query.isActive = true;
-    } else if (isActive === "false") {
+    } else if (isActive === "false" || isActive === false) {
       query.isActive = false;
+    } else if (isActive === "all") {
+      // no filter, shows all active and inactive products (e.g. for admin usage)
+    } else {
+      // By default, only show active products to users
+      query.isActive = true;
     }
 
     return query;

@@ -24,6 +24,7 @@ const ProductDetail = ({ products: initialProduct }) => {
   const isInCart = cartItems.some(item => (item.product?._id || item.product) === products._id);
 
   const handleAddToCart = () => {
+    if (products.stock === 0) return;
     if (isInCart) {
       navigate('/cart');
       return;
@@ -32,6 +33,7 @@ const ProductDetail = ({ products: initialProduct }) => {
   };
 
   const handleBuyNow = () => {
+    if (products.stock === 0) return;
     if (isInCart) {
       navigate('/cart');
       return;
@@ -120,9 +122,10 @@ const ProductDetail = ({ products: initialProduct }) => {
            <div className="flex flex-wrap items-center gap-4">
               <button 
                 onClick={handleBuyNow}
-                className="flex-grow sm:flex-grow-0 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-sm px-10 py-4 rounded-xl shadow-[0_10px_20px_rgba(37,99,235,0.2)] hover:shadow-[0_15px_30px_rgba(37,99,235,0.3)] transition-all transform hover:-translate-y-1 active:scale-95 uppercase tracking-widest"
+                disabled={products.stock === 0}
+                className={`flex-grow sm:flex-grow-0 font-black text-sm px-10 py-4 rounded-xl transition-all transform uppercase tracking-widest ${products.stock === 0 ? 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none' : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_10px_20px_rgba(37,99,235,0.2)] hover:shadow-[0_15px_30px_rgba(37,99,235,0.3)] hover:-translate-y-1 active:scale-95'}`}
               >
-                {isInCart ? 'Checkout Now' : 'Buy Now'}
+                {products.stock === 0 ? 'Out of Stock' : isInCart ? 'Checkout Now' : 'Buy Now'}
               </button>
               <button 
                 onClick={handleWishlist}
@@ -132,10 +135,11 @@ const ProductDetail = ({ products: initialProduct }) => {
               </button>
               <button 
                 onClick={handleAddToCart}
-                className={`p-4 border-2 rounded-xl transition-all hover:scale-110 shadow-sm ${isInCart ? 'bg-indigo-50 text-indigo-600 border-indigo-100' : 'bg-white text-indigo-600 border-slate-100 hover:border-indigo-100 hover:bg-indigo-50'}`}
-                title={isInCart ? 'View in Cart' : 'Add to Cart'}
+                disabled={products.stock === 0}
+                className={`p-4 border-2 rounded-xl transition-all shadow-sm ${products.stock === 0 ? 'bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed' : isInCart ? 'bg-indigo-50 text-indigo-600 border-indigo-100 hover:scale-110' : 'bg-white text-indigo-600 border-slate-100 hover:border-indigo-100 hover:bg-indigo-50 hover:scale-110'}`}
+                title={products.stock === 0 ? 'Out of Stock' : isInCart ? 'View in Cart' : 'Add to Cart'}
               >
-                <i className={`bi ${isInCart ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'} text-xl`}></i>
+                <i className={`bi ${products.stock === 0 ? 'bi-cart-x' : isInCart ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'} text-xl`}></i>
               </button>
            </div>
         </div>

@@ -24,6 +24,8 @@ import { updateUserInfo } from '../../features/auth/authSlice';
 import { authAPI } from '../../features/auth/authAPI';
 import Modal from '../common/Modal';
 import { API_CONFIG } from '../../config/app';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
     const dispatch = useDispatch();
@@ -34,7 +36,8 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
     const [modalConfig, setModalConfig] = useState({
         isOpen: false,
         type: 'cancel',
-        reason: ''
+        reason: '',
+        itemId: null
     });
 
     const fetchOrderDetails = async () => {
@@ -71,11 +74,12 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
         }
     };
 
-    const handleOpenModal = (type) => {
+    const handleOpenModal = (type, itemId = null) => {
         setModalConfig({
             isOpen: true,
             type,
-            reason: ''
+            reason: '',
+            itemId
         });
     };
 
@@ -84,22 +88,29 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
     };
 
     const handleActionSubmit = async () => {
-        const { type, reason } = modalConfig;
+        const { type, reason, itemId } = modalConfig;
         
         if (!reason.trim()) {
-            toast.warning(`Please provide a reason for ${type === 'cancel' ? 'cancellation' : 'return'}`);
+            toast.warning(`Please provide a reason for ${type === 'cancel' || type === 'cancelItem' ? 'cancellation' : 'return'}`);
             return;
         }
 
         try {
             setActionLoading(true);
-            const response = type === 'cancel' 
-                ? await orderAPI.cancelOrder(orderId, reason)
-                : await orderAPI.returnOrder(orderId, reason);
+            let response;
+            if (type === 'cancel') {
+                response = await orderAPI.cancelOrder(orderId, reason);
+            } else if (type === 'return') {
+                response = await orderAPI.returnOrder(orderId, reason);
+            } else if (type === 'cancelItem') {
+                response = await orderAPI.cancelOrderItem(orderId, itemId, reason);
+            } else if (type === 'returnItem') {
+                response = await orderAPI.returnOrderItem(orderId, itemId, reason);
+            }
 
             if (response.success) {
-                toast.success(type === 'cancel' 
-                    ? "Order cancelled successfully!" 
+                toast.success(type.includes('cancel')
+                    ? "Cancelled successfully!" 
                     : "Return processed successfully!"
                 );
                 await fetchOrderDetails();
@@ -107,7 +118,7 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
                 if (onStatusUpdate) onStatusUpdate();
                 handleCloseModal();
             } else {
-                toast.error(response.message || `Failed to ${type} order`);
+                toast.error(response.message || `Failed to ${type}`);
             }
         } finally {
             setActionLoading(false);
@@ -131,6 +142,58 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
             case 'returned': return 'bg-purple-500/10 text-purple-500 border-purple-500/20';
             default: return 'bg-slate-500/10 text-slate-500 border-slate-500/20';
         }
+    };
+
+    const downloadInvoice = () => {
+        if (!order) return;
+        const doc = new jsPDF();
+        
+        doc.setFontSize(20);
+        doc.text('INVOICE', 14, 22);
+        
+        doc.setFontSize(12);
+        doc.text(`Order ID: ${order._id}`, 14, 32);
+        doc.text(`Date: ${new Date(order.createdAt).toLocaleDateString()}`, 14, 40);
+        doc.text(`Payment Status: ${order.paymentStatus}`, 14, 48);
+
+        if (order.shippingAddress) {
+            doc.text('Billed To:', 14, 60);
+            doc.setFontSize(10);
+            doc.text(`${order.shippingAddress.fullName}`, 14, 68);
+            doc.text(`${order.shippingAddress.street}, ${order.shippingAddress.city}`, 14, 74);
+            doc.text(`${order.shippingAddress.state} - ${order.shippingAddress.pincode}`, 14, 80);
+            doc.text(`Phone: ${order.shippingAddress.phone}`, 14, 86);
+        }
+
+        const tableColumn = ["Item", "Quantity", "Price", "Total"];
+        const tableRows = [];
+
+        order.items?.forEach(item => {
+            const itemData = [
+                item.product?.name || 'Unknown Item',
+                item.quantity,
+                `Rs. ${item.price}`,
+                `Rs. ${item.price * item.quantity}`
+            ];
+            tableRows.push(itemData);
+        });
+
+        doc.autoTable({
+            startY: 100,
+            head: [tableColumn],
+            body: tableRows,
+        });
+
+        const finalY = doc.lastAutoTable.finalY || 100;
+        doc.setFontSize(12);
+        doc.text(`Subtotal: Rs. ${order.pricing?.totalPrice || order.totalAmount}`, 14, finalY + 10);
+        if (order.pricing?.discount > 0) {
+            doc.text(`Discount: Rs. ${order.pricing.discount}`, 14, finalY + 18);
+        }
+        doc.setFontSize(14);
+        doc.text(`Total Amount: Rs. ${order.totalAmount}`, 14, finalY + 28);
+
+        doc.save(`invoice_${order._id}.pdf`);
     };
 
     if (loading) return (
@@ -157,15 +220,23 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
                     <div>
                         <h2 className="text-3xl font-black text-slate-900 tracking-tight mb-2 uppercase">
-                            #{order.paymentDetails?.razorpayOrderId?.split('_')[1] || order._id.toUpperCase().substring(0, 10)}
+                            #{order.paymentDetails?.razorpayOrderId?.split('_')[1] || order._id.toUpperCase().slice(-8)}
                         </h2>
                         <p className="text-sm font-bold text-slate-400">
                             Ordered on {new Date(order.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
                         </p>
                     </div>
-                    <span className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border ${getStatusStyles(order.orderStatus)}`}>
-                        {order.orderStatus}
-                    </span>
+                    <div className="flex items-center gap-4">
+                        <button
+                            onClick={downloadInvoice}
+                            className="bg-indigo-50 text-indigo-600 font-black px-6 py-2 rounded-xl text-xs uppercase tracking-widest hover:bg-indigo-100 transition-colors"
+                        >
+                            Download Invoice
+                        </button>
+                        <span className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border ${getStatusStyles(order.orderStatus)}`}>
+                            {order.orderStatus}
+                        </span>
+                    </div>
                 </div>
 
                 {/* Order Stepper */}
@@ -210,7 +281,7 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
                     </div>
                     <div className="divide-y divide-slate-100">
                         {order.items?.map((item, idx) => (
-                            <div key={idx} className="p-10 flex items-center gap-8 hover:bg-slate-50/50 transition-all group">
+                            <div key={idx} className="p-10 flex flex-col sm:flex-row items-center gap-8 hover:bg-slate-50/50 transition-all group">
                                 <div className="w-24 h-24 bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 p-2 flex-shrink-0 group-hover:scale-105 transition-transform">
                                     <img 
                                         src={getImageUrl(item.product?.images?.[0])}
@@ -223,9 +294,24 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
                                     <p className="text-[11px] font-bold text-slate-400 uppercase tracking-tight">
                                         Qty: {item.quantity} <span className="mx-2 text-slate-200">|</span> ₹{item.price?.toLocaleString('en-IN')} / unit
                                     </p>
+                                    {item.status && (
+                                        <p className={`text-[10px] font-black uppercase tracking-widest ${item.status === 'Cancelled' ? 'text-rose-500' : 'text-slate-500'}`}>{item.status}</p>
+                                    )}
                                 </div>
-                                <div className="text-right flex-shrink-0">
+                                <div className="text-right flex-shrink-0 flex flex-col items-end gap-3">
                                     <p className="text-lg font-black text-slate-900 tracking-tight">₹{(item.price * item.quantity).toLocaleString('en-IN')}</p>
+                                    {order.orderStatus !== 'Cancelled' && order.orderStatus !== 'Returned' && item.status !== 'Cancelled' && item.status !== 'Returned' && (
+                                        <div className="flex gap-2">
+                                            {(order.orderStatus === 'Processing' || order.orderStatus === 'Confirmed' || order.orderStatus === 'Pending') && (
+                                                <button 
+                                                    onClick={() => handleOpenModal('cancelItem', item.product?._id)}
+                                                    className="text-[9px] font-black uppercase tracking-widest text-rose-500 border border-rose-200 bg-rose-50 px-3 py-1.5 rounded-lg hover:bg-rose-100 transition-colors"
+                                                >
+                                                    Cancel Item
+                                                </button>
+                                            )}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         ))}
@@ -326,13 +412,13 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
             <Modal
                 isOpen={modalConfig.isOpen}
                 onClose={handleCloseModal}
-                title={modalConfig.type === 'cancel' ? 'Cancel Order' : 'Return Order'}
+                title={modalConfig.type.includes('cancel') ? 'Cancel Order' : 'Return Order'}
                 maxWidth="max-w-md"
             >
                 <div className="space-y-6">
-                    <div className={`p-5 rounded-2xl border ${modalConfig.type === 'cancel' ? 'bg-rose-50 border-rose-100' : 'bg-indigo-50 border-indigo-100'}`}>
-                        <p className={`text-[10px] font-bold leading-relaxed ${modalConfig.type === 'cancel' ? 'text-rose-600' : 'text-indigo-600'}`}>
-                            {modalConfig.type === 'cancel' 
+                    <div className={`p-5 rounded-2xl border ${modalConfig.type.includes('cancel') ? 'bg-rose-50 border-rose-100' : 'bg-indigo-50 border-indigo-100'}`}>
+                        <p className={`text-[10px] font-bold leading-relaxed ${modalConfig.type.includes('cancel') ? 'text-rose-600' : 'text-indigo-600'}`}>
+                            {modalConfig.type.includes('cancel')
                                 ? "Are you sure you want to cancel? Refund will be processed instantly."
                                 : "Please provide a reason for return. Pick-up will be scheduled shortly."
                             }

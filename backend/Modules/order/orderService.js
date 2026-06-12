@@ -285,6 +285,27 @@ class OrderService {
       await this._updateStock(order.items, 1);
       order.orderStatus = "Cancelled";
       order.cancelReason = reason;
+
+      if (order.paymentStatus === "Completed") {
+        let refundAmount = 0;
+        const totalSubtotal = order.pricing.subtotal || 0;
+        order.items.forEach(item => {
+          if (item.itemStatus === "Active") {
+            const itemTotal = item.price * item.quantity;
+            const itemRefund = totalSubtotal > 0
+              ? itemTotal - (order.pricing.discount * (itemTotal / totalSubtotal))
+              : itemTotal;
+            refundAmount += itemRefund;
+          }
+        });
+
+        if (refundAmount > 0) {
+          await this._refundToWallet(userId, refundAmount, orderId);
+        }
+        order.paymentStatus = "Refunded";
+        await Payment.findOneAndUpdate({ order: orderId }, { status: "Refunded" });
+      }
+
       await order.save();
       return order;
     }
@@ -322,7 +343,11 @@ class OrderService {
 
     for (const item of selectedItems) {
       if (item.product.stock < item.quantity) {
-        throw new BadRequestError(`Product ${item.product.name} is out of stock`);
+        if (item.product.stock === 0) {
+          throw new BadRequestError(`Product ${item.product.name} is out of stock`);
+        } else {
+          throw new BadRequestError(`Only ${item.product.stock} stock left for product ${item.product.name}`);
+        }
       }
       if (!item.product.isActive) {
         throw new BadRequestError(`Product ${item.product.name} is currently unavailable`);
@@ -354,9 +379,14 @@ class OrderService {
 
   static async _updateStock(items, multiplier) {
     for (const item of items) {
-      await Product.findByIdAndUpdate(item.product, {
-        $inc: { stock: multiplier * item.quantity }
-      });
+      const product = await Product.findById(item.product);
+      if (product && product.isActive) {
+        product.stock += multiplier * item.quantity;
+        if (product.stock < 0) product.stock = 0;
+        await product.save();
+      } else {
+        logger.info(`Skipped stock update for inactive/canceled product: ${item.product}`);
+      }
     }
   }
 

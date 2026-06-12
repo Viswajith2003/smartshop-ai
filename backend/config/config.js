@@ -18,7 +18,20 @@ module.exports = {
 
   CORS: {
     // Allowing both variations avoids common browser identification issues
-    ORIGIN: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ["http://localhost:5173", "http://127.0.0.1:5173"],
+    ORIGIN: process.env.CORS_ORIGIN 
+      ? process.env.CORS_ORIGIN.split(',') 
+      : [
+          "http://localhost:5173", 
+          "http://127.0.0.1:5173", 
+          "http://localhost:5174", 
+          "http://127.0.0.1:5174", 
+          "http://localhost:5175", 
+          "http://127.0.0.1:5175", 
+          "http://localhost:5176", 
+          "http://127.0.0.1:5176",
+          "http://localhost:3000",
+          "http://localhost:3001"
+        ],
     CREDENTIALS: true,
     METHODS: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     ALLOWED_HEADERS: ["Content-Type", "Authorization", "X-Requested-With"]

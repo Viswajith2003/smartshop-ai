@@ -136,6 +136,7 @@ const HomePage = memo(() => {
     const handleAddToCart = (e, product) => {
         e.preventDefault();
         e.stopPropagation();
+        if (product.stock === 0) return;
         if (isInCart(product._id)) {
             navigate('/cart');
             return;
@@ -247,6 +248,11 @@ const HomePage = memo(() => {
                                 </button>
                                 <div className="h-72 bg-slate-50/50 overflow-hidden flex items-center justify-center p-8 relative">
                                     <img src={prod.images && prod.images[0]} alt={prod.name} className="w-full h-full object-contain filter drop-shadow-xl transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-2 z-10" />
+                                    {prod.stock === 0 && (
+                                        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] flex items-center justify-center z-20">
+                                            <span className="bg-red-600 text-white font-black tracking-widest px-6 py-2 text-xs rounded-xl shadow-2xl transform -rotate-12 border-2 border-red-700">OUT OF STOCK</span>
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="p-8 bg-white flex flex-col flex-grow relative">
                                     <div className="flex text-amber-400 mb-3">
@@ -261,11 +267,19 @@ const HomePage = memo(() => {
                                             <span className="text-2xl font-black text-slate-900 tracking-tighter">₹{prod.price?.toLocaleString()}</span>
                                         </div>
                                             <button 
-                                                onClick={(e) => handleAddToCart(e, prod)} 
-                                                className={`h-12 w-12 rounded-xl flex items-center justify-center transition-all shadow-lg active:scale-95 group-hover:-translate-y-1 ${isInCart(prod._id) ? 'bg-indigo-600' : 'bg-black hover:bg-indigo-600'}`}
-                                                title={isInCart(prod._id) ? "View in Cart" : "Add to Cart"}
+                                                onClick={(e) => {
+                                                    if (prod.stock === 0) {
+                                                        e.preventDefault();
+                                                        e.stopPropagation();
+                                                        return;
+                                                    }
+                                                    handleAddToCart(e, prod);
+                                                }}
+                                                disabled={prod.stock === 0}
+                                                className={`h-12 w-12 rounded-xl flex items-center justify-center transition-all active:scale-95 group-hover:-translate-y-1 ${prod.stock === 0 ? 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none' : isInCart(prod._id) ? 'bg-indigo-600 text-white shadow-lg' : 'bg-black hover:bg-indigo-600 text-white shadow-lg'}`}
+                                                title={prod.stock === 0 ? "Out of Stock" : isInCart(prod._id) ? "View in Cart" : "Add to Cart"}
                                             >
-                                                <i className={`bi ${isInCart(prod._id) ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'} text-xl text-white`}></i>
+                                                <i className={`bi ${prod.stock === 0 ? 'bi-cart-x' : isInCart(prod._id) ? 'bi-bag-check-fill' : 'bi-cart-plus-fill'} text-xl text-white`}></i>
                                             </button>
                                     </div>
                                 </div>
