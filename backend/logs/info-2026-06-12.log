@@ -413,3 +413,4 @@
 {"level":"info","message":"GET /api/products 200 - 37ms"}
 {"level":"info","message":"GET /api/coupons?limit=12 200 - 44ms"}
 {"level":"info","message":"GET /api/coupons?limit=12 200 - 19ms"}
+{"level":"info","message":"MongoDB connected successfully"}
