@@ -110,11 +110,13 @@ const AppRoutes = () => {
                 <Route path="/otp-verify" element={<PublicRoute><OtpPage /></PublicRoute>} />
                 <Route path="/forgot-password" element={<PublicRoute><ForgotPasswordPage /></PublicRoute>} />
                 <Route path="/reset-pswd" element={<PublicRoute><ResetPasswordPage /></PublicRoute>} />
-                <Route path="/profile" element={
-                    <ProtectedRoute redirectTo="/login">
-                        <AppLayout><ProfilePage /></AppLayout>
-                    </ProtectedRoute>
-                } />
+                <Route path="/profile" element={<ProtectedRoute redirectTo="/login"><AppLayout><ProfilePage /></AppLayout></ProtectedRoute>} />
+                <Route path="/address" element={<ProtectedRoute redirectTo="/login"><AppLayout><ProfilePage /></AppLayout></ProtectedRoute>} />
+                <Route path="/wallet" element={<ProtectedRoute redirectTo="/login"><AppLayout><ProfilePage /></AppLayout></ProtectedRoute>} />
+                <Route path="/orders" element={<ProtectedRoute redirectTo="/login"><AppLayout><ProfilePage /></AppLayout></ProtectedRoute>} />
+                <Route path="/return" element={<ProtectedRoute redirectTo="/login"><AppLayout><ProfilePage /></AppLayout></ProtectedRoute>} />
+                <Route path="/cancel" element={<ProtectedRoute redirectTo="/login"><AppLayout><ProfilePage /></AppLayout></ProtectedRoute>} />
+                <Route path="/reviews" element={<ProtectedRoute redirectTo="/login"><AppLayout><ProfilePage /></AppLayout></ProtectedRoute>} />
 
                 {/* Utility Routes */}
                 <Route path="/error" element={<ErrorPage />} />

@@ -1,0 +1,17 @@
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /uploads/avatars/avatar-1781224439641-48150391.jpeg 304 - 4ms"}
+{"level":"info","message":"GET /api/categories 200 - 71ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 109ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 72ms"}
+{"level":"info","message":"GET /api/products 200 - 159ms"}
+{"level":"info","message":"GET /api/products 200 - 137ms"}
+{"level":"info","message":"GET /api/categories 200 - 72ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 39ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 51ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 68ms"}
+{"level":"info","message":"GET /api/cart 200 - 45ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 73ms"}
+{"level":"info","message":"GET /api/cart 200 - 28ms"}
+{"level":"info","message":"MongoDB connected successfully"}

@@ -1,0 +1,327 @@
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 44ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 64ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 46ms"}
+{"level":"info","message":"GET /api/categories 200 - 41ms"}
+{"level":"info","message":"GET /api/categories 200 - 22ms"}
+{"level":"info","message":"GET /api/products 200 - 119ms"}
+{"level":"info","message":"GET /api/products 200 - 93ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 22ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 32ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 21ms"}
+{"level":"info","message":"GET /api/cart 200 - 26ms"}
+{"level":"info","message":"GET /api/cart 200 - 27ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 20ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/users/profile 200 - 62ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 59ms"}
+{"level":"info","message":"GET /api/products 200 - 88ms"}
+{"level":"info","message":"GET /api/categories 200 - 70ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 31ms"}
+{"level":"info","message":"GET /api/products 200 - 45ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 57ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 40ms"}
+{"level":"info","message":"GET /api/categories 200 - 64ms"}
+{"level":"info","message":"GET /api/cart 200 - 27ms"}
+{"level":"info","message":"GET /api/cart 200 - 47ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 35ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 23ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 13ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 12ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 67ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 1515ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 1773ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 12ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 39ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 39ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 43ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 56ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 51ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 50ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 34ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 12ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 17ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 24ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 5ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 40ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 56ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 54ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 12ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 12ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 57ms"}
+{"level":"info","message":"GET /api/products 200 - 106ms"}
+{"level":"info","message":"GET /api/categories 200 - 75ms"}
+{"level":"info","message":"GET /api/cart 200 - 76ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 78ms"}
+{"level":"info","message":"GET /api/products 200 - 58ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 53ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 74ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 81ms"}
+{"level":"info","message":"GET /api/cart 200 - 101ms"}
+{"level":"info","message":"GET /api/categories 200 - 32ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 110ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 16ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 1792ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 1715ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 22ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 2394ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 2122ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 1950ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 6ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 2500ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 18ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 19ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 53ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 42ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 70ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 75ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 52ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 55ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 50ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 44ms"}
+{"level":"info","message":"GET /api/cart 200 - 66ms"}
+{"level":"info","message":"GET /api/cart 200 - 23ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 29ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 78ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 11ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 29ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 41ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 63ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 42ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 52ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 49ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 105ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 54ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 91ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 48ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 88ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"GET /api/categories 200 - 67ms"}
+{"level":"info","message":"GET /api/products 200 - 158ms"}
+{"level":"info","message":"GET /api/products 200 - 136ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 61ms"}
+{"level":"info","message":"GET /api/categories 200 - 140ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 31ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 3197ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 18ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 21ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 21ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 29ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 78ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 53ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 52ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 54ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 5ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 21ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 21ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 23ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 35ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 22ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 29ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 24ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 30ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 26ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 43ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 26ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 58ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 44ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 31ms"}
+{"level":"info","message":"GET /api/cart 200 - 26ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 35ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 9ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 22ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"GET /api/users/profile 200 - 18ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 39ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 46ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 35ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 30ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 43ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 30ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 56ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 49ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 59ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 45ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 35ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 39ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 9ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 16ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 2779ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 24ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 48ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 51ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 60ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 67ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 72ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 71ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 47ms"}
+{"level":"info","message":"GET /api/cart 200 - 51ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 52ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 95ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 74ms"}
+{"level":"info","message":"GET /api/wishlist 200 - 62ms"}
+{"level":"info","message":"GET /api/cart 200 - 19ms"}
+{"level":"info","message":"GET /api/categories 200 - 52ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 98ms"}
+{"level":"info","message":"GET /api/categories 200 - 97ms"}
+{"level":"info","message":"GET /api/products 200 - 137ms"}
+{"level":"info","message":"GET /api/products 200 - 107ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 123ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 1760ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 24ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 45ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 47ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 41ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 64ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 65ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 71ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 51ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 33ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 61ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 86ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 82ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 88ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 72ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 47ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 51ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 41ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 39ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 62ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 43ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 39ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 50ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 5ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 8ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 30ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 35ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 30ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 11ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 42ms"}
+{"level":"info","message":"GET /api/categories 200 - 55ms"}
+{"level":"info","message":"GET /api/categories 200 - 71ms"}
+{"level":"info","message":"GET /api/products 200 - 75ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 85ms"}
+{"level":"info","message":"GET /api/products 200 - 98ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 35ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 25ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 48ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 44ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 39ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 56ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 44ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 63ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 34ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 33ms"}
+{"level":"info","message":"GET /api/categories 200 - 6ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 12ms"}
+{"level":"info","message":"GET /api/categories 200 - 14ms"}
+{"level":"info","message":"GET /api/products?page=1&limit=6&sortBy=createdAt&sortOrder=desc&minPrice=0&maxPrice=300000 200 - 34ms"}
+{"level":"info","message":"POST /api/cart/add 200 - 45ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 16ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 15ms"}
+{"level":"info","message":"GET /api/cart 200 - 39ms"}
+{"level":"info","message":"GET /api/cart 200 - 38ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 7ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 10ms"}
+{"level":"info","message":"Processing payment for Order: 6a403f0818533b50804da264, Method: Razorpay"}
+{"level":"info","message":"POST /api/orders/create 201 - 308ms"}
+{"level":"info","message":"POST /api/orders/verify 200 - 54ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 8ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 45ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 102ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 94ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 137ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 120ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 123ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 68ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 15ms"}
+{"level":"info","message":"GET /api/products 200 - 104ms"}
+{"level":"info","message":"GET /api/categories 200 - 75ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 70ms"}
+{"level":"info","message":"GET /api/products 200 - 117ms"}
+{"level":"info","message":"GET /api/categories 200 - 83ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 70ms"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 2555ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 32ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 30ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 29ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 32ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 55ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 71ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 33ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 44ms"}
+{"level":"info","message":"GET /api/orders/6a403f0818533b50804da264 200 - 38ms"}
+{"level":"info","message":"GET /api/orders/6a403f0818533b50804da264 200 - 39ms"}
+{"level":"info","message":"GET /api/categories 200 - 22ms"}
+{"level":"info","message":"GET /api/products 200 - 44ms"}
+{"level":"info","message":"GET /api/products 200 - 49ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 44ms"}
+{"level":"info","message":"GET /api/categories 200 - 49ms"}
+{"level":"info","message":"GET /api/coupons?limit=12 200 - 48ms"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"Server initialized successfully"}
+{"level":"info","message":"Server running in development mode on port 5001"}
+{"level":"info","message":"MongoDB connected successfully"}
+{"level":"info","message":"POST /api/chatbot/message 200 - 2868ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 45ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 117ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 112ms"}
+{"level":"info","message":"GET /api/users/profile 200 - 78ms"}
+{"level":"info","message":"GET /api/products/my-reviews 200 - 57ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 96ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 125ms"}
+{"level":"info","message":"GET /api/orders/my-orders 200 - 100ms"}
+{"level":"info","message":"GET /api/orders/6a403f0818533b50804da264 200 - 25ms"}
+{"level":"info","message":"GET /api/orders/6a403f0818533b50804da264 200 - 25ms"}
+{"level":"info","message":"GET /api/orders/6a39705f86657f0f711879ca 200 - 12ms"}

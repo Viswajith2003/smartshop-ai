@@ -37,8 +37,7 @@ const OrderConfirmationPage = () => {
                 {/* Action Buttons */}
                 <div className="space-y-4">
                     <Link 
-                        to="/profile"
-                        state={{ activeTab: 'orders' }}
+                        to={`/orders/#${orderId}`}
                         className="block w-full py-4 bg-[#1A0066] text-white rounded-xl font-bold text-lg hover:bg-[#2A0088] transition-all active:scale-[0.98] shadow-lg shadow-indigo-100"
                     >
                         Track Order

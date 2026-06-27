@@ -1,10 +1,10 @@
 const { sendSuccess, sendError } = require("../../utils/response");
 const Order = require("../../models/Order");
 const Product = require("../../models/Product");
-const { OpenAI } = require("openai");
+const { GoogleGenAI } = require("@google/genai");
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY,
 });
 
 const processChatMessage = async (req, res) => {
@@ -57,26 +57,24 @@ const processChatMessage = async (req, res) => {
 
                 if (matchedOrder) {
                     const date = new Date(matchedOrder.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
-                    // Return the exact ID they searched for to avoid confusion
-                    const reply = `I found your order #${shortId} placed on ${date}. \n\nStatus: **${matchedOrder.orderStatus}**\nTotal Price: ₹${matchedOrder.pricing?.totalPrice}\n\n${matchedOrder.orderStatus === 'Shipped' ? 'It is currently on its way!' : ''}`;
-                    return sendSuccess(res, "Message processed successfully", { reply });
+                    // Provide order details as context to Gemini
+                    contextData = `The user is asking about order #${shortId}. Found order details: Order ID: #${shortId}, Placed on: ${date}, Status: ${matchedOrder.orderStatus}, Total Price: ₹${matchedOrder.pricing?.totalPrice}. Let the user know these details deeply and in a friendly, attractive way. IMPORTANT: You MUST format the Order ID and Status by wrapping them in double asterisks (like **#${shortId}** and **${matchedOrder.orderStatus}**) so they are highlighted. IMPORTANT: You MUST append the following exact markdown link at the very end of your response to provide a navigation button: [View Order Details](/orders/#${shortId})`;
                 } else {
-                    return sendSuccess(res, "Message processed successfully", { 
-                        reply: `I couldn't find any order matching #${shortId} in your account. Please double-check the Order ID and try again.` 
-                    });
+                    contextData = `The user asked about order #${shortId}, but no matching order was found in their account. Ask them to double-check the ID politely.`;
                 }
             } else {
-                // Fetch the latest order if no specific ID is provided
-                const latestOrder = await Order.findOne({ user: userId }).sort({ createdAt: -1 });
-                if (latestOrder) {
-                    const shortId = latestOrder.paymentDetails?.razorpayOrderId || latestOrder._id.toString().slice(-8).toUpperCase();
-                    return sendSuccess(res, "Message processed successfully", { 
-                        reply: `Your most recent order #${shortId} is currently **${latestOrder.orderStatus}**. If you meant a different order, please provide the exact Order ID (like #123).` 
+                // Fetch the top 3 latest orders if no specific ID is provided
+                const recentOrders = await Order.find({ user: userId }).sort({ createdAt: -1 }).limit(3);
+                if (recentOrders.length > 0) {
+                    let ordersContext = "The user is asking a general question about their orders. Here are their most recent orders:\\n";
+                    recentOrders.forEach(order => {
+                        const shortId = order.paymentDetails?.razorpayOrderId || order._id.toString().slice(-8).toUpperCase();
+                        ordersContext += `- Order ID: #${shortId}, Status: ${order.orderStatus}\\n`;
                     });
+                    
+                    contextData = `${ordersContext}\\nTell them about these recent orders in a friendly way. IMPORTANT: You MUST format the Order IDs and Statuses by wrapping them in double asterisks (like **#ID** and **Status**) so they are highlighted. IMPORTANT: Do not group all text together and all buttons at the end. Instead, you MUST structure your response so that each order has its own separate block. For each order, explain its status and then IMMEDIATELY follow it with its specific navigation button on a new line using the exact markdown link format: [View Order #ID](/orders/#ID). Separate each order's block with an empty line.`;
                 } else {
-                    return sendSuccess(res, "Message processed successfully", { 
-                        reply: "It looks like you don't have any recent orders in your account yet." 
-                    });
+                    contextData = `The user asked about their orders, but they don't have any recent orders in their account yet. Let them know nicely.`;
                 }
             }
         }
@@ -88,10 +86,12 @@ const processChatMessage = async (req, res) => {
             contextData = "The user is asking a general question (e.g., refund policy, general support, or recommendations). Answer politely like a customer support agent.";
         }
 
-        // Generate AI Response using OpenAI API
+        // Generate AI Response using Gemini API
         const prompt = `
-            You are a helpful customer support chatbot for an e-commerce store named "SmartShop".
-            Be friendly, concise, and professional.
+            System Instructions: You are SmartShop's warm and friendly customer support assistant. You love helping people and always use emojis.
+            
+            Task Instructions: You are a helpful, warm, and highly friendly customer support chatbot for an e-commerce store named "SmartShop".
+            Be friendly, concise, and professional, and use emojis naturally to make the conversation engaging.
             
             Here is the context retrieved from the database based on the user's intent:
             ---
@@ -100,21 +100,20 @@ const processChatMessage = async (req, res) => {
             
             User's message: "${message}"
             
-            Respond directly to the user's message based on the context provided above.
+            Respond directly to the user's message based on the context provided above. Make sure your tone is warm and inviting!
             Do not mention "database context" or "backend" in your reply to the user.
         `;
 
-        const completion = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo",
-            messages: [
-                { role: "system", content: "You are SmartShop's customer support assistant." },
-                { role: "user", content: prompt }
-            ],
-            max_tokens: 150,
-            temperature: 0.7,
+        const response = await ai.models.generateContent({
+            model: 'gemini-2.5-flash',
+            contents: prompt,
+            config: {
+                maxOutputTokens: 500,
+                temperature: 0.7,
+            }
         });
 
-        const reply = completion.choices[0].message.content.trim();
+        const reply = response.text.trim();
 
         sendSuccess(res, "Message processed successfully", { reply });
         

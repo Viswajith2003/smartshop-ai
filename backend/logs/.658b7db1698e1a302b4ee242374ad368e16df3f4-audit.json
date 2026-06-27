@@ -6,19 +6,24 @@
     "auditLog": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/Smartshop-ClientSide/backend/logs/.658b7db1698e1a302b4ee242374ad368e16df3f4-audit.json",
     "files": [
         {
-            "date": 1780125918102,
-            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/Smartshop-ClientSide/backend/logs/error-2026-05-30.log",
-            "hash": "286a672869b73998be5f6dc3151c8389ef6348dccc742c274f1a2183ee0afc5a"
+            "date": 1781697705103,
+            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/Smartshop-ClientSide/backend/logs/error-2026-06-17.log",
+            "hash": "1e5643bf629da3ca020082e0a0edb6bc2a37021abdf8d4b99a6d1e3ddad54ca1"
         },
         {
-            "date": 1780173085780,
-            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/Smartshop-ClientSide/backend/logs/error-2026-05-31.log",
-            "hash": "5d2eb0a1e5f2a9820e7713172d8150bc342b1b057f1931498bd315f1fa23fdf4"
+            "date": 1782148703000,
+            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/Smartshop-ClientSide/backend/logs/error-2026-06-22.log",
+            "hash": "3862e34cd8424a837fa0b78d4464fdbdaac585a8038b2dbcddac31799ea9be36"
         },
         {
-            "date": 1781222653812,
-            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/Smartshop-ClientSide/backend/logs/error-2026-06-12.log",
-            "hash": "efdcc836faacba742a99f85c9847032145a959048a439d55475782699625db90"
+            "date": 1782167984280,
+            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/Smartshop-ClientSide/backend/logs/error-2026-06-23.log",
+            "hash": "f3ed09b9058df1ac75a105682e8ac3c8c850ca602059fbda5cb95bd7b8addac9"
+        },
+        {
+            "date": 1782592005097,
+            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/Smartshop-ClientSide/backend/logs/error-2026-06-28.log",
+            "hash": "a972d6a575b0588aaeb4c6bdf5598d3d7c6ff9c03812d7efb0681760e37730d6"
         }
     ],
     "hashType": "sha256"

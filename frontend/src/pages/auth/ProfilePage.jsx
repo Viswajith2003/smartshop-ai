@@ -54,7 +54,7 @@ const ProfilePage = () => {
     const [reviews, setReviews] = useState([]);
     const [reviewsLoading, setReviewsLoading] = useState(false);
     const [reviewSearch, setReviewSearch] = useState('');
-    const [selectedOrderId, setSelectedOrderId] = useState(null);
+    // selectedOrderId initialization moved down
     const [orderSearch, setOrderSearch] = useState('');
     const [orderPage, setOrderPage] = useState(1);
     const [orderViewMode, setOrderViewMode] = useState('list'); // 'list' or 'grid'
@@ -71,7 +71,22 @@ const ProfilePage = () => {
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
     const [addressToDelete, setAddressToDelete] = useState(null);
     const location = useLocation();
-    const [activeTab, setActiveTab] = useState(location.state?.activeTab || 'profile'); // 'profile', 'address', 'wallet', 'orders', 'returns', 'cancellations', 'reviews'
+    const queryParams = new URLSearchParams(location.search);
+    const orderIdParam = queryParams.get('orderId');
+
+    const pathTabMap = {
+        '/profile': 'profile',
+        '/address': 'address',
+        '/wallet': 'wallet',
+        '/orders': 'orders',
+        '/return': 'returns',
+        '/cancel': 'cancellations',
+        '/reviews': 'reviews'
+    };
+    
+    const normalizedPath = location.pathname.endsWith('/') && location.pathname !== '/' ? location.pathname.slice(0, -1) : location.pathname;
+    const activeTab = pathTabMap[normalizedPath] || 'profile';
+    const [selectedOrderId, setSelectedOrderId] = useState(orderIdParam || null);
 
     // Calculate dynamic totals from orders list
     const allOrdersAmount = orders.reduce((sum, o) => sum + (o.pricing?.totalPrice || o.totalAmount || 0), 0);
@@ -174,7 +189,7 @@ const ProfilePage = () => {
     useEffect(() => {
         if (['orders', 'returns', 'cancellations'].includes(activeTab)) {
             fetchOrders();
-            setSelectedOrderId(null);
+            if (!location.hash) setSelectedOrderId(null);
             setOrderPage(1);
         } else if (activeTab === 'reviews') {
             fetchReviews();
@@ -182,6 +197,21 @@ const ProfilePage = () => {
             fetchProfile();
         }
     }, [activeTab, fetchOrders, fetchReviews, fetchProfile]);
+
+    useEffect(() => {
+        if (orders.length > 0 && location.hash) {
+            const hashId = location.hash.replace('#', '').toUpperCase();
+            const matchingOrder = orders.find(o => {
+                const razorpayId = o.paymentDetails?.razorpayOrderId;
+                const objectIdFull = o._id.toUpperCase();
+                return (razorpayId && razorpayId.toUpperCase().includes(hashId)) || objectIdFull.includes(hashId);
+            });
+            if (matchingOrder) {
+                setSelectedOrderId(matchingOrder._id);
+            }
+        }
+    }, [orders, location.hash]);
+
 
     const handleProfileUpdate = async (e) => {
         e.preventDefault();
@@ -383,7 +413,7 @@ const ProfilePage = () => {
                         <nav className="bg-white rounded-3xl p-4 shadow-sm border border-slate-100">
                             <div className="space-y-1">
                                 <button 
-                                    onClick={() => setActiveTab('profile')}
+                                    onClick={() => navigate('/profile')}
                                     className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all group ${activeTab === 'profile' ? 'bg-indigo-50 text-indigo-600' : 'text-slate-500 hover:bg-slate-50'}`}
                                 >
                                     <div className="flex items-center gap-4">
@@ -396,7 +426,7 @@ const ProfilePage = () => {
                                 </button>
 
                                 <button 
-                                    onClick={() => setActiveTab('address')}
+                                    onClick={() => navigate('/address')}
                                     className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all group ${activeTab === 'address' ? 'bg-indigo-50 text-indigo-600' : 'text-slate-500 hover:bg-slate-50'}`}
                                 >
                                     <div className="flex items-center gap-4">
@@ -414,7 +444,7 @@ const ProfilePage = () => {
                                 </button>
 
                                 <button 
-                                    onClick={() => setActiveTab('wallet')}
+                                    onClick={() => navigate('/wallet')}
                                     className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all group ${activeTab === 'wallet' ? 'bg-indigo-50 text-indigo-600' : 'text-slate-500 hover:bg-slate-50'}`}
                                 >
                                     <div className="flex items-center gap-4">
@@ -434,7 +464,7 @@ const ProfilePage = () => {
                                 <div className="h-px bg-slate-50 my-2 mx-4"></div>
 
                                 <button 
-                                    onClick={() => setActiveTab('orders')}
+                                    onClick={() => navigate('/orders')}
                                     className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all group ${activeTab === 'orders' ? 'bg-indigo-50 text-indigo-600' : 'text-slate-500 hover:bg-slate-50'}`}
                                 >
                                     <div className="flex items-center gap-4">
@@ -455,7 +485,7 @@ const ProfilePage = () => {
                                 </button>
 
                                 <button 
-                                    onClick={() => setActiveTab('returns')}
+                                    onClick={() => navigate('/return')}
                                     className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all group ${activeTab === 'returns' ? 'bg-amber-50 text-amber-600' : 'text-slate-500 hover:bg-slate-50'}`}
                                 >
                                     <div className="flex items-center gap-4">
@@ -476,7 +506,7 @@ const ProfilePage = () => {
                                 </button>
 
                                 <button 
-                                    onClick={() => setActiveTab('cancellations')}
+                                    onClick={() => navigate('/cancel')}
                                     className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all group ${activeTab === 'cancellations' ? 'bg-rose-50 text-rose-600' : 'text-slate-500 hover:bg-slate-50'}`}
                                 >
                                     <div className="flex items-center gap-4">
@@ -496,7 +526,7 @@ const ProfilePage = () => {
                                     </div>
                                 </button>
                                 <button 
-                                    onClick={() => setActiveTab('reviews')}
+                                    onClick={() => navigate('/reviews')}
                                     className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all group ${activeTab === 'reviews' ? 'bg-indigo-50 text-indigo-600' : 'text-slate-500 hover:bg-slate-50'}`}
                                 >
                                     <div className="flex items-center gap-4">
@@ -522,7 +552,7 @@ const ProfilePage = () => {
                         {activeTab === 'profile' && !selectedOrderId && (
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                                 <div 
-                                    onClick={() => setActiveTab('orders')}
+                                    onClick={() => navigate('/orders')}
                                     className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group cursor-pointer animate-in fade-in duration-300"
                                 >
                                     <div className="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-all">
@@ -535,7 +565,7 @@ const ProfilePage = () => {
                                     </div>
                                 </div>
                                 <div 
-                                    onClick={() => setActiveTab('wallet')}
+                                    onClick={() => navigate('/wallet')}
                                     className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group cursor-pointer animate-in fade-in duration-300"
                                 >
                                     <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-all">
@@ -548,7 +578,7 @@ const ProfilePage = () => {
                                     </div>
                                 </div>
                                 <div 
-                                    onClick={() => setActiveTab('returns')}
+                                    onClick={() => navigate('/return')}
                                     className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group cursor-pointer animate-in fade-in duration-300"
                                 >
                                     <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-4 group-hover:bg-amber-600 group-hover:text-white transition-all">
@@ -561,7 +591,7 @@ const ProfilePage = () => {
                                     </div>
                                 </div>
                                 <div 
-                                    onClick={() => setActiveTab('cancellations')}
+                                    onClick={() => navigate('/cancel')}
                                     className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all group cursor-pointer animate-in fade-in duration-300"
                                 >
                                     <div className="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center text-rose-600 mb-4 group-hover:bg-rose-600 group-hover:text-white transition-all">
@@ -649,7 +679,7 @@ const ProfilePage = () => {
                                 ) : selectedOrderId ? (
                                     <OrderDetailView 
                                         orderId={selectedOrderId} 
-                                        onBack={() => setSelectedOrderId(null)} 
+                                        onBack={() => { setSelectedOrderId(null); navigate('/orders'); }} 
                                         onStatusUpdate={fetchOrders}
                                     />
                                 ) : (() => {
@@ -685,7 +715,7 @@ const ProfilePage = () => {
                                                     {paginatedOrders.map((order) => (
                                                         <div 
                                                             key={order._id}
-                                                            onClick={() => setSelectedOrderId(order._id)}
+                                                            onClick={() => navigate(`/orders/#${order.paymentDetails?.razorpayOrderId?.split('_')[1] || order._id.toUpperCase().slice(-8)}`)}
                                                             className="bg-white p-6 rounded-2xl border border-slate-100 hover:border-indigo-100 hover:shadow-xl hover:-translate-y-0.5 transition-all cursor-pointer group flex items-center justify-between"
                                                         >
                                                             <div className="flex items-center gap-8">
@@ -757,7 +787,7 @@ const ProfilePage = () => {
                                                     {paginatedOrders.map((order) => (
                                                         <div 
                                                             key={order._id}
-                                                            onClick={() => setSelectedOrderId(order._id)}
+                                                            onClick={() => navigate(`/orders/#${order.paymentDetails?.razorpayOrderId?.split('_')[1] || order._id.toUpperCase().slice(-8)}`)}
                                                             className="bg-white p-6 rounded-3xl border border-slate-100 hover:border-indigo-100 hover:shadow-xl hover:-translate-y-2 transition-all cursor-pointer group space-y-6"
                                                         >
                                                             <div className="flex justify-between items-start">
