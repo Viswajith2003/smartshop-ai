@@ -56,25 +56,43 @@ const processChatMessage = async (req, res) => {
                 });
 
                 if (matchedOrder) {
-                    const date = new Date(matchedOrder.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
-                    // Provide order details as context to Gemini
-                    contextData = `The user is asking about order #${shortId}. Found order details: Order ID: #${shortId}, Placed on: ${date}, Status: ${matchedOrder.orderStatus}, Total Price: ₹${matchedOrder.pricing?.totalPrice}. Let the user know these details deeply and in a friendly, attractive way. IMPORTANT: You MUST format the Order ID and Status by wrapping them in double asterisks (like **#${shortId}** and **${matchedOrder.orderStatus}**) so they are highlighted. IMPORTANT: You MUST append the following exact markdown link at the very end of your response to provide a navigation button: [View Order Details](/orders/#${shortId})`;
+                    const date = new Date(matchedOrder.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+                    const productNames = matchedOrder.items.map(item => item.product?.name || "Unknown Item").join(', ');
+                    
+                    const reply = `Here are the details for your order! 😊\n\n📦 **Order #${shortId}**\n🔹 Product(s): **${productNames}**\n📅 Date: **${date}**\n📌 Status: **${matchedOrder.orderStatus}**\n\n[View Order Details](/orders/#${shortId})`;
+                    return sendSuccess(res, "Message processed successfully", { reply });
                 } else {
-                    contextData = `The user asked about order #${shortId}, but no matching order was found in their account. Ask them to double-check the ID politely.`;
+                    const reply = `I couldn't find order #${shortId} in your account. Please double-check the ID politely.`;
+                    return sendSuccess(res, "Message processed successfully", { reply });
                 }
             } else {
-                // Fetch the top 3 latest orders if no specific ID is provided
-                const recentOrders = await Order.find({ user: userId }).sort({ createdAt: -1 }).limit(3);
+                // Handle "all orders" vs "recent order"
+                const isAllOrders = lowerMessage.includes("all") || lowerMessage.includes("orders");
+                const limit = isAllOrders ? 5 : 1;
+                const recentOrders = await Order.find({ user: userId }).sort({ createdAt: -1 }).limit(limit).populate('items.product');
+                
                 if (recentOrders.length > 0) {
-                    let ordersContext = "The user is asking a general question about their orders. Here are their most recent orders:\\n";
-                    recentOrders.forEach(order => {
-                        const shortId = order.paymentDetails?.razorpayOrderId || order._id.toString().slice(-8).toUpperCase();
-                        ordersContext += `- Order ID: #${shortId}, Status: ${order.orderStatus}\\n`;
-                    });
-                    
-                    contextData = `${ordersContext}\\nTell them about these recent orders in a friendly way. IMPORTANT: You MUST format the Order IDs and Statuses by wrapping them in double asterisks (like **#ID** and **Status**) so they are highlighted. IMPORTANT: Do not group all text together and all buttons at the end. Instead, you MUST structure your response so that each order has its own separate block. For each order, explain its status and then IMMEDIATELY follow it with its specific navigation button on a new line using the exact markdown link format: [View Order #ID](/orders/#ID). Separate each order's block with an empty line.`;
+                    if (isAllOrders && recentOrders.length > 1) {
+                        let finalReply = "Here are your orders! 😊\n\n";
+                        recentOrders.forEach((order, index) => {
+                            const productNames = order.items.map(item => item.product?.name || "Unknown Item").join(', ');
+                            const date = new Date(order.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+                            finalReply += `📦 **Order ${index + 1}**\n🔹 Product(s): **${productNames}**\n📅 Date: **${date}**\n📌 Status: **${order.orderStatus}**\n\n`;
+                        });
+                        finalReply += `[View All Orders](/orders)`;
+                        
+                        return sendSuccess(res, "Message processed successfully", { reply: finalReply });
+                    } else {
+                        const order = recentOrders[0];
+                        const productNames = order.items.map(item => item.product?.name || "Unknown Item").join(', ');
+                        const date = new Date(order.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+                        
+                        const finalReply = `Here is your most recent order! 😊\n\n📦 **Order Details**\n🔹 Product(s): **${productNames}**\n📅 Date: **${date}**\n📌 Status: **${order.orderStatus}**\n\n[View Order](/orders)`;
+                        return sendSuccess(res, "Message processed successfully", { reply: finalReply });
+                    }
                 } else {
-                    contextData = `The user asked about their orders, but they don't have any recent orders in their account yet. Let them know nicely.`;
+                    const reply = `You don't have any recent orders in your account yet!`;
+                    return sendSuccess(res, "Message processed successfully", { reply });
                 }
             }
         }

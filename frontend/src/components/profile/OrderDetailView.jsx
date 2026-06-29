@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { orderAPI } from '../../services/api';
+import { productApi } from '../../services/api/productApi';
 import { 
     Package, 
     Truck, 
@@ -16,7 +17,8 @@ import {
     Mail,
     User,
     ArrowRight,
-    AlertCircle
+    AlertCircle,
+    Star
 } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
@@ -39,6 +41,14 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
         reason: '',
         itemId: null
     });
+
+    const [reviewModalConfig, setReviewModalConfig] = useState({
+        isOpen: false,
+        productId: null,
+        rating: 5,
+        comment: ''
+    });
+    const [reviewLoading, setReviewLoading] = useState(false);
 
     const fetchOrderDetails = async () => {
         try {
@@ -122,6 +132,45 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
             }
         } finally {
             setActionLoading(false);
+        }
+    };
+
+    const handleOpenReviewModal = (productId) => {
+        setReviewModalConfig({
+            isOpen: true,
+            productId,
+            rating: 5,
+            comment: ''
+        });
+    };
+
+    const handleCloseReviewModal = () => {
+        setReviewModalConfig(prev => ({ ...prev, isOpen: false }));
+    };
+
+    const handleReviewSubmit = async () => {
+        if (!reviewModalConfig.comment.trim()) {
+            toast.warning("Please write a comment for your review");
+            return;
+        }
+        
+        try {
+            setReviewLoading(true);
+            const response = await productApi.addReview(reviewModalConfig.productId, {
+                rating: reviewModalConfig.rating,
+                comment: reviewModalConfig.comment
+            });
+            if (response.success) {
+                toast.success("Review submitted successfully!");
+                handleCloseReviewModal();
+            } else {
+                toast.error(response.message || "Failed to submit review");
+            }
+        } catch (err) {
+            console.error("Review submit error:", err);
+            toast.error(err.response?.data?.message || "Error submitting review");
+        } finally {
+            setReviewLoading(false);
         }
     };
 
@@ -310,6 +359,15 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
                                                     Cancel Item
                                                 </button>
                                             )}
+                                            {order.orderStatus === 'Delivered' && (
+                                                <button 
+                                                    onClick={() => handleOpenReviewModal(item.product?._id)}
+                                                    className="text-[9px] font-black uppercase tracking-widest text-indigo-500 border border-indigo-200 bg-indigo-50 px-3 py-1.5 rounded-lg hover:bg-indigo-100 transition-colors flex items-center gap-1"
+                                                >
+                                                    <Star className="w-3 h-3" />
+                                                    Write Review
+                                                </button>
+                                            )}
                                         </div>
                                     )}
                                 </div>
@@ -452,6 +510,62 @@ const OrderDetailView = ({ orderId, onBack, onStatusUpdate }) => {
                             } disabled:opacity-50`}
                         >
                             {actionLoading ? 'Processing...' : 'Confirm'}
+                        </button>
+                    </div>
+                </div>
+            </Modal>
+
+            <Modal
+                isOpen={reviewModalConfig.isOpen}
+                onClose={handleCloseReviewModal}
+                title="Write a Review"
+                maxWidth="max-w-md"
+            >
+                <div className="space-y-6">
+                    <div className="bg-amber-50 border border-amber-100 p-5 rounded-2xl">
+                        <p className="text-[10px] font-bold leading-relaxed text-amber-600">
+                            Share your experience with this product to help others!
+                        </p>
+                    </div>
+
+                    <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Rating</label>
+                        <div className="flex items-center gap-2">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                                <button
+                                    key={star}
+                                    onClick={() => setReviewModalConfig(prev => ({ ...prev, rating: star }))}
+                                    className="transition-transform hover:scale-110 focus:outline-none"
+                                >
+                                    <Star className={`w-8 h-8 ${star <= reviewModalConfig.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-200'}`} />
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Your Review</label>
+                        <textarea
+                            value={reviewModalConfig.comment}
+                            onChange={(e) => setReviewModalConfig(prev => ({ ...prev, comment: e.target.value }))}
+                            placeholder="What did you like or dislike?"
+                            className="w-full bg-slate-50 border border-slate-100 rounded-2xl p-6 text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 focus:border-indigo-600 transition-all min-h-[140px] resize-none"
+                        />
+                    </div>
+
+                    <div className="flex gap-4 pt-2">
+                        <button
+                            onClick={handleCloseReviewModal}
+                            className="flex-1 bg-slate-100 text-slate-500 font-black py-5 rounded-2xl hover:bg-slate-200 transition-all uppercase tracking-widest text-[10px]"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            onClick={handleReviewSubmit}
+                            disabled={reviewLoading || !reviewModalConfig.comment.trim()}
+                            className="flex-1 font-black py-5 rounded-2xl transition-all uppercase tracking-widest text-[10px] shadow-xl bg-indigo-600 text-white hover:bg-indigo-700 shadow-indigo-100 disabled:opacity-50"
+                        >
+                            {reviewLoading ? 'Submitting...' : 'Submit Review'}
                         </button>
                     </div>
                 </div>

@@ -24,6 +24,11 @@
             "date": 1782592005097,
             "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/Smartshop-ClientSide/backend/logs/error-2026-06-28.log",
             "hash": "a972d6a575b0588aaeb4c6bdf5598d3d7c6ff9c03812d7efb0681760e37730d6"
+        },
+        {
+            "date": 1782701024325,
+            "name": "/home/tufa15/Documents/Menter_Bro/Full-Stack Project/SmartShop-AI/Smartshop-ClientSide/backend/logs/error-2026-06-29.log",
+            "hash": "58d957aee26df11385708141f061373f22807b94f02f48f6055e555d4719f0c4"
         }
     ],
     "hashType": "sha256"
